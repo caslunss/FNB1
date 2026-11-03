@@ -37,7 +37,7 @@ As cores e limites estão em `src/services/layout-preferences.js`. Os valores pa
 | Investimentos | Informações de ativos e economia. Dados ausentes não devem virar zero artificial |
 | Análises | Impostos, Relatórios e Carbono. Carbono mantém visibilidade opcional no Layout |
 | Calendário | Popup pelo atalho superior. Seleção discreta em vidro; datas de gastos, entradas e cartões. Um único botão + abre Entrada e Gasto para o dia selecionado |
-| Amigos e divisões | Dentro de Compromissos. Lista, convites, compartilhamento e divisão com amigos |
+| Dividir conta | Dentro de Compromissos. Lista, convites, compartilhamento e divisão com amigos |
 | Perfil | Popup com foto, nome, badges, classificação, assinaturas e apoio |
 | Conexões | Dentro de Configurações. Open Finance, Serasa e boletos; indicar indisponibilidade real |
 | Relatórios | Histórico mensal, importar CSV e exportar backup/CSV |
@@ -310,10 +310,21 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 ## Navegação unificada — 03/11/2026
 
-- Compromissos: Dívidas, Cartões (se habilitado) e Amigos e divisões.
+- Compromissos: Dívidas, Cartões (se habilitado) e Dividir conta.
 - Planejamento: Compras (pesquisa de ofertas e compra planejada) e Metas. Atalhos de editar meta levam ao mesmo editor nesta área.
 - Análises: Impostos, Relatórios e Carbono (se habilitado). Impostos continua lazy e controla seu próprio período.
 - Resumo: somente Visão geral e Lançamentos; os indicadores e a análise de comportamento ficam abaixo dos cards na Visão geral. Não remover o consentimento de envio ao Gemini.
 - Perfil: Perfil, Configurações e Sair. Integrações passam para Configurações → Conexões. Calendário e pesquisa continuam acessíveis; no mobile, Calendário e Configurações permanecem em Atalhos.
 - Rotas antigas de cartão, amigos, ofertas, carbono e relatórios são encaminhadas ao grupo correspondente. Nenhuma chave de dados financeiros ou cálculo é migrado. Alterar a navegação não deve apagar filtros financeiros, compras, metas ou fechamentos.
 - A seleção interna fica em FinanceSegments, com foco e teclado da biblioteca. Nunca deixar uma janela modal invisível bloqueando a área recém-aberta.
+
+
+## Auditoria de cards e alinhamento — 03/11/2026
+
+- A seção integrada de comportamento usa uma grade de duas colunas a partir de 768 px e uma coluna abaixo disso. Hábitos de gastos ocupa uma célula, sem altura mínima artificial ou largura de página inteira; Dicas ocupa a linha inteira.
+- Hábitos e Planejamento reutilizam FinanceGlassCard através dos templates, com a classe finance-layout-card: mesmo raio, borda, sombra, material de vidro e padding simétrico. Não criar um segundo componente visual para esses cards.
+- Planejamento usa cards reais para pesquisa, criação de compra, compras salvas, confirmação, compras confirmadas, metas e resultados/fontes de ofertas. A superfície externa fornece o card; os formulários internos não repetem outra moldura. O editor progressivo mantém controles e validações existentes.
+- Gap compartilhado de 24 px no desktop e 16 px no mobile; as grades controlam o espaçamento, sem somar margens externas em barras e seções. Campos de seleção preservam popovers; tabelas têm rolagem local. Não cortar foco ou menus para esconder overflow.
+- Checkbox de incluir na meta usa alinhamento horizontal próprio, sem herdar a coluna de campos de texto. O ícone de data centraliza com inset/margem, sem competir com transform das animações do botão.
+- O rótulo de navegação é Dividir conta; a chave interna friends continua preservada.
+- O editor de meta mantém valor, meses e data em estado controlado. Alternar o tipo de prazo não deve apagar rascunhos ainda não salvos.

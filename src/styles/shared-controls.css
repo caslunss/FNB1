@@ -8,7 +8,7 @@ body:not(.auth-page) .te-text-field:focus-within{border-color:var(--tint)}
 body:not(.auth-page) .te-text-field:has(:disabled){opacity:.55}
 :is(#app,.account-panel-body) .te-compact-form.product-form{display:block;width:100%;min-width:0;box-sizing:border-box}
 :is(#app,.account-panel-body) .product-form .progressive-basics{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
-:is(#app,.account-panel-body) .product-form :is(.progressive-basics,.progressive-advanced)>label{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0}
+:is(#app,.account-panel-body) .product-form :is(.progressive-basics,.progressive-advanced)>label:not(.chk){display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0}
 :is(#app,.account-panel-body) .product-form .progressive-basics>.full{grid-column:1/-1}
 :is(#app,.account-panel-body) .product-form .progressive-main{align-items:flex-start}
 :is(#app,.account-panel-body) .product-form .progressive-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;min-width:0}
@@ -71,4 +71,53 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
  .area-switch .lg-segmented__option{min-width:0}
  .area-content,.summary-behavior{gap:16px}
  .account-settings-tabs{flex-wrap:wrap}
+}
+/* Shared card geometry: spending habits and every planning item use this surface. */
+:root{--content-card-gap:24px;--content-card-padding:clamp(18px,2vw,28px)}
+#app :is(.summary-behavior,.planning-grid){grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);align-items:start}
+#app :is(.summary-behavior,.planning-grid) .finance-layout-card{
+ box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:0;
+ margin:0!important;padding:var(--content-card-padding)!important;
+ border:1px solid var(--form-border);border-radius:var(--pill-radius,28px)!important;
+ box-shadow:var(--lg-shadow)!important;--lg-glass-fill:var(--lg-panel-fill);
+}
+.finance-layout-card :is(h2,h3){overflow-wrap:anywhere;line-height:1.35}
+.finance-layout-card>h2{font-size:18px;margin:0 0 16px}
+.finance-layout-card>p{line-height:1.65;margin:12px 0 0}
+.habits-summary-card .overview-total,.planning-value{display:block;font-size:clamp(28px,3vw,36px);line-height:1.15;overflow-wrap:anywhere;margin:16px 0;font-variant-numeric:tabular-nums}
+.summary-behavior .habit-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:16px}
+.summary-behavior .habit-bars>*,.finance-layout-card .row>*{min-width:0}
+.summary-behavior .finance-layout-card:last-child{grid-column:1/-1}
+.planning-grid .planning-results{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);min-width:0}
+.planning-grid .planning-results:empty{display:none}
+.planning-query-status,.planning-grid .purchase-review{grid-column:1/-1}
+.planning-editor-card .te-action-editor>details{margin:16px 0 0}
+.planning-editor-card .product-form{margin:0;padding:0;border:0;background:transparent;box-shadow:none}
+.planning-grid .plan-card .row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.planning-grid .plan-card .row>div{flex:1 1 180px}
+.planning-grid .plan-card .row>strong{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.planning-grid .plan-actions{display:flex;gap:12px;flex-wrap:wrap}
+.planning-grid :is(.plan-link,.foot,li){overflow-wrap:anywhere}
+.planning-grid .product-photo{max-width:100%;height:auto;object-fit:contain;border-radius:16px}
+.planning-grid :is(.compact-form,.progressive-fields,.plan-projection,.te-action-editor,.finance-layout-card form){min-width:0;max-width:100%}
+.planning-grid .compact-form>.progressive-fields{grid-column:1/-1}
+.planning-grid .product-form .progressive-basics{grid-template-columns:minmax(0,1fr)}
+:is(#app,.account-panel-body) .product-form label.chk{display:flex;flex-direction:row;align-items:center;gap:12px;min-height:44px}
+.planning-goal-card .goal-planner{margin:0}
+.planning-goal-card .goal-planner fieldset{grid-template-columns:minmax(0,1fr)}
+@media(max-width:767px){
+ :root{--content-card-gap:16px}
+ #app :is(.summary-behavior,.planning-grid),.planning-grid .planning-results{grid-template-columns:minmax(0,1fr)}
+ .planning-grid .progressive-advanced{grid-template-columns:minmax(0,1fr)}
+}
+/* Grid gaps own the spacing; avoid adding a second margin between sections. */
+#app>.area-toolbar,#app>.summary-behavior{margin:0}
+#app.layout-o{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--content-card-gap)}
+body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:auto;transform:none}
+/* Old floating-editor rules used display:contents and erased the card's box. */
+#app .planning-grid>.finance-layout-card,#app .planning-grid .te-action-editor{display:block}
+/* The summary's generic reorder-card rule must not squeeze this whole grid into one tile. */
+#app.layout-r>.summary-behavior{
+ grid-column:1/-1;padding:0!important;border:0;border-radius:0;
+ background:transparent!important;box-shadow:none;
 }

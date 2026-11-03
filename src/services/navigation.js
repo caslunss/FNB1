@@ -7,7 +7,7 @@ export const MAIN_AREAS = Object.freeze([
   {key:'f',label:'Análises'},
 ]);
 export const AREA_VIEWS = Object.freeze({
-  commitments:[['debts','Dívidas'],['cards','Cartões'],['friends','Amigos e divisões']],
+  commitments:[['debts','Dívidas'],['cards','Cartões'],['friends','Dividir conta']],
   planning:[['purchases','Compras'],['goals','Metas']],
   analysis:[['taxes','Impostos'],['reports','Relatórios'],['carbon','Carbono']],
 });
