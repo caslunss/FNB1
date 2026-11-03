@@ -1,0 +1,43 @@
+:root{
+ --focus-color:var(--tintT,var(--tint,#557789));
+ --focus-halo:color-mix(in srgb,var(--focus-color) 24%,transparent);
+ --lg-ring:var(--focus-color);
+}
+/* Important rules in this layer supersede legacy, unlayered outlines consistently. */
+@layer app-focus{
+ :where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]):is(:focus,:active),
+ dialog:focus{
+  outline:none!important;
+ }
+ :where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]):focus-visible{
+  box-shadow:0 0 0 2px var(--focus-color),0 0 0 4px var(--focus-halo)!important;
+ }
+ :where(input,textarea,select,[contenteditable=true]):focus{
+  border-color:var(--focus-color)!important;
+  box-shadow:inset 0 0 0 1px var(--focus-color),0 0 0 3px var(--focus-halo)!important;
+ }
+ /* One focus treatment on the glass field, never another rectangle inside it. */
+ :is(.te-text-field,.month-selector):focus-within{
+  outline:none!important;border-color:var(--focus-color)!important;
+  box-shadow:inset 0 0 0 1px var(--focus-color),0 0 0 3px var(--focus-halo)!important;
+ }
+ .te-text-field :is(input,textarea,select,.finance-select-trigger):is(:focus,:focus-visible,:active),
+ .month-selector button:is(:focus,:focus-visible,:active){
+  outline:none!important;box-shadow:none!important;
+ }
+ .lg-slider:focus-within :is(.lg-slider__thumb,.lg-slider__block){
+  outline:none!important;box-shadow:0 0 0 2px var(--focus-color),0 0 0 4px var(--focus-halo)!important;
+ }
+ @media(forced-colors:active){
+  :where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]):focus-visible,
+  :is(.te-text-field,.month-selector):focus-within,
+  .lg-slider:focus-within :is(.lg-slider__thumb,.lg-slider__block){
+   outline:2px solid Highlight!important;outline-offset:2px!important;box-shadow:none!important;
+  }
+  .te-text-field :is(input,textarea,select,.finance-select-trigger):is(:focus,:focus-visible),
+  .month-selector button:is(:focus,:focus-visible){outline:none!important}
+ }
+}
+:where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]){-webkit-tap-highlight-color:transparent}
+:where(input,textarea,select,.te-text-field,.month-selector){transition:border-color .18s ease,box-shadow .18s ease}
+@media(prefers-reduced-motion:reduce){:where(input,textarea,select,.te-text-field,.month-selector){transition:none}}

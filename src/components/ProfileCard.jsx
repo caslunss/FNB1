@@ -1,0 +1,28 @@
+import React, {useId, useState} from 'react';
+import {FinanceGlassButton as Button} from './LiquidControls.jsx';
+
+/** Content for the shared native dialog: focus trapping and Escape stay in one place. */
+export default function ProfileCard({name, photo, verified = false, tester = false, supporter = false, children}) {
+  const title = useId(), [pinned, setPinned] = useState(false), [failedPhoto, setFailedPhoto] = useState('');
+  const image = photo && failedPhoto !== photo;
+  return <article className="profile-hover-card" data-expanded={pinned} aria-labelledby={title}>
+    <div className="profile-card-photo" aria-hidden="true">
+      {image ? <img src={photo} alt="" referrerPolicy="no-referrer" onError={() => setFailedPhoto(photo)}/> : <span className="profile-card-initial">{name?.trim().slice(0,1).toUpperCase() || 'V'}</span>}
+    </div>
+    <div className="profile-card-white" aria-hidden="true"/>
+    <Button type="button" className="profile-card-pin" aria-pressed={pinned} onClick={() => setPinned(value => !value)}>
+      {pinned ? 'Soltar detalhes' : 'Fixar detalhes'}
+    </Button>
+    <div className="profile-card-content">
+      <header className="profile-card-identity">
+        <h2 id={title}>{name || 'Visitante'}{verified && <svg className="profile-verified" viewBox="0 0 24 24" role="img" aria-label="E-mail verificado"><circle cx="12" cy="12" r="10"/><path d="m7 12 3 3 7-7"/></svg>}</h2>
+        {(tester || supporter) && <div className="profile-card-badges">{tester && <span>Testador</span>}{supporter && <span>Apoiador</span>}</div>}
+      </header>
+      <section className="profile-card-notes" aria-label="Notas de gastos e economias">{children}</section>
+      <footer className="profile-card-actions">
+        <Button type="button" onClick={() => window.planMobile?.open('settings')}>Configurações</Button>
+        <Button type="button" id="accountSignOut">Sair</Button>
+      </footer>
+    </div>
+  </article>;
+}

@@ -1,0 +1,55 @@
+/* Phone/tablet navigation only. Desktop rules above 1024px remain in their files. */
+@media(max-width:1024px){
+ body:not(.auth-page) .navigation-actions{
+  position:fixed!important;inset:auto max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))!important;
+  display:block!important;width:calc(100% - max(12px,env(safe-area-inset-right)) - max(12px,env(safe-area-inset-left)))!important;
+  max-width:560px!important;margin:0 auto!important;padding:0;box-sizing:border-box;z-index:70;transition:padding .3s ease,opacity .3s ease;
+ }
+ body:not(.auth-page) .navigation-actions #tabs.tabbar{
+  position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;align-items:stretch!important;
+  width:100%!important;max-width:none!important;min-width:0;height:auto!important;min-height:78px!important;
+  padding:6px!important;gap:2px!important;margin:0!important;border-radius:999px!important;box-sizing:border-box;
+  --lg-glass-fill:var(--lg-navigation-fill);background:var(--lg-navigation-fill)!important;
+  border:1px solid var(--lg-edge);box-shadow:var(--lg-shadow);transition:padding .3s ease,min-height .3s ease;
+  backdrop-filter:blur(var(--lg-blur,20px)) saturate(1.2);-webkit-backdrop-filter:blur(var(--lg-blur,20px)) saturate(1.2);
+ }
+ body:not(.auth-page) .navigation-actions #tabs.tabbar button{
+  flex:1 1 0!important;min-width:0!important;width:auto!important;height:auto!important;min-height:64px!important;
+  padding:6px 2px!important;margin:0;border-radius:999px!important;box-sizing:border-box;
+  background:transparent!important;color:var(--lb2)!important;--lg-fg:var(--lb2);--lg-glass-fill:transparent;
+ }
+ body:not(.auth-page) .navigation-actions #tabs button .lg-button__label{
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+  gap:4px!important;width:100%!important;height:auto!important;min-width:0;line-height:1.2;
+ }
+ body:not(.auth-page) .navigation-actions #tabs button svg{display:block;width:22px!important;height:22px!important;flex-shrink:0}
+ body:not(.auth-page) .navigation-actions #tabs .mobile-tab-label{
+  display:block!important;position:static!important;inset:auto!important;opacity:1!important;transform:none!important;padding:0!important;background:transparent!important;box-shadow:none!important;pointer-events:none;
+  font-size:clamp(9px,2.4vw,11px);font-weight:500;line-height:1.2;max-width:100%;white-space:nowrap;color:inherit;
+ }
+ body:not(.auth-page) .navigation-actions #tabs.tabbar button[aria-current=page]{
+  color:var(--tintT)!important;--lg-fg:var(--tintT);--lg-glass-fill:color-mix(in srgb,var(--tint) 16%,transparent);
+  background:color-mix(in srgb,var(--tint) 16%,transparent)!important;box-shadow:inset 0 0 0 1px var(--lg-edge)!important;
+ }
+ body:not(.auth-page) .navigation-actions #tabs.tabbar button:not([aria-current=page]){
+  box-shadow:none!important;--lg-rim-opacity:0;backdrop-filter:none;-webkit-backdrop-filter:none;
+ }
+ body:not(.auth-page) .navigation-actions #tabs button:focus-visible{outline:2px solid var(--tintT);outline-offset:-2px}
+ /* Preserve the scroll gesture without hiding labels or shrinking touch targets. */
+ body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within){padding-inline:8px;opacity:1}
+ body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within) #tabs.tabbar{min-height:74px!important;padding:4px!important}
+ body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within) #tabs.tabbar button{min-height:64px!important}
+}
+@media(min-width:700px) and (max-width:1024px){
+ /* A filtered frame becomes the containing block for fixed children on tablets. */
+ html[data-layout-ready] .workspace-frame{backdrop-filter:none;-webkit-backdrop-filter:none}
+ html[data-layout-ready] .workspace-main.wrap{padding-bottom:calc(124px + env(safe-area-inset-bottom))!important}
+}
+@media(max-width:360px){
+ /* Full section names stay on the accessible buttons; tiny screens get readable short labels. */
+ body:not(.auth-page) .navigation-actions #tabs .mobile-tab-label{font-size:0}
+ .navigation-actions #tabs .mobile-tab-label::after{content:attr(data-short-label);font-size:10px;line-height:1.2}
+}
+@media(max-width:1024px) and (prefers-reduced-transparency:reduce){
+ body:not(.auth-page) .navigation-actions #tabs.tabbar{background:var(--form-surface)!important;backdrop-filter:none;-webkit-backdrop-filter:none}
+}

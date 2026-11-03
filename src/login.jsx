@@ -11,6 +11,7 @@ import './styles/liquid-glass.css';
 import './styles/layout-settings.css';
 import './styles/login-fullscreen.css';
 import './styles/mobile.css';
+import './styles/focus.css';
 import './services/auth.js';
 import Login from './components/Login.jsx';
 

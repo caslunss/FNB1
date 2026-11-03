@@ -5,7 +5,7 @@ import {GlassSurface} from './LiquidControls.jsx';
 export default function BottomNavigation() {
   const [compact, setCompact] = useState(false);
   useEffect(() => {
-    const mobile = matchMedia('(max-width: 699px)');
+    const mobile = matchMedia('(max-width: 1024px)');
     let previous = Math.max(0, window.scrollY), distance = 0, direction = 0;
     let frame = 0, idle;
     const reset = () => {setCompact(false); distance = 0;};

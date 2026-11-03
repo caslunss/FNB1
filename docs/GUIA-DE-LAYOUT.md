@@ -38,7 +38,7 @@ As cores e limites estão em `src/services/layout-preferences.js`. Os valores pa
 | Análises | Impostos, Relatórios e Carbono. Carbono mantém visibilidade opcional no Layout |
 | Calendário | Popup pelo atalho superior. Seleção discreta em vidro; datas de gastos, entradas e cartões. Um único botão + abre Entrada e Gasto para o dia selecionado |
 | Dividir conta | Dentro de Compromissos. Lista, convites, compartilhamento e divisão com amigos |
-| Perfil | Popup com foto, nome, badges, classificação, assinaturas e apoio |
+| Perfil | Avatar abre diretamente o card em overlay; foto dinâmica, notas financeiras e badges. Configurações e Sair no rodapé; assinaturas e apoio em seção expansível |
 | Conexões | Dentro de Configurações. Open Finance, Serasa e boletos; indicar indisponibilidade real |
 | Relatórios | Histórico mensal, importar CSV e exportar backup/CSV |
 | Configurações | Conta, Notificações, Layout e Conexões. Conta inclui dados e encerramento de sessão |
@@ -263,7 +263,7 @@ Arquivos: `src/services/motion-presets.js`, `src/services/page-motion.js`, `src/
 
 Usar `MotionProvider`, `PageTransition`, `IOSButton` e os presets descritos em `ANIMACOES-IOS.md`. Molas altamente amortecidas; somente opacity, x, y e scale nas novas transições. O vidro continua estático: não animar blur, recorte ou tamanho. Respeitar movimento reduzido e impedir interação com conteúdo de saída. Não adicionar transições concorrentes de transform ao mesmo botão.
 
-No mobile, cinco destinos principais aparecem somente como ícones (44 px de área mínima), com nomes acessíveis preservados. Impostos e Carbono ficam dentro de Análises. Investimentos usa gráfico ascendente, não cartão de crédito.
+Até 1024 px, cinco destinos principais aparecem com ícones sobre rótulos, com área mínima de toque de 44 px e nomes acessíveis preservados. Impostos e Carbono ficam dentro de Análises. Investimentos usa gráfico ascendente, não cartão de crédito.
 
 ## Revisão responsiva de 03/11/2026
 
@@ -293,7 +293,7 @@ No mobile, cinco destinos principais aparecem somente como ícones (44 px de ár
 
 Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada e padrão único de seleções e calendários.
 
-- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Somente até 699 px, descer 10 px contrai a barra; subir ou pausar 650 ms restaura o estado. O topo também restaura a barra. Áreas de toque continuam com pelo menos 44 px, cinco ícones e nomes acessíveis. A versão desktop mantém as mesmas cinco áreas no conjunto superior.
+- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Somente até 1024 px, descer 10 px contrai a barra; subir ou pausar 650 ms restaura o estado. O topo também restaura a barra. Áreas de toque continuam com pelo menos 44 px, cinco ícones e nomes acessíveis. A versão desktop mantém as mesmas cinco áreas no conjunto superior.
 - A exceção de movimento da barra permite transições curtas de padding e altura mínima durante scroll, sem animar blur. Foco mantém a geometria expandida. Movimento reduzido remove essas transições; transparência reduzida usa superfície opaca.
 - `shared-controls.css` centraliza campos de 48 px, raio de 24 px, foco do tema e tipografia de 16 px, tanto no aplicativo quanto em popups. Compra planejada usa o mesmo formulário progressivo e a mesma escala; preços em duas colunas quando couberem e uma coluna em telas pequenas.
 - `GlassTextField` encaminha seleções simples para `FinanceSelect`. Nos templates, o select real continua visível e preserva id, name, validação, FormData e alterações diretas do controlador. A lista compartilhada usa o topo das camadas. Seleções agrupadas, múltiplas e navegadores sem Popover conservam o controle do sistema; selects obrigatórios de React também conservam sua validação nativa.
@@ -328,3 +328,31 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Checkbox de incluir na meta usa alinhamento horizontal próprio, sem herdar a coluna de campos de texto. O ícone de data centraliza com inset/margem, sem competir com transform das animações do botão.
 - O rótulo de navegação é Dividir conta; a chave interna friends continua preservada.
 - O editor de meta mantém valor, meses e data em estado controlado. Alternar o tipo de prazo não deve apagar rascunhos ainda não salvos.
+
+
+## Card de perfil interativo — 03/11/2026
+
+- ProfileCard.jsx é o conteúdo do dialog accountOverlay existente, sem outra camada modal. Avatar abre o perfil diretamente. Backdrop escuro fecha ao clicar fora; Escape, contenção de foco nativa e retorno ao avatar são preservados.
+- Estado inicial: foto em toda a superfície, gradiente e vidro fosco na metade inferior. Hover em ponteiro fino: foto na metade superior e painel branco sólido com texto escuro embaixo, inclusive no tema escuro, conforme o pedido específico de referência. A paleta das demais áreas permanece intacta.
+- O tamanho externo do card não muda; somente a altura da imagem absoluta e as cores/opacidades internas transitam por 300 ms ease. Não usar transition:all nem animar blur. Essa transição de altura é uma exceção solicitada para a mídia isolada do perfil; movimento reduzido a desliga.
+- Fixar detalhes oferece o estado expandido por toque; foco visível de teclado também revela o painel legível. Foto com falha ou ausente usa inicial e gradiente. Texto longo e notas mensais têm rolagem interna, sem extrapolar a superfície.
+- As notas vêm de profileStars/monthlyRatings existentes. Não acrescentar bio genérica ou inventar indicadores financeiros.
+- Testador reutiliza isBetaTester. Apoiador só aparece com app_metadata.supporter === true, dado administrativo; user_metadata não autoriza esse selo. O ícone de verificação indica e-mail confirmado no Supabase, não identidade financeira validada.
+- Configurações e Sair continuam acessíveis no card. Assinaturas e apoio mantêm os controles existentes em um disclosure abaixo dele.
+
+
+## Navegação inferior com rótulos — 03/11/2026
+
+- Até 1024 px, barra inferior flutuante em pílula, largura máxima de 560 px, margens de 12 px e safe areas. Acima de 1024 px, os estilos desktop permanecem intactos.
+- Ícones sobre os rótulos, centralizados; aria-current=page controla fundo arredondado suave e cor primária do tema. Até 360 px, rótulos curtos (Contas, Planos e Investir); os nomes completos continuam no aria-label de cada botão.
+- Material usa --lg-navigation-fill, backdrop-filter e --lg-edge/--lg-shadow. Transparência reduzida usa superfície opaca. Compactação por scroll mantém rótulos e alvos de toque visíveis.
+- Tablets recebem espaço inferior para a barra; o frame sem filtro permite fixação ao viewport. Botões de busca e lançamento existentes seguem separados da pílula no celular.
+- A implementação fica em bottom-navigation.css, isolada por media queries; não alterar o breakpoint global dos formulários e demais componentes para mudar apenas a navegação.
+
+
+## Foco global dos controles — 03/11/2026
+
+- focus.css é carregado após os estilos do aplicativo e do login. A camada app-focus substitui outlines legados e nativos por indicadores do tema, incluindo menus, calendários, botões, links, regiões focáveis e formulários em popups.
+- Campos recebem borda e halo suave ao focar; dentro de GlassTextField, só a superfície externa recebe o destaque. Botões e links recebem halo de teclado em focus-visible, sem contorno adicional no clique comum. Preservar o estado ativo da navegação e as animações de pressão.
+- Transições de borda/sombra dos campos duram 180 ms; movimento reduzido as remove. Não alterar dimensões ou usar transition:all.
+- Nunca eliminar o indicador de teclado. Em cores forçadas, usar outline explícito Highlight, pois box-shadow pode não ser desenhado pelo sistema. Não tentar alterar controles internos de iframes de autenticação de terceiros.
