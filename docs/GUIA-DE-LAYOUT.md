@@ -381,3 +381,8 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Gráfico e Categorias ocupam uma linha completa; distribuição e maiores gastos compartilham a linha seguinte; investimentos e dívidas formam outro par. Sem span de duas linhas no gráfico, evitando lacunas na grade.
 - overview-layout.css responde à largura real do conteúdo via container query: pares somente a partir de 680 px disponíveis. Abaixo disso, coluna única; comportamento acompanha a mesma regra e Dicas continua ocupando a linha inteira.
 - Espaçamento e padding usam os tokens de cards existentes. Ordem personalizada, ações, indicadores, valores e cálculos permanecem preservados.
+
+## Pesquisa de produtos em Compras — 03/11/2026
+
+- Pesquisa por nome usa /api/shopping com SerpApi Google Shopping (Brasil, pt, gl=br), mantendo os cards e controles compartilhados. Resultados mostram loja, produto, imagem, preço BRL confirmado e link de oferta; resultado vazio tem mensagem própria. Não presumir desconto, moeda ou disponibilidade.
+- SERPAPI_API_KEY fica somente no servidor. Consulta de detalhes de links e análise de gastos continuam no Gemini; não enviar agregados de gastos à SerpApi. Login e limite de consultas permanecem obrigatórios.

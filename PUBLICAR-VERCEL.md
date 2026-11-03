@@ -29,7 +29,8 @@ Em Settings → Environment Variables, cadastre somente as integrações que uti
 
 | Nome | Uso |
 | --- | --- |
-| `GEMINI_API_KEY` | Pesquisa, produtos e comportamento |
+| `SERPAPI_API_KEY` | Pesquisa de produtos no Google Shopping |
+| `GEMINI_API_KEY` | Consulta de links de produtos e análise de gastos |
 | `GEMINI_MODEL` | Modelo opcional; padrão `gemini-2.5-flash` |
 | `BRAPI_TOKEN` | Dados de investimentos |
 | `PLUGGY_CLIENT_ID` | Conexão bancária |
