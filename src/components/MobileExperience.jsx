@@ -22,7 +22,7 @@ export default function MobileExperience(){
   },[mobile]);
   if(!mobile)return null;
   const close=()=>sheet.current?.close();
-  function choose(panel){close();requestAnimationFrame(()=>panel==='carbon'||panel==='taxes'?window.planMobile?.navigate(panel==='taxes'?'f':'e'):window.planMobile?.open(panel));}
+  function choose(panel){close();requestAnimationFrame(()=>window.planMobile?.open(panel));}
   return <>
     <div className="mobile-utility"><Button ref={trigger} className="ib" aria-label="Atalhos" aria-haspopup="dialog" onClick={()=>{setExpanded(false);sheet.current.showModal()}}><Icon/></Button></div>
     <div className="mobile-bottom-actions" aria-label="Ações rápidas"><Button className="mobile-search-action ib" aria-label="Pesquisar" onClick={()=>dispatchEvent(new Event('plan-mobile-search'))}><Icon kind="search"/></Button>{!state.closed&&(['r','i'].includes(state.tab)||state.composeDebt)&&<Button className="mobile-compose-action ib" aria-label={state.composeDebt?'Adicionar dívida':'Novo lançamento'} onClick={()=>window.planMobile?.compose()}><Icon kind="plus"/></Button>}</div>

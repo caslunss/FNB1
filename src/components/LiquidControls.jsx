@@ -1,13 +1,22 @@
 import DatePicker from './DatePicker.jsx';
 import FinanceSelect from './FinanceSelect.jsx';
 import IOSButton from './motion/IOSButton.tsx';
-import {useMobileLayout} from '../services/mobile-layout.js';
+import {useMobileLayout,useBottomNavigationLayout} from '../services/mobile-layout.js';
 import React, {useEffect,useLayoutEffect,useId, useRef, useState, useSyncExternalStore} from 'react';
 import {GlassCard,GlassMenu,GlassSwitch, GlassSegmented, useRefraction, usePress} from '@zakisheriff/liquid-glass';
 import {getLayout,subscribeLayout} from '../services/layout-preferences.js';
 
 const useLayout=()=>useSyncExternalStore(subscribeLayout,getLayout);
 export function FinanceGlassButton({className='',shimmer=true,...props}){const layout=useLayout();return <IOSButton {...props} className={`te-glass-button ${className}`} shimmer={shimmer} intensity={layout.intensity}/>}
+// A single outer glass surface owns the material for tabs and field triggers.
+export function FinanceFieldButton({children,className='',...props}){
+ return <button {...props} type={props.type||'button'} className={`lg-button te-glass-button finance-field-button ${className}`}><span className="lg-button__label">{children}</span></button>;
+}
+export function FinanceTabButton({children,className='',...props}){
+ const bottom=useBottomNavigationLayout();
+ if(!bottom)return <FinanceGlassButton {...props} className={className}>{children}</FinanceGlassButton>;
+ return <button {...props} type="button" className={`lg-button te-glass-button nav-icon-button ${className}`}><span className="lg-button__label">{children}</span></button>;
+}
 const SurfaceRim=()=> <span className="te-surface-rim" aria-hidden="true"/>;
 export function FinanceGlassCard({children,className='',...props}){const layout=useLayout();return <GlassCard {...props} className={`te-glass-surface ${className}`} intensity={Math.min(layout.intensity,2)}>{children}<SurfaceRim/></GlassCard>}
 

@@ -12,7 +12,7 @@ import AccountDataControls from './AccountDataControls.jsx';
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 import {flushSync} from 'react-dom';
-import {GlassSurface,SettingsOption,GlassTextField,FinanceActionMenu,GlassActionEditor, ThemeSwitch, FinanceSegments,FinanceGlassButton as GlassButton,FinanceGlassCard as GlassCard} from './LiquidControls.jsx';
+import {GlassSurface,FinanceTabButton,SettingsOption,GlassTextField,FinanceActionMenu,GlassActionEditor, ThemeSwitch, FinanceSegments,FinanceGlassButton as GlassButton,FinanceGlassCard as GlassCard} from './LiquidControls.jsx';
 import LayoutSettings from './LayoutSettings.jsx';
 
 // The existing, escaped finance templates become React elements. No eval,
@@ -70,7 +70,7 @@ function element(node, key) {
   const children=progressive?<ProgressiveFields basic={progressive.basic.map((child,i)=>element(child,'b'+i))} advanced={progressive.advanced.map((child,i)=>element(child,'d'+i))} actions={progressive.actions.map((child,i)=>element(child,'a'+i))}/>:['input','img','br','hr','meta','link','area','base','col','embed','source','track','wbr','textarea'].includes(tag)?undefined:[...node.childNodes].map((child,i)=>element(child,i));
   if(node.hasAttribute('data-profile-card'))return <ProfileCard key={key} name={node.getAttribute('data-name')} photo={node.getAttribute('data-photo')} verified={node.getAttribute('data-verified')==='true'} tester={node.getAttribute('data-tester')==='true'} supporter={node.getAttribute('data-supporter')==='true'}>{children}</ProfileCard>;
   if(tag==='div'&&node.classList.contains('ledger-row')){const record=node.querySelector('.ledger-detail');const {key:rowKey,...rowProps}=props;return <SwipeLedgerRow key={rowKey} {...rowProps} kind={record?.getAttribute('data-k')} id={record?.getAttribute('data-id')}>{children}</SwipeLedgerRow>;}
-  if(node.hasAttribute('data-progress-gauge'))return <ProgressGauge key={key} value={Number(node.getAttribute('data-value'))} label={node.getAttribute('data-label')} status={node.getAttribute('data-status')} indicatorKey={node.getAttribute('data-indicator-key')} known={node.getAttribute('data-known')!=='false'} attention={node.getAttribute('data-attention')==='true'} limit={node.getAttribute('data-limit')==='true'}>{children}</ProgressGauge>;
+  if(node.hasAttribute('data-progress-gauge'))return <ProgressGauge key={key} value={Number(node.getAttribute('data-value'))} label={node.getAttribute('data-label')} status={node.getAttribute('data-status')} known={node.getAttribute('data-known')!=='false'} attention={node.getAttribute('data-attention')==='true'} limit={node.getAttribute('data-limit')==='true'}>{children}</ProgressGauge>;
   if(node.hasAttribute('data-settings-option'))return <SettingsOption key={key} label={node.getAttribute('data-settings-option')} id={node.id}>{children}</SettingsOption>;
   if(tag==='label'){
     const control=node.querySelector('input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=color]):not([type=file]):not([type=range]),textarea,select');
@@ -94,12 +94,13 @@ function element(node, key) {
   if(node.hasAttribute('data-layout-settings')) return <LayoutSettings key={key}/>;
   if(node.classList.contains('segments')){
     const buttons=[...node.children].filter(n=>n.tagName==='BUTTON');
-    const fields=['data-area-view','data-entry-filter','data-summary-mode','data-chart','data-profile-section'];
+    const fields=['data-area-view','data-entry-filter','data-summary-mode','data-chart'];
     if(buttons.length && buttons.every(n=>fields.some(field=>n.hasAttribute(field)))){
       const items=buttons.map(n=>{const kind=fields.find(field=>n.hasAttribute(field));return {kind,value:n.getAttribute(kind),label:n.textContent,selected:n.getAttribute('aria-pressed')==='true'};});
       return <FinanceSegments key={key} items={items} label={props['aria-label']||'Opções'} className={props.className}/>;
     }
   }
+  if(tag==='button'&&node.hasAttribute('data-t'))return React.createElement(FinanceTabButton,props,children);
   // Keep tables, calendar cells, data rows and the official Google button intact.
   if(tag==='button' && (node.classList.contains('btn') || node.classList.contains('ib') || node.hasAttribute('data-t') || node.getAttribute('role')==='menuitem' || node.classList.contains('launch-option'))){
     return React.createElement(GlassButton,{...props,type:props.type ?? 'submit',variant:node.getAttribute('role')==='menuitem'?'clear':'glass',destructive:node.classList.contains('d') || ['del','idel','ddel','srem','stoprepeat'].includes(node.getAttribute('data-a')) || node.getAttribute('data-shop-action')==='delete-plan' || node.getAttribute('data-feature')==='split-delete',size:'md',intensity:3,shimmer:true,className:`${props.className||''} te-glass-button`},children);

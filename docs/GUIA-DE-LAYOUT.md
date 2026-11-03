@@ -263,7 +263,7 @@ Arquivos: `src/services/motion-presets.js`, `src/services/page-motion.js`, `src/
 
 Usar `MotionProvider`, `PageTransition`, `IOSButton` e os presets descritos em `ANIMACOES-IOS.md`. Molas altamente amortecidas; somente opacity, x, y e scale nas novas transições. O vidro continua estático: não animar blur, recorte ou tamanho. Respeitar movimento reduzido e impedir interação com conteúdo de saída. Não adicionar transições concorrentes de transform ao mesmo botão.
 
-Até 1024 px, cinco destinos principais aparecem com ícones sobre rótulos, com área mínima de toque de 44 px e nomes acessíveis preservados. Impostos e Carbono ficam dentro de Análises. Investimentos usa gráfico ascendente, não cartão de crédito.
+Até 1024 px, cinco destinos principais aparecem somente com ícones, com área mínima de toque de 44 px e nomes acessíveis preservados. Impostos e Carbono ficam dentro de Análises. Investimentos usa gráfico ascendente, não cartão de crédito.
 
 ## Revisão responsiva de 03/11/2026
 
@@ -293,8 +293,8 @@ Até 1024 px, cinco destinos principais aparecem com ícones sobre rótulos, com
 
 Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada e padrão único de seleções e calendários.
 
-- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Somente até 1024 px, descer 10 px contrai a barra; subir ou pausar 650 ms restaura o estado. O topo também restaura a barra. Áreas de toque continuam com pelo menos 44 px, cinco ícones e nomes acessíveis. A versão desktop mantém as mesmas cinco áreas no conjunto superior.
-- A exceção de movimento da barra permite transições curtas de padding e altura mínima durante scroll, sem animar blur. Foco mantém a geometria expandida. Movimento reduzido remove essas transições; transparência reduzida usa superfície opaca.
+- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Até 1024 px, a barra mantém geometria fixa durante a rolagem e mostra cinco ícones com nomes acessíveis e alvos de pelo menos 44 px. A versão desktop mantém as mesmas cinco áreas no conjunto superior.
+- Somente o ícone selecionado e seu indicador animam; não alterar altura, padding ou blur durante rolagem e seleção. Movimento reduzido remove essas transições; transparência reduzida usa superfície opaca.
 - `shared-controls.css` centraliza campos de 48 px, raio de 24 px, foco do tema e tipografia de 16 px, tanto no aplicativo quanto em popups. Compra planejada usa o mesmo formulário progressivo e a mesma escala; preços em duas colunas quando couberem e uma coluna em telas pequenas.
 - `GlassTextField` encaminha seleções simples para `FinanceSelect`. Nos templates, o select real continua visível e preserva id, name, validação, FormData e alterações diretas do controlador. A lista compartilhada usa o topo das camadas. Seleções agrupadas, múltiplas e navegadores sem Popover conservam o controle do sistema; selects obrigatórios de React também conservam sua validação nativa.
 - `GlassTextField` encaminha campos date para `DatePicker.jsx`: entrada real editável, botão de calendário e dialog compartilhado em pt-BR. Datas mínima e máxima, required, campos desativados e FormData continuam no input original. Escolher uma data emite input/change; cancelar não altera o campo. O dialog fecha por Escape e devolve foco ao botão.
@@ -341,13 +341,15 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Configurações e Sair continuam acessíveis no card. Assinaturas e apoio mantêm os controles existentes em um disclosure abaixo dele.
 
 
-## Navegação inferior com rótulos — 03/11/2026
+## Navegação inferior minimalista e campos uniformes — 03/11/2026
 
-- Até 1024 px, barra inferior flutuante em pílula, largura máxima de 560 px, margens de 12 px e safe areas. Acima de 1024 px, os estilos desktop permanecem intactos.
-- Ícones sobre os rótulos, centralizados; aria-current=page controla fundo arredondado suave e cor primária do tema. Até 360 px, rótulos curtos (Contas, Planos e Investir); os nomes completos continuam no aria-label de cada botão.
-- Material usa --lg-navigation-fill, backdrop-filter e --lg-edge/--lg-shadow. Transparência reduzida usa superfície opaca. Compactação por scroll mantém rótulos e alvos de toque visíveis.
-- Tablets recebem espaço inferior para a barra; o frame sem filtro permite fixação ao viewport. Botões de busca e lançamento existentes seguem separados da pílula no celular.
-- A implementação fica em bottom-navigation.css, isolada por media queries; não alterar o breakpoint global dos formulários e demais componentes para mudar apenas a navegação.
+- Até 1024 px, barra inferior flutuante com altura fixa de 54 px, largura máxima de 380 px, margens de 12 px e safe areas. Acima de 1024 px, preservar o desktop.
+- Itens mostram apenas ícones; aria-label e title preservam os nomes completos. aria-current=page muda imediatamente a seleção, mesmo durante cliques rápidos e transições de página.
+- O ícone ativo usa cor primária, escala 1.1 e indicador discreto abaixo. Transições de transform e opacity duram 300 ms ease-in-out; a geometria dos botões permanece fixa. Movimento reduzido remove transições e escala.
+- FinanceTabButton usa botão nativo dentro do vidro compartilhado no mobile/tablet, evitando sobrepor animações de pressão e seleção. No desktop mantém FinanceGlassButton.
+- Material usa --lg-navigation-fill, blur de 20 px e --lg-edge/--lg-shadow. Transparência reduzida usa superfície opaca. Tablets reservam espaço inferior; busca e lançamento permanecem separados da pílula no celular.
+- control-surfaces.css mantém campos com altura mínima de 48 px e raio de 24 px no aplicativo e login. FinanceFieldButton deixa o vidro apenas na superfície externa de GlassTextField, eliminando bordas e sombras duplicadas nos seletores. O foco permanece visível nessa superfície.
+- As regras da barra ficam em bottom-navigation.css, isoladas por media queries, sem alterar o breakpoint global dos formulários.
 
 
 ## Foco global dos controles — 03/11/2026

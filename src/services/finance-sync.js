@@ -13,7 +13,7 @@
  }
  function hasData(text){if(!text)return false;const d=JSON.parse(recordText(text)).data;return ['items','receipts','debts','splits','cart','offers','creditCards'].some(k=>d[k]?.length)||Object.keys(d.reports).length>0||d.goal?.v>0||d.limits?.some(x=>Object.values(x||{}).some(v=>v>0))||!!d.profile?.name;}
  function createFinanceSync({storage,remote,hash=digest,onState=()=>{},schedule=setTimeout,cancel=clearTimeout}){
-  let meta={revision:0,dirty:false,hash:null,lastSynced:null},state={mode:'loading'},initialized=false,connected=false,stopped=false,timer=null,pendingRemote=null,lastObserved=null;
+  let meta={revision:0,dirty:false,hash:null,lastSynced:null},state={mode:'loading'},initialized=false,connected=false,stopped=false,timer=null,lastObserved=null;
   let hooks={canApply:()=>true,onRemote:()=>{}},chain=Promise.resolve();
   const exclusive=fn=>{const p=chain.then(fn);chain=p.catch(()=>{});return p;};
   function emit(mode,extra={}){state={...state,...extra,mode,lastSynced:meta.lastSynced,revision:meta.revision};try{onState({...state});}catch{}return state;}
@@ -21,20 +21,20 @@
   function readLocal(){const value=storage.getItem(WORKSPACE);return value===null?null:recordText(value);}
   function equal(a,b){return !!a&&!!b&&canonical(a)===canonical(b);}
   function later(delay=700){if(stopped||state.mode==='conflict')return;cancel(timer);timer=schedule(()=>flush(),delay);}
-  function conflict(row){pendingRemote=row;meta.dirty=true;saveMeta();emit('conflict',{remoteRevision:row?.revision||0});}
+  function conflict(row){meta.dirty=true;saveMeta();emit('conflict',{remoteRevision:row?.revision||0});}
   async function acknowledged(row,snapshot){meta.revision=row.revision;meta.hash=await hash(snapshot);meta.lastSynced=row.updated_at||new Date().toISOString();const current=readLocal();meta.dirty=!equal(current,snapshot);saveMeta();lastObserved=current;if(meta.dirty){emit('syncing');later();}else emit('synced');}
   function checkRow(row){if(!row)return null;if(!Number.isSafeInteger(Number(row.revision))||Number(row.revision)<1)throw Error('INVALID_RECORD');return {...row,revision:Number(row.revision),record:JSON.parse(recordText(row.record))};}
-  async function pull(row){const text=recordText(row.record);storage.setItem(WORKSPACE,text);await acknowledged(row,text);pendingRemote=null;if(connected)hooks.onRemote(text);}
+  async function pull(row){const text=recordText(row.record);storage.setItem(WORKSPACE,text);await acknowledged(row,text);if(connected)hooks.onRemote(text);}
   async function reconcile(row,allowApply=true){
    row=checkRow(row);const local=readLocal();initialized=true;
    if(!row){if(meta.revision>0){conflict(null);return;}meta.revision=0;meta.dirty=!!local;saveMeta();if(local){emit('syncing');later();}else emit('ready');return;}
-   if(equal(local,row.record)){await acknowledged(row,local);pendingRemote=null;return;}
+   if(equal(local,row.record)){await acknowledged(row,local);return;}
    const clean=!!local&&!!meta.hash&&!meta.dirty&&(await hash(local))===meta.hash;
    if(!local||clean||(!meta.hash&&!meta.dirty&&!hasData(local))){
-    if(connected&&(!allowApply||!hooks.canApply())){pendingRemote=row;emit('updates');return;}
+    if(connected&&(!allowApply||!hooks.canApply())){emit('updates');return;}
     await pull(row);return;
    }
-   if(meta.revision===row.revision){meta.dirty=true;saveMeta();pendingRemote=null;emit('syncing');later();return;}
+   if(meta.revision===row.revision){meta.dirty=true;saveMeta();emit('syncing');later();return;}
    conflict(row);
   }
   function failed(error){const code=String(error?.code||error?.status||(error?.message==='INVALID_RECORD'||error?.name==='SyntaxError'?'INVALID_RECORD':''));emit(['401','PGRST301','42501','23514','INVALID_RECORD'].includes(code)?'error':'offline',{reason:code==='INVALID_RECORD'?'invalid':code||'network'});if(!stopped)later(15000);}
@@ -67,7 +67,7 @@
    if(connected&&!hooks.canApply()){emit('conflict',{reason:'editing'});return {...state};}
    try{const row=checkRow(await remote.read()),local=readLocal();backup(local,row);
     if(choice==='cloud'){if(!row)throw Error('NO_CLOUD_RECORD');await pull(row);}
-    else {meta.revision=row?.revision||0;meta.dirty=true;saveMeta();initialized=true;pendingRemote=null;emit('syncing');await writePending();}
+    else {meta.revision=row?.revision||0;meta.dirty=true;saveMeta();initialized=true;emit('syncing');await writePending();}
    }catch(error){if(state.mode==='conflict')emit('conflict',{reason:'backup-or-network'});else failed(error);}return {...state};
   });}
   function connect(next){hooks={...hooks,...next};connected=true;}

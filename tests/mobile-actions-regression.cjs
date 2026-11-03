@@ -1,5 +1,5 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const source=fs.readFileSync('src/finance/workspace.js','utf8'),core=source.split('// FINANCE_CORE\n')[1].split('const CI=')[0],bridge=source.slice(source.indexOf('window.planMobile='),source.indexOf('window.planGoal='));
+const source=fs.readFileSync('src/finance/workspace.js','utf8'),core=source.split('// FINANCE_CORE\n')[1].split('function tiles(')[0],bridge=source.slice(source.indexOf('window.planMobile='),source.indexOf('window.planGoal='));
 function fixture({closed=false,fail=false}={}){
  const data={},errors=[],sheets=[];
  const ctx=vm.createContext({window:{},crypto:require('node:crypto').webcrypto,Date:class extends Date{constructor(...args){super(...(args.length?args:['2026-10-22T12:00:00']))}},document:{querySelector:()=>null},localStorage:{getItem:k=>data[k]||null,setItem:(k,v)=>{if(fail)throw Error('quota');data[k]=v}},draw(){},setTimeout(){},addEventListener(){},getLayout:()=>({sections:{carbon:true}}),openSheet:x=>sheets.push(x),closeMenu(){},scrollTo(){},errors});

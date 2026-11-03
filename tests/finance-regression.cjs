@@ -1,5 +1,5 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto').webcrypto;
-const path=require('node:path');const html=require('./project-source.cjs'),main=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1)[1].split('// FINANCE_CORE\n').at(-1),core=main.slice(0,main.indexOf('const CI=')),tail=main.slice(main.indexOf('function splitShares')),csv=main.slice(main.indexOf('let csvPreview='),main.indexOf('function splitShares'));
+const path=require('node:path');const html=require('./project-source.cjs'),main=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1)[1].split('// FINANCE_CORE\n').at(-1),core=main.slice(0,main.indexOf('function tiles(')),tail=main.slice(main.indexOf('function splitShares')),csv=main.slice(main.indexOf('let csvPreview='),main.indexOf('function splitShares'));
 const splitShares=tail.slice(0,tail.indexOf('function registerSplit')),register=tail.slice(tail.indexOf('function registerSplit'),tail.indexOf("document.addEventListener('input'"));
 const reports=main.slice(main.indexOf('function makeClosedReport'),main.indexOf('function closedReportsView'));
 const debt=main.slice(main.indexOf('function debtInstallments'),main.indexOf('function debtChart'));

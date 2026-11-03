@@ -1,0 +1,23 @@
+/* Form fields own one surface; their editable controls do not paint a second pill. */
+body .te-text-field.lg-input__field{
+ display:flex;align-items:center;box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:48px;
+ padding:0 14px!important;border:1px solid var(--form-border)!important;border-radius:24px!important;
+ --lg-glass-fill:var(--form-field,var(--lg-panel-fill));
+}
+body .te-text-field .finance-select{width:100%;min-width:0}
+body .te-text-field .finance-field-button.finance-select-trigger{
+ display:flex;align-items:center;width:100%;min-width:0;min-height:46px;height:auto;padding:10px 0!important;margin:0;
+ border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;
+ backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;scale:1;translate:none;
+}
+body .te-text-field .finance-field-button .lg-button__label{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-width:0;min-height:24px;padding:0;
+ font:16px/1.4 var(--lg-font);color:var(--layout-form-text,var(--lb));text-align:left;white-space:normal;
+}
+body .te-text-field :is(input:not([type=checkbox]):not([type=radio]),select,textarea){
+ box-sizing:border-box;min-width:0;max-width:100%;margin:0!important;background:transparent!important;border:0!important;box-shadow:none!important;
+}
+body .te-text-field select:not([multiple]):not([size]){min-height:46px!important;padding-block:10px!important}
+body .te-text-field .finance-select-trigger svg{position:static;width:20px;height:20px;flex:none;margin:0;transform:none}
+body .te-text-field.lg-input__field>input:not([type=checkbox]):not([type=radio]){min-height:46px!important;height:46px}
+body .te-text-field.lg-input__field select:not([multiple]):not([size]){min-height:46px!important}

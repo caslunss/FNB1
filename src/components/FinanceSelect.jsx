@@ -1,5 +1,5 @@
 import React, {Children, isValidElement, useEffect, useId, useLayoutEffect, useRef, useState} from 'react';
-import {FinanceGlassButton as Button} from './LiquidControls.jsx';
+import {FinanceFieldButton as Button} from './LiquidControls.jsx';
 
 const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
 

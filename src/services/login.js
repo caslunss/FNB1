@@ -23,7 +23,7 @@ guestForm.addEventListener('submit',event=>{event.preventDefault();try{planAuth.
    if(busy)return;busy=true;host.style.pointerEvents='none';
    try{await planAuth.signIn(response.credential,nonce);}catch{message('Não foi possível entrar. Confira a configuração do Google ou tente novamente.');busy=false;host.style.pointerEvents='';}
   }});
-  function render(){host.replaceChildren();const dark=document.documentElement.dataset.theme==='dark'||!document.documentElement.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches;google.accounts.id.renderButton(host,{type:'standard',theme:'outline',size:'large',shape:'pill',text:'signin_with',locale:'pt-BR',width:Math.max(200,Math.min(320,Math.floor(host.getBoundingClientRect().width)))});}
+  function render(){host.replaceChildren();google.accounts.id.renderButton(host,{type:'standard',theme:'outline',size:'large',shape:'pill',text:'signin_with',locale:'pt-BR',width:Math.max(200,Math.min(320,Math.floor(host.getBoundingClientRect().width)))});}
   render();status.textContent='';let width=Math.floor(host.getBoundingClientRect().width),scheduled=false;
   new ResizeObserver(()=>{const next=Math.floor(host.getBoundingClientRect().width);if(Math.abs(width-next)>1&&!scheduled){width=next;scheduled=true;requestAnimationFrame(()=>{scheduled=false;render();});}}).observe(host);
  }catch{message('Não foi possível carregar o Google. Recarregue para tentar novamente.');}

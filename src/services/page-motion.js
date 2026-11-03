@@ -4,7 +4,7 @@ import {APP_SPRING,PRESS_SPRING,FADE,pageFrames,cardTarget} from './motion-prese
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const running=new Map(),gestures=new WeakMap();let previous=null,pending;
 function finish(node){const active=running.get(node);if(!active)return;active.stop();running.delete(node);for(const key of ['transform','filter','backdrop-filter','opacity','will-change'])node.style.removeProperty(key);node.removeAttribute('data-motion-entering');}
-function reveal(node,blur=false){
+function reveal(node){
  if(!node?.isConnected)return;finish(node);
  const frames=pageFrames(reduced.matches);node.style.willChange="transform, opacity";
  node.dataset.motionEntering='';
@@ -15,7 +15,7 @@ function navigate(){
  const app=document.getElementById('app'),page=document.body.dataset.page;if(!app||!page)return;
  const key=page+':'+(app.dataset.summaryView||'');if(key===previous)return;const first=previous===null;previous=key;
  // Animate the content plane only. Navigation, fixed actions and modal anchors stay still.
- if(!first)reveal(app,true);
+ if(!first)reveal(app);
  document.documentElement.classList.remove('login-arrival');
 }
 function queue(){cancelAnimationFrame(pending);pending=requestAnimationFrame(navigate)}
