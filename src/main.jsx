@@ -13,6 +13,7 @@ import './styles/shared-controls.css';
 import './styles/profile-card.css';
 import './styles/bottom-navigation.css';
 import './styles/control-surfaces.css';
+import './styles/overview-layout.css';
 import './styles/focus.css';
 import './services/auth.js';
 import './services/finance-sync.js';

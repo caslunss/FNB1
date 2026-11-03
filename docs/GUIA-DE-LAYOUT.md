@@ -375,3 +375,9 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Perfil usa FinanceGlassCard, avatar circular e conteúdo no fluxo normal, sem foto de fundo, painel branco, tamanho fixo ou transformação por hover. Preservar notas, selos, configurações, sair e assinaturas/apoio.
 - O dialog permanece centralizado também no celular com margens de 16 px, raio, borda e sombra dos tokens compartilhados; rolagem interna em telas baixas.
 - Motion controla entrada (fade, y 12 px e escala .98) e saída curta de 160 ms, sem animar dimensões ou blur. Escape e clique no backdrop fecham com retorno do foco. Movimento reduzido desliga o deslocamento/escala. Esse padrão substitui o card fotográfico com divisão por hover descrito anteriormente.
+
+## Visão geral com grade harmonizada — 03/11/2026
+
+- Gráfico e Categorias ocupam uma linha completa; distribuição e maiores gastos compartilham a linha seguinte; investimentos e dívidas formam outro par. Sem span de duas linhas no gráfico, evitando lacunas na grade.
+- overview-layout.css responde à largura real do conteúdo via container query: pares somente a partir de 680 px disponíveis. Abaixo disso, coluna única; comportamento acompanha a mesma regra e Dicas continua ocupando a linha inteira.
+- Espaçamento e padding usam os tokens de cards existentes. Ordem personalizada, ações, indicadores, valores e cálculos permanecem preservados.
