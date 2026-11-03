@@ -1,0 +1,32 @@
+import MobileExperience from './MobileExperience.jsx';
+import MonthPicker from './MonthPicker.jsx';
+import ToolbarSearch from './ToolbarSearch.jsx';
+import React from 'react';
+import {GlassSurface, GlassActionHost,FinanceGlassButton as GlassButton} from './LiquidControls.jsx';
+
+
+
+export function WorkspaceLayout(){return <>
+  <a className="skip" href="#lt">Pular para o conteúdo</a>
+  <div className="workspace-frame">
+    <div className="edge" aria-hidden="true"/>
+    <main className="wrap workspace-main"><div id="pg">
+      <div className="page-intro"><p id="pageDescription"/><span className="tag">Seu planejamento financeiro</span></div>
+      <header className="navbar">
+        <div className="desktop-tools"><div id="newEntry" hidden/></div>
+        <span className="it" id="it"/><span className="month-caption" id="currentMonth"/>
+        <span id="monthStatus" className="month-status"/>
+      </header>
+      <div className="cloud-status" data-cloud-panel hidden><span className="cloud-status-dot" aria-hidden="true"/><span data-cloud-message role="status" aria-live="polite"/><GlassButton className="btn g te-glass-button" data-cloud-retry type="button">Atualizar</GlassButton><GlassButton className="btn g te-glass-button" data-cloud-settings type="button" data-cloud-conflict hidden>Revisar</GlassButton></div>
+      <div id="summaryToolbar" className="summary-toolbar"><div id="summaryModes"/><div id="settingsTop" className="settings-top"/><MonthPicker/></div>
+      <div id="appNotice" className="app-notice" role="status" hidden/>
+      <p id="closedMonthNotice" className="closed-month-notice" role="status" hidden>Mês encerrado · somente leitura.</p><div id="app"/>
+    </div></main>
+    <div className="nav-shell" id="navShell"><h1 className="t-lg" id="lt" tabIndex={-1}/><div className="top-account-actions"><GlassSurface as="div" className="account-bubbles account-toolbar" role="toolbar" aria-label="Conta e notificações"><GlassActionHost className="app-symbol" type="button" aria-label="Abrir menu do perfil" aria-haspopup="menu" aria-controls="profileMenu" aria-expanded="false"/><GlassActionHost id="calendarButton" className="ib calendar-button" type="button" aria-label="Calendário" aria-pressed="false"/><GlassActionHost id="friendsButton" className="ib friends-button" type="button" aria-label="Amigos"/><GlassActionHost id="notificationButton" className="ib notification-button" type="button" aria-label="Notificações" aria-controls="notificationPanel"/></GlassSurface><ToolbarSearch/><MobileExperience/></div><div className="rail-scene" aria-hidden="true"/><div className="navigation-actions"><GlassSurface as="nav" className="tabbar glass" id="tabs" aria-label="Seções"/></div></div>
+  </div>
+  <GlassSurface id="profileMenu" className="profile-menu" role="menu" aria-label="Menu do perfil" hidden/>
+  <dialog id="accountOverlay" className="account-overlay" aria-labelledby="accountOverlayTitle"><div id="accountOverlayContent"/></dialog>
+  <div className="menu glass" id="menu" role="menu" hidden/>
+  <div className="scrim" id="scrim" hidden/>
+  <GlassSurface id="notificationPanel" className="notification-panel" aria-label="Central de notificações" hidden/>
+</>;}

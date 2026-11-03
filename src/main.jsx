@@ -1,0 +1,18 @@
+import MotionProvider from './components/motion/MotionProvider.tsx';
+import React from 'react';
+import './styles/root.css';
+import {createRoot} from 'react-dom/client';
+import './styles/workspace.css';
+import '/public/assets/pastel.css';
+import '/public/assets/page-motion.css';
+import '@zakisheriff/liquid-glass/styles.css';
+import './styles/liquid-glass.css';
+import './styles/layout-settings.css';
+import './styles/mobile.css';
+import './services/auth.js';
+import './services/finance-sync.js';
+import './services/page-motion.js';
+import App from './App.jsx';
+
+createRoot(document.getElementById('root')).render(<MotionProvider><App/></MotionProvider>);
+if(import.meta.hot) import.meta.hot.accept(()=>location.reload());

@@ -1,0 +1,72 @@
+/* Library tokens mapped to the app's existing winter palette. */
+:root,:root[data-theme="light"]{
+  --lg-fg:var(--lb);--lg-fg-muted:var(--lb2);--lg-accent:var(--tintT);--lg-green:var(--tint);
+  --lg-fill:rgb(247 244 236 / .64);--lg-fill-pressed:rgb(247 244 236 / .9);
+  --lg-panel-fill:rgb(247 244 236 / .84);--lg-edge:rgb(255 255 250 / .7);
+  --lg-glow:rgb(255 255 250 / .24);--lg-shadow:0 5px 20px rgb(40 65 79 / .09),0 1px 3px rgb(40 65 79 / .08);
+  --lg-blur:12px;--lg-panel-blur:22px;--lg-track:rgb(122 149 160 / .16);
+  --lg-navigation-fill:rgb(238 242 238 / .7);--lg-menu-fill:rgb(247 244 236 / .96);
+  --lg-segment-selection:rgb(130 160 174 / .17);--lg-ring:var(--tint);--lg-rim-opacity:.64;
+}
+:root[data-theme="dark"]{
+  --lg-fg:var(--lb);--lg-fg-muted:var(--lb2);--lg-accent:var(--tintT);--lg-green:var(--tint);
+  --lg-fill:rgb(38 52 59 / .65);--lg-fill-pressed:rgb(57 76 86 / .88);
+  --lg-panel-fill:rgb(32 42 47 / .88);--lg-edge:rgb(223 235 237 / .17);
+  --lg-glow:rgb(207 227 230 / .1);--lg-shadow:0 5px 20px rgb(0 0 0 / .25),0 1px 3px rgb(0 0 0 / .15);
+  --lg-navigation-fill:rgb(28 39 44 / .78);--lg-menu-fill:rgb(32 42 47 / .97);
+  --lg-segment-selection:rgb(179 206 216 / .15);--lg-rim-opacity:.44;
+}
+#app .te-glass-surface{--lg-glass-fill:var(--lg-panel-fill);background:transparent!important;isolation:isolate;box-shadow:var(--lg-shadow)!important}
+#app.layout-r>.te-glass-surface{width:100%;margin:0!important}
+#app .te-glass-surface::before{--lg-glass-blur:20px}
+#app .te-glass-surface.identity-card{background:transparent!important}
+.te-glass-surface.account-bubbles,.te-glass-surface.tabbar{--lg-glass-fill:var(--lg-navigation-fill);background:transparent!important;isolation:isolate;backdrop-filter:none;-webkit-backdrop-filter:none}
+.te-glass-surface.account-bubbles{position:absolute}
+.te-glass-surface.notification-panel{--lg-glass-fill:var(--lg-menu-fill);position:fixed;isolation:isolate;background:transparent}
+body:not(.auth-page) :is(.btn,.ib).te-glass-button{
+  background-color:var(--lg-fill)!important;background-image:none!important;box-shadow:var(--lg-shadow),inset 0 0 0 .5px var(--lg-edge)!important;
+  color:var(--lg-fg);border:0!important;min-height:44px;height:auto;line-height:1.4;white-space:normal;touch-action:pan-y;
+}
+.lg-button__label{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}
+.lg-button__label>svg{flex:none}
+#tabs.tabbar .te-glass-button{height:44px;min-height:44px;width:44px;padding:0!important;background-color:transparent!important;touch-action:pan-y}
+#tabs.tabbar .lg-button__label{display:inline-flex!important;position:static!important;inset:auto;opacity:1;transform:none;width:24px;height:24px;align-items:center;justify-content:center;padding:0;background:none;box-shadow:none;white-space:normal;z-index:1}
+#tabs.tabbar .lg-button__label svg.i{display:block!important;width:24px;height:24px}
+#tabs.tabbar .te-glass-button[aria-current="page"]{--lg-fill:var(--lg-segment-selection);background-color:var(--lg-fill)!important;box-shadow:inset 0 0 0 1px var(--lg-edge),var(--lg-shadow)!important}
+.te-glass-host{--lg-glass-fill:transparent;box-shadow:var(--lg-shadow)!important;touch-action:pan-y}
+.te-glass-host.settings-top{--lg-glass-fill:var(--lg-fill);position:absolute}
+.te-theme-control{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;max-width:100%;font-size:13px;color:var(--lb)}
+.te-theme-control .lg-switch{flex:0 0 64px;box-shadow:none!important}
+.te-glass-segments{max-width:100%;min-width:0;margin-bottom:12px;--lg-item-h:44px;--lg-item-w:0px;--lg-pad:5px;font:600 13px/1.3 var(--lg-font);touch-action:pan-y}
+.te-glass-segments .lg-track__item{min-width:0;min-height:44px;line-height:1.3;padding:0 14px;font:inherit;white-space:nowrap}
+body:not(.auth-page) .te-glass-segments .lg-track__item{border:0!important;background:transparent!important;box-shadow:none!important}
+.entry-toolbar .te-glass-segments{flex:0 1 auto;margin:0}
+.summary-switch.te-glass-segments,.profile-tabs.te-glass-segments{display:inline-flex;align-self:flex-start}
+.lg-glass:focus-visible{outline:3px solid var(--tint);outline-offset:3px}
+/* Editing surfaces retain their stronger fill for reliable text contrast. */
+.sheet,#receiptDialog,.compact-form.card{--lg-fill:var(--form-surface);background:var(--form-surface)!important}
+.lg-button[data-destructive]{--lg-red:var(--redT);color:var(--lg-red)!important}
+.auth-page .te-glass-login{--lg-glass-fill:rgb(247 244 236 / .32);background:transparent!important;isolation:isolate;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:var(--lg-shadow)}
+:root[data-theme="dark"] .auth-page .te-glass-login{--lg-glass-fill:rgb(27 39 46 / .56)}
+.auth-page .te-glass-login::before{background-image:var(--lg-rim,linear-gradient(transparent,transparent)),linear-gradient(var(--lg-glass-fill),var(--lg-glass-fill));backdrop-filter:var(--lg-filter,) blur(22px) saturate(1.2);-webkit-backdrop-filter:blur(22px) saturate(1.2);filter:none;z-index:0}
+.auth-page .te-glass-login::after{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:none;z-index:0}
+.auth-page .lg-button.local-link{height:auto;min-height:48px;width:100%;white-space:normal;line-height:1.4;touch-action:pan-y}
+.auth-page .background-motion{position:fixed}
+@media(max-width:699px){
+  .entry-toolbar .te-glass-segments{order:-1;flex-basis:100%;width:100%}
+  .te-glass-segments .lg-track__item{padding:0 9px;font-size:12px}
+  .te-theme-control{width:100%}
+  .te-glass-surface.account-bubbles{position:fixed}
+}
+@media(prefers-reduced-transparency:reduce){
+  :root,:root[data-theme]{--lg-fill:var(--card);--lg-panel-fill:var(--card);--lg-navigation-fill:var(--elev);--lg-menu-fill:var(--card)}
+  .lg-glass,.lg-glass::before{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+}
+@media(prefers-reduced-motion:reduce){.lg-glass{scale:1!important;translate:0 0!important;transition:none!important}}
+@media(max-width:520px){.auth-page .background-motion{position:relative;inset:auto}}
+/* Composite surfaces use one backdrop. Interactive children keep their own library effects. */
+.te-glass-surface.lg-glass--host{isolation:isolate;--lg-glass-fill:var(--lg-panel-fill);background:var(--lg-glass-fill)!important;backdrop-filter:blur(var(--lg-panel-blur)) saturate(1.12);-webkit-backdrop-filter:blur(var(--lg-panel-blur)) saturate(1.12);box-shadow:var(--lg-shadow)}
+.te-glass-surface.lg-glass--host::before,.te-glass-surface.lg-glass--host::after{content:none!important}
+.te-glass-surface.lg-glass--host:is(.tabbar,.account-toolbar,.task-search){--lg-glass-fill:var(--lg-navigation-fill);backdrop-filter:blur(var(--lg-blur)) saturate(1.12);-webkit-backdrop-filter:blur(var(--lg-blur)) saturate(1.12)}
+.te-glass-surface.lg-glass--host>.te-surface-rim{pointer-events:none;z-index:0}
+@media(prefers-reduced-transparency:reduce){.te-glass-surface.lg-glass--host{background:var(--card)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}

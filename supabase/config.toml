@@ -1,0 +1,4 @@
+[functions.delete-own-account]
+# The handler validates the user JWT against Auth before any admin operation.
+# Supports current publishable keys and asymmetric user JWTs.
+verify_jwt = false

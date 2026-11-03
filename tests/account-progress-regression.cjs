@@ -1,0 +1,26 @@
+const assert=require('node:assert/strict');
+(async()=>{
+ const {responsibleProgress}=await import('../src/services/responsible-progress.js');
+ const good={key:'2026-10',income:100000,expenses:70000,debts:20000,incomeCount:1,expenseCount:3,categories:[{limit:80000,spent:70000}]};
+ const current='2026-11';
+ assert.equal(responsibleProgress([],current).stars,0);
+ assert.equal(responsibleProgress([good],current).stars,1);
+ assert.equal(responsibleProgress([good,good],current).stars,1);
+ assert.equal(responsibleProgress([good],'2026-10').stars,0);
+ assert.equal(responsibleProgress([{...good,key:'2026-12'}],current).stars,0);
+ for(const change of [{income:0},{incomeCount:0},{expenseCount:0},{expenses:80001},{categories:[]},{categories:[{limit:60000,spent:70000}]},{debts:NaN},{expenses:-1},{categories:[{limit:80000,spent:NaN}]}])assert.equal(responsibleProgress([{...good,...change}],current).stars,0);
+ assert.equal(responsibleProgress([{...good,expenses:80000}],current).stars,1);
+ assert.deepEqual(responsibleProgress(Array.from({length:7},(_,i)=>({...good,key:'2026-'+String(i+1).padStart(2,'0')})),current),{stars:5,months:7});
+ const {readNotificationPreferences,saveNotificationPreference}=await import('../src/services/notification-preferences.js');
+ const values=new Map(),storage={getItem:k=>values.get(k)||null,setItem:(k,v)=>values.set(k,v)};
+ assert.equal(readNotificationPreferences(storage).expenses,true);
+ saveNotificationPreference(storage,'expenses',false);
+ assert.equal(readNotificationPreferences(storage).expenses,false);
+ assert.equal(readNotificationPreferences(storage).reports,true);
+ assert.equal(readNotificationPreferences({getItem:()=>'{invalid'}).shares,true);
+ assert.equal(readNotificationPreferences({getItem:()=>'{"expenses":"false"}'}).expenses,true);
+ assert.throws(()=>saveNotificationPreference(storage,'unknown',false));
+ assert.throws(()=>saveNotificationPreference(storage,'reports','false'));
+ assert.throws(()=>saveNotificationPreference({getItem:()=>null,setItem:()=>{throw Error('quota')}},'expenses',false));
+ console.log('PASS estrelas: meses completos, renda/compromissos, limites, centavos, duplicação e teto de cinco; notificações: persistência, padrões e falha de armazenamento.');
+})().catch(error=>{console.error(error);process.exitCode=1});

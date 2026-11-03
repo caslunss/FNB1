@@ -1,0 +1,41 @@
+'use strict';
+const assert=require('node:assert/strict');
+(async()=>{
+ const p=await import('../src/services/layout-preferences.js');
+ const clone=x=>JSON.parse(JSON.stringify(x));
+ const invalid=p.normalizeLayout({version:1,intensity:99,light:{accent:'url(evil)',surface:'#fff',opacity:-100,blur:Infinity},dark:{background:'#123456'}});
+ assert.equal(invalid.light.accent,p.DEFAULT_LAYOUT.light.accent);assert.equal(invalid.light.surface,p.DEFAULT_LAYOUT.light.surface);assert.equal(invalid.light.opacity,40);assert.equal(invalid.intensity,10);assert.equal(invalid.dark.background,p.DEFAULT_LAYOUT.dark.background);
+ assert.deepEqual(p.normalizeLayout({version:2}),p.DEFAULT_LAYOUT);
+ const legacy=p.normalizeLayout({version:1,dark:{background:'#000000',surface:'#1e1e21',opacity:50,blur:8}});assert.equal(legacy.dark.background,p.DEFAULT_LAYOUT.dark.background);
+ assert.equal(p.normalizeLayout({version:1,dark:{dim:999}}).dark.dim,100);
+ const soft=clone(p.DEFAULT_LAYOUT),bright=clone(p.DEFAULT_LAYOUT);soft.dark.dim=100;bright.dark.dim=0;
+ assert.ok(+p.layoutTokens(soft,'dark')['--lg-rim-opacity']<+p.layoutTokens(bright,'dark')['--lg-rim-opacity']);
+ assert.equal(p.layoutTokens(soft,'dark')['--lb'],p.layoutTokens(bright,'dark')['--lb']);
+ let checks=0;
+ for(const palette of p.PALETTES)for(const theme of ['light','dark'])for(const opacity of [40,66,95]){
+  const layout=clone(p.DEFAULT_LAYOUT);layout.palette=palette.id;layout[theme].opacity=opacity;
+  const {background,surface}=palette[theme];
+  const t=p.layoutTokens(layout,theme),panelOpacity=Math.max(.4,Math.min(.98,opacity/100+(theme==='dark'?.12:-.04))),backdrop=p.mix(background,surface,panelOpacity);
+  assert.ok(p.contrast(t['--lb'],background)>=4.5);
+  assert.ok(p.contrast(t['--layout-card-text'],backdrop)>=4.5);
+  assert.ok(p.contrast(t['--layout-form-text'],surface)>=4.5);
+  assert.ok(p.contrast(t['--layout-card-accent'],backdrop)>=4.5);checks++;
+ }
+ const data={},variables=new Map();let fail=false,observer;
+ global.window={planAuth:{ready:Promise.resolve(),key:k=>'account:test:'+k,storage:{getItem:k=>data[k]??null,setItem:(k,v)=>{if(fail)throw Error('quota');data[k]=v}}},addEventListener(){}};
+ global.document={documentElement:{dataset:{theme:'light'},style:{setProperty:(k,v)=>variables.set(k,v)}}};
+ global.MutationObserver=class {constructor(fn){observer=fn}observe(){}};
+ await p.initializeLayout();let notifications=0;const stop=p.subscribeLayout(()=>notifications++);
+ p.selectPalette('autumn-sand');assert.equal(p.getLayout().palette,'autumn-sand');assert.equal(JSON.parse(data.plan12layout_v1).palette,'autumn-sand');assert.equal(notifications,1);
+ assert.throws(()=>p.selectPalette('invalid'));assert.throws(()=>p.updateLayout('light','accent','#123456'));
+ const before=clone(p.getLayout());fail=true;assert.throws(()=>p.selectPalette('winter-mist'));assert.deepEqual(p.getLayout(),before);fail=false;
+ p.selectPalette('winter-mist');document.documentElement.dataset.theme='dark';observer();assert.match(variables.get('--lg-fill'),/0.64\)/);assert.equal(variables.get('--bg'),p.PALETTES.find(x=>x.id==='winter-mist').dark.background);
+ p.setSectionEnabled('credit',false);assert.equal(p.getLayout().sections.credit,false);assert.equal(p.getLayout().sections.carbon,true);assert.equal(JSON.parse(data.plan12layout_v1).sections.credit,false);p.setSectionEnabled('credit',true);p.setSectionEnabled('calendar',false);assert.equal(p.getLayout().sections.calendar,false);p.setSectionEnabled('calendar',true);assert.throws(()=>p.setSectionEnabled('other',false));
+ p.setCircularProgress(false);assert.equal(p.getLayout().circularProgress,false);assert.equal(JSON.parse(data.plan12layout_v1).circularProgress,false);
+ p.setIndicatorVisible('category:Teste',false);assert.equal(p.getLayout().indicators['category:Teste'],false);
+ const beforeFailure=clone(p.getLayout());fail=true;assert.throws(()=>p.setIndicatorVisible('category:Teste',true));assert.deepEqual(p.getLayout(),beforeFailure);fail=false;
+ assert.equal(p.normalizeLayout({version:1}).circularProgress,true);assert.deepEqual(p.normalizeLayout({version:1,indicators:{bad:'false',good:false}}).indicators,{good:false});
+ p.resetLayout('dark');assert.equal(p.getLayout().dark.surface,p.DEFAULT_LAYOUT.dark.surface);assert.equal(p.getLayout().light.accent,p.DEFAULT_LAYOUT.light.accent);assert.equal(p.getLayout().circularProgress,true);assert.deepEqual(p.getLayout().indicators,{});stop();
+ assert.deepEqual(Object.keys(data),['plan12layout_v1']);
+ console.log(`PASS layout: ${checks} combinações de contraste, valores inválidos, persistência isolada, falha de gravação, troca de tema e restauração.`);
+})().catch(error=>{console.error(error);process.exitCode=1});

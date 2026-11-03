@@ -1,0 +1,24 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const source=fs.readFileSync('src/finance/workspace.js','utf8');
+const start=source.indexOf('function tiles(m,it){'),end=source.indexOf('\nconst categoryPercent=',start);
+let limit=100;
+const context={CATS:['Teste'],sum:items=>items.reduce((total,item)=>total+item.v,0),lim:()=>limit,esc:x=>x,brl:x=>String(x)};
+vm.createContext(context);vm.runInContext(source.slice(start,end),context);
+const render=value=>context.tiles(0,[{c:'Teste',v:value}]);
+assert.match(render(99.99),/99,9% usado/);assert.doesNotMatch(render(99.99),/category-track is-limit/);
+assert.match(render(100),/category-track is-limit/);assert.match(render(100),/No limite/);assert.match(render(100),/width:100%/);
+assert.match(render(100.01),/category-track is-limit/);assert.match(render(100.01),/Acima/);assert.match(render(100.01),/width:100%/);
+assert.match(render(0),/width:0%/);assert.doesNotMatch(render(0),/category-track is-limit/);
+limit=20;assert.match(render(19.9),/99,5% usado/);assert.match(render(19.9),/width:99.5%/);
+limit=0;const unlimited=render(10);assert.match(unlimited,/Sem limite/);assert.doesNotMatch(unlimited,/category-track is-limit|NaN|Infinity/);
+console.log('PASS progresso por categoria: centavos, 99,5%, limite exato, excesso, zero e categoria sem limite.');
+
+const records=[{c:'Teste',d:'Mercado da semana',v:10},{c:'Teste',d:'Café',v:5},{c:'Teste',d:'Transporte',v:3},{c:'Outra',d:'Não pertence',v:99}];
+const before=JSON.stringify(records),detail=context.tiles(0,records);
+assert.ok(detail.indexOf('category-expenses')>detail.indexOf('data-progress-gauge'));
+assert.equal((detail.match(/<li>/g)||[]).length,3);
+assert.match(detail,/Mais 1/);assert.doesNotMatch(detail,/Não pertence/);
+assert.equal(JSON.stringify(records),before);
+assert.equal(context.categoryExpenseDetails([]),'');
+console.log('PASS detalhes de categorias: abaixo do gráfico, sem duplicação, isolados por categoria e sem alterar descrições.');

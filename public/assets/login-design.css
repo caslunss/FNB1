@@ -1,0 +1,67 @@
+/* A translucent entry card inspired by the supplied composition. */
+.auth-page{background:radial-gradient(ellipse at 15% 15%,#cbd8df,transparent 58%),radial-gradient(ellipse at 90% 85%,#c2d3e2,transparent 60%),#eae7df!important;padding:24px;isolation:isolate}
+:root[data-theme="dark"] .auth-page{background:radial-gradient(ellipse at 15% 15%,#263b49,transparent 58%),radial-gradient(ellipse at 90% 85%,#344456,transparent 60%),#12191e!important}
+.auth-page .login-shell{width:min(100%,400px);max-width:400px;min-height:410px;gap:30px;align-content:center;padding:40px clamp(22px,6vw,40px);border-radius:42px;background:rgba(250,248,239,.74);border:1px solid rgba(255,255,250,.82);box-shadow:0 25px 80px rgba(39,60,77,.15),inset 0 1px 0 rgba(255,255,255,.65);backdrop-filter:blur(28px) saturate(125%);-webkit-backdrop-filter:blur(28px) saturate(125%)}
+:root[data-theme="dark"] .auth-page .login-shell{background:rgba(34,46,56,.88);border-color:rgba(215,230,231,.2);box-shadow:0 25px 80px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08)}
+.login-avatar{display:grid;place-items:center;width:104px;height:104px;margin:0 auto 12px;border-radius:50%;color:#8b9fab;background:linear-gradient(145deg,#f3f1e9,#d1e0e5);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 10px 28px rgba(35,65,80,.08)}.login-avatar svg{width:78px;height:78px}
+:root[data-theme="dark"] .login-avatar{background:linear-gradient(145deg,#4b626e,#283e4c);color:#bacad0;border-color:#637883}
+.login-providers{display:grid;gap:16px;width:100%;min-width:0}.google-area{display:block;width:100%;min-width:0;min-height:44px}.google-placeholder{width:100%;height:44px;opacity:1;border-radius:999px;box-shadow:none!important;background:#fff!important;color:#1f1f1f!important;font:500 14px/20px Arial,sans-serif;letter-spacing:.25px;white-space:nowrap;gap:10px}.google-placeholder img{display:block;position:static;width:20px!important;height:20px!important;min-width:20px;max-width:none;object-fit:contain;opacity:1;filter:none;background:#fff}
+.apple-provider{display:grid;gap:8px;justify-items:center}.apple-provider button{display:block;box-sizing:border-box;width:100%;height:44px;padding:0;border:0;border-radius:999px;overflow:hidden;background:#000;box-shadow:none!important;opacity:1;cursor:default}.apple-provider img{display:block;width:100%;height:44px;object-fit:contain}.apple-provider small{font-size:11px;color:var(--muted)}.login-error{text-align:center;font-size:12px;margin:0}
+@media(max-width:360px){.auth-page{padding:16px}.auth-page .login-shell{padding:32px 20px;border-radius:32px;min-height:380px}.login-avatar{width:88px;height:88px}}
+@media(prefers-reduced-transparency:reduce){.auth-page .login-shell{background:var(--form-surface)!important;backdrop-filter:none;-webkit-backdrop-filter:none}}@supports not(backdrop-filter:blur(1px)){.auth-page .login-shell{background:var(--form-surface)!important}}
+
+/* Theme-specific video stays behind the glass login surface. */
+.auth-page{position:relative}.login-background{position:fixed;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;background-size:cover;background-position:center}
+.login-background-shade{position:fixed;inset:0;z-index:-1;pointer-events:none;background:rgba(242,240,231,.1)}:root[data-theme="dark"] .login-background-shade{background:rgba(8,15,21,.18)}
+.auth-page .login-shell{position:relative;z-index:1}
+.background-motion{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:2;display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--form-border);background:var(--glass);color:var(--text);backdrop-filter:blur(16px);box-shadow:0 2px 8px var(--shadow)}.background-motion svg{width:20px;height:20px}
+
+.auth-page .background-motion{z-index:10;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;min-width:44px;min-height:44px;height:auto;padding:10px 16px;right:max(18px,env(safe-area-inset-right,18px));bottom:max(18px,env(safe-area-inset-bottom,18px));background:var(--form-surface);color:var(--text);font:600 12px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;opacity:1}.background-motion svg{flex:none}.background-motion span{white-space:nowrap}
+
+/* User-supplied Liquid Glass: distortion affects only the background layer. */
+.glass-filter-defs{position:absolute;pointer-events:none;overflow:hidden}
+.auth-page .login-shell,:root[data-theme="dark"] .auth-page .login-shell{isolation:isolate;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid rgba(255,255,255,.2);box-shadow:0 0 16px -8px rgba(255,255,255,.08),0 18px 60px rgba(18,32,45,.12);overflow:hidden}
+.auth-page .login-shell::before,.auth-page .login-shell::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none}
+.auth-page .login-shell::before{z-index:0;background:rgba(255,255,255,.04);box-shadow:inset 0 0 12px -4px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.16)}
+.auth-page .login-shell::after{z-index:-1;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);filter:url(#glass-distortion);-webkit-filter:url(#glass-distortion);background:rgba(248,246,236,.12)}
+:root[data-theme="dark"] .auth-page .login-shell::after{background:rgba(13,23,30,.22)}
+.auth-page .login-shell>*{position:relative;z-index:1}
+.auth-page .guest-note,.auth-page .login-error{color:var(--text)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.auth-page .login-shell,:root[data-theme="dark"] .auth-page .login-shell{background:var(--form-surface)}.auth-page .login-shell::after{filter:none;-webkit-filter:none}}
+@media(prefers-reduced-transparency:reduce){.auth-page .login-shell,:root[data-theme="dark"] .auth-page .login-shell{background:var(--form-surface)!important}.auth-page .login-shell::after{display:none}}
+@media(forced-colors:active){.auth-page .login-shell{background:Canvas!important;border-color:CanvasText}.auth-page .login-shell::before,.auth-page .login-shell::after{display:none}}
+
+/* Match the app capsule controls, with quiet depth instead of glow. */
+.auth-page .background-motion{box-sizing:border-box;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid var(--form-border);background:transparent;color:var(--tintT);font:600 13px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;box-shadow:var(--control-shadow);backdrop-filter:none;-webkit-backdrop-filter:none;transition:box-shadow .16s ease,border-color .16s ease}
+.auth-page .background-motion:hover{border-color:var(--tint)}.auth-page .background-motion:active{box-shadow:var(--control-pressed)}.auth-page .background-motion:focus-visible{outline:2px solid var(--tint);outline-offset:3px}
+:root[data-theme="dark"] .auth-page .login-shell{border-color:rgba(231,239,240,.13)}
+@media(prefers-reduced-motion:reduce){.auth-page .background-motion{transition:none}}
+
+.login-brand{display:grid;place-items:center;width:152px;height:116px;margin:0 auto 12px}.login-brand img{display:block;width:152px;height:152px;object-fit:contain;max-width:none}
+
+/* Colorless, translucent brand mark; retain the PNG's transparent background. */
+.login-brand img{filter:grayscale(1);opacity:.48}:root[data-theme="dark"] .login-brand img{filter:grayscale(1) brightness(1.45);opacity:.55}
+@media(forced-colors:active){.login-brand img{filter:grayscale(1);opacity:1}}
+
+/* Spacious rounded card, with provider actions in the lower half. */
+.auth-page .login-shell{width:min(100%,520px);max-width:520px;min-height:680px;border-radius:42px;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:64px 40px 72px}
+.auth-page .login-brand{flex:none;margin:0 auto 80px}
+.auth-page .login-actions{display:grid;gap:20px;width:min(100%,320px);min-width:0;margin: auto auto 0;flex:none}
+.auth-page .login-actions .login-providers{gap:16px}
+.auth-page .login-actions .local-link{width:100%;margin:0;min-height:48px}
+.auth-page .login-actions #guestForm{display:grid;gap:12px;min-width:0}
+.auth-page .login-actions #guestForm .guest-note{margin:0;font-size:12px;line-height:1.5}
+.auth-page .login-actions #guestName{width:100%;min-width:0}
+@media(max-width:520px){.auth-page{padding:24px 16px}.auth-page .login-shell{min-height:620px;padding:56px 28px 64px;border-radius:36px}.auth-page .login-brand{margin-bottom:72px}.auth-page .background-motion{position:relative;inset:auto;align-self:center;order:1;margin-top:20px;flex:none}}
+@media(max-width:360px){.auth-page .login-shell{padding:52px 24px 60px;min-height:600px;border-radius:32px}.auth-page .login-brand{margin-bottom:64px}}
+@media(max-height:650px) and (min-width:521px){.auth-page{padding-bottom:84px}.auth-page .login-shell{min-height:580px;padding-top:48px;padding-bottom:56px}}
+
+/* The library's sliding lens uses subtle sun/moon icons and accessible labels. */
+.auth-page .login-theme-control{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:10;}
+.auth-page .login-theme-control .lg-track{width:112px;height:48px;min-height:48px;min-width:0;border-radius:999px;grid-template-columns:repeat(2,minmax(0,1fr));}
+.auth-page .login-theme-control .lg-track__item{min-width:0;width:100%;min-height:44px;padding:0;gap:0;box-sizing:border-box;color:var(--text);border:0!important;background:transparent!important;box-shadow:none!important;}
+.auth-page .login-theme-control .lg-track__item svg{width:20px;height:20px;opacity:.72;}
+.auth-page .login-theme-control .lg-track__item[aria-selected=true] svg{opacity:1;}
+.auth-page .login-theme-control .lg-nav__label{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+.auth-page.login-leaving .login-theme-control{visibility:hidden;}
+@media(max-width:520px){.auth-page .login-theme-control{position:relative;inset:auto;align-self:center;order:1;margin:20px auto 0;width:max-content;}}

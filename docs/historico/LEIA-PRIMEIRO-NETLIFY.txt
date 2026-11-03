@@ -1,0 +1,18 @@
+TEFinance — Alpha 1.0
+Versão atualizada: 31/10/2026
+Código da versão: 7cd19fb13d10aae0899ea8279c7ca98b6b0454a8
+
+Extraia este arquivo. A raiz contém package.json e netlify.toml.
+
+PROJETO COMPLETO
+Inclui React/TypeScript, animações Motion, estilos, imagens, funções de servidor, migrações, documentação e a interface compilada em dist.
+
+Para publicar as integrações, envie o projeto completo ao repositório conectado ao seu site Netlify existente. O netlify.toml já define build npm run build, publicação dist e funções netlify/functions.
+
+Mantenha as chaves privadas nas variáveis de ambiente do Netlify. Nenhuma chave privada está incluída neste ZIP. Consulte .env.example, GUIA-PUBLICACAO.md e docs/IMPOSTOS.md para requisitos das integrações.
+
+Arrastar somente a pasta dist publica apenas a interface e não publica as funções de servidor.
+
+Para executar localmente: Node.js >=22.12, npm ci e npm run dev. Para compilar: npm run build.
+
+A publicação desta versão no Sites não atualiza automaticamente tefinance.netlify.app. Use o projeto Netlify existente para preservar o domínio.
