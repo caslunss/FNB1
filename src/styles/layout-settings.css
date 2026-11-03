@@ -722,3 +722,28 @@ body .tax-field input[type=date]{
 }
 .tax-field input[type=date]:disabled{opacity:.5;cursor:not-allowed}
 @media(max-width:480px){.tax-toolbar{justify-content:flex-start}.tax-toolbar>.tax-actions{width:100%;min-width:0}}
+
+/* Select-only listbox; action menus continue using GlassMenu. */
+.finance-select{display:block;width:100%;min-width:0;position:relative;z-index:1}
+body:not(.auth-page) .finance-select-trigger.lg-button{
+ display:flex;width:100%;min-width:0;min-height:48px;padding:10px 0;border:0;
+ border-radius:999px;background:transparent;box-shadow:none;--lg-glass-fill:transparent;
+}
+.finance-select-trigger .lg-button__label{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-width:0;font:16px/1.4 var(--lg-font);text-align:left;white-space:normal}
+.finance-select-value{min-width:0;overflow-wrap:anywhere;flex:1}
+.finance-select-trigger svg{position:static;flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;pointer-events:none}
+.te-text-field:has(>.finance-select){border-radius:999px}
+.finance-select-list{
+ position:fixed;inset:auto;margin:0;box-sizing:border-box;padding:6px;
+ overflow:auto;overscroll-behavior:contain;border:1px solid var(--form-border);
+ border-radius:20px;background:var(--form-surface);color:var(--lb);
+ box-shadow:var(--lg-shadow);font:16px/1.4 var(--lg-font);
+}
+.finance-select-list::backdrop{background:transparent;pointer-events:none}
+.finance-select-option{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:10px 12px;border-radius:14px;cursor:pointer;overflow-wrap:anywhere}
+.finance-select-option>span:first-child{min-width:0;flex:1}
+.finance-select-option.is-active{background:var(--lg-segment-selection);outline:2px solid var(--tint);outline-offset:-2px}
+.finance-select-option[aria-selected=true]{font-weight:600}
+.finance-select-option[aria-disabled=true]{opacity:.5;cursor:not-allowed}
+@media(hover:hover){.finance-select-option:not([aria-disabled=true]):hover{background:var(--lg-segment-selection)}}
+@media(forced-colors:active){.finance-select-option.is-active{outline-color:Highlight}}

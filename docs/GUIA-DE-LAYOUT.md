@@ -280,3 +280,10 @@ No mobile, seis destinos principais aparecem somente como ícones (44 px de áre
 - Dentro de GlassTextField, a superfície compartilhada fornece o vidro e o foco; não adicionar uma segunda borda ao select. O menu aberto continua sendo do sistema.
 - Impostos mantém MonthPicker em dialog no topo das camadas. Sua barra neutraliza localmente largura fixa, order e posicionamento absoluto de ícones antigos; sem z-index arbitrário ou segundo calendário.
 - Data da compra mantém o input date nativo, com alvo mínimo de 44 px, indicador alinhado e color-scheme correspondente ao tema.
+
+## Lista de seleção personalizada
+
+- FinanceSelect personaliza seleções simples em Impostos e o período de Investimentos, reutilizando FinanceGlassButton e GlassTextField. O select oculto mantém name, FormData e change; não criar valores financeiros paralelos.
+- Lista em popover no topo das camadas, dimensionada ao viewport. Escape fecha apenas a lista; Tab segue o formulário; setas, Home/End e busca por texto controlam a opção ativa sem alterar o valor antes de confirmar.
+- Selects obrigatórios, multiple, size, optgroup e navegadores sem Popover mantêm o seletor nativo estilizado. Formulários do controlador antigo continuam nativos para preservar leituras diretas do DOM.
+- Validar teclado, cancelamento, reset, FormData, temas e listas próximas das bordas. O componente não equivale a uma certificação com todos os leitores de tela.

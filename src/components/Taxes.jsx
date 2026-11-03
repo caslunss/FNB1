@@ -1,3 +1,4 @@
+import FinanceSelect from './FinanceSelect.jsx';
 import MonthPicker from './MonthPicker.jsx';
 import React,{useEffect,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
@@ -8,7 +9,9 @@ import {readTaxes,saveTax,deleteTax,taxRequest,isTaxAccount} from '../services/t
 import BankImport from './TaxBankImport.jsx';
 const brl=n=>n==null?'—':(n/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}),decimal=n=>(n/100).toFixed(2).replace('.',','),pct=n=>n==null?'—':n>0&&n<.1?'<0,1%':n.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
 const empty={uf:'',merchantCnpj:'',cnae:'',documentTotalCents:null,documentName:'',items:[]};
-const Field=({label,children})=><label className="tax-field"><span>{label}</span><TextField>{children}</TextField></label>;
+const Field=({label,children})=>children?.type==='select'
+ ? <div className="tax-field"><span>{label}</span><TextField><FinanceSelect {...children.props} label={label}/></TextField></div>
+ : <label className="tax-field"><span>{label}</span><TextField>{children}</TextField></label>;
 export default function Taxes(){
  const [finance,setFinance]=useState(()=>window.planTaxes.getState()),[month,setMonth]=useState(()=>window.planTaxes.getState().month),[records,setRecords]=useState([]),[filter,setFilter]=useState('all'),[loading,setLoading]=useState(true),[error,setError]=useState(''),[notice,setNotice]=useState(''),[configured,setConfigured]=useState(false),[editing,setEditing]=useState(null),[selected,setSelected]=useState(''),[input,setInput]=useState(empty),[taxText,setTaxText]=useState(''),[newExpense,setNewExpense]=useState(false),[saving,setSaving]=useState(false),[formError,setFormError]=useState(''),[bank,setBank]=useState(false),[reviewed,setReviewed]=useState(false);
  const dialog=useRef(null),trigger=useRef(null),version=useRef(0),mounted=useRef(true);
