@@ -21,3 +21,15 @@ body .te-text-field select:not([multiple]):not([size]){min-height:46px!important
 body .te-text-field .finance-select-trigger svg{position:static;width:20px;height:20px;flex:none;margin:0;transform:none}
 body .te-text-field.lg-input__field>input:not([type=checkbox]):not([type=radio]){min-height:46px!important;height:46px}
 body .te-text-field.lg-input__field select:not([multiple]):not([size]){min-height:46px!important}
+
+/* Shared action alignment; field triggers and icon controls retain their geometry. */
+body:not(.auth-page) .lg-button.te-glass-button{box-sizing:border-box;max-width:100%;vertical-align:middle}
+body:not(.auth-page) .lg-button.te-glass-button:where(:not(.ib):not(.nav-icon-button):not(.finance-field-button):not(.date-picker-open)){
+ min-height:44px;border-radius:999px;padding:10px 16px;
+}
+body:not(.auth-page) .lg-button.te-glass-button:where(:not(.finance-field-button)) .lg-button__label{align-items:center;justify-content:center;gap:8px;min-width:0;max-width:100%}
+:is(#app,.account-panel-body) :is(.settings-actions,.plan-actions,.progressive-actions){align-items:center;gap:12px}
+:is(#app,.account-panel-body) .card{box-sizing:border-box;min-width:0;max-width:100%;border-radius:var(--pill-radius,28px);box-shadow:var(--lg-shadow)}
+@media(hover:hover) and (pointer:fine){
+ body:not(.auth-page) .lg-button.te-glass-button:not(:disabled):not(.finance-field-button):not(.nav-icon-button):hover{--lg-glass-fill:var(--lg-fill-pressed)}
+}

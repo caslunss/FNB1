@@ -37,19 +37,6 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
  .date-picker-dialog{padding:12px}
  .date-picker-grid{gap:0}
 }
-/* The mobile bar remains the existing desktop rail above the breakpoint. */
-@media(max-width:699px){
- body:not(.auth-page) .navigation-actions{transition:padding 380ms cubic-bezier(.22,1,.36,1),opacity 300ms ease;box-sizing:border-box;padding-inline:0}
- body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within){padding-inline:clamp(4px,3vw,20px);opacity:.9}
- body:not(.auth-page) #tabs.tabbar{background:var(--lg-navigation-fill)!important;backdrop-filter:blur(var(--lg-blur,20px));-webkit-backdrop-filter:blur(var(--lg-blur,20px));border:1px solid var(--form-border);box-shadow:var(--lg-shadow);transition:padding 380ms cubic-bezier(.22,1,.36,1),min-height 380ms cubic-bezier(.22,1,.36,1)}
- body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within) #tabs.tabbar{min-height:54px!important;padding-block:2px!important}
- body:not(.auth-page) #tabs.tabbar button{transition:min-height 380ms cubic-bezier(.22,1,.36,1)}
- body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within) #tabs.tabbar button{min-height:46px!important}
-}
-@media(prefers-reduced-motion:reduce){
- body:not(.auth-page) .navigation-actions,body:not(.auth-page) #tabs.tabbar,body:not(.auth-page) #tabs.tabbar button{transition:none!important}
-}
-@media(max-width:699px) and (prefers-reduced-transparency:reduce){body:not(.auth-page) #tabs.tabbar{background:var(--form-surface)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 /* Reserve useful content space without animating layout or glass filters. */
 .loading-skeleton{display:grid;gap:16px;min-height:220px;padding:16px 0}
 .loading-skeleton>span{display:block;border-radius:16px;background:var(--fill);animation:skeleton-breathe 1.4s ease-in-out infinite alternate}
