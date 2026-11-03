@@ -1,3 +1,4 @@
+import BottomNavigation from './BottomNavigation.jsx';
 import MobileExperience from './MobileExperience.jsx';
 import MonthPicker from './MonthPicker.jsx';
 import ToolbarSearch from './ToolbarSearch.jsx';
@@ -22,7 +23,7 @@ export function WorkspaceLayout(){return <>
       <div id="appNotice" className="app-notice" role="status" hidden/>
       <p id="closedMonthNotice" className="closed-month-notice" role="status" hidden>Mês encerrado · somente leitura.</p><div id="app"/>
     </div></main>
-    <div className="nav-shell" id="navShell"><h1 className="t-lg" id="lt" tabIndex={-1}/><div className="top-account-actions"><GlassSurface as="div" className="account-bubbles account-toolbar" role="toolbar" aria-label="Conta e notificações"><GlassActionHost className="app-symbol" type="button" aria-label="Abrir menu do perfil" aria-haspopup="menu" aria-controls="profileMenu" aria-expanded="false"/><GlassActionHost id="calendarButton" className="ib calendar-button" type="button" aria-label="Calendário" aria-pressed="false"/><GlassActionHost id="friendsButton" className="ib friends-button" type="button" aria-label="Amigos"/><GlassActionHost id="notificationButton" className="ib notification-button" type="button" aria-label="Notificações" aria-controls="notificationPanel"/></GlassSurface><ToolbarSearch/><MobileExperience/></div><div className="rail-scene" aria-hidden="true"/><div className="navigation-actions"><GlassSurface as="nav" className="tabbar glass" id="tabs" aria-label="Seções"/></div></div>
+    <div className="nav-shell" id="navShell"><h1 className="t-lg" id="lt" tabIndex={-1}/><div className="top-account-actions"><GlassSurface as="div" className="account-bubbles account-toolbar" role="toolbar" aria-label="Conta e notificações"><GlassActionHost className="app-symbol" type="button" aria-label="Abrir menu do perfil" aria-haspopup="menu" aria-controls="profileMenu" aria-expanded="false"/><GlassActionHost id="calendarButton" className="ib calendar-button" type="button" aria-label="Calendário" aria-pressed="false"/><GlassActionHost id="friendsButton" className="ib friends-button" type="button" aria-label="Amigos"/><GlassActionHost id="notificationButton" className="ib notification-button" type="button" aria-label="Notificações" aria-controls="notificationPanel"/></GlassSurface><ToolbarSearch/><MobileExperience/></div><div className="rail-scene" aria-hidden="true"/><BottomNavigation/></div>
   </div>
   <GlassSurface id="profileMenu" className="profile-menu" role="menu" aria-label="Menu do perfil" hidden/>
   <dialog id="accountOverlay" className="account-overlay" aria-labelledby="accountOverlayTitle"><div id="accountOverlayContent"/></dialog>

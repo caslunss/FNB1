@@ -1,3 +1,5 @@
+import DatePicker from './DatePicker.jsx';
+import FinanceSelect from './FinanceSelect.jsx';
 import IOSButton from './motion/IOSButton.tsx';
 import {useMobileLayout} from '../services/mobile-layout.js';
 import React, {useEffect,useLayoutEffect,useId, useRef, useState, useSyncExternalStore} from 'react';
@@ -53,7 +55,9 @@ export function FinanceSegments({items,label,className=''}){
   }}/>;
 }
 
-export function GlassTextField({children,className=''}){
+export function GlassTextField({children,className='',nativeSelect=false}){
+  if(children?.type==='input'&&children.props.type==='date')return <DatePicker {...children.props}/>;
+  if(children?.type==='select')children=<FinanceSelect {...children.props} nativeControl={nativeSelect}/>;
   return <GlassSurface as="span" className={`lg-input__field te-text-field ${className}`}>{children}</GlassSurface>;
 }
 

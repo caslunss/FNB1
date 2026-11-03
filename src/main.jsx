@@ -9,6 +9,7 @@ import '@zakisheriff/liquid-glass/styles.css';
 import './styles/liquid-glass.css';
 import './styles/layout-settings.css';
 import './styles/mobile.css';
+import './styles/shared-controls.css';
 import './services/auth.js';
 import './services/finance-sync.js';
 import './services/page-motion.js';

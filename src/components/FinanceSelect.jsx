@@ -5,16 +5,16 @@ const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').
 
 // Native validation, grouped options and older browsers keep the styled system picker.
 export default function FinanceSelect(props) {
-  const {label, ...nativeProps} = props;
+  const {label, nativeControl, ...nativeProps} = props;
   const children = Children.toArray(props.children);
   const supported = typeof HTMLElement !== 'undefined' && 'showPopover' in HTMLElement.prototype;
-  if (!supported || props.required || props.multiple || props.size || children.some(child => !isValidElement(child) || child.type !== 'option')) {
+  if (!supported || (props.required && !nativeControl) || props.multiple || props.size || children.some(child => !isValidElement(child) || child.type !== 'option')) {
     return <select {...nativeProps} aria-label={label || props['aria-label']}/>;
   }
   return <CustomSelect {...props}/>;
 }
 
-function CustomSelect({label, value, defaultValue, onChange, children, name, disabled = false, id, ...props}) {
+function CustomSelect({label, nativeControl = false, value, defaultValue, onChange, children, name, disabled = false, id, ...props}) {
   const uid = useId(), listId = `${uid}-list`;
   const options = Children.toArray(children).map(child => ({
     value: String(child.props.value ?? child.props.children),
@@ -31,8 +31,24 @@ function CustomSelect({label, value, defaultValue, onChange, children, name, dis
   useEffect(() => () => {if (resetFrame.current !== null) cancelAnimationFrame(resetFrame.current);}, []);
   const enabled = options.map((option, index) => option.disabled ? -1 : index).filter(index => index >= 0);
 
+  useLayoutEffect(() => {
+    if (nativeControl || label || props['aria-label'] || props['aria-labelledby']) return;
+    const enclosing = trigger.current?.closest('label');
+    if (!enclosing) return;
+    const copy = enclosing.cloneNode(true);
+    copy.querySelectorAll('.te-text-field, .finance-select').forEach(node => node.remove());
+    const text = copy.textContent.trim();
+    if (text) trigger.current.setAttribute('aria-label', text);
+  }, [nativeControl, label, props['aria-label'], props['aria-labelledby']]);
+
   function close() {setOpen(false); search.current.text = '';}
-  function show(index = selectedIndex) {
+  function show(index) {
+    if (nativeControl && index === undefined) {
+      const actual = native.current.value;
+      setInternal(actual);
+      index = options.findIndex(option => option.value === actual);
+    }
+    if (index === undefined) index = selectedIndex;
     if (disabled || !enabled.length) return;
     setActive(enabled.includes(index) ? index : enabled[0]);
     setOpen(true);
@@ -120,15 +136,23 @@ function CustomSelect({label, value, defaultValue, onChange, children, name, dis
   }, [open, active]);
 
   return <span className="finance-select">
-    <select {...props} ref={native} name={name} value={selected} disabled={disabled} hidden aria-hidden="true" tabIndex={-1}
+    <select {...props} ref={element => {native.current = element; if (nativeControl) trigger.current = element;}} id={nativeControl ? id : undefined} name={name}
+      value={nativeControl ? undefined : selected} defaultValue={nativeControl ? defaultValue : undefined} disabled={disabled}
+      hidden={!nativeControl} aria-hidden={nativeControl ? undefined : true} tabIndex={nativeControl ? props.tabIndex : -1}
+      role={nativeControl ? 'combobox' : undefined} aria-haspopup={nativeControl ? 'listbox' : undefined}
+      aria-expanded={nativeControl ? open : undefined} aria-controls={nativeControl ? listId : undefined}
+      aria-activedescendant={nativeControl && open && active >= 0 ? `${uid}-${active}` : undefined}
+      onMouseDown={nativeControl ? event => event.preventDefault() : undefined}
+      onClick={nativeControl ? event => {event.preventDefault(); trigger.current.focus({preventScroll: true}); open ? close() : show();} : undefined}
+      onKeyDown={nativeControl ? keyDown : undefined} onBlur={nativeControl ? close : undefined}
       onChange={event => {if (!controlled) setInternal(event.target.value); onChange?.(event);}}>{children}</select>
-    <Button id={id} ref={trigger} className="finance-select-trigger" type="button" role="combobox"
-      disabled={disabled} aria-label={label || props['aria-label']} aria-haspopup="listbox"
+    {!nativeControl && <Button id={id} ref={trigger} className="finance-select-trigger" type="button" role="combobox"
+      disabled={disabled} aria-labelledby={props['aria-labelledby']} aria-label={label || props['aria-label']} aria-haspopup="listbox"
       aria-expanded={open} aria-controls={listId} aria-activedescendant={open && active >= 0 ? `${uid}-${active}` : undefined}
       onKeyDown={keyDown} onBlur={close} onClick={() => open ? close() : show()}>
       <span className="finance-select-value">{options[selectedIndex]?.label || 'Selecionar'}</span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-    </Button>
+    </Button>}
     <div ref={list} id={listId} popover="manual" role="listbox" aria-label={label || props['aria-label']} className="finance-select-list">
       {options.map((option, index) => <div key={option.value} id={`${uid}-${index}`} role="option"
         aria-selected={option.value === selected} aria-disabled={option.disabled || undefined}

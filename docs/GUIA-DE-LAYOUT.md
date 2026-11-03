@@ -285,5 +285,17 @@ No mobile, seis destinos principais aparecem somente como ícones (44 px de áre
 
 - FinanceSelect personaliza seleções simples em Impostos e o período de Investimentos, reutilizando FinanceGlassButton e GlassTextField. O select oculto mantém name, FormData e change; não criar valores financeiros paralelos.
 - Lista em popover no topo das camadas, dimensionada ao viewport. Escape fecha apenas a lista; Tab segue o formulário; setas, Home/End e busca por texto controlam a opção ativa sem alterar o valor antes de confirmar.
-- Selects obrigatórios, multiple, size, optgroup e navegadores sem Popover mantêm o seletor nativo estilizado. Formulários do controlador antigo continuam nativos para preservar leituras diretas do DOM.
+- Selects obrigatórios, multiple, size, optgroup e navegadores sem Popover mantêm o seletor nativo estilizado. Formulários do controlador antigo preservam o select real visível, com id/name e valor lidos diretamente pelo DOM; FinanceSelect fornece a mesma lista em popover, sem duplicar valores financeiros.
 - Validar teclado, cancelamento, reset, FormData, temas e listas próximas das bordas. O componente não equivale a uma certificação com todos os leitores de tela.
+
+
+## Padronização compartilhada — 03/11/2026
+
+Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada e padrão único de seleções e calendários.
+
+- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Somente até 699 px, descer 10 px contrai a barra; subir ou pausar 650 ms restaura o estado. O topo também restaura a barra. Áreas de toque continuam com pelo menos 44 px, seis ícones e nomes acessíveis. A versão desktop mantém a navegação lateral.
+- A exceção de movimento da barra permite transições curtas de padding e altura mínima durante scroll, sem animar blur. Foco mantém a geometria expandida. Movimento reduzido remove essas transições; transparência reduzida usa superfície opaca.
+- `shared-controls.css` centraliza campos de 48 px, raio de 24 px, foco do tema e tipografia de 16 px, tanto no aplicativo quanto em popups. Compra planejada usa o mesmo formulário progressivo e a mesma escala; preços em duas colunas quando couberem e uma coluna em telas pequenas.
+- `GlassTextField` encaminha seleções simples para `FinanceSelect`. Nos templates, o select real continua visível e preserva id, name, validação, FormData e alterações diretas do controlador. A lista compartilhada usa o topo das camadas. Seleções agrupadas, múltiplas e navegadores sem Popover conservam o controle do sistema; selects obrigatórios de React também conservam sua validação nativa.
+- `GlassTextField` encaminha campos date para `DatePicker.jsx`: entrada real editável, botão de calendário e dialog compartilhado em pt-BR. Datas mínima e máxima, required, campos desativados e FormData continuam no input original. Escolher uma data emite input/change; cancelar não altera o campo. O dialog fecha por Escape e devolve foco ao botão.
+- Calendário de movimentações, MonthPicker e DatePicker usam os mesmos tokens de superfície, borda, foco e seleção. Meses continuam no MonthPicker; datas completas usam DatePicker. Não converter períodos financeiros nem alterar cálculos para padronizar o visual.

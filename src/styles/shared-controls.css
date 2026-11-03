@@ -1,0 +1,52 @@
+/* One field geometry for finance pages, sheets and account panels. */
+body:not(.auth-page) :is(.te-text-field,.date-field,.finance-select){min-width:0;max-width:100%;box-sizing:border-box}
+body:not(.auth-page) .te-text-field{width:100%;border-radius:24px;align-items:center;min-height:48px}
+body:not(.auth-page) .te-text-field :is(input:not([type=checkbox]):not([type=radio]),select,textarea){margin:0!important;min-width:0;width:100%;font:inherit;font-size:16px;color:var(--lb);box-sizing:border-box}
+body:not(.auth-page) .te-text-field select:not([multiple]):not([size]){min-height:48px!important;padding:10px 36px 10px 0!important;border:0!important;border-radius:0;background-color:transparent!important}
+body:not(.auth-page) .te-text-field :is(input,select,textarea):focus-visible{outline:2px solid var(--tint);outline-offset:3px}
+body:not(.auth-page) .te-text-field:focus-within{border-color:var(--tint)}
+body:not(.auth-page) .te-text-field:has(:disabled){opacity:.55}
+:is(#app,.account-panel-body) .te-compact-form.product-form{display:block;width:100%;min-width:0;box-sizing:border-box}
+:is(#app,.account-panel-body) .product-form .progressive-basics{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+:is(#app,.account-panel-body) .product-form :is(.progressive-basics,.progressive-advanced)>label{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0}
+:is(#app,.account-panel-body) .product-form .progressive-basics>.full{grid-column:1/-1}
+:is(#app,.account-panel-body) .product-form .progressive-main{align-items:flex-start}
+:is(#app,.account-panel-body) .product-form .progressive-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;min-width:0}
+:is(#app,.account-panel-body) .product-form .progressive-actions>.full{flex-basis:100%;min-width:0}
+:is(#app,.account-panel-body) .plan-actions{align-items:center;gap:12px}
+.date-field{position:relative;display:block;width:100%}
+body:not(.auth-page) .date-field .te-text-field{padding-right:52px!important;border-radius:24px}
+body:not(.auth-page) .date-field input[type=date]{min-height:48px!important;color-scheme:light}
+:root[data-theme=dark] .date-field input[type=date]{color-scheme:dark}
+.date-field input::-webkit-calendar-picker-indicator{display:none}
+body:not(.auth-page) .date-picker-open.lg-button{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border-radius:999px}
+.date-picker-open svg{position:static;width:20px;height:20px}
+.month-picker-dialog{box-sizing:border-box;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;background:var(--form-surface);color:var(--lb);border:1px solid var(--form-border);box-shadow:var(--lg-shadow)}
+.date-picker-dialog{width:400px;padding:20px;border-radius:28px}
+.date-picker-dialog .month-picker-year strong{font-size:16px;text-align:center;text-transform:capitalize}
+.date-picker-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+.date-picker-grid .cal-weekday{padding:10px 0;font-size:11px;color:var(--lb2)}
+body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-height:44px;padding:0;border-radius:999px;font-size:14px}
+:is(.date-picker-grid,.month-picker-grid) [aria-pressed=true],.calendar-card .cal-day.selected{background:var(--lg-segment-selection)!important;color:var(--lb)!important;box-shadow:inset 0 0 0 1px var(--tint)}
+.calendar-card .cal-nav{display:flex;align-items:center;gap:8px}
+.calendar-card .cal-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.calendar-card .cal-day{min-width:0;min-height:44px;border-radius:18px}
+:is(.date-picker-grid,.month-picker-grid,.calendar-card) button:focus-visible{outline:2px solid var(--tint);outline-offset:2px}
+@media(max-width:520px){
+ :is(#app,.account-panel-body) .product-form :is(.progressive-basics,.progressive-advanced){grid-template-columns:minmax(0,1fr)}
+ .date-picker-dialog{padding:12px}
+ .date-picker-grid{gap:0}
+}
+/* The mobile bar remains the existing desktop rail above the breakpoint. */
+@media(max-width:699px){
+ body:not(.auth-page) .navigation-actions{transition:padding 380ms cubic-bezier(.22,1,.36,1),opacity 300ms ease;box-sizing:border-box;padding-inline:0}
+ body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within){padding-inline:clamp(4px,3vw,20px);opacity:.9}
+ body:not(.auth-page) #tabs.tabbar{background:var(--lg-navigation-fill)!important;backdrop-filter:blur(var(--lg-blur,20px));-webkit-backdrop-filter:blur(var(--lg-blur,20px));border:1px solid var(--form-border);box-shadow:var(--lg-shadow);transition:padding 380ms cubic-bezier(.22,1,.36,1),min-height 380ms cubic-bezier(.22,1,.36,1)}
+ body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within) #tabs.tabbar{min-height:54px!important;padding-block:2px!important}
+ body:not(.auth-page) #tabs.tabbar button{transition:min-height 380ms cubic-bezier(.22,1,.36,1)}
+ body:not(.auth-page) .navigation-actions[data-compact=true]:not(:focus-within) #tabs.tabbar button{min-height:46px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body:not(.auth-page) .navigation-actions,body:not(.auth-page) #tabs.tabbar,body:not(.auth-page) #tabs.tabbar button{transition:none!important}
+}
+@media(max-width:699px) and (prefers-reduced-transparency:reduce){body:not(.auth-page) #tabs.tabbar{background:var(--form-surface)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
