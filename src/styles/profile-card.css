@@ -1,19 +1,23 @@
-/* The existing dialog supplies modality, Escape, backdrop dismissal and focus return. */
-#accountOverlay[data-panel=profile]{width:min(440px,calc(100vw - 24px));max-width:440px;max-height:calc(100dvh - 24px);padding:0;border-radius:32px;margin:auto;inset:0;overflow:auto;position:fixed}
-#accountOverlay[data-panel=profile]::backdrop{background:rgb(0 0 0 / .6);backdrop-filter:blur(5px)}
-#accountOverlay[data-panel=profile] .account-overlay-header{position:absolute;inset:12px 12px auto auto;padding:0;z-index:5}
+/* One floating profile dialog; shared card tokens own its material. */
+#accountOverlay[data-panel=profile]{
+ position:fixed!important;inset:0!important;margin:auto!important;width:min(440px,calc(100vw - 32px))!important;max-width:440px!important;
+ height:fit-content!important;max-height:calc(100dvh - 32px)!important;padding:0;border:1px solid var(--form-border);border-radius:var(--pill-radius,28px)!important;
+ overflow:auto;overscroll-behavior:contain;box-sizing:border-box;background:var(--form-surface);color:var(--lb);box-shadow:var(--lg-shadow);animation:none!important;
+}
+#accountOverlay[data-panel=profile]::backdrop{background:rgb(0 0 0 / .45)}
+#accountOverlay[data-panel=profile] .account-overlay-header{position:absolute!important;inset:12px 12px auto auto!important;padding:0!important;min-height:44px;background:transparent;z-index:5}
 #accountOverlay[data-panel=profile] .account-overlay-header h2{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-#accountOverlay[data-panel=profile] .account-overlay-close{background:#fff!important;color:#1b2428!important}
 #accountOverlay[data-panel=profile] .mobile-sheet-grabber{display:none}
 #accountOverlay[data-panel=profile] .profile-panel{padding:0;display:block}
 #accountOverlay[data-panel=profile] .profile-card-layout{display:grid;gap:0;width:100%;max-width:none}
-.profile-hover-card{position:relative;isolation:isolate;width:100%;height:600px;max-height:calc(100dvh - 88px);min-height:420px;overflow:hidden;border-radius:30px;background:#fff;color:#fff;box-shadow:var(--lg-shadow);box-sizing:border-box}
-.profile-card-photo{position:absolute;inset:0 0 auto;height:100%;overflow:hidden;border-radius:30px;transition:height .3s ease,border-radius .3s ease;background:linear-gradient(145deg,var(--tint),var(--card))}
-.profile-card-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
-.profile-card-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 20%,rgb(0 0 0 / .15) 40%,rgb(0 0 0 / .88));pointer-events:none;transition:opacity .3s ease}
-.profile-card-initial{display:grid;place-items:center;width:100%;height:100%;font:600 clamp(90px,20vw,160px)/1 var(--lg-font);color:var(--lb)}
-.profile-card-white{position:absolute;inset:50% 0 0;background:#fff;opacity:0;transition:opacity .3s ease;pointer-events:none}
-.profile-card-content{position:absolute;inset:auto 0 0;z-index:2;box-sizing:border-box;height:50%;max-height:50%;width:100%;padding:20px 24px;display:grid;align-content:start;gap:12px;overflow:auto;overscroll-behavior:contain;color:#fff;background:rgb(0 0 0 / .12);backdrop-filter:blur(8px);transition:color .3s ease,background-color .3s ease}
+#accountOverlay[data-panel=profile] .profile-hover-card{
+ position:relative;isolation:isolate;display:grid;gap:20px;width:100%;min-width:0;margin:0!important;padding:24px!important;
+ border:0;border-radius:var(--pill-radius,28px);box-sizing:border-box;box-shadow:none!important;--lg-glass-fill:var(--lg-panel-fill);color:var(--lb);
+}
+.profile-card-photo{width:88px;height:88px;border:1px solid var(--form-border);border-radius:50%;overflow:hidden;background:var(--lg-segment-selection)}
+.profile-card-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.profile-card-initial{display:grid;place-items:center;width:100%;height:100%;font:600 36px/1 var(--lg-font);color:var(--lb)}
+.profile-card-content{position:relative;display:grid;gap:20px;min-width:0;color:var(--lb)}
 .profile-card-identity h2{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0;font:600 24px/1.2 var(--lg-font);overflow-wrap:anywhere}
 .profile-verified{width:20px;height:20px;flex:none;fill:currentColor;stroke:#557789;stroke-width:2}
 .profile-card-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -32,20 +36,9 @@
 .profile-no-ratings{font-size:12px;line-height:1.5;margin:0}
 .profile-card-actions{display:flex;gap:8px;flex-wrap:wrap}
 .profile-card-actions .lg-button{min-height:44px;font-size:12px}
-body:not(.auth-page) .profile-card-pin.lg-button{position:absolute;inset:12px auto auto 12px;z-index:3;min-height:44px;background:#fff!important;color:#1b2428!important;font-size:12px}
-.profile-hover-card[data-expanded=true] .profile-card-photo,.profile-hover-card:has(:focus-visible) .profile-card-photo{height:50%;border-radius:30px 30px 0 0}
-.profile-hover-card[data-expanded=true] .profile-card-white,.profile-hover-card:has(:focus-visible) .profile-card-white{opacity:1}
-.profile-hover-card[data-expanded=true] .profile-card-content,.profile-hover-card:has(:focus-visible) .profile-card-content{color:#1b2428;background:#fff;backdrop-filter:none}
-.profile-hover-card[data-expanded=true] .profile-card-photo::after,.profile-hover-card:has(:focus-visible) .profile-card-photo::after{opacity:0}
-@media(hover:hover) and (pointer:fine){
- .profile-hover-card:hover .profile-card-photo{height:50%;border-radius:30px 30px 0 0}
- .profile-hover-card:hover .profile-card-white{opacity:1}
- .profile-hover-card:hover .profile-card-content{color:#1b2428;background:#fff;backdrop-filter:none}
- .profile-hover-card:hover .profile-card-photo::after{opacity:0}
-}
-#accountOverlay .profile-extras{padding:12px 20px 16px;color:var(--lb);background:var(--form-surface)}
+
+#accountOverlay .profile-extras{padding:0 24px 20px;color:var(--lb);background:transparent}
 .profile-extras>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:13px}
 .profile-extras .streaming-pill{margin:12px 0}
-@media(max-width:450px){.profile-card-content{padding:16px}.profile-card-identity h2{font-size:21px}.profile-card-actions{gap:8px}}
-@media(prefers-reduced-motion:reduce){.profile-card-photo,.profile-card-photo::after,.profile-card-white,.profile-card-content{transition:none}}
-@media(prefers-reduced-transparency:reduce){.profile-card-content{background:rgb(0 0 0 / .88);backdrop-filter:none}}
+.profile-card-actions>.lg-button{flex:1 1 120px}
+@media(max-width:450px){#accountOverlay[data-panel=profile] .profile-hover-card{padding:20px!important}.profile-card-identity h2{font-size:21px}}

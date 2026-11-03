@@ -369,3 +369,9 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Busca fica no grupo superior com perfil e notificações no celular, reutilizando ToolbarSearch; não duplicar a busca em botão flutuante. Fechar o dialog retorna foco ao botão do cabeçalho.
 - Abas mobile/tablet ampliam somente o SVG em hover de ponteiro fino e foco de teclado (1.18); pressionar reduz para .96 e soltar restaura a seleção. Sem ampliação ao ativar movimento reduzido; a superfície continua compactando por rolagem.
 - control-surfaces.css compartilha geometria de ações (mínimo 44 px, raio de pílula, padding 10/16 px), alinhamento de ícones e espaçamento de 12 px em grupos. Campos, controles de calendário, botões de ícone e abas mantêm sua geometria especializada. Cards usam o raio e sombra dos tokens existentes, preservando paleta e materiais.
+
+## Perfil como card flutuante — 03/11/2026
+
+- Perfil usa FinanceGlassCard, avatar circular e conteúdo no fluxo normal, sem foto de fundo, painel branco, tamanho fixo ou transformação por hover. Preservar notas, selos, configurações, sair e assinaturas/apoio.
+- O dialog permanece centralizado também no celular com margens de 16 px, raio, borda e sombra dos tokens compartilhados; rolagem interna em telas baixas.
+- Motion controla entrada (fade, y 12 px e escala .98) e saída curta de 160 ms, sem animar dimensões ou blur. Escape e clique no backdrop fecham com retorno do foco. Movimento reduzido desliga o deslocamento/escala. Esse padrão substitui o card fotográfico com divisão por hover descrito anteriormente.

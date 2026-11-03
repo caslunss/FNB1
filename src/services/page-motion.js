@@ -6,7 +6,7 @@ const running=new Map(),gestures=new WeakMap();let previous=null,pending;
 function finish(node){const active=running.get(node);if(!active)return;active.stop();running.delete(node);for(const key of ['transform','filter','backdrop-filter','opacity','will-change'])node.style.removeProperty(key);node.removeAttribute('data-motion-entering');}
 function reveal(node){
  if(!node?.isConnected)return;finish(node);
- const frames=pageFrames(reduced.matches);node.style.willChange="transform, opacity";
+ const frames=node.matches('dialog[data-panel=profile]')?(reduced.matches?{opacity:[0,1]}:{opacity:[0,1],y:[12,0],scale:[.98,1]}):pageFrames(reduced.matches);node.style.willChange="transform, opacity";
  node.dataset.motionEntering='';
  const animation=animate(node,frames,{...APP_SPRING,opacity:FADE,onComplete:()=>{if(running.get(node)!==animation)return;running.delete(node);for(const key of ['transform','filter','backdrop-filter','opacity','will-change'])node.style.removeProperty(key);node.removeAttribute('data-motion-entering')}});
  running.set(node,animation);
