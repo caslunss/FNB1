@@ -635,9 +635,7 @@ body:not(.auth-page) #app.layout-k{display:grid;grid-template-columns:minmax(0,1
 @media(max-width:699px){.tax-page{gap:16px}.tax-toolbar{align-items:center}.tax-charts{grid-template-columns:minmax(0,1fr)}.tax-kpis{gap:12px}.tax-kpis [data-tax-summary]{padding:18px}.tax-kpis strong{font-size:1.375rem}.tax-purchase{grid-template-columns:minmax(0,1fr) auto}.tax-purchase>button{grid-column:1/-1;justify-self:start}.tax-form-grid{grid-template-columns:minmax(0,1fr)}.tax-actions button{min-height:44px}.tax-toolbar .tax-field{width:100%}.tax-bank-row{flex-wrap:wrap}.tax-months{gap:4px}.tax-review input,.tax-bank-row input{min-width:24px;min-height:24px}.tax-form :is(input,select){font-size:1rem}.tax-form .tax-review{font-size:.875rem}.tax-kpis .foot{font-size:.75rem}.tax-page .card{min-width:0}}
 
 /* Same month control, with a readable period label outside the compact toolbar. */
-.tax-toolbar .month-picker-labeled.lg-button{width:auto;max-width:100%;padding:0 16px;border-radius:999px}
-.tax-toolbar .month-picker-labeled .lg-button__label{width:auto;height:auto;gap:8px;white-space:nowrap;font-size:13px}
-.tax-toolbar .month-selector{max-width:100%}
+/* Tax period geometry is defined with the shared field overrides below. */
 
 /* Responsive financial content: scroll charts locally; never shrink axis labels. */
 .financial-chart-scroll{min-width:0;max-width:100%;overflow:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
@@ -672,3 +670,55 @@ body:not(.auth-page) #app.layout-k{display:grid;grid-template-columns:minmax(0,1
 .credit-invoice-period{display:grid;gap:8px;min-width:0;max-width:100%}
 .credit-invoice-period .month-picker-labeled.lg-button{width:auto;max-width:100%;padding:0 16px;border-radius:999px}
 .credit-invoice-period .month-picker-labeled .lg-button__label{width:auto;height:auto;gap:8px;white-space:nowrap;font-size:13px}
+
+/* Native single selects retain keyboard/system pickers with a themed closed field. */
+body select:not([multiple]):not([size]){
+ appearance:none;-webkit-appearance:none;box-sizing:border-box;
+ width:100%;min-width:0;min-height:44px;padding:12px 44px 12px 16px;
+ border:1px solid var(--form-border);border-radius:999px;
+ background-color:var(--form-field,var(--form-surface));color:var(--lb);
+ font:16px/1.4 var(--lg-font);cursor:pointer;
+ /* Existing field surfaces use background:transparent!important. Keep only the arrow above it. */
+ background-image:linear-gradient(45deg,transparent 50%,var(--lb2) 50%),linear-gradient(135deg,var(--lb2) 50%,transparent 50%)!important;
+ background-position:calc(100% - 22px) center,calc(100% - 17px) center!important;
+ background-size:5px 5px!important;background-repeat:no-repeat!important;
+}
+body .te-text-field.lg-input__field:has(>select:not([multiple]):not([size])),
+body .te-text-field.lg-input__field:has(>input[type=date]){border-radius:999px}
+body .te-text-field.lg-input__field>select:not([multiple]):not([size]){
+ padding:10px 32px 10px 0;border-radius:0;border:0;background-color:transparent;
+ background-position:calc(100% - 10px) center,calc(100% - 5px) center!important;
+}
+@media(hover:hover){body select:not([multiple]):not([size]):hover:not(:disabled){outline:1px solid var(--form-border);outline-offset:0}}
+body select:not([multiple]):not([size]):focus-visible{outline:2px solid var(--tint);outline-offset:3px}
+body .te-text-field.lg-input__field>select:focus-visible{outline:0}
+body select:not([multiple]):not([size]):disabled{opacity:.5;cursor:not-allowed}
+
+/* Override legacy month-selector fixed widths and absolute icon placement locally. */
+.tax-toolbar,.tax-toolbar .tax-actions{align-items:center}
+body:not(.auth-page) .tax-toolbar>.month-selector.pill{
+ position:relative;inset:auto;flex:0 1 auto;order:0;width:auto;min-width:0;
+ max-width:100%;height:auto;min-height:44px;margin:0;padding:0;
+ background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:visible;
+}
+body:not(.auth-page) .tax-toolbar .month-picker-trigger.lg-button{
+ width:auto;max-width:100%;min-height:44px;padding:0 16px;border-radius:999px;
+}
+.tax-toolbar .month-picker-trigger .lg-button__label{
+ display:flex;align-items:center;justify-content:center;gap:8px;
+ width:auto;height:auto;min-width:0;font-size:13px;line-height:1.4;white-space:normal;
+}
+.tax-toolbar .month-picker-trigger svg{
+ position:static;inset:auto;flex:none;display:block;width:20px;height:20px;
+ margin:0;transform:none;pointer-events:none;
+}
+body .tax-field input[type=date]{
+ position:relative;box-sizing:border-box;display:block;width:100%;min-width:0;
+ min-height:44px;padding:10px 0;font:16px/1.4 var(--lg-font);color:var(--lb);color-scheme:light;
+}
+:root[data-theme=dark] .tax-field input[type=date]{color-scheme:dark}
+.tax-field input[type=date]::-webkit-calendar-picker-indicator{
+ position:static;width:20px;height:20px;margin:0 0 0 8px;padding:4px;opacity:.75;cursor:pointer;
+}
+.tax-field input[type=date]:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:480px){.tax-toolbar{justify-content:flex-start}.tax-toolbar>.tax-actions{width:100%;min-width:0}}

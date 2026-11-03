@@ -273,3 +273,10 @@ No mobile, seis destinos principais aparecem somente como ícones (44 px de áre
 - Carregar sob demanda somente páginas opcionais de Impostos/Investimentos; formulários e foco do controlador financeiro permanecem síncronos.
 - Confirmação de exclusão por swipe é montada apenas quando solicitada. Nenhum gesto deve começar sobre campos, links ou botões da linha.
 - Consultar docs/REVISAO-UI-PERFORMANCE.md para diagnóstico, implementação e limites da verificação.
+
+## Seletores e datas — 03/11/2026
+
+- Selects simples usam appearance:none, seta em CSS derivada de --lb2, padding reservado à direita, foco visível e estado desativado. Listas multiple/size preservam o comportamento próprio.
+- Dentro de GlassTextField, a superfície compartilhada fornece o vidro e o foco; não adicionar uma segunda borda ao select. O menu aberto continua sendo do sistema.
+- Impostos mantém MonthPicker em dialog no topo das camadas. Sua barra neutraliza localmente largura fixa, order e posicionamento absoluto de ícones antigos; sem z-index arbitrário ou segundo calendário.
+- Data da compra mantém o input date nativo, com alvo mínimo de 44 px, indicador alinhado e color-scheme correspondente ao tema.
