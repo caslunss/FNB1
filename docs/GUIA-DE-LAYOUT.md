@@ -299,3 +299,10 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - `GlassTextField` encaminha seleções simples para `FinanceSelect`. Nos templates, o select real continua visível e preserva id, name, validação, FormData e alterações diretas do controlador. A lista compartilhada usa o topo das camadas. Seleções agrupadas, múltiplas e navegadores sem Popover conservam o controle do sistema; selects obrigatórios de React também conservam sua validação nativa.
 - `GlassTextField` encaminha campos date para `DatePicker.jsx`: entrada real editável, botão de calendário e dialog compartilhado em pt-BR. Datas mínima e máxima, required, campos desativados e FormData continuam no input original. Escolher uma data emite input/change; cancelar não altera o campo. O dialog fecha por Escape e devolve foco ao botão.
 - Calendário de movimentações, MonthPicker e DatePicker usam os mesmos tokens de superfície, borda, foco e seleção. Meses continuam no MonthPicker; datas completas usam DatePicker. Não converter períodos financeiros nem alterar cálculos para padronizar o visual.
+
+## Estados assíncronos e listas — performance
+
+- LoadingSkeleton usa tokens existentes, dimensões reservadas e somente opacidade; movimento reduzido desliga a animação. Não apresenta zeros financeiros fictícios.
+- Impostos mostra 50 compras por lote com Mostrar mais compras; indicadores e filtros consideram a lista inteira. Não esconder dados financeiros sem uma ação para continuar a leitura.
+- Importação bancária é carregada ao abrir, mantendo boundary de erro e placeholder. Formulários controlados pelo fluxo financeiro síncrono não ficam suspensos.
+- Consultas públicas em cache continuam exibindo sua data de consulta e oferecem atualização manual. Consulte PERFORMANCE-REACT.md para escopo e validação.

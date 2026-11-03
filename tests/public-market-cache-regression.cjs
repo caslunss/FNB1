@@ -1,0 +1,27 @@
+const assert=require('node:assert/strict');
+(async()=>{
+ const {createPublicReadCache,readMarketData}=await import('../src/services/public-market-cache.js');
+ let time=0,calls=0;const read=createPublicReadCache({ttl:100,maxEntries:2,now:()=>time});
+ const load=async()=>({revision:++calls});
+ assert.equal((await read('quotes',load)).revision,1);
+ assert.equal((await read('quotes',load)).revision,1);
+ time=100;assert.equal((await read('quotes',load)).revision,2);
+ assert.equal((await read('quotes',load,{force:true})).revision,3);
+ console.log('PASS cache: freshness, expiry and explicit refresh');
+ let resolve;const pending=()=>new Promise(done=>{resolve=done;calls++});
+ const controller=new AbortController(),cancelled=read('history',pending,{signal:controller.signal});
+ const shared=read('history',pending);const rejected=assert.rejects(cancelled,{name:'AbortError'});
+ await Promise.resolve();const count=calls;controller.abort();resolve({ok:true});
+ await rejected;assert.deepEqual(await shared,{ok:true});assert.equal(calls,count);
+ assert.deepEqual(await read('history',load),{ok:true});
+ console.log('PASS cache: concurrent requests share work; cancellation preserves other subscribers');
+ await assert.rejects(read('broken',()=>Promise.reject(Error('network'))),/network/);
+ assert.deepEqual(await read('broken',()=>Promise.resolve({recovered:true})),{recovered:true});
+ assert.equal((await read('quotes',load)).revision,count+1);
+ console.log('PASS cache: failures can retry and old entries are evicted');
+ const stopped=new AbortController();stopped.abort();let started=false;
+ await assert.rejects(read('cancelled',()=>{started=true},{signal:stopped.signal}),{name:'AbortError'});assert.equal(started,false);
+ assert.throws(()=>readMarketData('/api/taxes'),/catálogo público/);
+ assert.throws(()=>readMarketData('https://example.com/api/investments?kind=quotes'),/catálogo público/);
+ console.log('PASS cache: already-cancelled work never starts; private/external endpoints rejected');
+})().catch(error=>{console.error(error);process.exitCode=1});
