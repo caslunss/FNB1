@@ -264,3 +264,12 @@ Arquivos: `src/services/motion-presets.js`, `src/services/page-motion.js`, `src/
 Usar `MotionProvider`, `PageTransition`, `IOSButton` e os presets descritos em `ANIMACOES-IOS.md`. Molas altamente amortecidas; somente opacity, x, y e scale nas novas transições. O vidro continua estático: não animar blur, recorte ou tamanho. Respeitar movimento reduzido e impedir interação com conteúdo de saída. Não adicionar transições concorrentes de transform ao mesmo botão.
 
 No mobile, seis destinos principais aparecem somente como ícones (44 px de área mínima), com nomes acessíveis preservados. Impostos está na barra; Carbono continua em Atalhos. Investimentos usa gráfico ascendente, não cartão de crédito.
+
+## Revisão responsiva de 03/11/2026
+
+- Login de tela inteira: grade com colunas minmax(0,1fr); no mobile, sem padding externo acumulado. Cada metade controla seu gutter. Títulos devem quebrar antes de exceder a largura.
+- Gráficos com eixos: manter rótulos legíveis em uma região de rolagem local acessível. Não reduzir SVGs largos até transformar números em texto ilegível. A página não pode rolar horizontalmente.
+- Pesquisa: manter ação circular de fechar visível, além de Escape e toque fora.
+- Carregar sob demanda somente páginas opcionais de Impostos/Investimentos; formulários e foco do controlador financeiro permanecem síncronos.
+- Confirmação de exclusão por swipe é montada apenas quando solicitada. Nenhum gesto deve começar sobre campos, links ou botões da linha.
+- Consultar docs/REVISAO-UI-PERFORMANCE.md para diagnóstico, implementação e limites da verificação.

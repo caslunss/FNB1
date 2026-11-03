@@ -638,3 +638,37 @@ body:not(.auth-page) #app.layout-k{display:grid;grid-template-columns:minmax(0,1
 .tax-toolbar .month-picker-labeled.lg-button{width:auto;max-width:100%;padding:0 16px;border-radius:999px}
 .tax-toolbar .month-picker-labeled .lg-button__label{width:auto;height:auto;gap:8px;white-space:nowrap;font-size:13px}
 .tax-toolbar .month-selector{max-width:100%}
+
+/* Responsive financial content: scroll charts locally; never shrink axis labels. */
+.financial-chart-scroll{min-width:0;max-width:100%;overflow:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
+.financial-chart-scroll:focus-visible{outline:2px solid var(--tint);outline-offset:4px;border-radius:16px}
+.financial-chart-scroll .economy-chart{min-width:440px;height:230px;margin:16px 0;overflow:hidden}
+.financial-chart-scroll .economy-chart text{font-size:14px}
+.deferred-page-status{min-height:220px;display:grid;align-content:center;justify-items:center;gap:12px;min-width:0}
+.investment-query label{min-width:min(100%,160px)}
+.investment-query select{width:100%;min-width:0;background:transparent;border:0;color:inherit;font:inherit;padding:12px}
+.investment-row>*{min-width:0;overflow-wrap:anywhere}.investment-row b{font-variant-numeric:tabular-nums}
+.search-close-toggle.lg-button{flex:none;width:44px;height:44px;min-width:44px;min-height:44px;padding:0}
+.search-close-toggle svg{width:20px;height:20px}
+@media(min-width:1100px){#app .investment-area{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+@media(max-width:699px){
+ .economy-metrics{grid-template-columns:minmax(0,1fr);gap:8px}
+ .economy-metrics button{padding:12px 16px!important;min-height:72px!important}
+ .economy-metrics .lg-button__label{display:grid;grid-template-columns:minmax(0,1fr) auto;text-align:left;gap:4px 12px}
+ .economy-metrics small{grid-column:1/-1;font-size:12px;line-height:1.4}
+ .economy-metrics strong{font-size:20px;text-align:right}
+ .economy-chart-title :is(span,small){font-size:12px}
+ .investment-query{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:12px}
+ .investment-query label{min-width:0}.investment-query>.lg-button{width:100%;min-height:44px}
+ .investment-row{flex-wrap:wrap;font-size:13px}
+ .search-pill-row{gap:6px}.search-filter-toggle.lg-button{width:44px;min-width:44px;height:44px}
+ .search-pill-input>input{width:100%;font-size:16px}
+}
+
+/* Keep day/month labels readable instead of scaling a 640px plot to 240px. */
+#app .chart-scroll :is(.daily-chart,.debt-chart){min-width:560px;width:100%}
+#app .chart-scroll :is(.daily-chart,.debt-chart) text{font-size:13px}
+
+.credit-invoice-period{display:grid;gap:8px;min-width:0;max-width:100%}
+.credit-invoice-period .month-picker-labeled.lg-button{width:auto;max-width:100%;padding:0 16px;border-radius:999px}
+.credit-invoice-period .month-picker-labeled .lg-button__label{width:auto;height:auto;gap:8px;white-space:nowrap;font-size:13px}

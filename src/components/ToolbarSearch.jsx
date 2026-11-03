@@ -20,6 +20,7 @@ export default function ToolbarSearch(){
       <form className="search-pill-row" onSubmit={e=>{e.preventDefault();search()}}>
         <GlassTextField className="search-pill-input"><button className="search-submit-icon" type="submit" aria-label="Buscar"><SearchIcon/></button><input ref={input} name="query" type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Pesquisar" aria-label="Pesquisar registros" autoComplete="off"/></GlassTextField>
         <GlassButton className="search-filter-toggle" type="button" aria-label="Filtros" aria-expanded={filtersOpen} aria-controls="searchFilterPanel" onClick={()=>setFiltersOpen(!filtersOpen)}><svg className="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>{filtered&&<span className="search-filter-dot"/>}</GlassButton>
+        <GlassButton className="search-close-toggle ib" type="button" aria-label="Fechar pesquisa" onClick={()=>dialog.current.close()}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></GlassButton>
       </form>
       {(filtersOpen||hasSearch||error)&&<div className="search-pill-popover">
         {filtersOpen&&<section id="searchFilterPanel" aria-label="Filtros de pesquisa"><div className="row search-filter-heading"><h2>Filtros</h2><GlassButton type="button" disabled={!filtered} onClick={()=>setFilters(EMPTY)}>Limpar</GlassButton></div><div className="search-filters">

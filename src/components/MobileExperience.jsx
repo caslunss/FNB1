@@ -12,12 +12,13 @@ export default function MobileExperience(){
   useEffect(()=>{
     if(!mobile){sheet.current?.close();return;}
     let frame;
+    const viewport=window.visualViewport;
     const scroll=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>document.documentElement.style.setProperty('--mobile-title-progress',Math.min(1,Math.max(0,scrollY/64))))};
-    const keyboard=()=>document.body.classList.toggle('mobile-keyboard-open',visualViewport?.scale===1&&innerHeight-visualViewport.height>160);
+    const keyboard=()=>document.body.classList.toggle('mobile-keyboard-open',!!viewport&&viewport.scale===1&&Math.max(document.documentElement.clientHeight,innerHeight)-viewport.height>160);
     const tabs=document.querySelector('#tabs'),observer=new ResizeObserver(()=>document.documentElement.style.setProperty('--mobile-tab-height',`${tabs?.getBoundingClientRect().height||70}px`));
     if(tabs)observer.observe(tabs);
-    addEventListener('scroll',scroll,{passive:true});visualViewport?.addEventListener('resize',keyboard);scroll();keyboard();
-    return()=>{cancelAnimationFrame(frame);observer.disconnect();removeEventListener('scroll',scroll);visualViewport?.removeEventListener('resize',keyboard);document.body.classList.remove('mobile-keyboard-open')};
+    addEventListener('scroll',scroll,{passive:true});viewport?.addEventListener('resize',keyboard);scroll();keyboard();
+    return()=>{cancelAnimationFrame(frame);observer.disconnect();removeEventListener('scroll',scroll);viewport?.removeEventListener('resize',keyboard);document.body.classList.remove('mobile-keyboard-open')};
   },[mobile]);
   if(!mobile)return null;
   const close=()=>sheet.current?.close();

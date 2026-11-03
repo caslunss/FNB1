@@ -16,9 +16,9 @@
  .navigation-actions{position:fixed!important;inset:auto max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))!important;display:block!important;width:calc(100% - max(12px,env(safe-area-inset-right)) - max(12px,env(safe-area-inset-left)))!important;max-width:560px!important;justify-self:stretch!important;margin:0 auto!important;z-index:70}
  body:not(.auth-page) #tabs.tabbar{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;justify-content:space-around!important;width:100%!important;max-width:560px!important;min-height:70px!important;height:auto!important;padding:4px!important;gap:0!important;border-radius:32px!important;margin:0 auto!important;box-sizing:border-box}
  #tabs button{flex:1!important;min-width:44px!important;width:auto!important;height:auto!important;min-height:58px!important;padding:4px 2px!important;border-radius:25px!important}
- #tabs button .lg-button__label{display:flex!important;flex-direction:column!important;gap:4px!important;width:100%;height:auto!important}
+ #tabs button .lg-button__label{display:flex!important;flex-direction:row!important;gap:4px!important;width:100%;height:auto!important}
  #tabs button svg{width:22px!important;height:22px!important;flex-shrink:0}
- #tabs .mobile-tab-label{display:block!important;font:600 .625rem/1.15 -apple-system,BlinkMacSystemFont,system-ui,sans-serif;text-align:center;white-space:normal;overflow-wrap:anywhere}
+ #tabs .mobile-tab-label{display:none!important}
  .mobile-bottom-actions{position:fixed;inset:auto max(16px,env(safe-area-inset-right)) calc(var(--mobile-tab-height,70px) + 22px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));display:flex;justify-content:space-between;pointer-events:none;z-index:65}
  .mobile-bottom-actions button{pointer-events:auto;width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;border-radius:999px!important}
  .mobile-bottom-actions svg{width:24px;height:24px}
@@ -69,8 +69,6 @@
  .daily-chart{height:200px!important}
 }
 @media(max-width:699px){
- #tabs.tabbar button .mobile-tab-label{display:block!important;position:static!important;inset:auto!important;opacity:1!important;visibility:visible!important;background:none!important;box-shadow:none!important;padding:0!important;margin:0!important;white-space:normal!important;border-radius:0!important}
- #tabs.tabbar button .lg-button__label{width:100%!important;position:relative!important;inset:auto!important;opacity:1!important;background:none!important;box-shadow:none!important;padding:0!important;margin:0!important}
  .account-overlay{scrollbar-width:none}.account-overlay::-webkit-scrollbar{display:none}
 }
 @media(max-width:699px){
@@ -81,4 +79,15 @@
  body:not(.auth-page) #tabs.tabbar{min-height:62px!important;padding:4px!important;gap:0!important}
  body:not(.auth-page) #tabs.tabbar button{min-width:44px!important;min-height:52px!important;flex:1 1 0!important}
  body:not(.auth-page) #tabs.tabbar button .lg-button__label{flex-direction:row!important;justify-content:center!important}
+}
+
+@media(max-width:699px){
+ /* Fullscreen login has no nested outer gutter; each half owns its padding. */
+ .auth-page .login-shell.login-fullscreen{padding:0!important;grid-template-columns:minmax(0,1fr);width:100%;min-width:0}
+ .login-introduction{padding:88px 24px 28px}
+ .login-access{padding:28px 24px calc(32px + env(safe-area-inset-bottom))}
+ .login-access-heading{min-width:0;gap:12px}.login-access-heading>div:last-child{min-width:0}
+ .login-access-heading h2{font-size:clamp(20px,5.5vw,24px);overflow-wrap:anywhere}
+ .auth-page .login-theme-control{position:fixed!important;inset:calc(env(safe-area-inset-top) + 12px) max(16px,env(safe-area-inset-right)) auto auto!important;margin:0!important;z-index:20}
+ .apple-provider button{display:grid;place-items:center}
 }

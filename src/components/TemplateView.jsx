@@ -1,8 +1,8 @@
-import Taxes from './Taxes.jsx';
+import DeferredPage from './DeferredPage.jsx';
 import SwipeLedgerRow from './SwipeLedgerRow.jsx';
 import GoalEditor from './GoalEditor.jsx';
 import FileUpload from './FileUpload.jsx';
-import CreditInvestments,{InvestmentArea} from './CreditInvestments.jsx';
+import CreditInvestments from './CreditInvestments.jsx';
 import ProgressGauge from './ProgressGauge.jsx';
 import NotificationPreferences from './NotificationPreferences.jsx';
 import ProgressiveFields from './ProgressiveFields.jsx';
@@ -84,8 +84,8 @@ function element(node, key) {
   if(node.hasAttribute('data-share-debt'))return <ShareDebt key={key}/>;
   if(node.hasAttribute('data-goal-editor'))return <GoalEditor key={key}/>;
   if(tag==='input'&&node.type==='file'){const {key:uploadKey,...fileProps}=props;return <FileUpload {...fileProps} key={uploadKey}/>;}
-  if(node.hasAttribute('data-taxes-hub'))return <Taxes key={key}/>;
-  if(node.hasAttribute('data-investments-hub'))return <InvestmentArea key={key}/>;
+  if(node.hasAttribute('data-taxes-hub'))return <DeferredPage key={key} page="taxes"/>;
+  if(node.hasAttribute('data-investments-hub'))return <DeferredPage key={key} page="investments"/>;
   if(node.hasAttribute('data-credit-investments'))return <CreditInvestments key={key}/>;
   if(node.hasAttribute('data-notification-preferences'))return <NotificationPreferences key={key}/>;
   if(node.hasAttribute('data-account-data-controls'))return <AccountDataControls key={key}/>;
