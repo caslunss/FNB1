@@ -92,7 +92,7 @@ function element(node, key) {
   if(node.hasAttribute('data-layout-settings')) return <LayoutSettings key={key}/>;
   if(node.classList.contains('segments')){
     const buttons=[...node.children].filter(n=>n.tagName==='BUTTON');
-    const fields=['data-entry-filter','data-summary-mode','data-chart','data-profile-section'];
+    const fields=['data-area-view','data-entry-filter','data-summary-mode','data-chart','data-profile-section'];
     if(buttons.length && buttons.every(n=>fields.some(field=>n.hasAttribute(field)))){
       const items=buttons.map(n=>{const kind=fields.find(field=>n.hasAttribute(field));return {kind,value:n.getAttribute(kind),label:n.textContent,selected:n.getAttribute('aria-pressed')==='true'};});
       return <FinanceSegments key={key} items={items} label={props['aria-label']||'Opções'} className={props.className}/>;

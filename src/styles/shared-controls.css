@@ -58,3 +58,17 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 .loading-skeleton-chart{height:120px;width:100%}
 @keyframes skeleton-breathe{from{opacity:.5}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.loading-skeleton>span{animation:none}}
+/* Five primary destinations; secondary choices share the existing glass segments. */
+.area-toolbar,.area-content,.summary-behavior{grid-column:1/-1;min-width:0;max-width:100%}
+.area-toolbar{display:flex;justify-content:center;margin:0 0 24px}
+.area-switch{max-width:100%}
+.area-content,.summary-behavior{display:grid;gap:24px}
+.summary-behavior{margin-top:24px}
+.area-content>*,.summary-behavior>*{min-width:0;max-width:100%}
+.area-content .shopping-section>h2{margin:20px 0}
+@media(max-width:699px){
+ .area-toolbar{margin:4px 0 20px}
+ .area-switch .lg-segmented__option{min-width:0}
+ .area-content,.summary-behavior{gap:16px}
+ .account-settings-tabs{flex-wrap:wrap}
+}

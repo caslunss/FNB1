@@ -27,23 +27,23 @@ As cores e limites estão em `src/services/layout-preferences.js`. Os valores pa
 | Área | Conteúdo e comportamento |
 | --- | --- |
 | Login | Tela dividida no desktop; conteúdo empilhado no mobile. Google, Apple e visitante conforme a configuração existente. Preservar os textos principais atuais |
-| Resumo | Pílula central com Visão geral, Comportamento e Entradas. Seletor de mês e organização de cards no mesmo grupo, sem sobreposição |
+| Resumo | Visão geral e Lançamentos. Comportamento é uma seção da Visão geral; seletor de mês e organização de cards no mesmo grupo |
 | Visão geral | Gráfico principal, distribuição, maiores gastos, categorias e dívidas. Cards em colunas quando houver espaço |
 | Comportamento | Totais e indicadores por categoria, dia e mês. Mesma largura, tipografia e superfícies do Resumo |
 | Entradas | Ações no topo, filtros em pílula, lançamentos e período. Um único acesso principal para adicionar lançamento |
 | Dívidas | Blocos de saldo, parcelas e previsão; gráfico e lista. Sem duplicar despesas |
-| Cartões | Popup próprio. Limites, faturas, vencimento, fechamento e pagamentos |
-| Ofertas | Popup com Ofertas e Compra planejada no topo. Formulários e cards ocupam a largura disponível abaixo |
+| Cartões | Dentro de Compromissos. Limites, faturas, vencimento, fechamento e pagamentos |
+| Planejamento | Compras com pesquisa de ofertas e compra planejada; Metas usa o editor financeiro existente |
 | Investimentos | Informações de ativos e economia. Dados ausentes não devem virar zero artificial |
-| Carbono | Estimativas informadas e histórico. Visibilidade opcional no Layout |
+| Análises | Impostos, Relatórios e Carbono. Carbono mantém visibilidade opcional no Layout |
 | Calendário | Popup pelo atalho superior. Seleção discreta em vidro; datas de gastos, entradas e cartões. Um único botão + abre Entrada e Gasto para o dia selecionado |
-| Amigos | Popup pelo atalho superior. Lista, convites, compartilhamento e divisão com amigos |
+| Amigos e divisões | Dentro de Compromissos. Lista, convites, compartilhamento e divisão com amigos |
 | Perfil | Popup com foto, nome, badges, classificação, assinaturas e apoio |
-| Integrações | Open Finance, Serasa e boletos; indicar indisponibilidade real |
+| Conexões | Dentro de Configurações. Open Finance, Serasa e boletos; indicar indisponibilidade real |
 | Relatórios | Histórico mensal, importar CSV e exportar backup/CSV |
-| Configurações | Abas Conta, Notificações e Layout. Conta inclui dados e encerramento de sessão |
+| Configurações | Conta, Notificações, Layout e Conexões. Conta inclui dados e encerramento de sessão |
 
-A navegação principal mantém Resumo, Dívidas, Cartões, Ofertas, Investimentos, Impostos e Carbono, respeitando as opções de visibilidade. Perfil fica à direita no conjunto superior. Não criar uma segunda rota ou botão para a mesma ação.
+A navegação principal tem cinco áreas: Resumo, Compromissos, Planejamento, Investimentos e Análises. Cartões e Carbono respeitam as opções de visibilidade dentro de seus grupos. Perfil, calendário, notificações e pesquisa permanecem no conjunto superior; amigos e relatórios usam suas áreas financeiras. Não criar uma segunda rota para a mesma ação.
 
 O seletor global de mês pertence ao Resumo. Impostos reutiliza o mesmo MonthPicker, com período próprio e rótulo visível. Meses encerrados são somente leitura. Popups não devem deslocar permanentemente o conteúdo da página nem deixar duas janelas modais interativas ao mesmo tempo.
 
@@ -263,7 +263,7 @@ Arquivos: `src/services/motion-presets.js`, `src/services/page-motion.js`, `src/
 
 Usar `MotionProvider`, `PageTransition`, `IOSButton` e os presets descritos em `ANIMACOES-IOS.md`. Molas altamente amortecidas; somente opacity, x, y e scale nas novas transições. O vidro continua estático: não animar blur, recorte ou tamanho. Respeitar movimento reduzido e impedir interação com conteúdo de saída. Não adicionar transições concorrentes de transform ao mesmo botão.
 
-No mobile, seis destinos principais aparecem somente como ícones (44 px de área mínima), com nomes acessíveis preservados. Impostos está na barra; Carbono continua em Atalhos. Investimentos usa gráfico ascendente, não cartão de crédito.
+No mobile, cinco destinos principais aparecem somente como ícones (44 px de área mínima), com nomes acessíveis preservados. Impostos e Carbono ficam dentro de Análises. Investimentos usa gráfico ascendente, não cartão de crédito.
 
 ## Revisão responsiva de 03/11/2026
 
@@ -293,7 +293,7 @@ No mobile, seis destinos principais aparecem somente como ícones (44 px de áre
 
 Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada e padrão único de seleções e calendários.
 
-- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Somente até 699 px, descer 10 px contrai a barra; subir ou pausar 650 ms restaura o estado. O topo também restaura a barra. Áreas de toque continuam com pelo menos 44 px, seis ícones e nomes acessíveis. A versão desktop mantém a navegação lateral.
+- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Somente até 699 px, descer 10 px contrai a barra; subir ou pausar 650 ms restaura o estado. O topo também restaura a barra. Áreas de toque continuam com pelo menos 44 px, cinco ícones e nomes acessíveis. A versão desktop mantém as mesmas cinco áreas no conjunto superior.
 - A exceção de movimento da barra permite transições curtas de padding e altura mínima durante scroll, sem animar blur. Foco mantém a geometria expandida. Movimento reduzido remove essas transições; transparência reduzida usa superfície opaca.
 - `shared-controls.css` centraliza campos de 48 px, raio de 24 px, foco do tema e tipografia de 16 px, tanto no aplicativo quanto em popups. Compra planejada usa o mesmo formulário progressivo e a mesma escala; preços em duas colunas quando couberem e uma coluna em telas pequenas.
 - `GlassTextField` encaminha seleções simples para `FinanceSelect`. Nos templates, o select real continua visível e preserva id, name, validação, FormData e alterações diretas do controlador. A lista compartilhada usa o topo das camadas. Seleções agrupadas, múltiplas e navegadores sem Popover conservam o controle do sistema; selects obrigatórios de React também conservam sua validação nativa.
@@ -306,3 +306,14 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Impostos mostra 50 compras por lote com Mostrar mais compras; indicadores e filtros consideram a lista inteira. Não esconder dados financeiros sem uma ação para continuar a leitura.
 - Importação bancária é carregada ao abrir, mantendo boundary de erro e placeholder. Formulários controlados pelo fluxo financeiro síncrono não ficam suspensos.
 - Consultas públicas em cache continuam exibindo sua data de consulta e oferecem atualização manual. Consulte PERFORMANCE-REACT.md para escopo e validação.
+
+
+## Navegação unificada — 03/11/2026
+
+- Compromissos: Dívidas, Cartões (se habilitado) e Amigos e divisões.
+- Planejamento: Compras (pesquisa de ofertas e compra planejada) e Metas. Atalhos de editar meta levam ao mesmo editor nesta área.
+- Análises: Impostos, Relatórios e Carbono (se habilitado). Impostos continua lazy e controla seu próprio período.
+- Resumo: somente Visão geral e Lançamentos; os indicadores e a análise de comportamento ficam abaixo dos cards na Visão geral. Não remover o consentimento de envio ao Gemini.
+- Perfil: Perfil, Configurações e Sair. Integrações passam para Configurações → Conexões. Calendário e pesquisa continuam acessíveis; no mobile, Calendário e Configurações permanecem em Atalhos.
+- Rotas antigas de cartão, amigos, ofertas, carbono e relatórios são encaminhadas ao grupo correspondente. Nenhuma chave de dados financeiros ou cálculo é migrado. Alterar a navegação não deve apagar filtros financeiros, compras, metas ou fechamentos.
+- A seleção interna fica em FinanceSegments, com foco e teclado da biblioteca. Nunca deixar uma janela modal invisível bloqueando a área recém-aberta.

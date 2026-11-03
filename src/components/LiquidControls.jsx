@@ -47,7 +47,7 @@ export function FinanceSegments({items,label,className=''}){
   const [index,setIndex]=useState(selected);
   useEffect(()=>setIndex(selected),[selected]);
   const layout=useLayout();
-  return <GlassSegmented className={`te-glass-segments ${className.replace(/\bsegments\b/g,'')}`} options={items.map(x=>mobile&&x.kind==='data-summary-mode'?({overview:'Resumo',behavior:'Hábitos',entries:'Entradas'}[x.value]||x.label):x.label)} value={index} intensity={layout.intensity} aria-label={label} onChange={next=>{
+  return <GlassSegmented className={`te-glass-segments ${className.replace(/\bsegments\b/g,'')}`} options={items.map(x=>mobile&&x.kind==='data-summary-mode'?({overview:'Resumo',behavior:'Hábitos',entries:'Lançamentos'}[x.value]||x.label):x.label)} value={index} intensity={layout.intensity} aria-label={label} onChange={next=>{
     if(!Number.isInteger(next)||!items[next])return;
     setIndex(next);
     // Let the library finish its gesture before the controller replaces the view.
