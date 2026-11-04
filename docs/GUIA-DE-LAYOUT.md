@@ -398,3 +398,26 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - FinanceGlassSwitch centraliza switches de Layout, Tema e Notificações, com o verde existente via --control-switch-on, e alinhamento de rótulos à esquerda. Checkboxes de seleção/consentimento mantêm semântica própria.
 - CalendarIcon é único para MonthPicker e DatePicker. Grade de dias tem padding zero; meses usam 8 px. Não aplicar padding de ação textual às células.
 - DatePicker encaminha a referência do consumidor ao input real. Agenda financeira, seletor mensal e seletor de dia compartilham tokens, mas preservam responsabilidades e constraints distintas.
+
+## Seletor de período da fatura
+
+- MonthPicker com showLabel usa month-selector-labeled: apenas o botão desenha a pílula; wrapper sem largura fixa ou segunda sombra. Ícone no fluxo normal, texto com quebra e mínimo de 44 px. Compartilhado por Faturas e Impostos; botão sem rótulo do Resumo preserva dimensões próprias.
+
+## Análises mobile: alinhamento de período e ações
+
+- Até 699 px, período centralizado em uma linha própria; Importar banco, adicionar análise e Atualizar compartilham grade de três colunas (1fr/44px/1fr), com o mesmo eixo e altura mínima de 44 px.
+- Indicadores tributários usam alturas e preenchimentos consistentes; notas da página não somam margens ao gap da grade. Editor tem título flexível e fechar circular de 44 px; formulário, revisão e ações usam espaçamento compartilhado.
+- Regras ficam em tax-layout.css; desktop preservado, dados e cálculos não são alterados.
+
+## Remoção segura dos estilos legados de MonthPicker
+
+- month-controls.css passa a ser a única fonte da geometria do botão mensal e de seu wrapper; layout-settings.css não mantém mais versões para select/input month, larguras de 160/170 px, ícones absolutos ou remendos por contexto.
+- Variante sem rótulo: botão 44×44 px. Variante com rótulo: largura conforme conteúdo, texto com quebra e padding 10/16 px. Material continua em FinanceGlassButton; wrapper não desenha outra superfície.
+- tax-layout.css mantém somente a responsabilidade de organizar o calendário e as ações na grade mobile. Containers flex/grid de Resumo e Fatura permanecem intactos. Hooks, eventos, dados e APIs não foram alterados nesta limpeza.
+
+## Movimento universal sem mudança de design
+
+- MOTION em services/motion-presets.js é a fonte dos presets JS e das variáveis --motion-* para CSS. universal-motion.css aplica apenas propriedades de movimento; não define geometria ou paleta.
+- IOSButton usa Motion e controles nativos usam microinterações CSS, sem dois motores sobre o mesmo transform. Foco mantém o halo original de forma imediata; movimento reduzido cancela animações em andamento.
+- Compactação da barra usa medidas por mudança de estado e escala (FLIP), preservando tamanhos finais e áreas de toque. Não interpolar largura/altura/padding do layout.
+- Ver limites e evidências em MOVIMENTO-UNIVERSAL.md; preservar fechamentos síncronos exigidos pelos fluxos de formulário.

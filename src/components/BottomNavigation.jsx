@@ -1,10 +1,22 @@
-import React,{useEffect,useRef,useState} from 'react';
+import {animate} from 'motion';
+import {APP_SPRING} from '../services/motion-presets.js';
+import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {GlassSurface} from './LiquidControls.jsx';
 import {useBottomNavigationLayout} from '../services/mobile-layout.js';
 
 export default function BottomNavigation() {
   const mobile=useBottomNavigationLayout(),host=useRef(null);
   const [compact,setCompact]=useState(false);
+  const previousSize=useRef(null);
+  useLayoutEffect(()=>{
+    const nav=host.current?.querySelector('#tabs');if(!nav)return;
+    const next={width:nav.offsetWidth,height:nav.offsetHeight,mobile,viewport:innerWidth},previous=previousSize.current;
+    previousSize.current=next;
+    if(!mobile||!previous||previous.mobile!==mobile||previous.viewport!==innerWidth||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    if(previous.width===next.width&&previous.height===next.height)return;
+    const animation=animate(nav,{scaleX:[previous.width/next.width,1],scaleY:[previous.height/next.height,1]},APP_SPRING);
+    return()=>{animation.stop();nav.style.removeProperty('transform')};
+  },[compact,mobile]);
   useEffect(()=>{
     setCompact(false);
     if(!mobile)return;

@@ -2,7 +2,7 @@ import {subscriptionSummary} from '../services/subscriptions.js';
 import {MAIN_AREAS,availableViews,resolveAreaView} from '../services/navigation.js';
 import {exportTaxData} from '../services/taxes/client.js';
 import {animate} from 'motion';
-import {APP_SPRING,FADE} from '../services/motion-presets.js';
+import {APP_SPRING,FADE,PROFILE_EXIT} from '../services/motion-presets.js';
 import {bottomNavigationViewport} from '../services/mobile-layout.js';
 import {normalizeCreditCard,cardBalances,allocateInvoicePayment,cardInvoice,cardCalendarEvents} from '../services/credit.js';
 import {getLayout} from '../services/layout-preferences.js';
@@ -539,7 +539,7 @@ function closeAccountPanel({immediate=false}={}){const dialog=$('#accountOverlay
  if(immediate||dialog.dataset.panel!=='profile'||matchMedia('(prefers-reduced-motion: reduce)').matches){dialog.close();return;}
  dialog.dataset.closing='true';dialog.inert=true;
  const done=()=>{dialog.close();dialog.inert=false;delete dialog.dataset.closing;dialog.style.removeProperty('opacity');dialog.style.removeProperty('transform')};
- animate(dialog,{opacity:0,y:8,scale:.98},{duration:.16,ease:'easeOut',onComplete:done});
+ animate(dialog,PROFILE_EXIT,{...FADE,onComplete:done});
 }
 const accountOverlay=$('#accountOverlay');if(accountOverlay){accountOverlay.addEventListener('cancel',e=>{if(accountOverlay.dataset.panel==='profile'){e.preventDefault();closeAccountPanel();}});accountOverlay.addEventListener('click',e=>{if(e.target===accountOverlay)closeAccountPanel();});accountOverlay.addEventListener('close',()=>{if(accountOverlay.open)return;accountPanel=null;document.querySelector('.app-symbol')?.setAttribute('aria-expanded','false');renderHTML($('#accountOverlayContent'),'');document.body.classList.remove('account-overlay-open');overlayOpener?.focus({preventScroll:true});});}
 document.addEventListener('click',e=>{if(e.target.closest('[data-mobile-expand]')){const expanded=$('#accountOverlay').classList.toggle('mobile-expanded');e.target.closest('[data-mobile-expand]').setAttribute('aria-expanded',String(expanded));return;}if(e.target.closest('[data-close-account]')){closeAccountPanel();return;}const tab=e.target.closest('[data-account-settings-tab]');if(tab){accountSettingsTab=tab.dataset.accountSettingsTab;renderAccountPanel();$('#settingsTab-'+accountSettingsTab)?.focus();return;}});

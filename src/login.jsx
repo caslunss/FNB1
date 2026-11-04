@@ -13,6 +13,7 @@ import './styles/login-fullscreen.css';
 import './styles/mobile.css';
 import './styles/control-surfaces.css';
 import './styles/focus.css';
+import './styles/universal-motion.css';
 import './services/auth.js';
 import Login from './components/Login.jsx';
 

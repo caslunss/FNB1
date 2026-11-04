@@ -52,3 +52,5 @@ body:not(.auth-page) .date-picker-dialog .date-picker-grid .lg-button{
 body:not(.auth-page) .month-picker-dialog .month-picker-grid .lg-button{min-width:0;min-height:44px;padding:8px!important}
 .date-picker-grid,.month-picker-grid{min-width:0}
 @media(forced-colors:active){body:not(.auth-page) .lg-switch.te-glass-switch{--lg-switch-on:Highlight;--lg-green:Highlight}}
+
+.credit-invoice-period{justify-items:start}

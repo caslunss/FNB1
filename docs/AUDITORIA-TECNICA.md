@@ -110,3 +110,8 @@ A revisão das folhas de estilo e dos consumidores não justifica apagar todas a
 - Chromium em 320, 390, 768 e 1440 px, temas claro/escuro: switches de Layout respondem a clique e Espaço, restaurando o estado; Notificações usa a mesma família compartilhada; janelas sem overflow horizontal.
 - DatePicker aberto a partir de Compra planejada: grade sem overflow nas quatro larguras, padding zero nas células e retorno do foco ao botão de calendário após Escape.
 - Suíte completa sem falhas, checagem de tipos, build, distribuição e diff sem erros. A conexão real com fornecedores e todas as combinações possíveis de conteúdo/navegador não foram certificadas.
+
+### 14. Regras históricas do seletor mensal ainda competiam na cascata
+- Causa: layout-settings.css acumulava geometrias para select nativo, input month, botão circular e botão rotulado. Correções locais de Fatura/Impostos precisavam desfazer largura fixa, sombra externa e ícone absoluto.
+- Correção visual: remoção dos blocos obsoletos e consolidação em month-controls.css, com variantes sem rótulo e com rótulo. O wrapper somente organiza; FinanceGlassButton mantém o material compartilhado.
+- Dependências verificadas: Resumo com id mes preservado, Faturas controladas por cartão, Impostos com seu próprio período, foco, Escape, largura mobile, temas. Containers de grade/flex e funcionamento de MonthPicker não foram alterados. Alterações desta etapa restritas a CSS, importação de estilo e documentação.

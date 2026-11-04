@@ -39,5 +39,5 @@
  }
 }
 :where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]){-webkit-tap-highlight-color:transparent}
-:where(input,textarea,select,.te-text-field,.month-selector){transition:border-color .18s ease,box-shadow .18s ease}
+:where(input,textarea,select,.te-text-field,.month-selector){transition:none}
 @media(prefers-reduced-motion:reduce){:where(input,textarea,select,.te-text-field,.month-selector){transition:none}}

@@ -1,12 +1,12 @@
 import {animate,hover,press} from 'motion';
-import {APP_SPRING,PRESS_SPRING,FADE,pageFrames,cardTarget} from './motion-presets.js';
+import {APP_SPRING,PRESS_SPRING,FADE,pageFrames,cardTarget,PROFILE_ENTER,MOTION} from './motion-presets.js';
 
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const running=new Map(),gestures=new WeakMap();let previous=null,pending;
 function finish(node){const active=running.get(node);if(!active)return;active.stop();running.delete(node);for(const key of ['transform','filter','backdrop-filter','opacity','will-change'])node.style.removeProperty(key);node.removeAttribute('data-motion-entering');}
 function reveal(node){
  if(!node?.isConnected)return;finish(node);
- const frames=node.matches?.('dialog[data-panel=profile]')?(reduced.matches?{opacity:[0,1]}:{opacity:[0,1],y:[12,0],scale:[.98,1]}):pageFrames(reduced.matches);node.style.willChange="transform, opacity";
+ const frames=node.matches?.('dialog[data-panel=profile]')?(reduced.matches?{opacity:[0,1]}:PROFILE_ENTER):pageFrames(reduced.matches);node.style.willChange="transform, opacity";
  node.dataset.motionEntering='';
  const animation=animate(node,frames,{...APP_SPRING,opacity:FADE,onComplete:()=>{if(running.get(node)!==animation)return;running.delete(node);for(const key of ['transform','filter','backdrop-filter','opacity','will-change'])node.style.removeProperty(key);node.removeAttribute('data-motion-entering')}});
  running.set(node,animation);
@@ -32,7 +32,7 @@ function bindCard(node){
 }
 function scan(){document.querySelectorAll('[data-tax-summary][role=button],[data-tax-summary]:is(button,a),[data-motion-card=interactive]').forEach(bindCard)}
 const observer=new MutationObserver(records=>{
- for(const record of records){if(record.type==='childList')for(const removed of record.removedNodes){if(removed.nodeType!==1||removed.isConnected)continue;for(const card of [removed,...removed.querySelectorAll('[data-motion-card-ready]')])if(gestures.has(card))card.dispatchEvent(new Event('motion-dispose'));}if(record.type==='attributes'){const node=record.target;if(node.matches('dialog.account-overlay')&&node.open)reveal(node);else if(node.matches('.month-picker-dialog')&&node.open)reveal(node);else if(node.matches('#profileMenu')&&!node.hidden)reveal(node);else if(node.matches('#scrim')&&!node.hidden)reveal(node.querySelector('.sheet'));}}
+ for(const record of records){if(record.type==='childList')for(const removed of record.removedNodes){if(removed.nodeType!==1||removed.isConnected)continue;for(const card of [removed,...removed.querySelectorAll('[data-motion-card-ready]')])if(gestures.has(card))card.dispatchEvent(new Event('motion-dispose'));}if(record.type==='attributes'){const node=record.target;if(node.matches('dialog')&&node.open)reveal(node);else if(node.matches('#profileMenu')&&!node.hidden)reveal(node);else if(node.matches('#scrim')&&!node.hidden)reveal(node.querySelector('.sheet'));}}
  scan();
 });
 function initialize(){document.documentElement.dataset.motionReady='';try{sessionStorage.removeItem('plan12-login-entry')}catch{}observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open','hidden']});scan();queue()}
@@ -48,5 +48,5 @@ window.planRouteMotion={run(commit){
  routeLeaving=true;finish(app);const oldInert=app.inert;app.inert=true;app.style.willChange='transform, opacity';
  let done=false,exit;
  const settle=()=>{if(done)return;done=true;clearTimeout(routeTimer);exit?.stop();for(const key of ['transform','opacity','will-change'])app.style.removeProperty(key);app.inert=oldInert;routeLeaving=false;const next=routeCommit;routeCommit=null;try{next?.()}finally{previous=document.body.dataset.page+':'+(app.dataset.summaryView||'');reveal(app)}};
- try{exit=animate(app,reduced.matches?{opacity:0}:{opacity:0,x:-12,scale:.99},{...APP_SPRING,opacity:FADE,onComplete:settle});routeTimer=setTimeout(settle,350)}catch{settle()}
+ try{exit=animate(app,reduced.matches?{opacity:0}:{opacity:0,x:MOTION.exitX,scale:MOTION.pageScale},{...APP_SPRING,opacity:FADE,onComplete:settle});routeTimer=setTimeout(settle,350)}catch{settle()}
 }};

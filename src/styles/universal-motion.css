@@ -1,0 +1,44 @@
+/* Motion-only layer: do not introduce geometry, palette, material or typography. */
+:where(button,a[href],summary,[role=button],[role=tab],input,select,textarea){
+ transition:opacity var(--motion-fast) var(--motion-ease);
+}
+/* Native actions use independent scale so positioned controls retain transform. */
+:where(button):not(.ios-motion-button):not(.lg-switch):not([data-t]):not(.finance-field-button):not(.app-symbol):not(.calendar-button):not(.notification-button){
+ transition:scale var(--motion-fast) var(--motion-ease),opacity var(--motion-fast) var(--motion-ease);
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ :where(button):not(.ios-motion-button):not(.lg-switch):not([data-t]):not(.finance-field-button):not(.app-symbol):not(.calendar-button):not(.notification-button):not(:disabled):not([aria-disabled=true]):hover{
+  scale:var(--motion-hover);
+ }
+}
+@media(prefers-reduced-motion:no-preference){
+ :where(button):not(.ios-motion-button):not(.lg-switch):not([data-t]):not(.finance-field-button):not(.app-symbol):not(.calendar-button):not(.notification-button):not(:disabled):not([aria-disabled=true]):active{
+  scale:var(--motion-press);
+ }
+}
+/* Disabled controls keep their established appearance and never respond to press. */
+:where(button:disabled,button[aria-disabled=true]):not(.ios-motion-button){scale:1}
+/* Focus indicators retain their existing shape/color; they appear immediately. */
+.ios-motion-button{transition-property:opacity!important}
+@media(prefers-reduced-motion:reduce){
+ .ios-motion-button{transform:none!important}
+ *,*::before,*::after{transition-duration:0s!important;transition-delay:0s!important;animation-duration:var(--motion-instant)!important;animation-delay:0s!important;animation-iteration-count:1!important}
+}
+@media(prefers-reduced-motion:no-preference){
+ .account-toolbar>button :is(svg,img){transition:scale var(--motion-fast) var(--motion-ease)}
+ .account-toolbar>button:not(:disabled):active :is(svg,img){scale:var(--motion-press)}
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .account-toolbar>button:not(:disabled):hover :is(svg,img){scale:var(--motion-hover)}
+}
+/* CSS-driven library controls share timing without replacing their gestures. */
+:where(.lg-switch,.lg-segmented,.lg-slider) :where(*),:where(.lg-switch,.lg-segmented,.lg-slider){
+ transition-duration:var(--motion-fast);transition-timing-function:var(--motion-ease);
+ transition-property:transform,opacity,scale,translate;
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ :where(summary,a[href]):not([aria-disabled=true]):hover{opacity:var(--motion-hover-opacity)}
+}
+@media(prefers-reduced-motion:no-preference){
+ :where(summary,a[href]):not([aria-disabled=true]):active{opacity:var(--motion-hover-opacity)}
+}

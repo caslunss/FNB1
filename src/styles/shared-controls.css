@@ -39,11 +39,11 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 }
 /* Reserve useful content space without animating layout or glass filters. */
 .loading-skeleton{display:grid;gap:16px;min-height:220px;padding:16px 0}
-.loading-skeleton>span{display:block;border-radius:16px;background:var(--fill);animation:skeleton-breathe 1.4s ease-in-out infinite alternate}
+.loading-skeleton>span{display:block;border-radius:16px;background:var(--fill);animation:skeleton-breathe var(--motion-skeleton) var(--motion-ease) infinite alternate}
 .loading-skeleton-line{height:16px;width:65%}
 .loading-skeleton-value{height:32px;width:40%}
 .loading-skeleton-chart{height:120px;width:100%}
-@keyframes skeleton-breathe{from{opacity:.5}to{opacity:1}}
+@keyframes skeleton-breathe{from{opacity:var(--motion-subtle-opacity)}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.loading-skeleton>span{animation:none}}
 /* Five primary destinations; secondary choices share the existing glass segments. */
 .area-toolbar,.area-content,.summary-behavior{grid-column:1/-1;min-width:0;max-width:100%}

@@ -13,3 +13,6 @@ html[data-motion-ready] :is(#accountOverlay[open],#profileMenu,#scrim .sheet){an
 .ios-motion-button{scale:1!important;translate:none!important;touch-action:manipulation}
 html[data-motion-ready] :is(dialog.account-overlay[open],.month-picker-dialog[open],.mobile-shortcuts-sheet[open]){animation:none!important}
 .ios-page-frame{min-width:0}.smooth-state{min-height:100px}
+
+/* Native dialogs share one entry controller, including search and shortcuts. */
+html[data-motion-ready] dialog[open]{animation:none!important}

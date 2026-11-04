@@ -32,7 +32,7 @@
 @media(forced-colors:active){.auth-page .login-shell{background:Canvas!important;border-color:CanvasText}.auth-page .login-shell::before,.auth-page .login-shell::after{display:none}}
 
 /* Match the app capsule controls, with quiet depth instead of glow. */
-.auth-page .background-motion{box-sizing:border-box;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid var(--form-border);background:transparent;color:var(--tintT);font:600 13px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;box-shadow:var(--control-shadow);backdrop-filter:none;-webkit-backdrop-filter:none;transition:box-shadow .16s ease,border-color .16s ease}
+.auth-page .background-motion{box-sizing:border-box;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid var(--form-border);background:transparent;color:var(--tintT);font:600 13px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;box-shadow:var(--control-shadow);backdrop-filter:none;-webkit-backdrop-filter:none;transition:none}
 .auth-page .background-motion:hover{border-color:var(--tint)}.auth-page .background-motion:active{box-shadow:var(--control-pressed)}.auth-page .background-motion:focus-visible{outline:2px solid var(--tint);outline-offset:3px}
 :root[data-theme="dark"] .auth-page .login-shell{border-color:rgba(231,239,240,.13)}
 @media(prefers-reduced-motion:reduce){.auth-page .background-motion{transition:none}}
