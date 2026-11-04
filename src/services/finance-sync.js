@@ -103,3 +103,5 @@
  }
  root.planCloud={async prepare(){if(controller)return controller.state;await root.planAuth.ready;const {user,client,storage}=root.planAuth;if(!user||!client)return {mode:'guest'};controller=createFinanceSync({storage,remote:adapter(client,user.id),onState:renderState});bindUI();return controller.prepare();},stop:()=>controller?.stop(),capture:text=>controller?.capture(text),connect:hooks=>controller?.connect(hooks),flush:()=>controller?.flush(),get state(){return controller?.state||{mode:'guest'};}};
 })(typeof window!=='undefined'?window:globalThis);
+
+export const cloud=typeof window!=='undefined'?window.planCloud:undefined;

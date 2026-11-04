@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const source=fs.readFileSync('src/finance/workspace.js','utf8');
+const source=require('./controller-source.cjs');
 const start=source.indexOf('function tiles(m,it){'),end=source.indexOf('\nconst categoryPercent=',start);
 let limit=100;
 const context={CATS:['Teste'],sum:items=>items.reduce((total,item)=>total+item.v,0),lim:()=>limit,esc:x=>x,brl:x=>String(x)};

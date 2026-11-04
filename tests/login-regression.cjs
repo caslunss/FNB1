@@ -1,12 +1,12 @@
 'use strict';
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const code=fs.readFileSync('src/services/auth.js','utf8').replace(/^import[^;]+;/gm,'').replace('createClient(', 'supabase.createClient(');
+const code=fs.readFileSync('src/services/auth.js','utf8').replace(/^import[^;]+;/gm,'').replace('export const auth = ','').replace('createClient(', 'supabase.createClient(');
 const config=JSON.parse(fs.readFileSync('public/assets/auth-config.json','utf8'));
 async function fixture({mode='local',id='user-a',invalid=false,fail=false,transition,exitTransition,logoutError=false,hash=''}={}){
  const local={plan12workspace_v3:'guest-original'},session={'plan12-access':mode,'plan12-guest-name':'Visitante','plan12guest:plan12workspace_v3':'guest-session'},navigation=[];let eventHandler,received,restored=false;
  const storage=o=>({getItem:k=>o[k]??null,setItem:(k,v)=>o[k]=v,removeItem:k=>delete o[k],get length(){return Object.keys(o).length},key:i=>Object.keys(o)[i]});
  const client={auth:{getUser:async()=>({data:{user:invalid?null:{id,email:'test@example.com'}},error:invalid?Error('invalid'):null}),onAuthStateChange:fn=>eventHandler=fn,signInWithIdToken:async args=>{received=args;return {error:invalid?Error('invalid'):null}},signOut:async()=>{eventHandler?.('SIGNED_OUT',null);return {error:logoutError?Error('offline'):null}}}};
- const c={exitSurface:()=>({finished:exitTransition||Promise.resolve(),restore(){restored=true}}),document:{getElementById:()=>null},window:{localStorage:storage(local),planLoginTransition:transition},sessionStorage:storage(session),location:{hash,replace:x=>navigation.push(x),assign:x=>navigation.push(x)},fetch:async()=>{if(fail)throw Error('offline');return {ok:true,json:async()=>config}},supabase:{createClient:()=>client}};
+ const c={AbortSignal,exitSurface:()=>({finished:exitTransition||Promise.resolve(),restore(){restored=true}}),document:{getElementById:()=>null},window:{localStorage:storage(local),planLoginTransition:transition},sessionStorage:storage(session),location:{hash,replace:x=>navigation.push(x),assign:x=>navigation.push(x)},fetch:async()=>{if(fail)throw Error('offline');return {ok:true,json:async()=>config}},supabase:{createClient:()=>client}};
  vm.runInNewContext(code,c);await c.window.planAuth.ready;
  return {api:c.window.planAuth,local,session,navigation,eventHandler,get restored(){return restored},get received(){return received}};
 }

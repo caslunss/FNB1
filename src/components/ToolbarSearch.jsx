@@ -1,3 +1,4 @@
+import {finance} from '../services/finance-runtime.ts';
 import React,{useEffect,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
 import {GlassSurface,GlassTextField,FinanceGlassButton as GlassButton} from './LiquidControls.jsx';
@@ -10,7 +11,7 @@ export default function ToolbarSearch(){
   const [active,setActive]=useState(false),[query,setQuery]=useState(''),[filters,setFilters]=useState(EMPTY),[filtersOpen,setFiltersOpen]=useState(false),[result,setResult]=useState({rows:[],total:0}),[error,setError]=useState('');
   const filtered=Object.values(filters).some(Boolean),hasSearch=!!query.trim()||filtered;
   function open(){setQuery('');setFilters(EMPTY);setFiltersOpen(false);setError('');setResult({rows:[],total:0});setActive(true);dialog.current.showModal();input.current?.focus();}
-  function search(){try{const values={...filters,query};for(const k of ['min','max']){if(values[k]==='')delete values[k];else values[k]=Math.round(Number(values[k])*100);}if(values.min>values.max||values.from&&values.to&&values.from>values.to)throw Error('Revise os intervalos.');setResult(hasSearch?(window.planSearchRecords?.(values)||{rows:[],total:0}):{rows:[],total:0});setError('');}catch(err){setError(err.message);setResult({rows:[],total:0});}}
+  function search(){try{const values={...filters,query};for(const k of ['min','max']){if(values[k]==='')delete values[k];else values[k]=Math.round(Number(values[k])*100);}if(values.min>values.max||values.from&&values.to&&values.from>values.to)throw Error('Revise os intervalos.');setResult(hasSearch?(finance.searchRecords?.(values)||{rows:[],total:0}):{rows:[],total:0});setError('');}catch(err){setError(err.message);setResult({rows:[],total:0});}}
   useEffect(()=>{if(!active)return;const timer=setTimeout(search,140);return()=>clearTimeout(timer)},[active,query,filters]);
   useEffect(()=>{const onKey=e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&!document.querySelector('#scrim:not([hidden]),dialog[open]')){e.preventDefault();open();}};window.addEventListener('keydown',onKey);return()=>window.removeEventListener('keydown',onKey)},[]);
   useEffect(()=>{const show=()=>open();addEventListener('plan-mobile-search',show);return()=>removeEventListener('plan-mobile-search',show)},[]);
@@ -29,7 +30,7 @@ export default function ToolbarSearch(){
           <label>De<GlassTextField><input name="from" type="date" value={filters.from} onChange={change}/></GlassTextField></label><label>Até<GlassTextField><input name="to" type="date" value={filters.to} onChange={change}/></GlassTextField></label>
           <label>Mínimo (R$)<GlassTextField><input name="min" type="number" min="0" step=".01" value={filters.min} onChange={change}/></GlassTextField></label><label>Máximo (R$)<GlassTextField><input name="max" type="number" min="0" step=".01" value={filters.max} onChange={change}/></GlassTextField></label>
         </div></section>}
-        {error?<p className="bad" role="alert">{error}</p>:hasSearch&&<><p className="foot" role="status">{result.total} resultado(s){result.total>100?' · 100 mais recentes':''}</p><div className="search-results">{result.rows.map(row=><button className="search-result" key={row.type+row.id} type="button" onClick={()=>{dialog.current.close();requestAnimationFrame(()=>window.planOpenSearchResult(row))}}><span>{row.name}<small>{LABELS[row.type]} · {row.category} · {row.date||'Sem data'}</small></span><b>{(row.cents/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</b></button>)}</div></>}
+        {error?<p className="bad" role="alert">{error}</p>:hasSearch&&<><p className="foot" role="status">{result.total} resultado(s){result.total>100?' · 100 mais recentes':''}</p><div className="search-results">{result.rows.map(row=><button className="search-result" key={row.type+row.id} type="button" onClick={()=>{dialog.current.close();requestAnimationFrame(()=>finance.openSearchResult(row))}}><span>{row.name}<small>{LABELS[row.type]} · {row.category} · {row.date||'Sem data'}</small></span><b>{(row.cents/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</b></button>)}</div></>}
       </div>}
     </div>
   </dialog>,document.body)}</>;

@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const source=fs.readFileSync('src/finance/workspace.js','utf8');
+const source=require('./controller-source.cjs');
 (async()=>{
  const {MAIN_AREAS,availableViews,resolveAreaView}=await import('../src/services/navigation.js');
  assert.deepEqual(MAIN_AREAS.map(x=>x.label),['Resumo','Compromissos','Planejamento','Investimentos','Análises']);

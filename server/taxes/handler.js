@@ -1,7 +1,14 @@
+import {TAX_SERVER_TIMEOUT_MS} from '../../src/services/taxes/limits.js';
 import {normalizeInput,fingerprint,validDay,taxToday} from '../../src/services/taxes/domain.js';
 import {calculate,TaxError} from './ibpt.js';
 const allowed=['https://tefinance.netlify.app','https://plan-desktop-lucas.silverelk9.chatgpt.site','http://terminal.local:4173'];
 export async function handleTax(req,env,net=fetch){
+ const transport=net,deadline=AbortSignal.timeout(TAX_SERVER_TIMEOUT_MS);
+ net=async(url,options={})=>{
+  try{return await transport(url,{...options,signal:options.signal?AbortSignal.any([deadline,options.signal]):deadline})}
+  catch(error){if(deadline.aborted)throw new TaxError('A análise excedeu o tempo disponível. Atualize antes de tentar novamente.',504);throw error}
+ };
+
  const origins=[...allowed];
  for(const value of [env.APP_ORIGIN,...[env.VERCEL_PROJECT_PRODUCTION_URL,env.VERCEL_URL].filter(Boolean).map(x=>'https://'+x)]){try{const url=new URL(value);if(url.protocol==='https:'&&!url.username&&!url.password&&url.pathname==='/')origins.push(url.origin)}catch{}}
  const origin=req.headers.get('origin'),headers={'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Vary':'Origin',...(origins.includes(origin)?{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Headers':'authorization,apikey,content-type','Access-Control-Allow-Methods':'POST,OPTIONS'}:{})};

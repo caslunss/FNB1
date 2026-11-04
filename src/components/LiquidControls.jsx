@@ -1,3 +1,4 @@
+import {finance} from '../services/finance-runtime.ts';
 import DatePicker from './DatePicker.jsx';
 import FinanceSelect from './FinanceSelect.jsx';
 import IOSButton from './motion/IOSButton.tsx';
@@ -78,10 +79,10 @@ export function GlassTextField({children,className='',nativeSelect=false}){
 }
 
 export function FinanceActionMenu({descriptor,label,icon,className='',items:givenItems,disabled=false}){
-  disabled=disabled||!!(window.planIsMonthClosed?.()&&descriptor?.kind!=='summary'&&descriptor?.a!=='addmonth');
+  disabled=disabled||!!(finance.isMonthClosed?.()&&descriptor?.kind!=='summary'&&descriptor?.a!=='addmonth');
   const ref=useRef(null);const [placement,setPlacement]=useState({align:'end',width:220});
   useLayoutEffect(()=>{const measure=()=>{const r=ref.current?.getBoundingClientRect();if(!r)return;const align=r.right>=232?'end':'start';setPlacement({align,width:Math.max(140,Math.min(220,align==='start'?innerWidth-r.left-12:r.right-12))});};measure();const observer=new ResizeObserver(measure);if(ref.current)observer.observe(ref.current);window.addEventListener('resize',measure);return()=>{observer.disconnect();window.removeEventListener('resize',measure)}},[]);
-  const items=givenItems||window.planActionItems?.(descriptor)||[];
+  const items=givenItems||finance.actionItems?.(descriptor)||[];
   return <span ref={ref} className={`te-action-menu ${className}`} data-actions-menu="" inert={disabled||undefined} aria-disabled={disabled||undefined}><GlassMenu icon={icon} aria-label={label||'Ações'} align={placement.align} width={placement.width} items={items.map(item=>({...item,onSelect:()=>{ref.current?.querySelector('button')?.focus();item.onSelect?.();}}))}/></span>;
 }
 

@@ -508,3 +508,18 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Não criar carteiras, destinatários, quantias ou horários fictícios. Datas sem horário mostram apenas dia/mês; registros sem data ficam em Sem data. Divisões mostram destinatário somente se o nome de usuário já estiver disponível.
 - Escape/backdrop/fechar usam o mesmo estado do controlador. O dialog contém foco e o fechamento restaura a rolagem; configurações abre a seção Notificações existente. A barra inferior respeita a ocultação já aplicada a dialogs.
 - tests/notifications.browser.cjs verifica gasto real de teste, leitura persistida, filtros, Escape, destinos/configurações e 320/390/768/1440 px em claro/escuro. Executar com Vite ativo e PLAYWRIGHT_MODULE apontando para o Playwright instalado, quando necessário.
+
+## Revisão de arquitetura e consistência
+
+- A central de notificações utiliza snapshots tipados e monta a lista somente quando aberta. Agrupamento de datas fica em seletor puro; materiais e textos secundários reutilizam os tokens existentes.
+- Fechar pelo navegador, por Escape, backdrop ou botão mantém o controlador sincronizado. Preferências de notificações acompanham eventos entre abas da mesma conta.
+- Login tem retry e mensagens de conexão/configuração/timeout sem mudar os provedores. Restaurar layout explica os parâmetros globais e os do tema atual.
+- Não eliminar CSS compartilhado em massa: migrar a geometria por componente com testes. Evidências e limites em REVISAO-ARQUITETURA-UI.md.
+
+## Fundação global de estilos e API modular
+
+- design-tokens.css é a fonte das dimensões e espaços compartilhados. As preferências de paleta/vidro permanecem em layout-preferences.js. Nenhuma alteração pode duplicar a base financeira para alimentar uma nova tela.
+- Componentes React importam finance-runtime e serviços de sessão; window.plan* fica apenas na compatibilidade externa. Cartões, metas e impostos usam useFinanceSnapshot; a persistência continua passando pelas validações/rollback canônicos.
+- Apresentações por área ficam em finance/views e cálculos sem efeitos em finance/calculations.js. O adaptador de templates é uma fronteira de compatibilidade explícita, sem eval ou execução de código de documentos.
+- Rodar check:styles e as regressões de arquitetura/design após alterações globais. Remover somente declarações comprovadamente sobrescritas; não substituir !important por seletores artificiais para reduzir uma contagem.
+- Evidências, contratos e limites em MIGRACAO-ESTRUTURAL-E-DESIGN.md. Essa documentação atualiza o estágio descrito na revisão anterior.

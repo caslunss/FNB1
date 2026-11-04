@@ -1,7 +1,7 @@
 /* Size the overview by its content area, including layouts with a side panel. */
 #app.layout-r[data-summary-view=overview]{
  container:overview-grid / inline-size;
- display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--content-card-gap,24px);align-items:stretch;
+ display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--content-card-gap,var(--ui-space-6));align-items:stretch;
 }
 #app.layout-r[data-summary-view=overview]>[data-card-key]{
  grid-column:1/-1!important;grid-row:auto!important;min-width:0;min-height:0!important;
@@ -11,9 +11,9 @@
  display:grid;grid-template-columns:minmax(0,1fr);gap:var(--content-card-gap);padding:0!important;align-items:stretch;
 }
 #app.layout-r[data-summary-view=overview] .summary-behavior>.finance-layout-card{align-self:stretch}
-#app.layout-r[data-summary-view=overview] .chart-toolbar{flex-wrap:wrap;align-items:center;gap:12px}
+#app.layout-r[data-summary-view=overview] .chart-toolbar{flex-wrap:wrap;align-items:center;gap:var(--ui-space-3)}
 #app.layout-r[data-summary-view=overview] .chart-caption{margin-left:auto;line-height:1.5}
-#app.layout-r[data-summary-view=overview] .chart-legend{flex-wrap:wrap;gap:10px 20px}
+#app.layout-r[data-summary-view=overview] .chart-legend{flex-wrap:wrap;gap:10px var(--ui-space-5)}
 #app.layout-r[data-summary-view=overview] .category-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));align-items:start}
 @container overview-grid (min-width:680px){
  #app.layout-r[data-summary-view=overview]>.card[data-card-key]{grid-column:span 6!important}

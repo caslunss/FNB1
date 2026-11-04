@@ -1,5 +1,5 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const source=fs.readFileSync('src/finance/workspace.js','utf8');
+const source=require('./controller-source.cjs');
 const ctx=vm.createContext({identitySettingsView:()=>'<div>Identificação</div>',financeToolsView:()=>'<section>Importar CSV</section>',cloudSettingsView:()=>'<section>Sincronização</section>',closedReportsView:()=>'<section>Relatório fechado preservado</section>',window:{planAuth:{user:null},localStorage:{getItem:()=>null}}});
 vm.runInContext(source.slice(source.indexOf('function accountSettingsView(){'),source.indexOf('function vSettings(){')),ctx);
 const account=ctx.accountSettingsView(),reports=ctx.reportsView();

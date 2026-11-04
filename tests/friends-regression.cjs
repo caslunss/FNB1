@@ -1,5 +1,5 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const src=fs.readFileSync('src/finance/workspace.js','utf8');
+const src=require('./controller-source.cjs');
 const c=vm.createContext({social:{friends:[{sender:'me',recipient:'yes',status:'accepted'},{sender:'me',recipient:'no',status:'pending'}]},socialUser:()=> 'me',usernames:{yes:'ana&bia'},esc:x=>String(x).replaceAll('&','&amp;').replaceAll('"','&quot;'),shoppingMoney:n=>(n/100).toFixed(2).replace('.',',')});
 vm.runInContext(src.slice(src.indexOf('function friendCode('),src.indexOf('function socialView(')),c);
 let form=vm.runInContext("friendDivisionForm({name:'Produto',priceCents:10001,shippingCents:999})",c);

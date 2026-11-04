@@ -40,6 +40,7 @@ export default function Login(){
       </LoginItem>
       <LoginItem><GlassButton id="guestToggle" className="local-link" type="button" intensity={3} aria-expanded="false" aria-controls="guestForm">Continuar como visitante</GlassButton></LoginItem>
       <form id="guestForm" hidden><label htmlFor="guestName" className="lg-input__label">Seu nome</label><GlassTextField><input id="guestName" name="name" autoComplete="given-name" maxLength={60} required/></GlassTextField><p className="guest-note">Dados temporários nesta aba do navegador.</p><GlassButton className="local-link" type="submit" intensity={3}>Entrar</GlassButton><p id="guestStatus" className="login-error" role="status"/></form>
+      <GlassButton id="loginRetry" type="button" hidden>Tentar novamente</GlassButton>
       <p id="loginStatus" className="sr-only" role="status" aria-live="polite">Carregando login Google.</p></div>
       </LoginEntrance>
     </main>

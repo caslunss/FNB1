@@ -8,37 +8,37 @@ body:not(.auth-page) .te-text-field:focus-within{border-color:var(--tint)}
 body:not(.auth-page) .te-text-field:has(:disabled){opacity:.55}
 :is(#app,.account-panel-body) .te-compact-form.product-form{display:block;width:100%;min-width:0;box-sizing:border-box}
 :is(#app,.account-panel-body) .product-form .progressive-basics{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
-:is(#app,.account-panel-body) .product-form :is(.progressive-basics,.progressive-advanced)>label:not(.chk){display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0}
+:is(#app,.account-panel-body) .product-form :is(.progressive-basics,.progressive-advanced)>label:not(.chk){display:flex;flex-direction:column;align-items:stretch;gap:var(--ui-space-2);min-width:0}
 :is(#app,.account-panel-body) .product-form .progressive-basics>.full{grid-column:1/-1}
 :is(#app,.account-panel-body) .product-form .progressive-main{align-items:flex-start}
-:is(#app,.account-panel-body) .product-form .progressive-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;min-width:0}
+:is(#app,.account-panel-body) .product-form .progressive-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--ui-space-3);min-width:0}
 :is(#app,.account-panel-body) .product-form .progressive-actions>.full{flex-basis:100%;min-width:0}
-:is(#app,.account-panel-body) .plan-actions{align-items:center;gap:12px}
+:is(#app,.account-panel-body) .plan-actions{align-items:center;gap:var(--ui-space-3)}
 .date-field{position:relative;display:block;width:100%}
 body:not(.auth-page) .date-field .te-text-field{padding-right:52px!important;border-radius:24px}
 body:not(.auth-page) .date-field input[type=date]{min-height:48px!important;color-scheme:light}
 :root[data-theme=dark] .date-field input[type=date]{color-scheme:dark}
 .date-field input::-webkit-calendar-picker-indicator{display:none}
-body:not(.auth-page) .date-picker-open.lg-button{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border-radius:999px}
+body:not(.auth-page) .date-picker-open.lg-button{position:absolute;right:4px;width:44px;min-width:var(--ui-touch-target);height:44px;min-height:var(--ui-touch-target);padding:0;border-radius:var(--ui-radius-pill)}
 .date-picker-open svg{position:static;width:20px;height:20px}
 .month-picker-dialog{box-sizing:border-box;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;background:var(--form-surface);color:var(--lb);border:1px solid var(--form-border);box-shadow:var(--lg-shadow)}
-.date-picker-dialog{width:400px;padding:20px;border-radius:28px}
+.date-picker-dialog{width:400px;padding:var(--ui-space-5);border-radius:var(--ui-radius-card)}
 .date-picker-dialog .month-picker-year strong{font-size:16px;text-align:center;text-transform:capitalize}
-.date-picker-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+.date-picker-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--ui-space-1);text-align:center}
 .date-picker-grid .cal-weekday{padding:10px 0;font-size:11px;color:var(--lb2)}
-body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-height:44px;padding:0;border-radius:999px;font-size:14px}
+body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-height:var(--ui-touch-target);padding:0;border-radius:var(--ui-radius-pill);font-size:14px}
 :is(.date-picker-grid,.month-picker-grid) [aria-pressed=true],.calendar-card .cal-day.selected{background:var(--lg-segment-selection)!important;color:var(--lb)!important;box-shadow:inset 0 0 0 1px var(--tint)}
-.calendar-card .cal-nav{display:flex;align-items:center;gap:8px}
-.calendar-card .cal-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
-.calendar-card .cal-day{min-width:0;min-height:44px;border-radius:18px}
+.calendar-card .cal-nav{display:flex;align-items:center;gap:var(--ui-space-2)}
+.calendar-card .cal-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--ui-space-1)}
+.calendar-card .cal-day{min-width:0;min-height:var(--ui-touch-target);border-radius:18px}
 :is(.date-picker-grid,.month-picker-grid,.calendar-card) button:focus-visible{outline:2px solid var(--tint);outline-offset:2px}
 @media(max-width:520px){
  :is(#app,.account-panel-body) .product-form :is(.progressive-basics,.progressive-advanced){grid-template-columns:minmax(0,1fr)}
- .date-picker-dialog{padding:12px}
+ .date-picker-dialog{padding:var(--ui-space-3)}
  .date-picker-grid{gap:0}
 }
 /* Reserve useful content space without animating layout or glass filters. */
-.loading-skeleton{display:grid;gap:16px;min-height:220px;padding:16px 0}
+.loading-skeleton{display:grid;gap:var(--ui-space-4);min-height:220px;padding:var(--ui-space-4) 0}
 .loading-skeleton>span{display:block;border-radius:16px;background:var(--fill);animation:skeleton-breathe var(--motion-skeleton) var(--motion-ease) infinite alternate}
 .loading-skeleton-line{height:16px;width:65%}
 .loading-skeleton-value{height:32px;width:40%}
@@ -47,16 +47,16 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 @media(prefers-reduced-motion:reduce){.loading-skeleton>span{animation:none}}
 /* Five primary destinations; secondary choices share the existing glass segments. */
 .area-toolbar,.area-content,.summary-behavior{grid-column:1/-1;min-width:0;max-width:100%}
-.area-toolbar{display:flex;justify-content:center;margin:0 0 24px}
+.area-toolbar{display:flex;justify-content:center;margin:0 0 var(--ui-space-6)}
 .area-switch{max-width:100%}
-.area-content,.summary-behavior{display:grid;gap:24px}
-.summary-behavior{margin-top:24px}
+.area-content,.summary-behavior{display:grid;gap:var(--ui-space-6)}
+.summary-behavior{margin-top:var(--ui-space-6)}
 .area-content>*,.summary-behavior>*{min-width:0;max-width:100%}
-.area-content .shopping-section>h2{margin:20px 0}
+.area-content .shopping-section>h2{margin:var(--ui-space-5) 0}
 @media(max-width:699px){
- .area-toolbar{margin:4px 0 20px}
+ .area-toolbar{margin:var(--ui-space-1) 0 var(--ui-space-5)}
  .area-switch .lg-segmented__option{min-width:0}
- .area-content,.summary-behavior{gap:16px}
+ .area-content,.summary-behavior{gap:var(--ui-space-4)}
  .account-settings-tabs{flex-wrap:wrap}
 }
 /* Shared card geometry: spending habits and every planning item use this surface. */
@@ -65,31 +65,31 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 #app :is(.summary-behavior,.planning-grid) .finance-layout-card{
  box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:0;
  margin:0!important;padding:var(--content-card-padding)!important;
- border:1px solid var(--form-border);border-radius:var(--pill-radius,28px)!important;
+ border:1px solid var(--form-border);border-radius:var(--pill-radius,var(--ui-radius-card))!important;
  box-shadow:var(--lg-shadow)!important;--lg-glass-fill:var(--lg-panel-fill);
 }
 .finance-layout-card :is(h2,h3){overflow-wrap:anywhere;line-height:1.35}
-.finance-layout-card>h2{font-size:18px;margin:0 0 16px}
-.finance-layout-card>p{line-height:1.65;margin:12px 0 0}
-.habits-summary-card .overview-total,.planning-value{display:block;font-size:clamp(28px,3vw,36px);line-height:1.15;overflow-wrap:anywhere;margin:16px 0;font-variant-numeric:tabular-nums}
-.summary-behavior .habit-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:16px}
+.finance-layout-card>h2{font-size:18px;margin:0 0 var(--ui-space-4)}
+.finance-layout-card>p{line-height:1.65;margin:var(--ui-space-3) 0 0}
+.habits-summary-card .overview-total,.planning-value{display:block;font-size:clamp(28px,3vw,36px);line-height:1.15;overflow-wrap:anywhere;margin:var(--ui-space-4) 0;font-variant-numeric:tabular-nums}
+.summary-behavior .habit-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:var(--ui-space-4)}
 .summary-behavior .habit-bars>*,.finance-layout-card .row>*{min-width:0}
 .summary-behavior .finance-layout-card:last-child{grid-column:1/-1}
 .planning-grid .planning-results{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);min-width:0}
 .planning-grid .planning-results:empty{display:none}
 .planning-query-status,.planning-grid .purchase-review{grid-column:1/-1}
-.planning-editor-card .te-action-editor>details{margin:16px 0 0}
+.planning-editor-card .te-action-editor>details{margin:var(--ui-space-4) 0 0}
 .planning-editor-card .product-form{margin:0;padding:0;border:0;background:transparent;box-shadow:none}
-.planning-grid .plan-card .row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.planning-grid .plan-card .row{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--ui-space-4);flex-wrap:wrap}
 .planning-grid .plan-card .row>div{flex:1 1 180px}
 .planning-grid .plan-card .row>strong{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.planning-grid .plan-actions{display:flex;gap:12px;flex-wrap:wrap}
+.planning-grid .plan-actions{display:flex;gap:var(--ui-space-3);flex-wrap:wrap}
 .planning-grid :is(.plan-link,.foot,li){overflow-wrap:anywhere}
 .planning-grid .product-photo{max-width:100%;height:auto;object-fit:contain;border-radius:16px}
 .planning-grid :is(.compact-form,.progressive-fields,.plan-projection,.te-action-editor,.finance-layout-card form){min-width:0;max-width:100%}
 .planning-grid .compact-form>.progressive-fields{grid-column:1/-1}
 .planning-grid .product-form .progressive-basics{grid-template-columns:minmax(0,1fr)}
-:is(#app,.account-panel-body) .product-form label.chk{display:flex;flex-direction:row;align-items:center;gap:12px;min-height:44px}
+:is(#app,.account-panel-body) .product-form label.chk{display:flex;flex-direction:row;align-items:center;gap:var(--ui-space-3);min-height:var(--ui-touch-target)}
 .planning-goal-card .goal-planner{margin:0}
 .planning-goal-card .goal-planner fieldset{grid-template-columns:minmax(0,1fr)}
 @media(max-width:767px){
@@ -111,28 +111,28 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 /* Product goals reuse the planning card and form scale. */
 .product-goals-host{grid-column:1/-1;min-width:0}
 .product-goals{display:grid;gap:var(--content-card-gap);min-width:0}
-.product-goal-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.product-goal-fields>label{display:grid;gap:8px;min-width:0;font-size:13px}
+.product-goal-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--ui-space-4)}
+.product-goal-fields>label{display:grid;gap:var(--ui-space-2);min-width:0;font-size:13px}
 .product-goal-report{min-width:0}
-.product-goal-report h3{font-size:16px;margin:20px 0 12px}
-.product-goals .row{flex-wrap:wrap;align-items:center;gap:12px}
+.product-goal-report h3{font-size:16px;margin:var(--ui-space-5) 0 var(--ui-space-3)}
+.product-goals .row{flex-wrap:wrap;align-items:center;gap:var(--ui-space-3)}
 .product-goals h2{overflow-wrap:anywhere}
-.product-goals .plan-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.product-goals .plan-actions{display:flex;flex-wrap:wrap;gap:var(--ui-space-3);margin-top:var(--ui-space-4)}
 @media(max-width:699px){.product-goal-fields{grid-template-columns:minmax(0,1fr)}}
 /* One ledger toolbar, grouped dates and optional history, using existing tokens. */
-#app.layout-i .entry-summary{margin:0;padding:18px 20px;gap:12px}
-#app.layout-i .entry-summary strong{font-size:18px;margin-top:4px}
+#app.layout-i .entry-summary{margin:0;padding:18px var(--ui-space-5);gap:var(--ui-space-3)}
+#app.layout-i .entry-summary strong{font-size:18px;margin-top:var(--ui-space-1)}
 #app.layout-i .entry-summary .ledger-balance strong{font-size:22px}
-#app.layout-i .entry-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;flex-wrap:wrap}
+#app.layout-i .entry-toolbar{display:flex;align-items:center;justify-content:space-between;gap:var(--ui-space-3);margin:0;flex-wrap:wrap}
 #app.layout-i .entry-toolbar .te-glass-segments{margin:0;flex:0 1 auto;max-width:100%}
 #app.layout-i .entry-toolbar>.te-action-menu{margin-left:auto;flex:none}
-.ledger-date{font-size:13px;font-weight:600;color:var(--lb2);margin:24px 0 8px}
+.ledger-date{font-size:13px;font-weight:600;color:var(--lb2);margin:var(--ui-space-6) 0 var(--ui-space-2)}
 .ledger-date:first-child{margin-top:0}
-.ledger-evolution>summary{cursor:pointer;min-height:44px;align-content:center;font-weight:600}
-.ledger-evolution-content{margin-top:16px;min-width:0}
+.ledger-evolution>summary{cursor:pointer;min-height:var(--ui-touch-target);align-content:center;font-weight:600}
+.ledger-evolution-content{margin-top:var(--ui-space-4);min-width:0}
 @media(max-width:699px){
- #app.layout-i .entry-summary{padding:16px;gap:8px!important}
- #app.layout-i .entry-summary>div{padding-bottom:8px}
+ #app.layout-i .entry-summary{padding:var(--ui-space-4);gap:var(--ui-space-2)!important}
+ #app.layout-i .entry-summary>div{padding-bottom:var(--ui-space-2)}
  #app.layout-i .entry-summary>div:last-child{padding-bottom:0;border-bottom:0}
  #app.layout-i .entry-toolbar .te-glass-segments{flex-basis:auto;width:auto;order:0}
  #app.layout-i .entry-toolbar>.te-action-menu{margin-left:0}

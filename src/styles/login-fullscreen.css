@@ -9,19 +9,19 @@
 .auth-page .login-fullscreen::before,.auth-page .login-fullscreen::after{display:none}
 .login-introduction{min-width:0;padding:clamp(40px,7vw,110px);display:flex;flex-direction:column;justify-content:center;color:var(--text)}
 .login-eyebrow{font-size:11px;letter-spacing:.16em;font-weight:600;opacity:.75}
-.login-introduction h1{font-size:clamp(40px,4.8vw,76px);line-height:1.06;letter-spacing:-.065em;font-weight:550;margin:28px 0;overflow-wrap:anywhere}
+.login-introduction h1{font-size:clamp(40px,4.8vw,76px);line-height:1.06;letter-spacing:-.065em;font-weight:550;margin:var(--ui-space-7) 0;overflow-wrap:anywhere}
 .login-introduction>p{max-width:390px;font-size:17px;line-height:1.75;margin:0;opacity:.8}
-.login-benefits{display:grid;gap:16px;margin-top:44px;font-size:13px;opacity:.8}
-.login-benefits span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:currentColor;margin:0 12px 2px 0}
-.login-access{display:flex;flex-direction:column;justify-content:center;padding:80px clamp(28px,6vw,96px);background:color-mix(in srgb,var(--card) 72%,transparent);backdrop-filter:blur(28px);min-width:0}
-.login-access-heading{display:flex;align-items:center;gap:16px;width:min(100%,360px);margin:0 auto 40px}
+.login-benefits{display:grid;gap:var(--ui-space-4);margin-top:44px;font-size:13px;opacity:.8}
+.login-benefits span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:currentColor;margin:0 var(--ui-space-3) 2px 0}
+.login-access{display:flex;flex-direction:column;justify-content:center;padding:80px clamp(var(--ui-space-7),6vw,96px);background:color-mix(in srgb,var(--card) 72%,transparent);backdrop-filter:blur(28px);min-width:0}
+.login-access-heading{display:flex;align-items:center;gap:var(--ui-space-4);width:min(100%,360px);margin:0 auto 40px}
 .auth-page .login-fullscreen .login-brand{width:48px;height:48px;margin:0;flex:none}
 .auth-page .login-fullscreen .login-brand img{width:48px;height:48px;opacity:.7}
 .login-access-heading h2{font-size:24px;line-height:1.3;margin:0 0 5px;font-weight:550;letter-spacing:-.035em}
 .login-access-heading p{font-size:13px;margin:0;opacity:.7}
 .auth-page .login-fullscreen .login-actions{margin:0 auto;width:min(100%,320px);gap:18px}
 .auth-page .login-theme-control{position:fixed;right:24px;bottom:24px;margin:0;z-index:10}
-@media(max-width:760px){:root .auth-page .login-shell.login-fullscreen{grid-template-columns:minmax(0,1fr)}.login-introduction{min-width:0;padding:64px 28px 40px}.login-introduction h1{font-size:clamp(32px,7vw,46px);margin:20px 0}.login-introduction>p{font-size:15px}.login-benefits{display:none}.login-access{padding:40px 28px 100px}.login-access-heading{width:min(100%,320px);margin-bottom:28px}.auth-page .login-theme-control{right:16px;bottom:16px}}
+@media(max-width:760px){:root .auth-page .login-shell.login-fullscreen{grid-template-columns:minmax(0,1fr)}.login-introduction{min-width:0;padding:64px var(--ui-space-7) 40px}.login-introduction h1{font-size:clamp(32px,7vw,46px);margin:var(--ui-space-5) 0}.login-introduction>p{font-size:15px}.login-benefits{display:none}.login-access{padding:40px var(--ui-space-7) 100px}.login-access-heading{width:min(100%,320px);margin-bottom:var(--ui-space-7)}.auth-page .login-theme-control{right:16px;bottom:16px}}
 @media(prefers-reduced-transparency:reduce){.login-access{background:var(--card);backdrop-filter:none}}
 
 /* The mobile tint covers the entire viewport instead of drawing a second panel. */
@@ -33,6 +33,6 @@
  .auth-page .login-background-shade{background:var(--card);backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 /* Keep the official provider iframe on a light canvas, within its pill surface. */
-.auth-page .google-area{color-scheme:light;border-radius:999px;overflow:hidden;isolation:isolate}
+.auth-page .google-area{color-scheme:light;border-radius:var(--ui-radius-pill);overflow:hidden;isolation:isolate}
 .auth-page .google-area iframe{color-scheme:light;border:0}
 .auth-page .google-area:focus-within{box-shadow:0 0 0 2px var(--focus-color),0 0 0 4px var(--focus-halo)}

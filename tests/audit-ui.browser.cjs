@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+(async()=>{const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});try{
+ const p=await b.newPage({viewport:{width:390,height:800}});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.addInitScript(()=>{sessionStorage.setItem('plan12-access','local');sessionStorage.setItem('plan12-guest-name','QA')});await p.goto(process.env.QA_BASE_URL||'http://127.0.0.1:5173');await p.waitForFunction(()=>window.planNotifications);
+ const xml=await p.evaluate(async()=>{const {parseTaxDocument}=await import('/src/services/taxes/receipt.js');try{parseTaxDocument('<root>'+Array(101).fill('<det><prod><vProd>1.00</vProd></prod></det>').join('')+'</root>');return false}catch(e){return /mais de 100/.test(e.message)}});assert(xml);
+ await p.evaluate(()=>window.planNotifications.settings());await p.waitForSelector('.notification-preferences');const control=p.getByRole('switch',{name:'Gastos',exact:true});assert.equal(await control.getAttribute('aria-checked'),'true');
+ await p.evaluate(()=>{window.planAuth.storage.setItem('plan12notificationPreferences',JSON.stringify({expenses:false}));dispatchEvent(new StorageEvent('storage',{key:window.planAuth.key('plan12notificationPreferences')}))});await p.waitForTimeout(150);assert.equal(await control.getAttribute('aria-checked'),'false');
+ assert.equal(await p.evaluate(()=>window.planTaxes.getState().expenses.length),0);const login=await b.newPage({viewport:{width:390,height:800}});let failScript=true;
+ await login.route('**/auth/v1/settings',route=>route.fulfill({json:{external:{google:true}}}));
+ await login.route('https://accounts.google.com/gsi/client?*',route=>failScript?route.abort():route.fulfill({contentType:'text/javascript',body:'window.google={accounts:{id:{initialize(){},renderButton(host){const frame=document.createElement("iframe");frame.title="Google test";host.append(frame)}}}}'}));
+ await login.goto((process.env.QA_BASE_URL||'http://127.0.0.1:5173')+'/login.html');await login.getByRole('button',{name:'Tentar novamente'}).waitFor({state:'visible'});assert((await login.locator('#loginStatus').innerText()).includes('Não foi possível conectar'));
+ failScript=false;await login.getByRole('button',{name:'Tentar novamente'}).click();await login.waitForSelector('#googleButton iframe');assert.equal(await login.locator('#googleButton').getAttribute('aria-busy'),'false');
+ assert.deepEqual(errors,[]);console.log('PASS audit UI: XML limit, external preference update, login retry and unchanged financial data');
+ }finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});

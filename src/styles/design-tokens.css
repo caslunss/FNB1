@@ -1,0 +1,9 @@
+/* Universal geometry; palette and glass material remain in layout-preferences.js. */
+:root{
+ --ui-space-1:4px;--ui-space-2:8px;--ui-space-3:12px;--ui-space-4:16px;
+ --ui-space-5:20px;--ui-space-6:24px;--ui-space-7:28px;
+ --ui-radius-card:28px;--ui-radius-pill:999px;
+ --ui-action-py:10px;--ui-action-px:16px;
+ --ui-touch-target:44px;--ui-field-height:48px;
+ --ui-font:var(--lg-font,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);
+}

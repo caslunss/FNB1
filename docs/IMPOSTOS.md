@@ -66,3 +66,7 @@ Um gasto novo só é criado ao salvar; antes disso a prévia por documento é lo
 O aviso da interface informa os nomes das três variáveis de servidor necessárias quando a configuração não está disponível. Sua presença ainda não garante credencial válida ou tabelas aplicadas. Nenhuma credencial ou migração remota foi configurada por esta alteração.
 
 Validação: `tests/tax-preview-regression.cjs` cobre centavos, prévia documental sem credenciais, pendências, ausência de gravação de análises, autenticação, revisão concorrente e preço canônico. Chromium validou importação TXT, prévia automática, revisão/salvamento, ausência de gasto duplicado e largura mobile. IBPT real não foi consultado.
+
+## Revisão de integridade e cancelamento
+
+TXT reconhece valores brasileiros com milhar sem capturar um prefixo do número. XML com mais de 100 itens é rejeitado; preços unitários usam arredondamento decimal em centavos. Prévia encaminha AbortSignal e cancela trabalho do cliente ao alterar o rascunho/fechar. O servidor tem prazo global de 170 segundos, abaixo dos 200 segundos do cliente, definidos em taxes/limits.js; cancelar o cliente não desfaz uma gravação já iniciada no servidor. Revisões e recarga continuam necessárias após falhas de transporte.

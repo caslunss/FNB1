@@ -1,4 +1,6 @@
-import React,{useEffect,useState} from 'react';
+import {useFinanceSnapshot} from '../services/use-finance.ts';
+import {finance} from '../services/finance-runtime.ts';
+import React,{useState} from 'react';
 import {FinanceGlassButton as Button,FinanceGlassCard as Card,GlassTextField as Field} from './LiquidControls.jsx';
 import {moneyText} from '../services/taxes/domain.js';
 import {productGoalReport} from '../services/product-goals.js';
@@ -22,7 +24,7 @@ function GoalForm({goal,state,onSave,onCancel}){
  </div><p className="foot">Simulação: salvar a meta não transfere dinheiro, não cria gastos e não altera a meta financeira do Resumo. Informe o total final da compra, incluindo frete e eventuais custos.</p>{error&&<p role="alert" className="bad">{error}</p>}<div className="plan-actions"><Button type="submit">Salvar meta</Button><Button type="button" onClick={onCancel}>Cancelar</Button></div></form></Card>;
 }
 function GoalReport({goal}){
- let report;try{report=productGoalReport(goal,window.planProductGoals.context(goal))}catch{return <p role="alert">Não foi possível calcular esta simulação. Revise a meta.</p>}
+ let report;try{report=productGoalReport(goal,finance.productGoals.context(goal))}catch{return <p role="alert">Não foi possível calcular esta simulação. Revise a meta.</p>}
  return <section className="product-goal-report" aria-label={`Impacto de ${goal.name}`}>
   <h3>Impacto no orçamento</h3><p className={report.status==='attention'?'bad':'foot'}>{report.status==='attention'?'Atenção: falta orçamento ou limite em parte da simulação.':report.status==='incomplete'?'Dados incompletos: faltam entradas ou um cartão ativo para avaliar com segurança.':'Dentro do orçamento cadastrado nos meses exibidos.'}</p>
   <p className="foot">Reservado: {money(goal.reservedCents)} · Falta juntar: {money(report.remainingCents)}{goal.goalMode==='save'?` · Reserva mensal: ${money(goal.monthlyReserveCents)} · Prazo matemático: ${report.monthsToGoal===0?'valor já reservado':report.monthsToGoal+' mês(es)'}`:''}</p>
@@ -33,13 +35,13 @@ function GoalReport({goal}){
  </section>;
 }
 export default function ProductGoals(){
- const [state,setState]=useState(()=>window.planProductGoals.getState()),[editing,setEditing]=useState(null),[error,setError]=useState('');
- useEffect(()=>{const sync=()=>setState(window.planProductGoals.getState());addEventListener('plan-product-goals-change',sync);addEventListener('plan-credit-change',sync);return()=>{removeEventListener('plan-product-goals-change',sync);removeEventListener('plan-credit-change',sync)}},[]);
- function save(input){window.planProductGoals.save(input);setEditing(null);setError('')}
- function remove(goal){if(!confirm('Remover esta meta? Os lançamentos financeiros serão mantidos.'))return;try{window.planProductGoals.remove(goal.id);setError('')}catch(e){setError(e.message)}}
+ const state=useFinanceSnapshot('productGoals'),[editing,setEditing]=useState(null),[error,setError]=useState('');
+
+ function save(input){finance.productGoals.save(input);setEditing(null);setError('')}
+ function remove(goal){if(!confirm('Remover esta meta? Os lançamentos financeiros serão mantidos.'))return;try{finance.productGoals.remove(goal.id);setError('')}catch(e){setError(e.message)}}
  return <div className="product-goals"><Card className="card finance-layout-card"><h2>Metas de produtos</h2><p className="foot">Planeje o produto que deseja e veja quanto reservar ou como a compra afeta seu orçamento. A meta financeira geral continua no Resumo.</p><Button type="button" onClick={()=>{setEditing(editing?null:{});setError('')}}>{editing?'Fechar formulário':'Nova meta de produto'}</Button></Card>
  {editing&&<GoalForm key={editing.id||'new'} goal={editing} state={state} onSave={save} onCancel={()=>setEditing(null)}/>}{error&&<p role="alert" className="bad">{error}</p>}
  {!state.goals.length&&<p className="foot">Nenhuma meta de produto cadastrada.</p>}
- {state.goals.map(goal=><Card key={goal.id} className="card finance-layout-card"><div className="row"><h2>{goal.name}</h2><strong>{money(goal.priceCents+goal.shippingCents)}</strong></div>{goal.status==='purchased'?<p className="foot">Compra registrada em Lançamentos.</p>:<><GoalReport goal={goal}/><div className="plan-actions"><Button type="button" onClick={()=>setEditing({...goal})}>Editar meta</Button><Button type="button" onClick={()=>{try{window.planProductGoals.prepare(goal.id)}catch(e){setError(e.message)}}}>Preparar compra hoje</Button><Button type="button" onClick={()=>remove(goal)}>Remover meta</Button></div><p className="foot">Preparar abre a revisão para hoje. Somente a confirmação “já comprei” registra o gasto.</p></>}</Card>)}
+ {state.goals.map(goal=><Card key={goal.id} className="card finance-layout-card"><div className="row"><h2>{goal.name}</h2><strong>{money(goal.priceCents+goal.shippingCents)}</strong></div>{goal.status==='purchased'?<p className="foot">Compra registrada em Lançamentos.</p>:<><GoalReport goal={goal}/><div className="plan-actions"><Button type="button" onClick={()=>setEditing({...goal})}>Editar meta</Button><Button type="button" onClick={()=>{try{finance.productGoals.prepare(goal.id)}catch(e){setError(e.message)}}}>Preparar compra hoje</Button><Button type="button" onClick={()=>remove(goal)}>Remover meta</Button></div><p className="foot">Preparar abre a revisão para hoje. Somente a confirmação “já comprei” registra o gasto.</p></>}</Card>)}
  </div>;
 }

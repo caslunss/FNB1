@@ -1,3 +1,4 @@
+import {finance} from '../services/finance-runtime.ts';
 import React, {useId, useState} from 'react';
 import {FinanceGlassButton as Button,FinanceGlassCard as Card} from './LiquidControls.jsx';
 
@@ -17,7 +18,7 @@ export default function ProfileCard({name, photo, verified = false, tester = fal
       <section className="profile-card-notes" aria-label="Notas de gastos e economias">{children}</section>
       <footer className="profile-card-actions">
 
-        <Button type="button" onClick={() => window.planMobile?.open('settings')}>Configurações</Button>
+        <Button type="button" onClick={() => finance.mobile?.open('settings')}>Configurações</Button>
         <Button type="button" id="accountSignOut">Sair</Button>
       </footer>
     </div>

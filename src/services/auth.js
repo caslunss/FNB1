@@ -2,7 +2,7 @@ import {exitSurface} from './session-motion.js';
 import {createClient} from '@supabase/supabase-js';
 'use strict';
 try{if(location.hash?.startsWith('#debt=')&&location.hash.length<4000)sessionStorage.setItem('plan12-pending-debt',location.hash);}catch{}
-window.planAuth = (() => {
+export const auth = window.planAuth = (() => {
   let client,config,user=null,locked=false,signingOut=false;
   const guestName=()=>sessionStorage.getItem("plan12-guest-name")||"";
   const hasAccess=()=>!!user||(sessionStorage.getItem("plan12-access")==="local"&&!!guestName().trim());
@@ -11,7 +11,7 @@ window.planAuth = (() => {
   const storeFor=k=>k==='plan12appearance'||user?nativeStorage:sessionStorage;
   const storage={getItem:k=>storeFor(k).getItem(key(k)),removeItem:k=>storeFor(k).removeItem(key(k)),setItem(k,v){if(locked)throw Error('Sua sessão terminou. Entre novamente antes de salvar.');storeFor(k).setItem(key(k),v);}};
   async function initialize(){
-    const response=await fetch('./assets/auth-config.json',{cache:'no-store'});
+    const response=await fetch('./assets/auth-config.json',{cache:'no-store',signal:AbortSignal.timeout(10000)});
     if(!response.ok)throw Error('Não foi possível carregar o acesso.');
     config=await response.json();
     if(!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(config.supabaseUrl)||!config.supabasePublishableKey?.startsWith('sb_publishable_'))throw Error('Configuração de acesso inválida.');

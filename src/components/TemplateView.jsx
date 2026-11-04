@@ -126,14 +126,17 @@ export function TemplateView({markup}) {
 
 export function renderHTML(target, markup) {
   if (!target) return;
+  const text=String(markup || '');
+  let entry = roots.get(target);
+  if(entry?.markup===text&&!target.querySelector('form,input,select,textarea,dialog'))return;
   for (const [node, entry] of roots) {
     if (node !== target && (target.contains(node) || !node.isConnected)) {
       entry.root.unmount(); roots.delete(node);
     }
   }
-  let entry = roots.get(target);
   if (!entry) {entry = {root:createRoot(target), revision:0}; roots.set(target,entry);}
   // Controllers read/focus the resulting fields immediately after a command.
   // A new revision resets uncontrolled forms just as the original screen did.
-  flushSync(()=>entry.root.render(<TemplateView key={++entry.revision} markup={String(markup || '')}/>));
+  flushSync(()=>entry.root.render(<TemplateView key={++entry.revision} markup={text}/>));
+  entry.markup=text;
 }

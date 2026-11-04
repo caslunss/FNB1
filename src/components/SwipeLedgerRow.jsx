@@ -1,3 +1,4 @@
+import {finance} from '../services/finance-runtime.ts';
 import React, {useEffect, useId, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {FinanceGlassButton as Button} from './LiquidControls.jsx';
@@ -15,7 +16,7 @@ export default function SwipeLedgerRow({children, kind, id, ...props}) {
   useEffect(() => {
     if (mobile && confirming && dialog.current && !dialog.current.open) dialog.current.showModal();
   }, [mobile, confirming]);
-  const readonly = !!window.planIsMonthClosed?.();
+  const readonly = !!finance.isMonthClosed?.();
   if (!mobile || readonly) return <div {...props}>{children}</div>;
 
   function reset() {setOpen(false); setOffset(0);}
@@ -57,7 +58,7 @@ export default function SwipeLedgerRow({children, kind, id, ...props}) {
       else if (open && !event.target.closest('.mobile-swipe-actions')) {reset(); event.preventDefault(); event.stopPropagation();}
     }}>
     <div className="mobile-swipe-actions" inert={!open} aria-hidden={!open}>
-      <Button aria-label="Editar lançamento" onClick={() => {reset(); window.planMobile?.rowAction('edit', kind, id);}}>Editar</Button>
+      <Button aria-label="Editar lançamento" onClick={() => {reset(); finance.mobile?.rowAction('edit', kind, id);}}>Editar</Button>
       <Button destructive aria-label="Apagar lançamento" onClick={event => {opener.current = event.currentTarget; setConfirming(true);}}>Apagar</Button>
     </div>
     <div {...props} className={`${props.className || ''} mobile-ledger-content`} style={{...props.style, transform: `translateX(${offset}px)`}}>{children}</div>
@@ -68,7 +69,7 @@ export default function SwipeLedgerRow({children, kind, id, ...props}) {
       <p>O lançamento será removido dos seus dados. Para recuperar, será necessário importar um backup.</p>
       <div className="mobile-confirm-actions">
         <Button onClick={() => dialog.current.close()}>Cancelar</Button>
-        <Button destructive onClick={() => {dialog.current.close(); reset(); window.planMobile?.rowAction('delete', kind, id);}}>Apagar</Button>
+        <Button destructive onClick={() => {dialog.current.close(); reset(); finance.mobile?.rowAction('delete', kind, id);}}>Apagar</Button>
       </div>
     </dialog>, document.body)}
   </div>;

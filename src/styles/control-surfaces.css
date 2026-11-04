@@ -2,7 +2,7 @@
 .te-glass-button{touch-action:pan-y}
 /* Form fields own one surface; their editable controls do not paint a second pill. */
 body .te-text-field.lg-input__field{
- display:flex;align-items:center;box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:48px;
+ display:flex;align-items:center;box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:var(--ui-field-height);
  padding:0 14px!important;border:1px solid var(--form-border)!important;border-radius:24px!important;
  --lg-glass-fill:var(--form-field,var(--lg-panel-fill));
 }
@@ -13,8 +13,8 @@ body .te-text-field .finance-field-button.finance-select-trigger{
  backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;scale:1;translate:none;
 }
 body .te-text-field .finance-field-button .lg-button__label{
- display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-width:0;min-height:24px;padding:0;
- font:16px/1.4 var(--lg-font);color:var(--layout-form-text,var(--lb));text-align:left;white-space:normal;
+ display:flex;align-items:center;justify-content:space-between;gap:var(--ui-space-3);width:100%;min-width:0;min-height:24px;padding:0;
+ font:16px/1.4 var(--ui-font);color:var(--layout-form-text,var(--lb));text-align:left;white-space:normal;
 }
 body .te-text-field :is(input:not([type=checkbox]):not([type=radio]),select,textarea){
  box-sizing:border-box;min-width:0;max-width:100%;margin:0!important;background:transparent!important;border:0!important;box-shadow:none!important;
@@ -27,11 +27,11 @@ body .te-text-field.lg-input__field select:not([multiple]):not([size]){min-heigh
 /* Shared action alignment; field triggers and icon controls retain their geometry. */
 body:not(.auth-page) .lg-button.te-glass-button{box-sizing:border-box;max-width:100%;vertical-align:middle}
 body:not(.auth-page) .lg-button.te-glass-button:where(:not(.ib):not(.nav-icon-button):not(.finance-field-button):not(.date-picker-open)){
- min-height:44px;border-radius:999px;padding:10px 16px;
+ min-height:var(--ui-touch-target);border-radius:var(--ui-radius-pill);padding:var(--ui-action-py) var(--ui-action-px);
 }
-body:not(.auth-page) .lg-button.te-glass-button:where(:not(.finance-field-button)) .lg-button__label{align-items:center;justify-content:center;gap:8px;min-width:0;max-width:100%}
-:is(#app,.account-panel-body) :is(.settings-actions,.plan-actions,.progressive-actions){align-items:center;gap:12px}
-:is(#app,.account-panel-body) .card{box-sizing:border-box;min-width:0;max-width:100%;border-radius:var(--pill-radius,28px);box-shadow:var(--lg-shadow)}
+body:not(.auth-page) .lg-button.te-glass-button:where(:not(.finance-field-button)) .lg-button__label{align-items:center;justify-content:center;gap:var(--ui-space-2);min-width:0;max-width:100%}
+:is(#app,.account-panel-body) :is(.settings-actions,.plan-actions,.progressive-actions){align-items:center;gap:var(--ui-space-3)}
+:is(#app,.account-panel-body) .card{box-sizing:border-box;min-width:0;max-width:100%;border-radius:var(--pill-radius,var(--ui-radius-card));box-shadow:var(--lg-shadow)}
 @media(hover:hover) and (pointer:fine){
  body:not(.auth-page) .lg-button.te-glass-button:not(:disabled):not(.finance-field-button):not(.nav-icon-button):hover{--lg-glass-fill:var(--lg-fill-pressed)}
 }
@@ -43,15 +43,15 @@ body:not(.auth-page) .lg-switch.te-glass-switch{
  flex:none;--lg-green:var(--control-switch-on);--lg-switch-on:var(--control-switch-on);--lg-track:var(--fill);vertical-align:middle;
 }
 body:not(.auth-page) :is(.notification-setting,.layout-progress-setting,.te-theme-control){
- display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;min-width:0;
+ display:flex;align-items:center;justify-content:space-between;gap:var(--ui-space-4);min-height:52px;min-width:0;
 }
 .notification-setting>span{order:-1;min-width:0;overflow-wrap:anywhere}
 :is(.layout-progress-setting,.te-theme-control)>span{min-width:0;overflow-wrap:anywhere}
 /* Calendar cells are not general text actions: do not inherit 10/16px padding. */
 body:not(.auth-page) .date-picker-dialog .date-picker-grid .lg-button{
- display:flex;align-items:center;justify-content:center;width:100%;min-width:0;min-height:44px;padding:0!important;box-sizing:border-box;
+ display:flex;align-items:center;justify-content:center;width:100%;min-width:0;min-height:var(--ui-touch-target);padding:0!important;box-sizing:border-box;
 }
-body:not(.auth-page) .month-picker-dialog .month-picker-grid .lg-button{min-width:0;min-height:44px;padding:8px!important}
+body:not(.auth-page) .month-picker-dialog .month-picker-grid .lg-button{min-width:0;min-height:var(--ui-touch-target);padding:var(--ui-space-2)!important}
 .date-picker-grid,.month-picker-grid{min-width:0}
 @media(forced-colors:active){body:not(.auth-page) .lg-switch.te-glass-switch{--lg-switch-on:Highlight;--lg-green:Highlight}}
 
@@ -65,8 +65,8 @@ body .te-text-field .finance-select>select.finance-select-native{
 .finance-select-error{display:block;font-size:12px;line-height:1.5;color:var(--redT);margin-top:6px}
 /* Dates/months use a single selection layer; unselected dates stay neutral. */
 .finance-calendar-choice{
- display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;min-width:0;min-height:44px;padding:8px;
- border:0;border-radius:999px;background:transparent;color:var(--lb);font:inherit;cursor:pointer;
+ display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;min-width:0;min-height:var(--ui-touch-target);padding:var(--ui-space-2);
+ border:0;border-radius:var(--ui-radius-pill);background:transparent;color:var(--lb);font:inherit;cursor:pointer;
 }
 .date-picker-grid .finance-calendar-choice{padding:0;font-size:14px}
 .month-picker-grid .finance-calendar-choice{font-size:12px}
