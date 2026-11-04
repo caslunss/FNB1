@@ -86,6 +86,7 @@ function element(node, key) {
   if(tag==='button'&&node.classList.contains('profile-menu-item'))return React.createElement('button',props,children);
   if(tag==='button' && node.hasAttribute('data-theme-toggle')) return <ThemeSwitch key={key}/>;
   if(node.hasAttribute('data-share-debt'))return <ShareDebt key={key}/>;
+  if(node.hasAttribute('data-product-goals'))return <DeferredPage key={key} page="productGoals"/>;
   if(node.hasAttribute('data-goal-editor'))return <GoalEditor key={key}/>;
   if(tag==='input'&&node.type==='file'){const {key:uploadKey,...fileProps}=props;return <FileUpload {...fileProps} key={uploadKey}/>;}
   if(node.hasAttribute('data-taxes-hub'))return <DeferredPage key={key} page="taxes"/>;

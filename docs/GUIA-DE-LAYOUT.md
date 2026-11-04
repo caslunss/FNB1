@@ -33,7 +33,7 @@ As cores e limites estão em `src/services/layout-preferences.js`. Os valores pa
 | Entradas | Ações no topo, filtros em pílula, lançamentos e período. Um único acesso principal para adicionar lançamento |
 | Dívidas | Blocos de saldo, parcelas e previsão; gráfico e lista. Sem duplicar despesas |
 | Cartões | Dentro de Compromissos. Limites, faturas, vencimento, fechamento e pagamentos |
-| Planejamento | Compras com pesquisa de ofertas e compra planejada; Metas usa o editor financeiro existente |
+| Planejamento | Compras com pesquisa de ofertas e compra planejada; Metas reúne produtos desejados, reservas mensais e relatório de impacto à vista/no crédito |
 | Investimentos | Informações de ativos e economia. Dados ausentes não devem virar zero artificial |
 | Análises | Impostos, Relatórios e Carbono. Carbono mantém visibilidade opcional no Layout |
 | Calendário | Popup pelo atalho superior. Seleção discreta em vidro; datas de gastos, entradas e cartões. Um único botão + abre Entrada e Gasto para o dia selecionado |
@@ -113,7 +113,7 @@ As únicas categorias em formulários, gráficos, limites, notas, compras e rela
 
 Os dados antigos são migrados: alimentação, transporte e necessidades → Essenciais; imprevistos e aleatórios → Variáveis; despesas fixas e assinaturas → Fixos; lazer e entretenimento → Supérfluos. Limites que se juntam são somados em centavos. Assinaturas mantêm um marcador próprio, sem criar uma sexta categoria. A cópia anterior à migração fica preservada e integra o backup.
 
-A grade usa indicadores compactos de até 116 px. Os gastos aparecem abaixo do gráfico, com duas linhas iniciais e os demais em “Mais”. Preservar as descrições originais. Investimentos fica em um card próprio no Resumo, separado do card Categorias, com um único indicador da meta de até 148 px, aportes acumulados e valor do mês. Dívidas do mês usa um card compacto, com título e total na mesma linha e altura conforme o conteúdo. O botão da meta leva ao editor existente, sem duplicá-lo.
+A grade usa indicadores compactos de até 116 px. Os gastos aparecem abaixo do gráfico, com duas linhas iniciais e os demais em “Mais”. Preservar as descrições originais. Investimentos fica em um card próprio no Resumo, separado do card Categorias, com um único indicador da meta de até 148 px, aportes acumulados e valor do mês. Dívidas do mês usa um card compacto, com título e total na mesma linha e altura conforme o conteúdo. O botão da meta abre o editor financeiro no próprio Resumo, sem duplicá-lo em Planejamento.
 
 **Cálculos de investimentos e metas:** o aporte é debitado uma vez nos gastos e no caixa. O progresso realizado soma apenas aportes registrados até hoje e até o prazo da meta. A projeção da meta soma o saldo após compromissos aos aportes cadastrados, sem criar renda nem presumir valorização. Aportes futuros aparecem na projeção, mas não no progresso realizado. Relatórios fechados preservam seus totais; apenas a classificação é agrupada na migração.
 
@@ -459,3 +459,16 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - --lg-filter, --lg-rim, --lg-inner-mask e posição do brilho são dados geométricos locais. Controles compartilhados reiniciam esses valores para não herdar o mapa rasterizado de um card maior.
 - Mapas inline gerados por useRefraction continuam tendo prioridade; não desativar refração globalmente. Tokens de cor, blur e intensidade permanecem compartilhados.
 - Pseudo-camadas respeitam o raio do botão, não repetem a imagem e não recebem eventos; texto/ícone ficam acima do reflexo. Formulários e superfícies sem refração própria não mostram um reflexo emprestado do ancestral.
+
+## Calendário no topo e período global somente no Resumo
+
+- Calendário sai do perfil e usa o botão já existente junto de perfil/notificações, inclusive no mobile. Respeitar a preferência de visibilidade. O acionador anuncia abertura de dialog e recebe o foco de volta.
+- Seletor global de mês (#mes) e barra de opções do Resumo aparecem somente em Resumo/Visão geral e Lançamentos, que pertencem ao mesmo grupo de navegação. Outros grupos não repetem esse controle.
+- Período de impostos e faturas são filtros próprios e permanecem nos respectivos componentes, sem alterar seus valores.
+
+## Metas de produtos em Planejamento
+
+- Metas deixa de repetir o editor financeiro do Resumo. Produto, preço final, valor já reservado, estratégia e data usam os campos/calendário universais. Juntar inclui reserva mensal; crédito inclui parcelas sem juros e cartão ativo.
+- Cards, botões, estados de erro e tabela reaproveitam LiquidControls, finance-layout-card e plan-table. Campos em duas colunas no desktop e uma no celular; ações quebram naturalmente. A barra inferior fica oculta durante o cadastro/edição.
+- Relatório na mesma página mostra disponível, reserva/parcela, outras reservas e saldo após o plano. Crédito verifica também o limite necessário para o valor total. Meses sem entradas cadastradas são explícitos; nunca declarar aprovação bancária ou saldo real.
+- Salvar meta não movimenta dinheiro nem cria lançamentos. Preparar compra hoje abre o fluxo existente de revisão e confirmação, preservando o histórico e evitando registros duplicados. Detalhes financeiros e limites em METAS-DE-PRODUTOS.md.

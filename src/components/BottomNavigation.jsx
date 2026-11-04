@@ -9,7 +9,7 @@ export default function BottomNavigation() {
   const [compact,setCompact]=useState(false),[blocked,setBlocked]=useState(false);
   useEffect(()=>{
     let frame;
-    const sync=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>setBlocked(!!document.querySelector('dialog[open],#scrim:not([hidden]),.pluggy-connect-host,#app .credit-editor,#app .invoice-payment-form,#app .tax-bank,#app .purchase-review,#app .te-action-editor>details[open]')))};
+    const sync=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>setBlocked(!!document.querySelector('dialog[open],#scrim:not([hidden]),.pluggy-connect-host,#app .credit-editor,#app .product-goal-editor,#app .goal-planner,#app .invoice-payment-form,#app .tax-bank,#app .purchase-review,#app .te-action-editor>details[open]')))};
     const observer=new MutationObserver(sync);
     observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open','hidden']});sync();
     return()=>{cancelAnimationFrame(frame);observer.disconnect()};
