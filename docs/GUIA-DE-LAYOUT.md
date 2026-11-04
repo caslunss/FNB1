@@ -386,3 +386,15 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 - Pesquisa por nome usa /api/shopping com SerpApi Google Shopping (Brasil, pt, gl=br), mantendo os cards e controles compartilhados. Resultados mostram loja, produto, imagem, preço BRL confirmado e link de oferta; resultado vazio tem mensagem própria. Não presumir desconto, moeda ou disponibilidade.
 - SERPAPI_API_KEY fica somente no servidor. Consulta de detalhes de links e análise de gastos continuam no Gemini; não enviar agregados de gastos à SerpApi. Login e limite de consultas permanecem obrigatórios.
+
+## Assinaturas reais no perfil — 03/11/2026
+
+- SubscriptionsCard usa FinanceGlassCard/FinanceGlassButton e dados agrupados por subscriptions.js. Total do mês inclui cobranças futuras já cadastradas; nunca apresenta presença de lançamento como contrato ativo ou pagamento confirmado.
+- Lista serviços personalizados, valor e quantidade de lançamentos no mês; histórico sem registro no mês fica em disclosure. Ver lançamento abre o editor existente sem concorrer com saída animada do perfil.
+- Seletores mantêm as superfícies universais de mês/data e fallback no calendário local; tributos mantêm explicitamente o fuso de São Paulo.
+
+## Controles universais — revisão complementar
+
+- FinanceGlassSwitch centraliza switches de Layout, Tema e Notificações, com o verde existente via --control-switch-on, e alinhamento de rótulos à esquerda. Checkboxes de seleção/consentimento mantêm semântica própria.
+- CalendarIcon é único para MonthPicker e DatePicker. Grade de dias tem padding zero; meses usam 8 px. Não aplicar padding de ação textual às células.
+- DatePicker encaminha a referência do consumidor ao input real. Agenda financeira, seletor mensal e seletor de dia compartilham tokens, mas preservam responsabilidades e constraints distintas.

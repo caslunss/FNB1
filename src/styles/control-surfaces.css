@@ -33,3 +33,22 @@ body:not(.auth-page) .lg-button.te-glass-button:where(:not(.finance-field-button
 @media(hover:hover) and (pointer:fine){
  body:not(.auth-page) .lg-button.te-glass-button:not(:disabled):not(.finance-field-button):not(.nav-icon-button):hover{--lg-glass-fill:var(--lg-fill-pressed)}
 }
+
+/* Existing system-green switch palette, centralized for all settings. */
+:root{--control-switch-on:#34c759}
+:root[data-theme=dark]{--control-switch-on:#30d158}
+body:not(.auth-page) .lg-switch.te-glass-switch{
+ flex:none;--lg-green:var(--control-switch-on);--lg-switch-on:var(--control-switch-on);--lg-track:var(--fill);vertical-align:middle;
+}
+body:not(.auth-page) :is(.notification-setting,.layout-progress-setting,.te-theme-control){
+ display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;min-width:0;
+}
+.notification-setting>span{order:-1;min-width:0;overflow-wrap:anywhere}
+:is(.layout-progress-setting,.te-theme-control)>span{min-width:0;overflow-wrap:anywhere}
+/* Calendar cells are not general text actions: do not inherit 10/16px padding. */
+body:not(.auth-page) .date-picker-dialog .date-picker-grid .lg-button{
+ display:flex;align-items:center;justify-content:center;width:100%;min-width:0;min-height:44px;padding:0!important;box-sizing:border-box;
+}
+body:not(.auth-page) .month-picker-dialog .month-picker-grid .lg-button{min-width:0;min-height:44px;padding:8px!important}
+.date-picker-grid,.month-picker-grid{min-width:0}
+@media(forced-colors:active){body:not(.auth-page) .lg-switch.te-glass-switch{--lg-switch-on:Highlight;--lg-green:Highlight}}

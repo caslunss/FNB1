@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {GlassSwitch} from '@zakisheriff/liquid-glass';
+import {FinanceGlassSwitch as GlassSwitch} from './LiquidControls.jsx';
 import {readNotificationPreferences,saveNotificationPreference} from '../services/notification-preferences.js';
 
 export default function NotificationPreferences(){

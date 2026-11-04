@@ -42,3 +42,12 @@
 .profile-extras .streaming-pill{margin:12px 0}
 .profile-card-actions>.lg-button{flex:1 1 120px}
 @media(max-width:450px){#accountOverlay[data-panel=profile] .profile-hover-card{padding:20px!important}.profile-card-identity h2{font-size:21px}}
+
+.account-panel-body .subscriptions-card{margin:12px 0;padding:20px!important;border:1px solid var(--form-border);border-radius:var(--pill-radius,28px)}
+.subscriptions-card header{display:flex;align-items:start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.subscriptions-card h2{margin:0;font-size:18px}
+.subscriptions-card ul{list-style:none;padding:0;margin:12px 0 0}
+.subscriptions-card li{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0;border-top:1px solid var(--sep)}
+.subscriptions-card li>div{display:grid;gap:4px;flex:1 1 140px;min-width:0;overflow-wrap:anywhere}
+.subscriptions-card li>.lg-button{flex:0 1 auto}
+.subscriptions-card summary{min-height:44px;cursor:pointer;line-height:1.5}

@@ -3,11 +3,14 @@ import FinanceSelect from './FinanceSelect.jsx';
 import IOSButton from './motion/IOSButton.tsx';
 import {useMobileLayout,useBottomNavigationLayout} from '../services/mobile-layout.js';
 import React, {useEffect,useLayoutEffect,useId, useRef, useState, useSyncExternalStore} from 'react';
-import {GlassCard,GlassMenu,GlassSwitch, GlassSegmented, useRefraction, usePress} from '@zakisheriff/liquid-glass';
+import {GlassCard,GlassMenu,GlassSwitch as LibrarySwitch, GlassSegmented, useRefraction, usePress} from '@zakisheriff/liquid-glass';
 import {getLayout,subscribeLayout} from '../services/layout-preferences.js';
 
 const useLayout=()=>useSyncExternalStore(subscribeLayout,getLayout);
 export function FinanceGlassButton({className='',shimmer=true,...props}){const layout=useLayout();return <IOSButton {...props} className={`te-glass-button ${className}`} shimmer={shimmer} intensity={layout.intensity}/>}
+export function FinanceGlassSwitch({className='',...props}){
+ return <LibrarySwitch {...props} className={`te-glass-switch ${className}`}/>;
+}
 // A single outer glass surface owns the material for tabs and field triggers.
 export function FinanceFieldButton({children,className='',...props}){
  return <button {...props} type={props.type||'button'} className={`lg-button te-glass-button finance-field-button ${className}`}><span className="lg-button__label">{children}</span></button>;
@@ -47,7 +50,7 @@ export function ThemeSwitch(){
     window.dispatchEvent(new CustomEvent('plan-theme-request',{detail:checked?'dark':'light'}));
     setDark(document.documentElement.dataset.theme==='dark');
   }
-  return <div className="te-theme-control"><span>Modo escuro</span><GlassSwitch checked={dark} onChange={change} aria-label="Modo escuro"/></div>;
+  return <div className="te-theme-control"><span>Modo escuro</span><FinanceGlassSwitch checked={dark} onChange={change} aria-label="Modo escuro"/></div>;
 }
 
 export function FinanceSegments({items,label,className=''}){

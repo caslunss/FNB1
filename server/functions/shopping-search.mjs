@@ -1,3 +1,4 @@
+import {decimalCents} from '../../src/services/money.js';
 import {cleanProduct,publicURL} from './shopping-product.mjs';
 
 // Only the server calls SerpApi: its API key is never returned or logged.
@@ -14,11 +15,12 @@ export async function searchProducts(query,env,net){
   const data=await response.json();
   if(data.error)return {status:502,body:{error:'A SerpApi não concluiu a pesquisa. Confira a configuração e a cota no painel.'}};
   const products=(Array.isArray(data.shopping_results)?data.shopping_results:[]).slice(0,12).flatMap(item=>{
+   if(!item||typeof item!=='object')return [];
    if(typeof item.title!=='string'||!item.title.trim())return [];
    // gl=br alone is not proof of currency. Only confirmed BRL prices are stored.
    const brl=/R\s*\$|BRL/i.test(String(item.price||''))||item.currency==='BRL';
    const price=typeof item.extracted_price==='number'?item.extracted_price:NaN;
-   const product=cleanProduct({name:item.title,url:publicURL(item.product_link)||publicURL(item.link),image:item.thumbnail,priceCents:brl&&Number.isFinite(price)?Math.round(price*100):null,specs:[],promotion:''});
+   const product=cleanProduct({name:item.title,url:publicURL(item.product_link)||publicURL(item.link),image:item.thumbnail,priceCents:brl&&Number.isFinite(price)&&price>0&&price<=1000000?decimalCents(price):null,specs:[],promotion:''});
    return [{...product,store:typeof item.source==='string'?item.source.slice(0,120):''}];
   });
   return {status:200,body:{products,sources:[],provider:'SerpApi · Google Shopping',checkedAt:new Date().toISOString(),suggestions:''}};

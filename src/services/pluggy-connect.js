@@ -3,7 +3,8 @@ async function request(payload){const client=window.planAuth?.client;if(!client|
 export async function connectBank(report){
  if(active)return;
  active=true;let root,host,finished=false,verifying=false;
- const cleanup=()=>{active=false;queueMicrotask(()=>{root?.unmount();host?.remove();});};
+ let disposed=false;
+ const cleanup=()=>{if(disposed)return;disposed=true;finished=true;active=false;queueMicrotask(()=>{root?.unmount();host?.remove();});};
  try{
   report('Abrindo conexão segura…');
   const {accessToken,includeSandbox}=await request({action:'connect'});
@@ -12,8 +13,8 @@ export async function connectBank(report){
   root.render(createElement(PluggyConnect,{
    connectToken:accessToken,includeSandbox:includeSandbox===true,
    onClose:()=>{if(!finished&&!verifying){report('');cleanup();}},
-   onError:()=>{finished=true;report('A conexão não foi concluída. Tente novamente.');cleanup();},
-   onSuccess:async ({item})=>{
+   onError:()=>{if(finished||verifying)return;finished=true;report('A conexão não foi concluída. Tente novamente.');cleanup();},
+   onSuccess:async (event)=>{const item=event?.item;
     if(verifying||finished)return;verifying=true;
     try{if(!item?.id)throw Error('O serviço não retornou uma conexão válida.');report('Verificando conexão…');const result=await request({action:'verify',itemId:item.id});window.planAuth.storage.setItem('plan12pluggy_connection',JSON.stringify(result));report('Banco conectado: '+result.bank+'. Importe as movimentações pela aba Impostos.');}
     catch(error){report(error.message);}

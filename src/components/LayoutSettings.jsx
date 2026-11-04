@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useSyncExternalStore} from 'react';
-import {GlassSlider,GlassSwitch} from '@zakisheriff/liquid-glass';
-import {FinanceGlassButton as GlassButton,ThemeSwitch} from './LiquidControls.jsx';
+import {GlassSlider} from '@zakisheriff/liquid-glass';
+import {FinanceGlassSwitch as GlassSwitch,FinanceGlassButton as GlassButton,ThemeSwitch} from './LiquidControls.jsx';
 import {getLayout,subscribeLayout,updateLayout,resetLayout,selectPalette,setCircularProgress,setSectionEnabled,PALETTES} from '../services/layout-preferences.js';
 
 export default function LayoutSettings(){

@@ -1,9 +1,11 @@
+import CalendarIcon from './CalendarIcon.jsx';
+import {localDay} from '../services/dates.js';
 import React, {useId, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {GlassSurface, FinanceGlassButton as Button} from './LiquidControls.jsx';
 
 const iso = (year, month, day) => `${String(year).padStart(4, '0')}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-const Icon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="4"/><path d="M8 3v4m8-4v4M4 10h16"/></svg>;
+
 
 // The real date input retains constraints, form submission and legacy DOM access.
 export default function DatePicker(props) {
@@ -15,7 +17,7 @@ export default function DatePicker(props) {
   function open() {
     const field = input.current;
     if (field.matches(':disabled') || field.readOnly) return;
-    let value = field.value || iso(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    let value = field.value || localDay();
     if (field.min && value < field.min) value = field.min;
     if (field.max && value > field.max) value = field.max;
     const [y, m, d] = value.split('-').map(Number);
@@ -25,6 +27,7 @@ export default function DatePicker(props) {
   }
   function choose(value) {
     const field = input.current;
+    if(field.matches(':disabled')||field.readOnly||field.min&&value<field.min||field.max&&value>field.max)return;
     // Use the platform setter so React detects changes on controlled inputs too.
     Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(field, value);
     field.dispatchEvent(new Event('input', {bubbles: true}));
@@ -32,8 +35,8 @@ export default function DatePicker(props) {
     dialog.current.close();
   }
   const previous = iso(year, index, 1), next = iso(year, index, days);
-  return <><span className="date-field"><GlassSurface as="span" className="lg-input__field te-text-field"><input {...props} type="date" ref={input}/></GlassSurface>
-    <Button ref={trigger} type="button" className="date-picker-open ib" aria-label="Abrir calendário" aria-haspopup="dialog" disabled={props.disabled || props.readOnly} onClick={open}><Icon/></Button></span>
+  return <><span className="date-field"><GlassSurface as="span" className="lg-input__field te-text-field"><input {...props} type="date" ref={node=>{input.current=node;if(typeof props.ref==='function')props.ref(node);else if(props.ref)props.ref.current=node}}/></GlassSurface>
+    <Button ref={trigger} type="button" className="date-picker-open ib" aria-label="Abrir calendário" aria-haspopup="dialog" disabled={props.disabled || props.readOnly} onClick={open}><CalendarIcon/></Button></span>
     {createPortal(<dialog ref={dialog} className="month-picker-dialog date-picker-dialog" aria-labelledby={title} onClose={() => trigger.current?.focus({preventScroll: true})} onClick={e => {if (e.target === dialog.current) dialog.current.close();}}>
       <header><h2 id={title}>Selecionar data</h2><Button type="button" className="ib" aria-label="Fechar calendário" onClick={() => dialog.current.close()}>×</Button></header>
       <div className="month-picker-year"><Button type="button" className="ib" aria-label="Mês anterior" disabled={!!limits.min && previous <= limits.min.slice(0, 7) + '-01'} onClick={() => setMonth(new Date(year, index - 1, 1))}>‹</Button><strong aria-live="polite">{month.toLocaleDateString('pt-BR', {month: 'long', year: 'numeric'})}</strong><Button type="button" className="ib" aria-label="Próximo mês" disabled={!!limits.max && next >= limits.max} onClick={() => setMonth(new Date(year, index + 1, 1))}>›</Button></div>

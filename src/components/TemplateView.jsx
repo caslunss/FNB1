@@ -1,3 +1,4 @@
+import SubscriptionsCard from './SubscriptionsCard.jsx';
 import ProfileCard from './ProfileCard.jsx';
 import DeferredPage from './DeferredPage.jsx';
 import SwipeLedgerRow from './SwipeLedgerRow.jsx';
@@ -68,6 +69,7 @@ function element(node, key) {
   const progressive=progressiveParts(node);
   if(progressive)props.className=`${props.className||''} te-compact-form`;
   const children=progressive?<ProgressiveFields basic={progressive.basic.map((child,i)=>element(child,'b'+i))} advanced={progressive.advanced.map((child,i)=>element(child,'d'+i))} actions={progressive.actions.map((child,i)=>element(child,'a'+i))}/>:['input','img','br','hr','meta','link','area','base','col','embed','source','track','wbr','textarea'].includes(tag)?undefined:[...node.childNodes].map((child,i)=>element(child,i));
+  if(node.hasAttribute('data-subscriptions'))return <SubscriptionsCard key={key} summary={JSON.parse(node.getAttribute('data-subscriptions'))}/>;
   if(node.hasAttribute('data-profile-card'))return <ProfileCard key={key} name={node.getAttribute('data-name')} photo={node.getAttribute('data-photo')} verified={node.getAttribute('data-verified')==='true'} tester={node.getAttribute('data-tester')==='true'} supporter={node.getAttribute('data-supporter')==='true'}>{children}</ProfileCard>;
   if(tag==='div'&&node.classList.contains('ledger-row')){const record=node.querySelector('.ledger-detail');const {key:rowKey,...rowProps}=props;return <SwipeLedgerRow key={rowKey} {...rowProps} kind={record?.getAttribute('data-k')} id={record?.getAttribute('data-id')}>{children}</SwipeLedgerRow>;}
   if(node.hasAttribute('data-progress-gauge'))return <ProgressGauge key={key} value={Number(node.getAttribute('data-value'))} label={node.getAttribute('data-label')} status={node.getAttribute('data-status')} known={node.getAttribute('data-known')!=='false'} attention={node.getAttribute('data-attention')==='true'} limit={node.getAttribute('data-limit')==='true'}>{children}</ProgressGauge>;
