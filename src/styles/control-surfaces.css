@@ -1,3 +1,5 @@
+/* Buttons must not consume vertical swipes intended for a form or the page. */
+.te-glass-button{touch-action:pan-y}
 /* Form fields own one surface; their editable controls do not paint a second pill. */
 body .te-text-field.lg-input__field{
  display:flex;align-items:center;box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:48px;

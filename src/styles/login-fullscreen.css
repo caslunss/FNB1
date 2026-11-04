@@ -5,7 +5,7 @@
 .login-still-background::after{content:"";position:absolute;inset:0;background:var(--bg);opacity:.55;mix-blend-mode:color}
 :root[data-theme=dark] .login-still-background{background-image:url('/assets/login-dark.jpg')}
 .auth-page .login-background-shade{background:color-mix(in srgb,var(--bg) 35%,transparent)}
-.auth-page .login-shell.login-fullscreen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-content:stretch;width:100%;max-width:none;min-height:100dvh;margin:0;padding:0;gap:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible;backdrop-filter:none}
+:root .auth-page .login-shell.login-fullscreen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-content:stretch;width:100%;max-width:none;min-height:100dvh;margin:0;padding:0;gap:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible;backdrop-filter:none}
 .auth-page .login-fullscreen::before,.auth-page .login-fullscreen::after{display:none}
 .login-introduction{min-width:0;padding:clamp(40px,7vw,110px);display:flex;flex-direction:column;justify-content:center;color:var(--text)}
 .login-eyebrow{font-size:11px;letter-spacing:.16em;font-weight:600;opacity:.75}
@@ -21,5 +21,18 @@
 .login-access-heading p{font-size:13px;margin:0;opacity:.7}
 .auth-page .login-fullscreen .login-actions{margin:0 auto;width:min(100%,320px);gap:18px}
 .auth-page .login-theme-control{position:fixed;right:24px;bottom:24px;margin:0;z-index:10}
-@media(max-width:760px){.auth-page .login-shell.login-fullscreen{grid-template-columns:minmax(0,1fr)}.login-introduction{min-width:0;padding:64px 28px 40px}.login-introduction h1{font-size:clamp(32px,7vw,46px);margin:20px 0}.login-introduction>p{font-size:15px}.login-benefits{display:none}.login-access{padding:40px 28px 100px}.login-access-heading{width:min(100%,320px);margin-bottom:28px}.auth-page .login-theme-control{right:16px;bottom:16px}}
+@media(max-width:760px){:root .auth-page .login-shell.login-fullscreen{grid-template-columns:minmax(0,1fr)}.login-introduction{min-width:0;padding:64px 28px 40px}.login-introduction h1{font-size:clamp(32px,7vw,46px);margin:20px 0}.login-introduction>p{font-size:15px}.login-benefits{display:none}.login-access{padding:40px 28px 100px}.login-access-heading{width:min(100%,320px);margin-bottom:28px}.auth-page .login-theme-control{right:16px;bottom:16px}}
 @media(prefers-reduced-transparency:reduce){.login-access{background:var(--card);backdrop-filter:none}}
+
+/* The mobile tint covers the entire viewport instead of drawing a second panel. */
+@media(max-width:760px){
+ .auth-page .login-background-shade{background:color-mix(in srgb,var(--card) 72%,transparent);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px)}
+ .auth-page .login-access{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media(max-width:760px) and (prefers-reduced-transparency:reduce){
+ .auth-page .login-background-shade{background:var(--card);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+/* Keep the official provider iframe on a light canvas, within its pill surface. */
+.auth-page .google-area{color-scheme:light;border-radius:999px;overflow:hidden;isolation:isolate}
+.auth-page .google-area iframe{color-scheme:light;border:0}
+.auth-page .google-area:focus-within{box-shadow:0 0 0 2px var(--focus-color),0 0 0 4px var(--focus-halo)}

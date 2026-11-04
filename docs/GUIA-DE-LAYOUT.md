@@ -472,3 +472,11 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Cards, botões, estados de erro e tabela reaproveitam LiquidControls, finance-layout-card e plan-table. Campos em duas colunas no desktop e uma no celular; ações quebram naturalmente. A barra inferior fica oculta durante o cadastro/edição.
 - Relatório na mesma página mostra disponível, reserva/parcela, outras reservas e saldo após o plano. Crédito verifica também o limite necessário para o valor total. Meses sem entradas cadastradas são explícitos; nunca declarar aprovação bancária ou saldo real.
 - Salvar meta não movimenta dinheiro nem cria lançamentos. Preparar compra hoje abre o fluxo existente de revisão e confirmação, preservando o histórico e evitando registros duplicados. Detalhes financeiros e limites em METAS-DE-PRODUTOS.md.
+
+## Rolagem de formulários e login mobile
+
+- EntrySheet mantém o mesmo DOM e conteúdo das folhas de entrada, gasto, dívida e limite. Mede a VisualViewport enquanto estiver montado; altura e posição acompanham o teclado. O fundo continua bloqueado, mas o formulário tem rolagem própria e fica acima do cabeçalho. Fechar remove medições/listeners e mantém o retorno de foco existente.
+- Botões comuns e seletores de vidro permitem pan-y para que gestos verticais iniciados nesses controles rolem o formulário. Switches e sliders conservam seus gestos especializados.
+- Login fullscreen prevalece sobre a borda de card legada também no tema escuro. Até 760 px, a camada de vidro/tinta cobre a tela toda e a seção de acesso fica transparente; desktop mantém duas colunas. Temas e controles continuam compartilhados.
+- O host do Google usa esquema claro e recorte em pílula, com foco visível na superfície externa. Não substituir o botão oficial nem modificar seu documento interno ou o fluxo de autenticação.
+- Evidências e limitações em CORRECOES-MOBILE-FORMULARIOS-LOGIN.md.

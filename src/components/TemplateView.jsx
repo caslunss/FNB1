@@ -1,4 +1,5 @@
 import SubscriptionsCard from './SubscriptionsCard.jsx';
+import EntrySheet from './EntrySheet.jsx';
 import ProfileCard from './ProfileCard.jsx';
 import DeferredPage from './DeferredPage.jsx';
 import SwipeLedgerRow from './SwipeLedgerRow.jsx';
@@ -108,6 +109,7 @@ function element(node, key) {
   if(tag==='button' && (node.classList.contains('btn') || node.classList.contains('ib') || node.hasAttribute('data-t') || node.getAttribute('role')==='menuitem' || node.classList.contains('launch-option'))){
     return React.createElement(GlassButton,{...props,type:props.type ?? 'submit',variant:node.getAttribute('role')==='menuitem'?'clear':'glass',destructive:node.classList.contains('d') || ['del','idel','ddel','srem','stoprepeat'].includes(node.getAttribute('data-a')) || node.getAttribute('data-shop-action')==='delete-plan' || node.getAttribute('data-feature')==='split-delete',size:'md',intensity:3,shimmer:true,className:`${props.className||''} te-glass-button`},children);
   }
+  if(tag==='div'&&node.classList.contains('sheet'))return React.createElement(EntrySheet,props,children);
   const surface=['card','stage','identity-card','entry-summary','overview','info-block','debt-block','kpi','gt','saved-product','split-block'].some(name=>node.classList.contains(name));
   if(surface){
     const nested=!!node.parentElement?.closest('.card,.stage,.identity-card,.entry-summary,.overview');
