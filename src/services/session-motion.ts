@@ -1,0 +1,12 @@
+import {animate} from 'motion';
+import {iosDefaultSpring,FADE,MOTION} from './motion-presets.ts';
+/** Document boundaries cannot share React presence; settle before navigation. */
+export function exitSurface(node:HTMLElement|null,{login=false}={}){
+ if(!node)return {finished:Promise.resolve(),restore(){}};
+ const wasInert=node.inert,oldBusy=node.getAttribute('aria-busy');
+ node.inert=true;node.setAttribute('aria-busy','true');node.style.willChange='transform, opacity';
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let animation:ReturnType<typeof animate>|undefined;try{animation=animate(node,reduced?{opacity:0}:{opacity:0,scale:login?MOTION.loginExitScale:MOTION.profileScale},{...iosDefaultSpring,opacity:FADE})}catch{}
+ let timer:ReturnType<typeof setTimeout>|undefined;const finished=new Promise<void>(resolve=>{const finish=()=>{clearTimeout(timer);resolve()};timer=setTimeout(()=>{animation?.complete();finish()},550);if(animation)Promise.resolve(animation).then(finish,finish);else finish()});
+ return {finished,restore(){animation?.stop();node.inert=wasInert;if(oldBusy===null)node.removeAttribute('aria-busy');else node.setAttribute('aria-busy',oldBusy);for(const key of ['opacity','transform','will-change'])node.style.removeProperty(key)}};
+}

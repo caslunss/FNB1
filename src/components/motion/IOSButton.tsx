@@ -2,7 +2,7 @@ import React,{forwardRef,type ComponentProps} from 'react';
 import {motion,useReducedMotion,useWillChange,type HTMLMotionProps} from 'motion/react';
 import {GlassButton} from '@zakisheriff/liquid-glass';
 import {iosQuickSpring} from './transitions';
-import {BUTTON_HOVER,BUTTON_TAP,BUTTON_REST,INSTANT} from '../../services/motion-presets.js';
+import {BUTTON_HOVER,BUTTON_TAP,BUTTON_REST,INSTANT} from '../../services/motion-presets.ts';
 type GlassProps=ComponentProps<typeof GlassButton>;
 export type IOSButtonProps=Omit<GlassProps,keyof HTMLMotionProps<'button'>> & HTMLMotionProps<'button'>;
 const MotionGlassButton=motion.create(GlassButton);

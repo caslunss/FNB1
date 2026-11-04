@@ -1,1 +1,1 @@
-export {iosDefaultSpring,iosQuickSpring} from '../../services/motion-presets.js';
+export {iosDefaultSpring,iosQuickSpring} from '../../services/motion-presets.ts';

@@ -2,7 +2,7 @@
 
 ## Fonte de verdade
 
-`src/services/motion-presets.js` exporta MOTION, molas, FADE, INSTANT, estados de botão, perfil e funções de página/card. Esse módulo publica as mesmas constantes em variáveis CSS `--motion-*`; não há uma segunda tabela independente de duração em CSS. MotionProvider, IOSButton, PageTransition, LoginEntrance, controladores de página/sessão/perfil e CSS da aplicação reutilizam os presets.
+`src/services/motion-presets.ts` exporta MOTION, molas, FADE, INSTANT, estados de botão, perfil e funções de página/card. Esse módulo publica as mesmas constantes em variáveis CSS `--motion-*`; não há uma segunda tabela independente de duração em CSS. MotionProvider, IOSButton, PageTransition, LoginEntrance, controladores de página/sessão/perfil e CSS da aplicação reutilizam os presets.
 
 A camada `universal-motion.css` aplica microinterações a controles nativos e aos ícones do cabeçalho. Botões IOSButton usam Motion; seu CSS não interpola transform em paralelo. Switches/sliders/segmentos mantêm as interações da biblioteca, com timing CSS compartilhado. Não foi alterado o código interno da dependência Liquid Glass nem de widgets externos (Google/Pluggy).
 

@@ -1,8 +1,8 @@
 const assert=require('node:assert/strict');
 (async()=>{
  global.window={planAuth:{user:null},planClearTaxData:null};
- const {previewTax,taxPayload}=await import('../src/services/taxes/client.js');
- const {taxToday}=await import('../src/services/taxes/domain.js');
+ const {previewTax,taxPayload}=await import('../src/services/taxes/client.ts');
+ const {taxToday}=await import('../src/services/taxes/domain.ts');
  const input={documentTotalCents:null,items:[],uf:''};
  const payload=taxPayload(input,'12,34');
  assert.equal(payload.documentTotalCents,1234);

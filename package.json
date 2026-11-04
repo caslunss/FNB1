@@ -10,7 +10,7 @@
     "test": "node tests/run.cjs",
     "check:release": "node scripts/check-release.mjs",
     "check:types": "tsc --noEmit",
-    "check:styles": "node scripts/consolidate-styles.mjs --check"
+    "check:styles": "node scripts/consolidate-styles.mjs --check && node scripts/audit-style-exceptions.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.118.0",
@@ -27,7 +27,8 @@
     "tailwindcss": "4.3.4",
     "typescript": "^7.0.2",
     "vite": "8.3.5",
-    "postcss": "8.5.31"
+    "postcss": "8.5.31",
+    "rolldown": "1.2.15"
   },
   "engines": {
     "node": "22.x"

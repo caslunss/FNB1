@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import FinanceSelect from '../src/components/FinanceSelect.jsx';
-import {GlassTextField} from '../src/components/LiquidControls.jsx';
+import FinanceSelect from '../src/components/FinanceSelect.tsx';
+import {GlassTextField} from '../src/components/LiquidControls.tsx';
 import '../src/styles/root.css';
 import '../src/styles/workspace.css';
 import '@zakisheriff/liquid-glass/styles.css';

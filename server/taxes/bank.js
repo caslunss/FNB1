@@ -1,5 +1,5 @@
-import {decimalCents} from '../../src/services/money.js';
-import {validDay} from '../../src/services/taxes/domain.js';
+import {decimalCents} from '../../src/services/money.ts';
+import {validDay} from '../../src/services/taxes/domain.ts';
 export async function normalizeBankTransactions(rows,account,userId,month){
  const result=[],excluded=[];
  for(const entry of rows){const t=entry&&typeof entry==='object'?entry:{};const day=String(t.date||'').slice(0,10),operation=String(t.operationType||'');let reason='';

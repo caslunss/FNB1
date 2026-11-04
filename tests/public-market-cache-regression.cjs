@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 (async()=>{
- const {createPublicReadCache,readMarketData}=await import('../src/services/public-market-cache.js');
+ const {createPublicReadCache,readMarketData}=await import('../src/services/public-market-cache.ts');
  let time=0,calls=0;const read=createPublicReadCache({ttl:100,maxEntries:2,now:()=>time});
  const load=async()=>({revision:++calls});
  assert.equal((await read('quotes',load)).revision,1);

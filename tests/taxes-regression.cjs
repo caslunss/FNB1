@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 (async()=>{
- const {normalizeInput,allocateRounded,aggregateTaxes,fingerprint,taxToday}=await import('../src/services/taxes/domain.js');const {calculate,rateFor}=await import('../server/taxes/ibpt.js');const {handleTax}=await import('../server/taxes/handler.js');const {normalizeBankTransactions}=await import('../server/taxes/bank.js');
+ const {normalizeInput,allocateRounded,aggregateTaxes,fingerprint,taxToday}=await import('../src/services/taxes/domain.ts');const {calculate,rateFor}=await import('../server/taxes/ibpt.js');const {handleTax}=await import('../server/taxes/handler.js');const {normalizeBankTransactions}=await import('../server/taxes/bank.js');
  assert.equal(taxToday(new Date('2026-11-01T01:00:00Z')),'2026-10-31');
  const expense={id:'one',date:'2026-10-22',cents:10000,category:'Gastos Essenciais'},item={kind:'produto',code:'12345678',description:'Item',unit:'UN',baseCents:10000,unitValueCents:10000,ex:0,gtin:'1234567890123',origin:'nacional'},input=normalizeInput({items:[item],uf:'SP'},10000),env={IBPT_TOKEN:'test-secret',IBPT_CNPJ:'12345678000199'};
  const payload={Codigo:'12345678',UF:'SP',EX:0,Nacional:10,Importado:20,Estadual:5,Municipal:0,VigenciaInicio:'01/10/2026',VigenciaFim:'30/11/2026',Versao:'fixture',Fonte:'IBPT',Chave:'fixture'};let calls=0;

@@ -1,10 +1,11 @@
+const {createContext:fixtureContext,renderFixture}=require('./source-loader.cjs');
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const s=require('./project-source.cjs'),c=vm.createContext({URL,P:x=>x,ICON:{plus:'+'},esc:x=>String(x)});
+const s=require('./project-source.cjs'),c=fixtureContext({URL,P:x=>x,ICON:{plus:'+'},esc:x=>String(x)});
 vm.runInContext(s.slice(s.indexOf('const COMMUNITY_PROGRAM='),s.indexOf('function profileIdentity(){')),c);
 const user={id:'account-1',created_at:'2026-10-26T12:00:00Z'},now=Date.parse('2026-10-27T00:00:00Z');
 assert(c.isBetaTester(user,{betaStartsAt:null,betaEndsAt:null},now));
 assert(!c.isBetaTester(null,{},now));assert(!c.isBetaTester({...user,id:null},{},now));assert(!c.isBetaTester({...user,created_at:'invalid'},{},now));
 const closed={betaStartsAt:'2026-10-22T00:00:00Z',betaEndsAt:'2026-10-26T23:59:59Z'};
 assert(c.isBetaTester(user,closed,now));assert(!c.isBetaTester({...user,created_at:'2026-10-27T00:00:00Z'},closed,now));assert(!c.isBetaTester({...user,created_at:'2026-10-21T00:00:00Z'},closed,now));assert(!c.isBetaTester({...user,created_at:'2027-01-01T00:00:00Z'},{},now));
-assert(c.supportProjectCard().includes('disabled'));assert(!c.supportProjectCard().includes('Ajude o projeto'));assert(!c.supportProjectCard().includes('href="'));
+assert(renderFixture(c.supportProjectCard()).includes('disabled'));assert(!renderFixture(c.supportProjectCard()).includes('Ajude o projeto'));assert(!renderFixture(c.supportProjectCard()).includes('href="'));
 console.log('PASS beta: conta validada, visitante, datas, encerramento e apoio sem cobrança fictícia.');

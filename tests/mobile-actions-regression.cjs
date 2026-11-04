@@ -1,8 +1,9 @@
+const {createContext:fixtureContext,renderFixture}=require('./source-loader.cjs');
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const source=require('./controller-source.cjs'),core=source.split('// FINANCE_CORE\n')[1].split('function tiles(')[0],bridge=source.slice(source.indexOf('window.planMobile='),source.indexOf('window.planGoal='));
 function fixture({closed=false,fail=false}={}){
  const data={},errors=[],sheets=[];
- const ctx=vm.createContext({window:{},finance:{},crypto:require('node:crypto').webcrypto,Date:class extends Date{constructor(...args){super(...(args.length?args:['2026-10-22T12:00:00']))}},document:{querySelector:()=>null},localStorage:{getItem:k=>data[k]||null,setItem:(k,v)=>{if(fail)throw Error('quota');data[k]=v}},draw(){},setTimeout(){},addEventListener(){},getLayout:()=>({sections:{carbon:true}}),openSheet:x=>sheets.push(x),closeMenu(){},scrollTo(){},errors});
+ const ctx=fixtureContext({window:{},finance:{},crypto:require('node:crypto').webcrypto,Date:class extends Date{constructor(...args){super(...(args.length?args:['2026-10-22T12:00:00']))}},document:{querySelector:()=>null},localStorage:{getItem:k=>data[k]||null,setItem:(k,v)=>{if(fail)throw Error('quota');data[k]=v}},draw(){},setTimeout(){},addEventListener(){},getLayout:()=>({sections:{carbon:true}}),openSheet:x=>sheets.push(x),closeMenu(){},scrollTo(){},errors});
  vm.runInContext(core+`;safely=fn=>{try{return atomic(fn)}catch(e){errors.push(e.message);return false}};`+bridge,ctx);
  vm.runInContext(`S.m=monthIndexFromDate('2026-10-22');S.items=[{id:'expense',d:'Teste',v:1234,c:'Gastos Essenciais',p:'Pix',date:'2026-10-22'}];S.receipts=[{id:'income',d:'Renda',v:5000,date:'2026-10-22'}];${closed?"CLOSED_REPORTS[monthKeyForIndex(S.m)]={closed:true};":''}`,ctx);
  return {run:code=>vm.runInContext(code,ctx),ctx,errors,sheets,data};

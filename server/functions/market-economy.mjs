@@ -1,4 +1,4 @@
-import {ECONOMY_SERIES,buildEconomySeries} from '../../src/services/economy.js';
+import {ECONOMY_SERIES,buildEconomySeries} from '../../src/services/economy.ts';
 let cached;
 export default async function handler(req){
  const reply=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json','Cache-Control':status===200?'public, max-age=3600':'no-store'}});

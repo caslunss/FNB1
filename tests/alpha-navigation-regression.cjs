@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const source=require('./controller-source.cjs');
 (async()=>{
- const {MAIN_AREAS,availableViews,resolveAreaView}=await import('../src/services/navigation.js');
+ const {MAIN_AREAS,availableViews,resolveAreaView}=await import('../src/services/navigation.ts');
  assert.deepEqual(MAIN_AREAS.map(x=>x.label),['Resumo','Compromissos','Planejamento','Investimentos','Análises']);
  assert.equal(resolveAreaView('commitments:cards',{credit:false}),null);
  assert.equal(resolveAreaView('analysis:carbon',{carbon:false}),null);

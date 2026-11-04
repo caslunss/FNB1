@@ -1,4 +1,4 @@
-import {taxToday} from '../../src/services/taxes/domain.js';
+import {taxToday} from '../../src/services/taxes/domain.ts';
 import {normalizeBankTransactions} from '../../server/taxes/bank.js';
 import config from '../../public/assets/auth-config.json' with {type:'json'};
 let cached,pending;

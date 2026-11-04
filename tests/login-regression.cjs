@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const code=fs.readFileSync('src/services/auth.js','utf8').replace(/^import[^;]+;/gm,'').replace('export const auth = ','').replace('createClient(', 'supabase.createClient(');
+const code=require('./source-loader.cjs').readExecutableSource('src/services/auth.ts').replace(/^import[^;]+;/gm,'').replace(/export const auth\s*=/,'const auth=').replace('createClient(', 'supabase.createClient(');
 const config=JSON.parse(fs.readFileSync('public/assets/auth-config.json','utf8'));
 async function fixture({mode='local',id='user-a',invalid=false,fail=false,transition,exitTransition,logoutError=false,hash=''}={}){
  const local={plan12workspace_v3:'guest-original'},session={'plan12-access':mode,'plan12-guest-name':'Visitante','plan12guest:plan12workspace_v3':'guest-session'},navigation=[];let eventHandler,received,restored=false;

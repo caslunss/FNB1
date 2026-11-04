@@ -18,7 +18,7 @@ export function publishFinance(){revision++;for(const listener of listeners)list
 
 /** Fail before rendering a financial page if an integration has an incomplete contract. */
 export function assertFinanceReady(){
- const services:Record<string,string[]>={taxes:['getState','addExpense','importBank'],credit:['getState','saveCard','payInvoice','setPaid'],productGoals:['getState','save','remove','context','prepare'],goal:['getState','save'],mobile:['getState','navigate','open','compose','rowAction'],notifications:['getState','close','settings']};
+ const services:Record<string,string[]>={taxes:['getState','addExpense','importBank'],credit:['getState','saveCard','payInvoice','setPaid'],productGoals:['getState','save','remove','context','prepare'],goal:['getState','save'],mobile:['getState','navigate','open','compose','rowAction'],notifications:['getState','close','clear','settings']};
  const registry=finance as unknown as Record<string,Record<string,unknown>|((...args:unknown[])=>unknown)>;
  for(const [name,methods]of Object.entries(services))for(const method of methods){const service=registry[name];if(!service||typeof (service as Record<string,unknown>)[method]!=='function')throw Error(`Finance service ${name}.${method} is not registered`)}
  for(const name of ['isMonthClosed','resetFinancialData','searchRecords','openSearchResult','debtSources','actionItems'])if(typeof registry[name]!=='function')throw Error(`Finance command ${name} is not registered`);

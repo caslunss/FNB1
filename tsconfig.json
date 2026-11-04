@@ -6,8 +6,7 @@
     "jsx": "react-jsx",
     "strict": true,
     "noEmit": true,
-    "allowJs": true,
-    "checkJs": false,
+    "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "lib": [
@@ -15,11 +14,12 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "types": [
+      "vite/client"
+    ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/finance/calculations.js"
+    "src"
   ]
 }

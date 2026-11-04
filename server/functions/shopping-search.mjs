@@ -1,4 +1,4 @@
-import {decimalCents} from '../../src/services/money.js';
+import {decimalCents} from '../../src/services/money.ts';
 import {cleanProduct,publicURL} from './shopping-product.mjs';
 
 // Only the server calls SerpApi: its API key is never returned or logged.

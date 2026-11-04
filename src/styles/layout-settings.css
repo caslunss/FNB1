@@ -199,7 +199,7 @@ body:not(.auth-page) .te-glass-segments>.lg-track__item{min-width:0;width:100%;b
 .purchase-friend-share{margin-top:18px;border-top:1px solid var(--sep);padding-top:14px}
 .purchase-friend-share>summary{min-height:var(--ui-touch-target);cursor:pointer;font-size:13px;color:var(--tintT)}
 .purchase-friend-share form{margin-top:var(--ui-space-4)}
-body:not(.auth-page) span.te-action-menu.month-action.btn{width:auto}
+body:not(.auth-page) span.te-action-menu:is(.month-action,.action-menu-labeled).btn{width:auto}
 .month-action .lg-menu-anchor>button{width:auto;min-width:138px;padding:0 var(--ui-space-4);border-radius:var(--ui-radius-pill)!important}
 .month-action-label{display:inline-flex;align-items:center;justify-content:center;gap:var(--ui-space-2);font:600 12px/1.3 var(--ui-font)}
 .month-action .lg-button__icon{width:auto;min-width:0;flex:1;display:flex;justify-content:center}
@@ -689,3 +689,8 @@ body:not(.auth-page) .finance-select-trigger.lg-button{
 .finance-select-option[aria-disabled=true]{opacity:.5;cursor:not-allowed}
 @media(hover:hover){.finance-select-option:not([aria-disabled=true]):hover{background:var(--lg-segment-selection)}}
 @media(forced-colors:active){.finance-select-option.is-active{outline-color:Highlight}}
+
+.action-menu-labeled .lg-menu-anchor>button{width:auto;min-width:var(--ui-touch-target);padding:0 var(--ui-space-4)}
+.action-menu-labeled .lg-button__icon{width:auto;min-width:0;height:auto;display:inline-flex;align-items:center}
+.action-trigger-label{display:inline-flex;align-items:center;justify-content:center;gap:var(--ui-space-2);white-space:nowrap;font:600 13px/1.3 var(--ui-font)}
+.action-trigger-label svg{flex:none}

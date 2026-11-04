@@ -1,4 +1,4 @@
-import {allocateRounded,validDay,documentCalculation} from '../../src/services/taxes/domain.js';
+import {allocateRounded,validDay,documentCalculation} from '../../src/services/taxes/domain.ts';
 export class TaxError extends Error{constructor(message,status=400,retryAfter=null){super(message);this.status=status;this.retryAfter=retryAfter}}
 function date(value){const s=String(value||''),m=/^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s),d=m?`${m[3]}-${m[2]}-${m[1]}`:s.slice(0,10);if(!validDay(d))throw new TaxError('A referência tributária não informou uma vigência válida.',502);return d;}
 export async function rateFor(item,input,day,{env,net=fetch,cache}){

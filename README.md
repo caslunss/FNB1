@@ -17,7 +17,7 @@ Projeto React/Vite organizado para publicar frontend e APIs na Vercel. Comece po
 
 ## Desenvolvimento
 
-Use Node.js 22.12 ou superior, dentro da série 22.
+Use Node.js 22.18 ou superior, dentro da série 22. Os testes e os módulos de domínio compartilhados utilizam o suporte nativo a TypeScript dessa versão.
 
 ```sh
 npm ci

@@ -26,11 +26,11 @@ As animações compartilhadas continuam baseadas em transformações/opacidade e
 
 ## Código
 
-- src/components/DeferredPage.jsx: carregamento opcional e tratamento de falha.
-- src/components/InvestmentArea.jsx: composição independente de Economia/Investimentos.
-- src/components/SwipeLedgerRow.jsx: gestos e confirmação sob demanda.
-- src/components/MobileExperience.jsx: viewport, teclado e atalhos.
-- src/components/EconomyCard.jsx e Investments.jsx: consultas e apresentação financeira.
+- src/components/DeferredPage.tsx: carregamento opcional e tratamento de falha.
+- src/components/InvestmentArea.tsx: composição independente de Economia/Investimentos.
+- src/components/SwipeLedgerRow.tsx: gestos e confirmação sob demanda.
+- src/components/MobileExperience.tsx: viewport, teclado e atalhos.
+- src/components/EconomyCard.tsx e Investments.jsx: consultas e apresentação financeira.
 - src/styles/mobile.css, login-fullscreen.css e layout-settings.css: correções responsivas.
 - tests/react-qa.html e tests/login-responsive-qa.html: matrizes visuais com dados fictícios, claro/escuro e seis larguras.
 

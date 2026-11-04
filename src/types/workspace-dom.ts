@@ -1,0 +1,77 @@
+/** Known controller hosts and form fields; the React tree owns their lifecycle. */
+export interface WorkspaceDom {
+  '#accountOverlay': HTMLDialogElement;
+  '#accountOverlayContent': HTMLDivElement;
+  '#accountOverlayTitle': HTMLElement;
+  '#accountPanelStatus': HTMLElement;
+  '#app': HTMLDivElement;
+  '#appNotice': HTMLDivElement;
+  '#behaviorStatus': HTMLElement;
+  '#closedMonthNotice': HTMLElement;
+  '#csv': HTMLInputElement;
+  '#csvConvention': HTMLSelectElement;
+  '#csvm': HTMLElement;
+  '#currentMonth': HTMLSpanElement;
+  '#expenseCard': HTMLSelectElement;
+  '#expenseCardPaid': HTMLInputElement;
+  '#expenseSubscription': HTMLInputElement;
+  '#exportSpreadsheet': HTMLButtonElement;
+  '#exportTaxes': HTMLButtonElement;
+  '#identitySettings': HTMLElement;
+  '#incomeDate': HTMLInputElement;
+  '#incomeKind': HTMLSelectElement;
+  '#incomingDebtDialog': HTMLDialogElement;
+  '#incomingDebtTitle': HTMLElement;
+  '#it': HTMLSpanElement;
+  '#legacyBackup': HTMLButtonElement;
+  '#lt': HTMLElement;
+  '#menu': HTMLDivElement;
+  '#mes': HTMLInputElement;
+  '#monthStatus': HTMLSpanElement;
+  '#navShell': HTMLDivElement;
+  '#newEntry': HTMLDivElement;
+  '#offerSearch': HTMLFormElement;
+  '#offerStatus': HTMLElement;
+  '#pageDescription': HTMLElement;
+  '#pg': HTMLDivElement;
+  '#profileUsername': HTMLInputElement;
+  '#receiptCard': HTMLSelectElement;
+  '#receiptCategory': HTMLSelectElement;
+  '#receiptClose': HTMLButtonElement;
+  '#receiptDate': HTMLInputElement;
+  '#receiptDialog': HTMLDialogElement;
+  '#receiptFile': HTMLInputElement;
+  '#receiptForm': HTMLFormElement;
+  '#receiptItems': HTMLTextAreaElement;
+  '#receiptName': HTMLInputElement;
+  '#receiptPayment': HTMLSelectElement;
+  '#receiptStatus': HTMLElement;
+  '#receiptTotal': HTMLInputElement;
+  '#repeatMonths': HTMLDivElement;
+  '#sa': HTMLInputElement;
+  '#sc': HTMLSelectElement;
+  '#scrim': HTMLDivElement;
+  '#sd': HTMLInputElement;
+  '#sdpaid': HTMLInputElement;
+  '#settingsTop': HTMLDivElement;
+  '#shoppingLiveProjection': HTMLDivElement;
+  '#sm': HTMLSelectElement;
+  '#sn': HTMLInputElement;
+  '#sp': HTMLInputElement;
+  '#splitMonth': HTMLSelectElement;
+  '#sr': HTMLInputElement;
+  '#st': HTMLElement;
+  '#summaryModes': HTMLDivElement;
+  '#summaryToolbar': HTMLDivElement;
+  '#sv': HTMLInputElement;
+  '#usernameForm': HTMLFormElement;
+  '#usernameHint': HTMLElement;
+  '#usernameStatus': HTMLElement;
+}
+export type WorkspaceElement<S extends string> = S extends keyof WorkspaceDom
+  ? WorkspaceDom[S]
+  : S extends `${string} input`
+    ? HTMLInputElement
+    : S extends `${string}button${string}`
+      ? HTMLButtonElement
+      : HTMLElement;

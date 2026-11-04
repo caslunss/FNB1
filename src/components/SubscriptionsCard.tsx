@@ -1,0 +1,9 @@
+import {finance} from '../services/finance-runtime.ts';
+import React from 'react';
+import {FinanceGlassCard as Card,FinanceGlassButton as Button} from './LiquidControls.tsx';
+const money=(cents:number)=>(cents/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+export default function SubscriptionsCard({summary}:{summary:ReturnType<typeof import('../services/subscriptions').subscriptionSummary>}){
+ const current=summary.groups.filter(x=>x.count>0),other=summary.groups.filter(x=>!x.count);
+ const row=(group:ReturnType<typeof import('../services/subscriptions').subscriptionSummary>['groups'][number])=><li key={group.name}><div><strong>{group.name}</strong><span className="foot">{group.count?`${group.count} lançamento(s) neste mês`:'Sem registro neste mês'}</span>{group.latest&&<span className="foot">Último lançamento: {group.latest.split('-').reverse().join('/')}</span>}</div><strong>{group.count?money(group.cents):'—'}</strong>{group.record&&<Button type="button" aria-label={`Ver lançamento de ${group.name}`} onClick={()=>finance.openSearchResult?.(group.record!)}>Ver lançamento</Button>}</li>;
+ return <Card className="card subscriptions-card" aria-label="Assinaturas"><header><div><h2>Assinaturas</h2><p className="foot">Lançamentos de {summary.month.slice(5)}/{summary.month.slice(0,4)}</p></div><strong>{money(summary.totalCents)}</strong></header><p className="foot">Inclui cobranças futuras registradas neste mês. O status do plano e o pagamento devem ser conferidos no fornecedor.</p>{current.length?<ul>{current.map(row)}</ul>:<p className="foot">Nenhuma assinatura registrada neste mês.</p>}{other.length>0&&<details><summary>Outros registros ({other.length})</summary><ul>{other.map(row)}</ul></details>}</Card>;
+}

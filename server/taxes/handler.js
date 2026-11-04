@@ -1,5 +1,5 @@
-import {TAX_SERVER_TIMEOUT_MS} from '../../src/services/taxes/limits.js';
-import {normalizeInput,fingerprint,validDay,taxToday} from '../../src/services/taxes/domain.js';
+import {TAX_SERVER_TIMEOUT_MS} from '../../src/services/taxes/limits.ts';
+import {normalizeInput,fingerprint,validDay,taxToday} from '../../src/services/taxes/domain.ts';
 import {calculate,TaxError} from './ibpt.js';
 const allowed=['https://tefinance.netlify.app','https://plan-desktop-lucas.silverelk9.chatgpt.site','http://terminal.local:4173'];
 export async function handleTax(req,env,net=fetch){

@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
-const {createFinanceSync,canonical}=require('node:vm').runInNewContext(fs.readFileSync('src/services/finance-sync.js','utf8').replace(/^export const cloud=.*$/gm,'')+';module.exports',{module:{exports:{}},setTimeout,clearTimeout});
+const {createFinanceSync,canonical}=require('../src/services/finance-sync.ts');
 const W='plan12workspace_v3',M='plan12cloudmeta_v1',B='plan12cloudcopies_v1';
 const clone=x=>JSON.parse(JSON.stringify(x));
 const record=(n=0)=>({schemaVersion:3,moneyUnit:'centavos',data:{items:n?[{id:'expense-a',d:'Teste',v:n,date:'2026-10-26',c:'Alimentação',p:'Pix'}]:[],receipts:[],debts:[],splits:[],cart:[],offers:[],reports:{},limits:[],goal:{v:0,e:0},profile:{name:''},monthCount:1},recovery:[]});

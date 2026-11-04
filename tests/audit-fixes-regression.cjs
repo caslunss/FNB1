@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 (async()=>{
- const {documentMoney,unitCents,parseTaxDocument}=await import('../src/services/taxes/receipt.js');
+ const {documentMoney,unitCents,parseTaxDocument}=await import('../src/services/taxes/receipt.ts');
  for(const text of ['1.234,56','1234,56','1234.56'])assert.equal(documentMoney(text),123456);
  assert.equal(parseTaxDocument('Tributos aproximados: R$ 1.234,56.').documentTotalCents,123456);
  assert.equal(parseTaxDocument('Tributos: R$ 0,00').documentTotalCents,0);
@@ -11,9 +11,9 @@ const assert=require('node:assert/strict');
  const {groupsFor}=await import('../src/services/notification-groups.ts');const today=new Date(),yesterday=new Date();yesterday.setDate(today.getDate()-1);
  const groups=groupsFor([{id:'a',date:today.toISOString()},{id:'b',date:yesterday.toISOString()},{id:'c',date:'invalid'}]);assert.equal(groups[0].label,'Hoje');assert.equal(groups[1].label,'Ontem');assert.equal(groups[2].label,'Sem data');
  const {notificationStore}=await import('../src/services/notification-store.ts');let updates=0;const off=notificationStore.subscribe(()=>updates++);const next={isOpen:true,rows:[]};notificationStore.publish(next);const snapshot=notificationStore.getSnapshot();notificationStore.publish({isOpen:true,rows:[]});assert.equal(updates,1);assert.equal(notificationStore.getSnapshot(),snapshot);off();
- const {waitWithTimeout}=await import('../src/services/login-network.js');assert.equal(await waitWithTimeout(Promise.resolve(12),10),12);await assert.rejects(waitWithTimeout(new Promise(()=>{}),5),/demorou/);
+ const {waitWithTimeout}=await import('../src/services/login-network.ts');assert.equal(await waitWithTimeout(Promise.resolve(12),10),12);await assert.rejects(waitWithTimeout(new Promise(()=>{}),5),/demorou/);
  global.window={planAuth:{user:{id:'u'},client:{auth:{getSession:async()=>({data:{session:{access_token:'test'}}})}}}};
- const {taxRequest}=await import('../src/services/taxes/client.js');let requested=false;const originalFetch=global.fetch;global.fetch=async()=>{requested=true;throw Error('unexpected')};
+ const {taxRequest}=await import('../src/services/taxes/client.ts');let requested=false;const originalFetch=global.fetch;global.fetch=async()=>{requested=true;throw Error('unexpected')};
  const controller=new AbortController();controller.abort();await assert.rejects(taxRequest('preview',{}, {signal:controller.signal}),{name:'AbortError'});assert.equal(requested,false);
  let started;const ready=new Promise(resolve=>started=resolve);
  global.fetch=(_url,options)=>new Promise((_,reject)=>{options.signal.addEventListener('abort',()=>reject(new DOMException('Cancelled','AbortError')),{once:true});started()});

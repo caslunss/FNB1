@@ -14,8 +14,8 @@ Pacote: @zakisheriff/liquid-glass, versão fixa 0.3.8 (MIT).
 
 ## Organização
 
-src/components/LiquidControls.jsx: superfícies personalizadas, controles de tema e segmentos.
-src/components/TemplateView.jsx: aplicação dos componentes aos templates existentes.
+src/components/LiquidControls.tsx: superfícies personalizadas, controles de tema e segmentos.
+src/components/FinanceView.tsx: aplicação dos componentes aos templates existentes.
 src/styles/liquid-glass.css: tokens, geometria e compatibilidade com os estilos anteriores.
 
 A folha da biblioteca é importada uma vez em cada entrada (aplicativo/login); o build compartilha os recursos comuns. Não há novo segredo, configuração de backend ou migração SQL.

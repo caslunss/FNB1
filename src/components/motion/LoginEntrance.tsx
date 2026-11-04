@@ -1,4 +1,4 @@
-import {MOTION} from '../../services/motion-presets.js';
+import {MOTION} from '../../services/motion-presets.ts';
 import React,{type PropsWithChildren} from 'react';
 import {motion,useReducedMotion,useWillChange} from 'motion/react';
 import {iosDefaultSpring} from './transitions';

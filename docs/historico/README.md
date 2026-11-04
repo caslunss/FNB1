@@ -33,10 +33,10 @@ No mesmo domínio tefinance.netlify.app, a conta e a cópia local continuam usan
 
 ## Código
 
-- src/App.jsx e src/components/WorkspaceLayout.jsx: inicialização e estrutura do aplicativo.
-- src/components/Login.jsx: tela de login em JSX.
-- src/components/TemplateView.jsx: adaptação dos templates financeiros existentes para elementos React, mantendo atributos, campos e gráficos. Não usa iframe ou dangerouslySetInnerHTML.
-- src/finance/workspace.js: regras financeiras, persistência atômica, renderizadores de conteúdo e controladores de interação existentes, agora como módulo. Parte dos controladores ainda usa delegação de eventos DOM para preservar os fluxos testados; não houve reescrita integral para hooks.
+- src/App.tsx e src/components/WorkspaceLayout.tsx: inicialização e estrutura do aplicativo.
+- src/components/Login.tsx: tela de login em JSX.
+- src/components/FinanceView.tsx: adaptação dos templates financeiros existentes para elementos React, mantendo atributos, campos e gráficos. Não usa iframe ou dangerouslySetInnerHTML.
+- src/finance/workspace.tsx: regras financeiras, persistência atômica, renderizadores de conteúdo e controladores de interação existentes, agora como módulo. Parte dos controladores ainda usa delegação de eventos DOM para preservar os fluxos testados; não houve reescrita integral para hooks.
 - src/services: autenticação, sincronização, animações e login social.
 - src/styles e public/assets: estilos, vídeos e imagens.
 - netlify/functions: backend Gemini, com segredos somente no servidor.

@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict');
 (async()=>{
- const p=await import('../src/services/layout-preferences.js');
+ const p=await import('../src/services/layout-preferences.ts');
  const clone=x=>JSON.parse(JSON.stringify(x));
  const invalid=p.normalizeLayout({version:1,intensity:99,light:{accent:'url(evil)',surface:'#fff',opacity:-100,blur:Infinity},dark:{background:'#123456'}});
  assert.equal(invalid.light.accent,p.DEFAULT_LAYOUT.light.accent);assert.equal(invalid.light.surface,p.DEFAULT_LAYOUT.light.surface);assert.equal(invalid.light.opacity,40);assert.equal(invalid.intensity,10);assert.equal(invalid.dark.background,p.DEFAULT_LAYOUT.dark.background);

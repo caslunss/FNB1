@@ -18,9 +18,9 @@ Revisão de 03/11/2026. Código de referência: navegação atual de cinco área
 ## Arquivos
 
 - src/styles/shared-controls.css: material/medidas compartilhados, grades, gaps e contenção.
-- src/finance/workspace.js: composição dos cards, busca e contrato de atualização da meta.
-- src/components/GoalEditor.jsx: estado controlado e preservação do editor.
-- src/services/navigation.js: rótulo Dividir conta.
+- src/finance/workspace.tsx: composição dos cards, busca e contrato de atualização da meta.
+- src/components/GoalEditor.tsx: estado controlado e preservação do editor.
+- src/services/navigation.ts: rótulo Dividir conta.
 
 ## Validação
 

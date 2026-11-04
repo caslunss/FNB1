@@ -20,7 +20,7 @@ A paleta padrão é Branco envelhecido. Há variações pastéis de Outono e Inv
 | Estado negativo ou destrutivo | `--redT`; não usar vermelho decorativo |
 | Limite de categoria atingido | Barra/arco completamente vermelho; percentual real preservado |
 
-As cores e limites estão em `src/services/layout-preferences.js`. Os valores padrão são fundo `#e7e5de`, superfície `#f7f4ec`, destaque `#557789` no claro; fundo `#17191a`, superfície `#272a2b`, destaque `#bac3c5` no escuro. Esses valores são referência da paleta, não cores para repetir diretamente nos componentes.
+As cores e limites estão em `src/services/layout-preferences.ts`. Os valores padrão são fundo `#e7e5de`, superfície `#f7f4ec`, destaque `#557789` no claro; fundo `#17191a`, superfície `#272a2b`, destaque `#bac3c5` no escuro. Esses valores são referência da paleta, não cores para repetir diretamente nos componentes.
 
 ## Páginas e navegação
 
@@ -151,14 +151,14 @@ Respeitar `prefers-reduced-motion`. Não somar duas animações de entrada no me
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `src/components/LiquidControls.jsx` | Botões, superfícies, menus, segmentos e editores |
-| `src/components/TemplateView.jsx` | Converte templates para componentes React |
-| `src/components/ProgressiveFields.jsx` | Campos básicos e opções avançadas |
+| `src/components/LiquidControls.tsx` | Botões, superfícies, menus, segmentos e editores |
+| `src/components/FinanceView.tsx` | Converte templates para componentes React |
+| `src/components/ProgressiveFields.tsx` | Campos básicos e opções avançadas |
 | `src/styles/liquid-glass.css` | Integração visual da biblioteca |
 | `src/styles/layout-settings.css` | Layout, popups e acabamento compartilhado |
 | `src/styles/workspace.css` | Estilos de base das páginas |
-| `src/services/layout-preferences.js` | Paletas, tokens e preferências |
-| `src/finance/workspace.js` | Conteúdo e comportamento financeiro |
+| `src/services/layout-preferences.ts` | Paletas, tokens e preferências |
+| `src/finance/workspace.tsx` | Conteúdo e comportamento financeiro |
 
 Referências originais: [Apple Materials](https://developer.apple.com/design/human-interface-guidelines/materials), [Apple Liquid Glass](https://developer.apple.com/documentation/technologyoverviews/liquid-glass), [biblioteca Liquid Glass](https://liquidglass.theatom.lk/docs). A implementação instalada é `@zakisheriff/liquid-glass` 0.3.8. Consultar também a documentação instalada antes de alterar a API dos controles.
 
@@ -243,7 +243,7 @@ A implementação usa `motion` 14.9.0. As decisões abaixo são parâmetros do p
 - A página de Impostos usa a transição compartilhada e esse componente, com uma ação de abrir detalhes. Não inserir controles interativos dentro de um card que já atua como botão.
 - Com `prefers-reduced-motion`, eliminar deslocamento, compressão, expansão espacial e blur animado; preservar fade curto e estados legíveis. Com redução de transparência, não animar blur. Mudanças da preferência durante a animação devem terminar em estado legível.
 
-Arquivos: `src/services/motion-presets.js`, `src/services/page-motion.js`, `src/components/SmoothState.jsx`, `src/components/TaxSummaryCard.jsx`. Referências: [Apple Motion](https://developer.apple.com/design/human-interface-guidelines/motion), [Apple Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility), [Motion animate](https://motion.dev/docs/animate).
+Arquivos: `src/services/motion-presets.ts`, `src/services/page-motion.ts`, `src/components/SmoothState.tsx`, `src/components/TaxSummaryCard.tsx`. Referências: [Apple Motion](https://developer.apple.com/design/human-interface-guidelines/motion), [Apple Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility), [Motion animate](https://motion.dev/docs/animate).
 
 
 ## Impostos — implementação
@@ -293,11 +293,11 @@ Até 1024 px, cinco destinos principais aparecem somente com ícones, com área 
 
 Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada e padrão único de seleções e calendários.
 
-- `BottomNavigation.jsx` mantém o host `#tabs` e as rotas existentes. Até 1024 px, a barra compacta ao descer e expande ao subir ou pausar e mostra cinco ícones com nomes acessíveis e alvos de pelo menos 44 px. A versão desktop mantém as mesmas cinco áreas no conjunto superior.
+- `BottomNavigation.tsx` mantém o host `#tabs` e as rotas existentes. Até 1024 px, a barra compacta ao descer e expande ao subir ou pausar e mostra cinco ícones com nomes acessíveis e alvos de pelo menos 44 px. A versão desktop mantém as mesmas cinco áreas no conjunto superior.
 - A barra anima largura, altura, padding e opacidade na rolagem; o ícone e indicador animam na seleção. Não animar blur. Movimento reduzido remove essas transições; transparência reduzida usa superfície opaca.
 - `shared-controls.css` centraliza campos de 48 px, raio de 24 px, foco do tema e tipografia de 16 px, tanto no aplicativo quanto em popups. Compra planejada usa o mesmo formulário progressivo e a mesma escala; preços em duas colunas quando couberem e uma coluna em telas pequenas.
 - `GlassTextField` encaminha seleções simples para `FinanceSelect`. Nos templates, o select real continua visível e preserva id, name, validação, FormData e alterações diretas do controlador. A lista compartilhada usa o topo das camadas. Seleções agrupadas, múltiplas e navegadores sem Popover conservam o controle do sistema; selects obrigatórios de React também conservam sua validação nativa.
-- `GlassTextField` encaminha campos date para `DatePicker.jsx`: entrada real editável, botão de calendário e dialog compartilhado em pt-BR. Datas mínima e máxima, required, campos desativados e FormData continuam no input original. Escolher uma data emite input/change; cancelar não altera o campo. O dialog fecha por Escape e devolve foco ao botão.
+- `GlassTextField` encaminha campos date para `DatePicker.tsx`: entrada real editável, botão de calendário e dialog compartilhado em pt-BR. Datas mínima e máxima, required, campos desativados e FormData continuam no input original. Escolher uma data emite input/change; cancelar não altera o campo. O dialog fecha por Escape e devolve foco ao botão.
 - Calendário de movimentações, MonthPicker e DatePicker usam os mesmos tokens de superfície, borda, foco e seleção. Meses continuam no MonthPicker; datas completas usam DatePicker. Não converter períodos financeiros nem alterar cálculos para padronizar o visual.
 
 ## Estados assíncronos e listas — performance
@@ -332,7 +332,7 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 ## Card de perfil interativo — 03/11/2026
 
-- ProfileCard.jsx é o conteúdo do dialog accountOverlay existente, sem outra camada modal. Avatar abre o perfil diretamente. Backdrop escuro fecha ao clicar fora; Escape, contenção de foco nativa e retorno ao avatar são preservados.
+- ProfileCard.tsx é o conteúdo do dialog accountOverlay existente, sem outra camada modal. Avatar abre o perfil diretamente. Backdrop escuro fecha ao clicar fora; Escape, contenção de foco nativa e retorno ao avatar são preservados.
 - Estado inicial: foto em toda a superfície, gradiente e vidro fosco na metade inferior. Hover em ponteiro fino: foto na metade superior e painel branco sólido com texto escuro embaixo, inclusive no tema escuro, conforme o pedido específico de referência. A paleta das demais áreas permanece intacta.
 - O tamanho externo do card não muda; somente a altura da imagem absoluta e as cores/opacidades internas transitam por 300 ms ease. Não usar transition:all nem animar blur. Essa transição de altura é uma exceção solicitada para a mídia isolada do perfil; movimento reduzido a desliga.
 - Fixar detalhes oferece o estado expandido por toque; foco visível de teclado também revela o painel legível. Foto com falha ou ausente usa inicial e gradiente. Texto longo e notas mensais têm rolagem interna, sem extrapolar a superfície.
@@ -389,7 +389,7 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 ## Assinaturas reais no perfil — 03/11/2026
 
-- SubscriptionsCard usa FinanceGlassCard/FinanceGlassButton e dados agrupados por subscriptions.js. Total do mês inclui cobranças futuras já cadastradas; nunca apresenta presença de lançamento como contrato ativo ou pagamento confirmado.
+- SubscriptionsCard usa FinanceGlassCard/FinanceGlassButton e dados agrupados por subscriptions.ts. Total do mês inclui cobranças futuras já cadastradas; nunca apresenta presença de lançamento como contrato ativo ou pagamento confirmado.
 - Lista serviços personalizados, valor e quantidade de lançamentos no mês; histórico sem registro no mês fica em disclosure. Ver lançamento abre o editor existente sem concorrer com saída animada do perfil.
 - Seletores mantêm as superfícies universais de mês/data e fallback no calendário local; tributos mantêm explicitamente o fuso de São Paulo.
 
@@ -417,7 +417,7 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 ## Movimento universal sem mudança de design
 
-- MOTION em services/motion-presets.js é a fonte dos presets JS e das variáveis --motion-* para CSS. universal-motion.css aplica apenas propriedades de movimento; não define geometria ou paleta.
+- MOTION em services/motion-presets.ts é a fonte dos presets JS e das variáveis --motion-* para CSS. universal-motion.css aplica apenas propriedades de movimento; não define geometria ou paleta.
 - IOSButton usa Motion e controles nativos usam microinterações CSS, sem dois motores sobre o mesmo transform. Foco mantém o halo original de forma imediata; movimento reduzido cancela animações em andamento.
 - Compactação da barra usa medidas por mudança de estado e escala (FLIP), preservando tamanhos finais e áreas de toque. Não interpolar largura/altura/padding do layout.
 - Ver limites e evidências em MOVIMENTO-UNIVERSAL.md; preservar fechamentos síncronos exigidos pelos fluxos de formulário.
@@ -502,7 +502,7 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 ## Central de notificações flutuante
 
-- NotificationCenter substitui a bolha ancorada por dialog nativo centralizado, com cards Liquid Glass, datas agrupadas, fechar circular e pílula All/Transactions/Alert mais configurações. Tailwind organiza o conteúdo; notification-center.css limita geometria e materiais ao novo overlay.
+- NotificationCenter substitui a bolha ancorada por dialog nativo centralizado, com cards Liquid Glass, datas agrupadas, fechar circular e pílula Todas/Transações/Alertas mais configurações. Tailwind organiza o conteúdo; notification-center.css limita geometria e materiais ao novo overlay.
 - FinanceGlassCard, FinanceGlassButton e GlassSurface mantêm os padrões compartilhados. Estado de erro/recusa recebe gradiente vermelho discreto. Lista tem rolagem própria e ações permanecem fora da região rolável.
 - Controller continua dono de notificationsOpen, preferências, fontes, destinos, contador e plan12notifications. Abrir marca como lidas conforme o comportamento anterior; os pontos mantêm o snapshot anterior à abertura e desaparecem na próxima abertura.
 - Não criar carteiras, destinatários, quantias ou horários fictícios. Datas sem horário mostram apenas dia/mês; registros sem data ficam em Sem data. Divisões mostram destinatário somente se o nome de usuário já estiver disponível.
@@ -518,8 +518,15 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 ## Fundação global de estilos e API modular
 
-- design-tokens.css é a fonte das dimensões e espaços compartilhados. As preferências de paleta/vidro permanecem em layout-preferences.js. Nenhuma alteração pode duplicar a base financeira para alimentar uma nova tela.
+- design-tokens.css é a fonte das dimensões e espaços compartilhados. As preferências de paleta/vidro permanecem em layout-preferences.ts. Nenhuma alteração pode duplicar a base financeira para alimentar uma nova tela.
 - Componentes React importam finance-runtime e serviços de sessão; window.plan* fica apenas na compatibilidade externa. Cartões, metas e impostos usam useFinanceSnapshot; a persistência continua passando pelas validações/rollback canônicos.
-- Apresentações por área ficam em finance/views e cálculos sem efeitos em finance/calculations.js. O adaptador de templates é uma fronteira de compatibilidade explícita, sem eval ou execução de código de documentos.
+- Apresentações por área ficam em finance/views e cálculos sem efeitos em finance/calculations.ts. FinanceView aplica os controles universais diretamente às apresentações JSX, sem HTML intermediário ou execução de código de documentos. A tipagem estrita cobre toda a pasta src.
 - Rodar check:styles e as regressões de arquitetura/design após alterações globais. Remover somente declarações comprovadamente sobrescritas; não substituir !important por seletores artificiais para reduzir uma contagem.
 - Evidências, contratos e limites em MIGRACAO-ESTRUTURAL-E-DESIGN.md. Essa documentação atualiza o estágio descrito na revisão anterior.
+
+## Notificações compactas e ações de Lançamentos
+
+- Central limitada a 400 px e 640 px de altura, sempre respeitando margens do viewport. Filtros Todas/Transações/Alertas, datas Hoje/Ontem e mensagens de estado em português. Títulos/valores em 14 px, detalhes em 12 px; ícones de card em 36 px, ações com alvo mínimo de 44 px.
+- Limpar dispensa os avisos atuais por identificador, mantendo gastos, relatórios, amigos e divisões. Persistência usa o storage escopado existente; visitantes mantêm na aba e contas no dispositivo. Novos eventos aparecem normalmente. Falha de gravação informa erro sem limpar a lista.
+- Botões de menu com texto usam action-menu-labeled; largura natural e conteúdo em linha. Menus somente com ícone conservam 44 px. Não aplicar a largura de ícone ao botão Adicionar.
+- Sino/central acompanham publicações financeiras, incluindo gastos criados pela API de impostos, sem depender de uma troca de aba.

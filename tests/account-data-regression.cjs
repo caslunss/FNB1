@@ -1,3 +1,4 @@
+const {createContext:fixtureContext,renderFixture}=require('./source-loader.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto').webcrypto;
 (async()=>{
  const {createDeleteAccountHandler}=await import('../supabase/functions/delete-own-account/handler.mjs');
@@ -11,7 +12,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
  assert.equal((await handler(req({confirmation:'EXCLUIR'}))).status,200);assert.deepEqual(calls,[['verify','test.jwt'],['revoke','global'],['delete','verified-user']]);
  deleteFail=true;assert.equal((await handler(req({confirmation:'EXCLUIR'}))).status,503);
  const src=require('./controller-source.cjs'),core=src.split('// FINANCE_CORE\n')[1].split('function tiles(')[0];
- let fail=false;const storage={};const c=vm.createContext({crypto,Date,URL,Blob,console,document:{querySelector:()=>null},window:{planAuth:{user:null}},localStorage:{getItem:k=>storage[k]??null,setItem:(k,v)=>{if(fail)throw Error('quota');storage[k]=v},removeItem:k=>delete storage[k]},draw(){},setTimeout(){},addEventListener(){}});
+ let fail=false;const storage={};const c=fixtureContext({crypto,Date,URL,Blob,console,document:{querySelector:()=>null},window:{planAuth:{user:null}},localStorage:{getItem:k=>storage[k]??null,setItem:(k,v)=>{if(fail)throw Error('quota');storage[k]=v},removeItem:k=>delete storage[k]},draw(){},setTimeout(){},addEventListener(){}});
  vm.runInContext(core+"\nlet editPlanId='',purchaseReview=null,csvPreview=null,behaviorAdvice=null,behaviorError=null;function renderNotifications(){};S.items=[{id:'a',d:'Teste',v:12,c:'Lazer',p:'Pix',date:'2026-10-22'}];PROFILE.name='Preservar perfil';",c);
  fail=true;await assert.rejects(vm.runInContext('resetFinancialData()',c));assert.equal(vm.runInContext('S.items.length',c),1);
  fail=false;assert.equal(await vm.runInContext('resetFinancialData()',c),'Dados financeiros zerados.');const saved=JSON.parse(storage.plan12workspace_v3);assert.equal(saved.data.items.length,0);assert.equal(saved.data.cart.length,0);assert.deepEqual(saved.data.reports,{});assert.equal(saved.data.profile.name,'Preservar perfil');assert.deepEqual(saved.recovery,[]);

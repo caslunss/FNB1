@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict'),React=require('react');
+const {presentationTree}=require('../src/services/presentation-tree.ts');
+const {viewList,viewGroup}=require('../src/services/presentation.ts');
+const h=React.createElement;
+const content=h(React.Fragment,null,h('div',{className:'sheet'},h('div',{className:'grid'},h('label',null,'Valor',h('input',{id:'amount',type:'number',value:'0',disabled:false})))),h('div',{'data-known':false,'aria-pressed':false},'Sem limite'),h('svg',{viewBox:'0 0 24 24'},h('path',{strokeWidth:1.5,d:'M1 1'})));
+const [sheet,indicator,svg]=presentationTree(content);
+assert.equal(indicator.hasAttribute('data-known'),true);
+assert.equal(indicator.getAttribute('data-known'),'false');
+assert.equal(indicator.getAttribute('aria-pressed'),'false');
+const field=sheet.querySelector('input:not([type=hidden]):not([type=checkbox])');
+assert.equal(field.id,'amount');assert.equal(field.getAttribute('value'),'0');assert.equal(field.hasAttribute('disabled'),false);
+assert.equal(field.closest('.sheet'),sheet);assert.equal(field.parentElement.textContent,'Valor');
+assert.equal(sheet.querySelectorAll(':scope > .grid').length,1);assert.equal(sheet.querySelectorAll(':scope > input').length,0);
+assert.equal(svg.namespaceURI,'http://www.w3.org/2000/svg');assert.equal(svg.children[0].namespaceURI,svg.namespaceURI);assert.equal(svg.getAttribute('viewbox'),'0 0 24 24');
+assert.equal(viewList([]),null);assert.equal(viewGroup('',false,null),null);assert(viewList([h('p',null,'Registro')])||'Vazio');
+assert.equal(typeof globalThis.DOMParser,'undefined','JSX traversal must not require a DOM parser');
+console.log('PASS JSX presentation: false data/ARIA values, native Boolean attributes, form selectors, fragments, SVG namespace and empty-state semantics without DOMParser');

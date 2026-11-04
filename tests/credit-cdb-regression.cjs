@@ -1,7 +1,8 @@
+const {createContext:fixtureContext,renderFixture}=require('./source-loader.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto').webcrypto;
 (async()=>{
- const {normalizeCreditCard,cardBalances}=await import('../src/services/credit.js');
- const {simulateCdb,incomeTaxRate,calendarDays}=await import('../src/services/cdb.js');
+ const {normalizeCreditCard,cardBalances}=await import('../src/services/credit.ts');
+ const {simulateCdb,incomeTaxRate,calendarDays}=await import('../src/services/cdb.ts');
  assert.equal(normalizeCreditCard({id:'basic',name:'Banco de teste',limitCents:10000}).openingUsedCents,0);
  const card={id:'card-1',name:'Principal',limitCents:100000,openingUsedCents:10000,closingDay:5,dueDay:12,active:true};
  assert.deepEqual(Object.keys(normalizeCreditCard({...card,pan:'not-kept',cvv:'not-kept'})),Object.keys(card));
@@ -9,7 +10,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
  const balances=cardBalances([card],[{v:100,p:'Cartão de crédito',creditCardId:'card-1',date:'2030-01-01'},{v:100,p:'Cartão de crédito',creditCardId:'card-1',creditPaid:true},{v:500,p:'Pix',creditCardId:'card-1'},{v:10,p:'Cartão de crédito',creditCardId:'card-1',creditChargeCents:3000}]);
  assert.equal(balances[0].usedCents,23000);assert.equal(balances[0].availableCents,77000);assert.equal(cardBalances([{...card,limitCents:1000}],[])[0].excessCents,9000);
  const source=require('./controller-source.cjs'),main=source.split('// FINANCE_CORE\n')[1],core=main.slice(0,main.indexOf('function tiles(')),split=main.slice(main.indexOf('function splitShares'),main.indexOf("document.addEventListener('input'",main.indexOf('function registerSplit')));
- function fixture(initial={},fail=false){const data={...initial},ctx=vm.createContext({Date:require('./fixed-date.cjs'),crypto,URL,Blob,normalizeCreditCard,cardBalances,document:{querySelector:()=>null},localStorage:{getItem:k=>data[k]??null,setItem:(k,v)=>{if(fail)throw Error('quota');data[k]=v}},draw(){},setTimeout(){},addEventListener(){}});vm.runInContext(core+split,ctx);return {run:s=>vm.runInContext(s,ctx),data};}
+ function fixture(initial={},fail=false){const data={...initial},ctx=fixtureContext({Date:require('./fixed-date.cjs'),crypto,URL,Blob,normalizeCreditCard,cardBalances,document:{querySelector:()=>null},localStorage:{getItem:k=>data[k]??null,setItem:(k,v)=>{if(fail)throw Error('quota');data[k]=v}},draw(){},setTimeout(){},addEventListener(){}});vm.runInContext(core+split,ctx);return {run:s=>vm.runInContext(s,ctx),data};}
  const f=fixture();f.run(`CARDS.push(${JSON.stringify({...card,openingUsedCents:0})});saveWorkspace();saveExpense({d:'Compra',v:50,c:'Lazer',p:'Cartão de crédito',creditCardId:'card-1',creditPaid:false,date:'2026-10-22'},null,3)`);
  assert.equal(f.run('cardBalances(CARDS,S.items)[0].usedCents'),15000);const reloaded=fixture(f.data);assert.equal(reloaded.run('CARDS.length'),1);assert.equal(reloaded.run('cardBalances(CARDS,S.items)[0].availableCents'),85000);
  reloaded.run('S.items[0].creditPaid=true;saveWorkspace()');assert.equal(fixture(reloaded.data).run('cardBalances(CARDS,S.items)[0].usedCents'),10000);
@@ -20,7 +21,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
  const p=fixture();p.run(`CARDS.push(${JSON.stringify({...card,openingUsedCents:0})});CART.push(validateShopping({name:'Compra compartilhada',creditCardId:'card-1',targetCents:12000,priceCents:10001,shippingCents:0,reservedCents:0,date:'2026-10-22',installments:3,priority:'normal',category:'Lazer',goal:false,people:['Ana'],url:''},'cart'));confirmPlannedPurchase(CART[0].id,true,JSON.stringify(CART[0]))`);
  const tiny=fixture();tiny.run(`CARDS.push(${JSON.stringify(card)});CART.push(validateShopping({name:'Centavos',creditCardId:'card-1',targetCents:2,priceCents:2,shippingCents:0,reservedCents:0,date:'2026-10-22',installments:2,priority:'normal',category:'Lazer',people:['Ana'],url:''},'cart'));confirmPlannedPurchase(CART[0].id,true,JSON.stringify(CART[0]))`);assert.equal(tiny.run('S.items.reduce((n,x)=>n+x.creditChargeCents,0)'),2);
  assert.equal(p.run('cardBalances(CARDS,S.items)[0].usedCents'),10001);assert.equal(p.run('sum(S.items)'),50.01);assert.equal(fixture(p.data).run('cardBalances(CARDS,S.items)[0].usedCents'),10001);assert.equal(p.run('S.items.reduce((n,x)=>n+x.creditChargeCents,0)'),10001);
- const over=fixture();over.run(`CARDS.push(${JSON.stringify({...card,limitCents:10000,openingUsedCents:12000})})`);assert.match(over.run("creditPlanGuide({priceCents:5000,shippingCents:0})"),/70,00/);
+ const over=fixture();over.run(`CARDS.push(${JSON.stringify({...card,limitCents:10000,openingUsedCents:12000})})`);assert.match(renderFixture(over.run("creditPlanGuide({priceCents:5000,shippingCents:0})")),/70,00/);
  const input={principalCents:100000,cdiAnnual:10,percentCdi:100,start:'2026-01-01',end:'2027-01-01',businessDays:252};const r=simulateCdb(input);assert.equal(r.grossCents,10000);assert.equal(r.irCents,1750);assert.equal(r.netCents,108250);assert.equal(r.iofCents,0);
  for(const [day,rate]of [[180,.225],[181,.2],[360,.2],[361,.175],[720,.175],[721,.15]])assert.equal(incomeTaxRate(day),rate);
  const end=d=>new Date(Date.UTC(2026,0,1+d)).toISOString().slice(0,10);

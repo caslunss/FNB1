@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 (async()=>{
- const {responsibleProgress}=await import('../src/services/responsible-progress.js');
+ const {responsibleProgress}=await import('../src/services/responsible-progress.ts');
  const good={key:'2026-10',income:100000,expenses:70000,debts:20000,incomeCount:1,expenseCount:3,categories:[{limit:80000,spent:70000}]};
  const current='2026-11';
  assert.equal(responsibleProgress([],current).stars,0);
@@ -11,7 +11,7 @@ const assert=require('node:assert/strict');
  for(const change of [{income:0},{incomeCount:0},{expenseCount:0},{expenses:80001},{categories:[]},{categories:[{limit:60000,spent:70000}]},{debts:NaN},{expenses:-1},{categories:[{limit:80000,spent:NaN}]}])assert.equal(responsibleProgress([{...good,...change}],current).stars,0);
  assert.equal(responsibleProgress([{...good,expenses:80000}],current).stars,1);
  assert.deepEqual(responsibleProgress(Array.from({length:7},(_,i)=>({...good,key:'2026-'+String(i+1).padStart(2,'0')})),current),{stars:5,months:7});
- const {readNotificationPreferences,saveNotificationPreference}=await import('../src/services/notification-preferences.js');
+ const {readNotificationPreferences,saveNotificationPreference}=await import('../src/services/notification-preferences.ts');
  const values=new Map(),storage={getItem:k=>values.get(k)||null,setItem:(k,v)=>values.set(k,v)};
  assert.equal(readNotificationPreferences(storage).expenses,true);
  saveNotificationPreference(storage,'expenses',false);

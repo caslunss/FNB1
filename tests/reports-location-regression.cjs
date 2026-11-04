@@ -1,9 +1,10 @@
+const {createContext:fixtureContext,renderFixture}=require('./source-loader.cjs');
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const source=require('./controller-source.cjs');
-const ctx=vm.createContext({identitySettingsView:()=>'<div>Identificação</div>',financeToolsView:()=>'<section>Importar CSV</section>',cloudSettingsView:()=>'<section>Sincronização</section>',closedReportsView:()=>'<section>Relatório fechado preservado</section>',window:{planAuth:{user:null},localStorage:{getItem:()=>null}}});
+const ctx=fixtureContext({identitySettingsView:()=>'<div>Identificação</div>',financeToolsView:()=>'<section>Importar CSV</section>',cloudSettingsView:()=>'<section>Sincronização</section>',closedReportsView:()=>'<section>Relatório fechado preservado</section>',window:{planAuth:{user:null},localStorage:{getItem:()=>null}}});
 vm.runInContext(source.slice(source.indexOf('function accountSettingsView(){'),source.indexOf('function vSettings(){')),ctx);
-const account=ctx.accountSettingsView(),reports=ctx.reportsView();
+const account=renderFixture(ctx.accountSettingsView()),reports=renderFixture(ctx.reportsView());
 assert(!account.includes('Importar CSV'));assert.equal((reports.match(/Importar CSV/g)||[]).length,1);assert(account.includes('Sincronização'));assert(account.includes('data-account-data-controls'));assert(!account.includes('Relatório fechado'));assert(!account.includes('exportSpreadsheet'));assert(!account.includes('data-a="backup"'));
 assert(reports.includes('Relatório fechado preservado'));assert(reports.includes('id="exportSpreadsheet"'));assert(reports.includes('data-a="backup"'));assert(!reports.includes('legacyBackup'));
-ctx.window.localStorage.getItem=()=>'{dados antigos}';assert(ctx.reportsView().includes('legacyBackup'));
+ctx.window.localStorage.getItem=()=>'{dados antigos}';assert(renderFixture(ctx.reportsView()).includes('legacyBackup'));
 console.log('PASS relatórios: histórico e exportações reunidos, sem duplicação em Conta; importação CSV em Relatórios; sincronização e gerenciar dados preservados em Conta.');

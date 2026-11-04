@@ -1,4 +1,4 @@
-const fs=require('node:fs'),path=require('node:path');const root=path.join(__dirname,'..');let script=require('./controller-source.cjs').replace(/^import .*;$/gm,'').replace('export async function startWorkspace({renderHTML}){','(async()=>{');script=script.replace(/\}\s*$/,'})();');
+const fs=require('node:fs'),path=require('node:path');const root=path.join(__dirname,'..');let script=require('./controller-source.cjs').replace(/^import .*;$/gm,'').replace(/export async function startWorkspace\(\{renderView\}\s*\)\{/,'(async()=>{');script=script.replace(/\}\s*$/,'})();');
 // VM fixtures exercise the legacy imperative boundary; browsers exercise the module runtime.
 script=script.replaceAll('finance.taxes','window.planTaxes');
 script=script.replaceAll('finance.credit','window.planCredit');
