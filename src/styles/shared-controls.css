@@ -119,3 +119,21 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 .product-goals h2{overflow-wrap:anywhere}
 .product-goals .plan-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
 @media(max-width:699px){.product-goal-fields{grid-template-columns:minmax(0,1fr)}}
+/* One ledger toolbar, grouped dates and optional history, using existing tokens. */
+#app.layout-i .entry-summary{margin:0;padding:18px 20px;gap:12px}
+#app.layout-i .entry-summary strong{font-size:18px;margin-top:4px}
+#app.layout-i .entry-summary .ledger-balance strong{font-size:22px}
+#app.layout-i .entry-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;flex-wrap:wrap}
+#app.layout-i .entry-toolbar .te-glass-segments{margin:0;flex:0 1 auto;max-width:100%}
+#app.layout-i .entry-toolbar>.te-action-menu{margin-left:auto;flex:none}
+.ledger-date{font-size:13px;font-weight:600;color:var(--lb2);margin:24px 0 8px}
+.ledger-date:first-child{margin-top:0}
+.ledger-evolution>summary{cursor:pointer;min-height:44px;align-content:center;font-weight:600}
+.ledger-evolution-content{margin-top:16px;min-width:0}
+@media(max-width:699px){
+ #app.layout-i .entry-summary{padding:16px;gap:8px!important}
+ #app.layout-i .entry-summary>div{padding-bottom:8px}
+ #app.layout-i .entry-summary>div:last-child{padding-bottom:0;border-bottom:0}
+ #app.layout-i .entry-toolbar .te-glass-segments{flex-basis:auto;width:auto;order:0}
+ #app.layout-i .entry-toolbar>.te-action-menu{margin-left:0}
+}

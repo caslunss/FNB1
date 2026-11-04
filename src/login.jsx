@@ -1,6 +1,7 @@
 import MotionProvider from './components/motion/MotionProvider.tsx';
 import React from 'react';
 import './styles/root.css';
+import './styles/tailwind.css';
 import {createRoot} from 'react-dom/client';
 import './styles/login-base.css';
 import '/public/assets/pastel.css';

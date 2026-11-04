@@ -54,3 +54,15 @@ Relatórios → Impostos exporta as análises atuais. O backup financeiro existe
 Testes automatizados usam respostas fictícias, sem credenciais reais: nacional/importado, arredondamento conciliado, nulos, vigência, cache, ausência de configuração, timeout/401/429, prioridade do documento, cobertura/média ponderada, faturas excluídas, identificadores estáveis, propriedade de conexão/conta e gravação pelo servidor. Executar `npm test`, build e `npm run check:release`.
 
 A consulta autenticada ao IBPT e a importação com banco real dependem das credenciais/consentimento e não devem ser descritas como verificadas antes dessa etapa. Não há cálculo de imposto de renda, CDB, ganho de capital, restituição ou apuração fiscal nesta aba.
+
+## Prévia automática no formulário
+
+Ao importar XML/TXT ou alterar os valores, a prévia é recalculada após uma pausa de 500 ms. O total de tributos informado no documento funciona localmente, inclusive como visitante e sem IBPT. A prévia normaliza os mesmos valores usados no salvamento e não cria gastos nem persiste análises.
+
+Para gasto já existente, a consulta por itens é disparada automaticamente depois da revisão/autorização, quando há conta conectada e IBPT configurado. A rota autenticada `preview` verifica o gasto canônico, proprietário, período e revisão, reutiliza limites de consultas/cache e retorna o cálculo sem gravar `app_tax_records`. Cache de referências e contador de consultas podem ser atualizados. Respostas de rascunhos antigos são ignoradas. O salvamento continua explícito e recalcula/valida no servidor.
+
+Um gasto novo só é criado ao salvar; antes disso a prévia por documento é local e a consulta remota por itens aguarda vínculo com um lançamento. Falta de nota/classificação continua pendente. Não há captura automática de documentos nem inferência de alíquotas a partir do extrato.
+
+O aviso da interface informa os nomes das três variáveis de servidor necessárias quando a configuração não está disponível. Sua presença ainda não garante credencial válida ou tabelas aplicadas. Nenhuma credencial ou migração remota foi configurada por esta alteração.
+
+Validação: `tests/tax-preview-regression.cjs` cobre centavos, prévia documental sem credenciais, pendências, ausência de gravação de análises, autenticação, revisão concorrente e preço canônico. Chromium validou importação TXT, prévia automática, revisão/salvamento, ausência de gasto duplicado e largura mobile. IBPT real não foi consultado.

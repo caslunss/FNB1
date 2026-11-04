@@ -27,7 +27,7 @@ export async function handleTax(req,env,net=fetch){
    }
    if(batch.length)await db('app_tax_records','',{method:'POST',body:JSON.stringify(batch)});return reply(200,{saved:batch.length});
   }
-  if(!['save','delete'].includes(data.action)||!/^[-\w]{1,100}$/.test(String(data.itemId||'')))throw new TaxError('Ação inválida.');
+  if(!['save','preview','delete'].includes(data.action)||!/^[-\w]{1,100}$/.test(String(data.itemId||'')))throw new TaxError('Ação inválida.');
   const selector=owner+'&item_id=eq.'+encodeURIComponent(data.itemId),existing=(await db('app_tax_records',selector+'&select=record,revision'))[0];
   if((existing?Number(existing.revision):0)!==data.expectedRevision)throw new TaxError('A análise mudou em outro dispositivo. Atualize.',409);
   if(data.action==='delete'){if(existing){if(existing.record.date?.slice(0,7)!==taxToday(new Date(),env.TAX_TIME_ZONE||'America/Sao_Paulo').slice(0,7))throw new TaxError('Período somente para visualização.',409);const deleted=await db('app_tax_records',selector+'&revision=eq.'+existing.revision,{method:'DELETE',headers:{Prefer:'return=representation'}});if(!deleted?.length)throw new TaxError('A análise mudou. Atualize.',409);}return reply(200,{ok:true});}
@@ -43,6 +43,7 @@ export async function handleTax(req,env,net=fetch){
   const calculation=await calculate(input,expense,{env,net,cache,profile});
 
   const record={itemId:expense.id,fingerprint:fingerprint(expense),input,calculation,source:expense.id.startsWith('of-')?'open_finance':'manual',date:expense.date,description:expense.description,updatedAt:new Date().toISOString()};
+  if(data.action==='preview')return reply(200,{record:{...record,revision:existing?Number(existing.revision):0}});
   const revision=existing?Number(existing.revision)+1:1;
   if(existing){const result=await db('app_tax_records',selector+'&revision=eq.'+existing.revision,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify({record,revision,updated_at:record.updatedAt})});if(!result.length)throw new TaxError('A análise mudou. Atualize.',409);}else await db('app_tax_records','',{method:'POST',body:JSON.stringify({user_id:user.id,item_id:expense.id,record,revision})});
   return reply(200,{record:{...record,revision}});

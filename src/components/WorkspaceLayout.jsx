@@ -1,3 +1,4 @@
+import NotificationCenter from './NotificationCenter.jsx';
 import BottomNavigation from './BottomNavigation.jsx';
 import MobileExperience from './MobileExperience.jsx';
 import MonthPicker from './MonthPicker.jsx';
@@ -29,5 +30,5 @@ export function WorkspaceLayout(){return <>
   <dialog id="accountOverlay" className="account-overlay" aria-labelledby="accountOverlayTitle"><div id="accountOverlayContent"/></dialog>
   <div className="menu glass" id="menu" role="menu" hidden/>
   <div className="scrim" id="scrim" hidden/>
-  <GlassSurface id="notificationPanel" className="notification-panel" aria-label="Central de notificações" hidden/>
+  <NotificationCenter/>
 </>;}

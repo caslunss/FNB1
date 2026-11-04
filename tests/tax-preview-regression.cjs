@@ -1,0 +1,34 @@
+const assert=require('node:assert/strict');
+(async()=>{
+ global.window={planAuth:{user:null},planClearTaxData:null};
+ const {previewTax,taxPayload}=await import('../src/services/taxes/client.js');
+ const {taxToday}=await import('../src/services/taxes/domain.js');
+ const input={documentTotalCents:null,items:[],uf:''};
+ const payload=taxPayload(input,'12,34');
+ assert.equal(payload.documentTotalCents,1234);
+ const result=await previewTax({cents:10000},payload);
+ assert.equal(result.totalCents,1234);assert.equal(result.method,'document');
+ assert.equal((await previewTax({cents:10000},input)).status,'pending');
+ assert.equal((await previewTax({id:'expense',cents:10000},input)).status,'pending');
+ await assert.rejects(previewTax({cents:100},payload),/superar/);
+ assert.throws(()=>taxPayload(input,'1,234'),/duas casas/);
+ const {handleTax}=await import('../server/taxes/handler.js');
+ const writes=[];const date=taxToday();
+ const env={SUPABASE_URL:'https://db.test',SUPABASE_PUBLIC_KEY:'public',SUPABASE_SERVER_KEY:'secret'};
+ const net=async(url,options={})=>{
+  if(options.method&&options.method!=='GET')writes.push(url);
+  if(url.endsWith('/auth/v1/user'))return Response.json({id:'owner'});
+  if(url.includes('/app_tax_records?'))return Response.json([]);
+  if(url.includes('/app_finance_workspaces?'))return Response.json([{record:{data:{items:[{id:'expense',v:10000,d:'Compra',date,c:'Gastos Variáveis'}]}}}]);
+  throw Error('Unexpected request '+url);
+ };
+ const req=(data,authorized=true)=>new Request('https://app.test/api/taxes',{method:'POST',headers:{'Content-Type':'application/json',...(authorized?{Authorization:'Bearer test.token'}:{})},body:JSON.stringify(data)});
+ let response=await handleTax(req({action:'preview',itemId:'expense',input:payload,expectedRevision:0}),env,net);
+ assert.equal(response.status,200);const record=(await response.json()).record;
+ assert.equal(record.calculation.totalCents,1234);assert.equal(record.revision,0);assert.equal(writes.length,0,'preview does not persist analysis or financial data');
+ response=await handleTax(req({action:'preview',itemId:'expense',input:{...payload,documentTotalCents:10001},expectedRevision:0}),env,net);assert.equal(response.status,400,'canonical price is enforced');
+ response=await handleTax(req({action:'preview',itemId:'expense',input:payload,expectedRevision:1}),env,net);assert.equal(response.status,409);
+ response=await handleTax(req({action:'preview'},false),env,net);assert.equal(response.status,401);
+ assert.equal(writes.length,0);
+ console.log('PASS prévia automática: documento sem credenciais, centavos, pendências, autorização, revisão concorrente, preço canônico e ausência de gravações.');
+})().catch(e=>{console.error(e);process.exitCode=1});

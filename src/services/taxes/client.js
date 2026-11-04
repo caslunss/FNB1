@@ -1,8 +1,8 @@
-import {normalizeInput,documentCalculation,fingerprint} from './domain.js';
+import {normalizeInput,documentCalculation,fingerprint,moneyText as normalizeMoney} from './domain.js';
 const KEY='plan12taxes_v1',cooldowns=new Map();
 export const isTaxAccount=()=>!!(window.planAuth?.user&&window.planAuth?.client);
 export async function taxRequest(action,payload={}){
- const owner=window.planAuth?.user?.id;if(action==='save'&&(cooldowns.get(owner)||0)>Date.now())throw Error('Aguarde até '+new Date(cooldowns.get(owner)).toLocaleTimeString('pt-BR')+' para consultar novamente.');
+ const owner=window.planAuth?.user?.id;if(['save','preview'].includes(action)&&(cooldowns.get(owner)||0)>Date.now())throw Error('Aguarde até '+new Date(cooldowns.get(owner)).toLocaleTimeString('pt-BR')+' para consultar novamente.');
  const client=window.planAuth?.client;const {data,error}=await client.auth.getSession();if(error||!data.session?.access_token)throw Error('Entre novamente para sincronizar.');
  const response=await fetch('/api/taxes',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+data.session.access_token},body:JSON.stringify({action,...payload}),signal:AbortSignal.timeout(120000)});
  let result;try{result=await response.json()}catch{throw Error('Servidor tributário indisponível. Tente novamente.')}if(!response.ok){const e=Error(result.error||'Não foi possível concluir a análise.');e.retryAfter=response.headers.get('Retry-After');if(response.status===429){const value=e.retryAfter,until=/^\d+$/.test(value||'')?Date.now()+Number(value)*1000:Date.parse(value);cooldowns.set(owner,Number.isFinite(until)?until:Date.now()+60000);}throw e}return result;
@@ -21,3 +21,18 @@ export async function clearTaxes(){if(isTaxAccount())return taxRequest('clear');
 export async function exportTaxData(){const records=await readTaxes(),url=URL.createObjectURL(new Blob([JSON.stringify({schemaVersion:1,exportedAt:new Date().toISOString(),taxes:records},null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='analises-tributarias.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 
 window.planClearTaxData=clearTaxes;
+
+// Preview never creates an expense or persists a tax record.
+export async function previewTax(expense,input,{reviewed=false,configured=false,revision=0}={}){
+ const normalized=normalizeInput(input,expense.cents),document=documentCalculation(normalized,expense.cents);
+ if(document)return document;
+ if(!expense.id)return {status:'pending',totalCents:null,note:'Vincule a um gasto existente para consultar os itens. O novo gasto só será criado ao salvar.'};
+ if(!reviewed)return {status:'pending',totalCents:null,note:'Revise os itens e marque a autorização abaixo para calcular automaticamente.'};
+ if(!isTaxAccount()||!configured)return {status:'pending',totalCents:null,note:'Consulta por itens depende de conta conectada e configuração IBPT no servidor.'};
+ const state=await window.planCloud?.flush();if(state&&state.mode!=='synced')throw Error('Aguarde a sincronização do gasto antes de analisar.');
+ return (await taxRequest('preview',{itemId:expense.id,input:normalized,expectedRevision:revision})).record.calculation;
+}
+
+export function taxPayload(input,taxText){
+ return {...input,documentTotalCents:taxText.trim()?Number(normalizeMoney(taxText)):null,items:input.items.map(x=>({...x,baseCents:x.draftBase===undefined?x.baseCents:normalizeMoney(x.draftBase),unitValueCents:x.draftUnit!==undefined?normalizeMoney(x.draftUnit):x.unitValueCents||normalizeMoney(x.draftBase??(x.baseCents/100).toFixed(2))}))};
+}

@@ -480,3 +480,31 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Login fullscreen prevalece sobre a borda de card legada também no tema escuro. Até 760 px, a camada de vidro/tinta cobre a tela toda e a seção de acesso fica transparente; desktop mantém duas colunas. Temas e controles continuam compartilhados.
 - O host do Google usa esquema claro e recorte em pílula, com foco visível na superfície externa. Não substituir o botão oficial nem modificar seu documento interno ou o fluxo de autenticação.
 - Evidências e limitações em CORRECOES-MOBILE-FORMULARIOS-LOGIN.md.
+
+## Prévia tributária automática
+
+- Editor de Impostos mostra a prévia em FinanceGlassCard, dentro do próprio formulário, com status acessível e as superfícies compartilhadas. Alterações e importação recalculam a prévia; gravação continua explícita.
+- Documento com total informado funciona sem IBPT. Consulta por itens exige revisão/autorização, conta e servidor configurado; dados ausentes ficam pendentes. Prévia não movimenta o orçamento nem duplica lançamentos.
+
+## Lançamentos simplificados no Resumo
+
+- Totais em um card compacto, com saldo em destaque. Filtros Todos/Entradas/Gastos e uma única ação Adicionar na barra; menu compartilhado reúne Entrada, Gasto, Ler nota e Salário mensal.
+- Lista agrupada por data, com descrição, categoria/recorrência e valor. Datas permanecem nos nomes acessíveis dos registros; edição, menu contextual e gestos mobile continuam existentes.
+- Gráfico Período permanece intacto dentro de Ver evolução, fechado inicialmente e acessível por summary/details nativos. Estado vazio explica quando não há registros ou correspondências no filtro.
+- Preservar cálculos, bloqueio de meses encerrados, tokens Liquid Glass e formulários financeiros existentes.
+
+## Tailwind CSS no Vite
+
+- Tailwind 4 é compilado pelo plugin oficial @tailwindcss/vite, com versões exatas no package-lock.json. Aplicativo e login importam src/styles/tailwind.css.
+- Somente tema e utilitários são carregados; Preflight permanece desativado para preservar o design existente. CSS atual sem camada mantém precedência sobre utilitários em conflito. Não use !important como migração automática de componentes.
+- A variante dark: segue data-theme="dark", a mesma preferência do site. Classes precisam estar completas nos arquivos fonte; use mapas de strings completas para estados, sem construir nomes por concatenação.
+- Reutilizar LiquidControls e tokens existentes para ações, campos e cards. Tailwind não substitui componentes compartilhados nem converte dados de demonstração em notificações reais.
+
+## Central de notificações flutuante
+
+- NotificationCenter substitui a bolha ancorada por dialog nativo centralizado, com cards Liquid Glass, datas agrupadas, fechar circular e pílula All/Transactions/Alert mais configurações. Tailwind organiza o conteúdo; notification-center.css limita geometria e materiais ao novo overlay.
+- FinanceGlassCard, FinanceGlassButton e GlassSurface mantêm os padrões compartilhados. Estado de erro/recusa recebe gradiente vermelho discreto. Lista tem rolagem própria e ações permanecem fora da região rolável.
+- Controller continua dono de notificationsOpen, preferências, fontes, destinos, contador e plan12notifications. Abrir marca como lidas conforme o comportamento anterior; os pontos mantêm o snapshot anterior à abertura e desaparecem na próxima abertura.
+- Não criar carteiras, destinatários, quantias ou horários fictícios. Datas sem horário mostram apenas dia/mês; registros sem data ficam em Sem data. Divisões mostram destinatário somente se o nome de usuário já estiver disponível.
+- Escape/backdrop/fechar usam o mesmo estado do controlador. O dialog contém foco e o fechamento restaura a rolagem; configurações abre a seção Notificações existente. A barra inferior respeita a ocultação já aplicada a dialogs.
+- tests/notifications.browser.cjs verifica gasto real de teste, leitura persistida, filtros, Escape, destinos/configurações e 320/390/768/1440 px em claro/escuro. Executar com Vite ativo e PLAYWRIGHT_MODULE apontando para o Playwright instalado, quando necessário.
