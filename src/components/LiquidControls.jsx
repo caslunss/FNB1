@@ -8,6 +8,10 @@ import {getLayout,subscribeLayout} from '../services/layout-preferences.js';
 
 const useLayout=()=>useSyncExternalStore(subscribeLayout,getLayout);
 export function FinanceGlassButton({className='',shimmer=true,...props}){const layout=useLayout();return <IOSButton {...props} className={`te-glass-button ${className}`} shimmer={shimmer} intensity={layout.intensity}/>}
+// Calendar choices paint one selected state, without refractive copies of dates.
+export function FinanceCalendarButton({className='',...props}){
+ return <button {...props} type="button" className={`finance-calendar-choice ${className}`}/>;
+}
 export function FinanceGlassSwitch({className='',...props}){
  return <LibrarySwitch {...props} className={`te-glass-switch ${className}`}/>;
 }

@@ -1,20 +1,22 @@
+import {createPortal} from 'react-dom';
 import React, {Children, isValidElement, useEffect, useId, useLayoutEffect, useRef, useState} from 'react';
 import {FinanceFieldButton as Button} from './LiquidControls.jsx';
 
 const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
 
-// Native validation, grouped options and older browsers keep the styled system picker.
+// Single-choice controls use site UI; the select remains the form/data contract.
 export default function FinanceSelect(props) {
   const {label, nativeControl, ...nativeProps} = props;
   const children = Children.toArray(props.children);
-  const supported = typeof HTMLElement !== 'undefined' && 'showPopover' in HTMLElement.prototype;
-  if (!supported || (props.required && !nativeControl) || props.multiple || props.size || children.some(child => !isValidElement(child) || child.type !== 'option')) {
+  if (props.multiple || props.size || children.some(child => !isValidElement(child) || child.type !== 'option')) {
     return <select {...nativeProps} aria-label={label || props['aria-label']}/>;
   }
   return <CustomSelect {...props}/>;
 }
 
 function CustomSelect({label, nativeControl = false, value, defaultValue, onChange, children, name, disabled = false, id, ...props}) {
+  const supported = typeof HTMLElement !== 'undefined' && 'showPopover' in HTMLElement.prototype;
+  const [validation,setValidation] = useState('');
   const uid = useId(), listId = `${uid}-list`;
   const options = Children.toArray(children).map(child => ({
     value: String(child.props.value ?? child.props.children),
@@ -28,12 +30,18 @@ function CustomSelect({label, nativeControl = false, value, defaultValue, onChan
   const [open, setOpen] = useState(false), [active, setActive] = useState(-1);
   const native = useRef(null), trigger = useRef(null), list = useRef(null);
   const search = useRef({text: '', at: 0}), resetFrame = useRef(null);
+  useLayoutEffect(()=>{
+    if(!nativeControl)return;
+    const element=native.current,descriptor=Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value');
+    Object.defineProperty(element,'value',{configurable:true,get(){return descriptor.get.call(this)},set(next){descriptor.set.call(this,next);setInternal(descriptor.get.call(this))}});
+    return()=>{delete element.value};
+  },[nativeControl]);
   useEffect(() => () => {if (resetFrame.current !== null) cancelAnimationFrame(resetFrame.current);}, []);
   const enabled = options.map((option, index) => option.disabled ? -1 : index).filter(index => index >= 0);
 
   useLayoutEffect(() => {
-    if (nativeControl || label || props['aria-label'] || props['aria-labelledby']) return;
-    const enclosing = trigger.current?.closest('label');
+    if (label || props['aria-label'] || props['aria-labelledby']) return;
+    const enclosing = trigger.current?.closest('label') || native.current?.labels?.[0];
     if (!enclosing) return;
     const copy = enclosing.cloneNode(true);
     copy.querySelectorAll('.te-text-field, .finance-select').forEach(node => node.remove());
@@ -75,8 +83,8 @@ function CustomSelect({label, nativeControl = false, value, defaultValue, onChan
       bottom: upwards ? `${innerHeight - rect.top + 8}px` : 'auto',
       maxHeight: `${Math.min(height, available)}px`,
     });
-    element.showPopover();
-    return () => {if (element.matches(':popover-open')) element.hidePopover();};
+    if(supported)element.showPopover();
+    return () => {if (supported && element.matches(':popover-open')) element.hidePopover();};
   }, [open, options.length]);
   useEffect(() => {
     if (!open) return;
@@ -96,7 +104,7 @@ function CustomSelect({label, nativeControl = false, value, defaultValue, onChan
     const reset = () => {
       const next = String(controlled ? value : defaultValue ?? options.find(option => !option.disabled)?.value ?? '');
       if (!controlled) setInternal(next);
-      close();
+      close();setValidation('');
       // The browser resets a select after the reset event; retain the React-controlled value.
       if (resetFrame.current !== null) cancelAnimationFrame(resetFrame.current);
       resetFrame.current = requestAnimationFrame(() => {resetFrame.current = null; if (native.current?.isConnected) native.current.value = next;});
@@ -135,31 +143,31 @@ function CustomSelect({label, nativeControl = false, value, defaultValue, onChan
     if (open) list.current?.querySelector(`[data-index="${active}"]`)?.scrollIntoView({block: 'nearest'});
   }, [open, active]);
 
-  return <span className="finance-select">
-    <select {...props} ref={element => {native.current = element; if (nativeControl) trigger.current = element;}} id={nativeControl ? id : undefined} name={name}
-      value={nativeControl ? undefined : selected} defaultValue={nativeControl ? defaultValue : undefined} disabled={disabled}
-      hidden={!nativeControl} aria-hidden={nativeControl ? undefined : true} tabIndex={nativeControl ? props.tabIndex : -1}
-      role={nativeControl ? 'combobox' : undefined} aria-haspopup={nativeControl ? 'listbox' : undefined}
-      aria-expanded={nativeControl ? open : undefined} aria-controls={nativeControl ? listId : undefined}
-      aria-activedescendant={nativeControl && open && active >= 0 ? `${uid}-${active}` : undefined}
-      onMouseDown={nativeControl ? event => event.preventDefault() : undefined}
-      onClick={nativeControl ? event => {event.preventDefault(); trigger.current.focus({preventScroll: true}); open ? close() : show();} : undefined}
-      onKeyDown={nativeControl ? keyDown : undefined} onBlur={nativeControl ? close : undefined}
-      onChange={event => {if (!controlled) setInternal(event.target.value); onChange?.(event);}}>{children}</select>
-    {!nativeControl && <Button id={id} ref={trigger} className="finance-select-trigger" type="button" role="combobox"
-      disabled={disabled} aria-labelledby={props['aria-labelledby']} aria-label={label || props['aria-label']} aria-haspopup="listbox"
-      aria-expanded={open} aria-controls={listId} aria-activedescendant={open && active >= 0 ? `${uid}-${active}` : undefined}
-      onKeyDown={keyDown} onBlur={close} onClick={() => open ? close() : show()}>
-      <span className="finance-select-value">{options[selectedIndex]?.label || 'Selecionar'}</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-    </Button>}
-    <div ref={list} id={listId} popover="manual" role="listbox" aria-label={label || props['aria-label']} className="finance-select-list">
+  const popup = <div ref={list} id={listId} popover={supported?'manual':undefined} role="listbox" aria-label={label || props['aria-label']} className="finance-select-list" hidden={!supported&&!open}>
       {options.map((option, index) => <div key={option.value} id={`${uid}-${index}`} role="option"
         aria-selected={option.value === selected} aria-disabled={option.disabled || undefined}
         data-index={index} className={`finance-select-option${index === active ? ' is-active' : ''}`}
         onPointerDown={event => event.preventDefault()} onClick={() => choose(index)}>
         <span>{option.label}</span>{option.value === selected && <span aria-hidden="true">✓</span>}
       </div>)}
-    </div>
+    </div>;
+  return <span className="finance-select">
+    <select {...props} className={`${props.className||''} finance-select-native`} ref={native} id={nativeControl ? id : undefined} name={name}
+      value={nativeControl ? undefined : selected} defaultValue={nativeControl ? defaultValue : undefined} disabled={disabled}
+      aria-hidden="true" tabIndex={-1}
+      onFocus={()=>trigger.current?.focus({preventScroll:true})}
+      onClick={event=>{event.preventDefault();trigger.current?.focus();show()}}
+      onInvalid={event=>{event.preventDefault();setValidation(event.currentTarget.validationMessage||'Selecione uma opção.');trigger.current?.focus();props.onInvalid?.(event)}}
+      onChange={event => {if (!controlled) setInternal(event.target.value);if(event.target.validity.valid)setValidation('');onChange?.(event);}}>{children}</select>
+    <Button id={nativeControl ? undefined : id} ref={trigger} className="finance-select-trigger" type="button" role="combobox"
+      disabled={disabled} aria-labelledby={props['aria-labelledby']} aria-label={label || props['aria-label']} aria-haspopup="listbox"
+      aria-required={props.required||undefined} aria-invalid={validation?true:undefined} aria-describedby={validation?`${uid}-error`:props['aria-describedby']}
+      aria-expanded={open} aria-controls={listId} aria-activedescendant={open && active >= 0 ? `${uid}-${active}` : undefined}
+      onKeyDown={keyDown} onBlur={close} onClick={() => open ? close() : show()}>
+      <span className="finance-select-value">{options[selectedIndex]?.label || 'Selecionar'}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+    </Button>
+    {supported?popup:createPortal(popup,native.current?.closest('dialog')||document.body)}
+    {validation&&<span id={`${uid}-error`} role="alert" className="finance-select-error">{validation}</span>}
   </span>;
 }

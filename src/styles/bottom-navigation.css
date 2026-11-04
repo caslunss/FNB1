@@ -61,3 +61,10 @@
  body:not(.auth-page) .navigation-actions #tabs button:hover svg{transform:scale(var(--motion-nav-hover));opacity:1}
  body:not(.auth-page) .navigation-actions #tabs button:active svg{transform:scale(var(--motion-press))}
 }
+@media(max-width:1024px){
+ body:not(.auth-page) .navigation-actions[hidden],
+ body:not(.auth-page):has(dialog[open]) .navigation-actions,
+ body:not(.auth-page):has(#scrim:not([hidden])) .navigation-actions{
+  display:none!important;
+ }
+}

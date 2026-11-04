@@ -44,7 +44,7 @@
  .account-panel-body{padding:0 16px calc(20px + env(safe-area-inset-bottom))!important}.account-panel-body .card{padding:18px!important;border-radius:24px!important}
  .mobile-sheet-grabber{display:flex;justify-content:center;align-items:center;width:100%;height:44px;min-height:44px;padding:0;border:0;background:var(--form-surface);touch-action:none}.mobile-sheet-grabber span{width:36px;height:5px;border-radius:999px;background:currentColor;opacity:.4}
  .mobile-shortcuts-sheet,.mobile-confirm-sheet{padding:0 20px calc(20px + env(safe-area-inset-bottom));background:var(--form-surface);color:var(--text);border:1px solid var(--form-border);box-shadow:var(--lg-shadow);overflow:auto}
- .mobile-shortcuts-sheet.is-expanded{height:calc(100dvh - env(safe-area-inset-top) - 12px)}.mobile-shortcuts-sheet::backdrop,.mobile-confirm-sheet::backdrop{background:#0005;backdrop-filter:blur(6px)}
+ .mobile-shortcuts-sheet::backdrop,.mobile-confirm-sheet::backdrop{background:#0005;backdrop-filter:blur(6px)}
  .mobile-shortcuts-sheet header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.mobile-shortcuts-sheet h2{font-size:1.25rem}.mobile-shortcuts-sheet header button{width:44px;min-height:44px}.mobile-shortcuts-sheet header svg{width:22px;height:22px}.mobile-shortcut-list{display:grid;gap:12px}.mobile-shortcut-list button{width:100%;min-height:52px;font-size:1rem}.mobile-confirm-sheet{padding-top:20px}.mobile-confirm-actions{display:flex;flex-wrap:wrap;gap:12px}.mobile-confirm-actions button{min-height:44px;flex:1}
  #scrim{align-items:flex-end!important;padding:0!important}.sheet{width:100%!important;max-width:none!important;max-height:calc(100dvh - env(safe-area-inset-top) - 8px)!important;padding:16px 20px calc(24px + env(safe-area-inset-bottom))!important;border-radius:28px 28px 0 0!important;box-sizing:border-box}.sh{position:sticky;top:0;z-index:35;background:var(--form-surface)}.sh button{min-height:44px!important;min-width:44px!important;font-size:.9375rem!important}
  .sheet .grid,.account-panel-body .compact-form{grid-template-columns:minmax(0,1fr)!important}
@@ -95,4 +95,14 @@
  body:not(.auth-page) .top-account-actions>.task-search>button{width:44px;height:44px;min-height:44px;padding:0}
  .top-account-actions{align-items:center!important;flex-wrap:nowrap;min-width:0}
  .top-account-actions .mobile-utility{display:flex;align-items:center;flex:none}
+}
+
+@media(max-width:699px){
+ .mobile-shortcuts-sheet{color:var(--lb);overscroll-behavior:contain}
+ .mobile-shortcuts-handle{display:flex;align-items:center;justify-content:center;height:28px;pointer-events:none}
+ .mobile-shortcuts-handle>span{display:block;width:36px;height:4px;border-radius:999px;background:var(--lb2);opacity:.4}
+ .mobile-shortcuts-sheet header{align-items:center}
+ .mobile-shortcuts-sheet h2{margin:0;min-width:0;overflow-wrap:anywhere}
+ .mobile-shortcuts-sheet header>.lg-button{flex:0 0 44px;height:44px;padding:0}
+ .mobile-shortcut-list{min-width:0}
 }

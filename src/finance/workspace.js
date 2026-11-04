@@ -530,11 +530,11 @@ document.addEventListener('click',async event=>{const button=event.target.closes
 
 
 function renderAccountPanel(){if(!accountPanel)return;const title={profile:'Perfil',settings:'Configurações',calendar:'Calendário'}[accountPanel],content=accountPanel==='profile'?vYou():accountPanel==='calendar'?vC():vSettings();renderHTML($('#accountOverlayContent'),`<button type="button" class="mobile-sheet-grabber" data-mobile-expand aria-label="Expandir ou recolher folha" aria-expanded="false"><span></span></button><header class="account-overlay-header"><h2 id="accountOverlayTitle">${title}</h2><button class="btn g account-overlay-close" type="button" data-close-account aria-label="Fechar ${title}">${P('<path d="m6 6 12 12M18 6 6 18"/>')}</button></header><div class="account-panel-body ${accountPanel}-panel">${content}</div><p id="accountPanelStatus" class="foot" role="alert" hidden></p>`);}
-function openAccountPanel(panel){
+function openAccountPanel(panel,opener=null){
  const destination={shopping:'commitments:cards',friends:'commitments:friends',offers:'planning:purchases',reports:'analysis:reports'}[panel];
  if(destination){closeAccountPanel();accountPanel=null;notificationsOpen=false;renderNotifications();if(selectAreaView(destination)){scrollTo(0,0);draw();}return;}
  if(panel==='integrations'){accountSettingsTab='connections';panel='settings';}
-if(!['profile','settings','calendar'].includes(panel))return;const dialog=$('#accountOverlay');if(!dialog)return;overlayOpener=panel==='calendar'?$('#calendarButton'):document.querySelector('.app-symbol');notificationsOpen=false;renderNotifications();accountPanel=panel;dialog.classList.remove('mobile-expanded');$('#accountOverlay').dataset.panel=panel;renderAccountPanel();if(!dialog.open){dialog.showModal();document.body.classList.add('account-overlay-open');}document.querySelector('.app-symbol')?.setAttribute('aria-expanded',String(panel==='profile'));dialog.querySelector('[data-close-account]')?.focus();}
+if(!['profile','settings','calendar'].includes(panel))return;const dialog=$('#accountOverlay');if(!dialog)return;overlayOpener=opener||(panel==='calendar'?$('#calendarButton'):document.querySelector('.app-symbol'));notificationsOpen=false;renderNotifications();accountPanel=panel;dialog.classList.remove('mobile-expanded');$('#accountOverlay').dataset.panel=panel;renderAccountPanel();if(!dialog.open){dialog.showModal();document.body.classList.add('account-overlay-open');}document.querySelector('.app-symbol')?.setAttribute('aria-expanded',String(panel==='profile'));dialog.querySelector('[data-close-account]')?.focus();}
 function closeAccountPanel({immediate=false}={}){const dialog=$('#accountOverlay');if(!dialog?.open||dialog.dataset.closing)return;
  if(immediate||dialog.dataset.panel!=='profile'||matchMedia('(prefers-reduced-motion: reduce)').matches){dialog.close();return;}
  dialog.dataset.closing='true';dialog.inert=true;
@@ -715,7 +715,7 @@ window.planIsMonthClosed=()=>isMonthClosed(S.m);
 window.planMobile={
  getState:()=>({tab:S.tab,composeDebt:S.tab==='d'&&areaViews.commitments==='debts',closed:isMonthClosed(S.m),sections:getLayout().sections}),
  navigate(key){if(!['r','d','o','v','e','f'].includes(key)||key==='e'&&!getLayout().sections.carbon)return;closeMenu();S.tab=key;scrollTo(0,0);draw();},
- open:panel=>openAccountPanel(panel),
+ open:(panel,opener)=>openAccountPanel(panel,opener),
  compose(){if(isMonthClosed(S.m))return;openSheet({dataset:{k:S.tab==='d'&&areaViews.commitments==='debts'?'d':'launch',date:defaultDateForMonth(S.m)}});},
  rowAction(action,kind,id){safely(()=>{if(isMonthClosed(S.m)||!['g','i'].includes(kind))return;const item=(kind==='g'?S.items:S.receipts).find(x=>String(x.id)===String(id));if(!item)return;if(item.splitId)throw Error('Altere esta divisão em Amigos.');if(action==='edit'){openSheet({dataset:{k:kind,id:item.id}});return;}if(action==='delete'){atomic(()=>{if(kind==='g')S.items=S.items.filter(x=>x.id!==item.id);else S.receipts=S.receipts.filter(x=>x.id!==item.id);saveWorkspace();});draw();}});}
 };

@@ -421,3 +421,24 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - IOSButton usa Motion e controles nativos usam microinterações CSS, sem dois motores sobre o mesmo transform. Foco mantém o halo original de forma imediata; movimento reduzido cancela animações em andamento.
 - Compactação da barra usa medidas por mudança de estado e escala (FLIP), preservando tamanhos finais e áreas de toque. Não interpolar largura/altura/padding do layout.
 - Ver limites e evidências em MOVIMENTO-UNIVERSAL.md; preservar fechamentos síncronos exigidos pelos fluxos de formulário.
+
+## Atalhos mobile simplificados
+
+- Configurações tem um único acesso no perfil; Atalhos mantém Calendário quando habilitado. Sem atalhos habilitados, exibir estado vazio explícito.
+- A alça de Atalhos é decorativa e neutra, sem foco/gesto de expansão. O antigo botão de largura total recebia o foco inicial e desenhava um halo azul como barra horizontal. O foco inicial vai para Fechar, com indicador de teclado preservado.
+- Dialog com altura natural, sem expansão vazia. Escape/backdrop devolvem foco ao acionador; transferência para Calendário não disputa foco. Cliques no padding interno não fecham o painel.
+
+- O Calendário aberto por Atalhos recebe o acionador explicitamente e devolve foco a ele ao fechar; os demais acessos mantêm seus acionadores anteriores.
+
+## Seleção dentro da página no celular
+
+- FinanceSelect simples sempre usa botão/lista do site, inclusive required e templates antigos. Select real permanece para id/name, constraints, FormData e leitura/escrita do controlador, mas fica fora da área de toque.
+- Required é validado pelo select real; o evento invalid apresenta mensagem junto ao botão e foca o controle visível. Alterações diretas em .value de controles legados atualizam o rótulo; reset preserva os contratos.
+- Navegadores sem Popover usam lista posicionada por portal no dialog ativo ou body. Múltipla seleção, size explícito e grupos não suportados conservam o fallback nativo; não estão presentes nas seleções simples revisadas.
+- Tocar no campo de data abre DatePicker do site, sem focar primeiro o seletor do sistema. Digitação por teclado permanece disponível; MonthPicker continua para períodos.
+
+## Calendários e navegação durante edição
+
+- Dias e meses usam FinanceCalendarButton: botão nativo do design compartilhado, sem cópias refrativas do conteúdo. Só aria-pressed=true desenha a seleção; dias não selecionados da agenda ficam neutros. Foco de teclado e indicadores de eventos continuam distintos de seleção. Não remover eventos reais que compartilham a mesma data.
+- Barra inferior oculta até 1024 px quando houver dialog aberto, scrim de lançamento, conexão bancária, editor de cartão, pagamento de fatura, importação bancária, revisão de compra ou editor expansível aberto. Acompanhamento do DOM evita depender apenas do teclado; CSS cobre os modais imediatamente.
+- Fechar uma janela filha não revela a barra enquanto o formulário pai continuar aberto. A barra volta após encerrar o último editor e mantém a aba selecionada. Desktop preservado. Medidas de compactação são descartadas durante ocultação para não gerar transforms inválidos na volta.
