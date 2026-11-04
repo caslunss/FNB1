@@ -1,9 +1,11 @@
-import React, {useId, useState} from 'react';
+import {getLayout,subscribeLayout} from '../services/layout-preferences.js';
+import React, {useId, useState, useSyncExternalStore} from 'react';
 import {FinanceGlassButton as Button,FinanceGlassCard as Card} from './LiquidControls.jsx';
 
 /** Content for the shared native dialog: focus trapping and Escape stay in one place. */
 export default function ProfileCard({name, photo, verified = false, tester = false, supporter = false, children}) {
   const title = useId(), [failedPhoto, setFailedPhoto] = useState('');
+  const layout=useSyncExternalStore(subscribeLayout,getLayout);
   const image = photo && failedPhoto !== photo;
   return <Card className="card finance-layout-card profile-hover-card" aria-labelledby={title}>
     <div className="profile-card-photo" aria-hidden="true">
@@ -16,6 +18,7 @@ export default function ProfileCard({name, photo, verified = false, tester = fal
       </header>
       <section className="profile-card-notes" aria-label="Notas de gastos e economias">{children}</section>
       <footer className="profile-card-actions">
+        {layout.sections.calendar!==false&&<Button type="button" onClick={()=>window.planMobile?.open('calendar',document.querySelector('.app-symbol'))}>Calendário</Button>}
         <Button type="button" onClick={() => window.planMobile?.open('settings')}>Configurações</Button>
         <Button type="button" id="accountSignOut">Sair</Button>
       </footer>

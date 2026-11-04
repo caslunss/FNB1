@@ -70,3 +70,12 @@ body:not(.auth-page) .te-glass-segments .lg-track__item{border:0!important;backg
 .te-glass-surface.lg-glass--host:is(.tabbar,.account-toolbar,.task-search){--lg-glass-fill:var(--lg-navigation-fill);backdrop-filter:blur(var(--lg-blur)) saturate(1.12);-webkit-backdrop-filter:blur(var(--lg-blur)) saturate(1.12)}
 .te-glass-surface.lg-glass--host>.te-surface-rim{pointer-events:none;z-index:0}
 @media(prefers-reduced-transparency:reduce){.te-glass-surface.lg-glass--host{background:var(--card)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+/* Refraction maps are local geometry, never inheritable material tokens.
+   Inline maps calculated by the library still win for each refracting control. */
+:is(.te-glass-surface,.te-glass-button,.te-glass-host){
+ --lg-filter:initial;--lg-rim:initial;--lg-inner-mask:initial;--lg-x:50%;--lg-y:50%;
+}
+.te-glass-button::before,.te-glass-button::after{
+ border-radius:inherit;background-repeat:no-repeat;pointer-events:none;
+}
+.te-glass-button>:is(.lg-button__label,.lg-button__icon){isolation:isolate;z-index:1}

@@ -11,8 +11,7 @@
  .top-account-actions{grid-row:1!important;grid-column:1!important;position:static!important;display:flex!important;justify-content:flex-end!important;gap:8px!important;width:auto!important;margin:0!important}
  body:not(.auth-page) .account-bubbles.account-toolbar{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;gap:4px!important;width:auto!important;height:52px!important;padding:4px!important;border-radius:999px!important;box-sizing:border-box}
  .account-toolbar #calendarButton,.account-toolbar #friendsButton{display:none!important}
- .account-toolbar>button,.mobile-utility>button{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
- .mobile-utility svg{width:22px;height:22px}
+ .account-toolbar>button{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
  .navigation-actions{position:fixed!important;inset:auto max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))!important;display:block!important;width:calc(100% - max(12px,env(safe-area-inset-right)) - max(12px,env(safe-area-inset-left)))!important;max-width:560px!important;justify-self:stretch!important;margin:0 auto!important;z-index:70}
  body:not(.auth-page) #tabs.tabbar{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;justify-content:space-around!important;width:100%!important;max-width:560px!important;min-height:70px!important;height:auto!important;padding:4px!important;gap:0!important;border-radius:32px!important;margin:0 auto!important;box-sizing:border-box}
  #tabs button{flex:1!important;min-width:44px!important;width:auto!important;height:auto!important;min-height:58px!important;padding:4px 2px!important;border-radius:25px!important}
@@ -38,14 +37,11 @@
  .ledger-row{grid-template-columns:36px minmax(0,1fr) auto!important;gap:8px!important;padding:12px!important}.ledger-detail{min-height:52px;font-size:.9375rem!important;min-width:0!important}.ledger-detail small{font-size:.75rem!important}.ledger-amount{font-size:.875rem!important;max-width:110px;overflow-wrap:anywhere}.ledger-row>.te-action-menu{grid-row:2;grid-column:3;min-width:44px;min-height:44px}
  .mobile-ledger-row{position:relative;touch-action:pan-y}.mobile-ledger-content{position:relative;z-index:1;background:var(--form-surface);border-radius:16px;transition:transform var(--motion-standard) var(--motion-ease)}.mobile-ledger-row:has(.lg-menu-surface){z-index:90}
  .mobile-swipe-actions{position:absolute;inset:0 0 0 auto;width:112px;display:flex;align-items:center;gap:8px}.mobile-swipe-actions button{width:48px!important;min-width:48px!important;min-height:48px!important;padding:4px!important;font-size:.6875rem!important}.mobile-ledger-row:not(.is-revealed) .mobile-swipe-actions{visibility:hidden}
- .account-overlay,.month-picker-dialog,.mobile-shortcuts-sheet,.mobile-confirm-sheet{position:fixed!important;inset:auto 0 0!important;width:100%!important;max-width:none!important;max-height:calc(100dvh - env(safe-area-inset-top) - 12px)!important;margin:0!important;border-radius:28px 28px 0 0!important;box-sizing:border-box}
+ .account-overlay,.month-picker-dialog,.mobile-confirm-sheet{position:fixed!important;inset:auto 0 0!important;width:100%!important;max-width:none!important;max-height:calc(100dvh - env(safe-area-inset-top) - 12px)!important;margin:0!important;border-radius:28px 28px 0 0!important;box-sizing:border-box}
  .account-overlay[open]{animation:mobile-sheet-enter var(--motion-calm) var(--motion-ease)}.account-overlay.mobile-expanded{height:calc(100dvh - env(safe-area-inset-top) - 12px)!important}
  .account-overlay-header{position:sticky!important;top:0!important;z-index:35;min-height:64px;padding:12px 16px!important;background:var(--form-surface)}.account-overlay-header h2{font-size:1.25rem!important}.account-overlay-close{min-width:44px!important;min-height:44px!important}
  .account-panel-body{padding:0 16px calc(20px + env(safe-area-inset-bottom))!important}.account-panel-body .card{padding:18px!important;border-radius:24px!important}
- .mobile-sheet-grabber{display:flex;justify-content:center;align-items:center;width:100%;height:44px;min-height:44px;padding:0;border:0;background:var(--form-surface);touch-action:none}.mobile-sheet-grabber span{width:36px;height:5px;border-radius:999px;background:currentColor;opacity:.4}
- .mobile-shortcuts-sheet,.mobile-confirm-sheet{padding:0 20px calc(20px + env(safe-area-inset-bottom));background:var(--form-surface);color:var(--text);border:1px solid var(--form-border);box-shadow:var(--lg-shadow);overflow:auto}
- .mobile-shortcuts-sheet::backdrop,.mobile-confirm-sheet::backdrop{background:#0005;backdrop-filter:blur(6px)}
- .mobile-shortcuts-sheet header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.mobile-shortcuts-sheet h2{font-size:1.25rem}.mobile-shortcuts-sheet header button{width:44px;min-height:44px}.mobile-shortcuts-sheet header svg{width:22px;height:22px}.mobile-shortcut-list{display:grid;gap:12px}.mobile-shortcut-list button{width:100%;min-height:52px;font-size:1rem}.mobile-confirm-sheet{padding-top:20px}.mobile-confirm-actions{display:flex;flex-wrap:wrap;gap:12px}.mobile-confirm-actions button{min-height:44px;flex:1}
+ .mobile-sheet-grabber{display:flex;justify-content:center;align-items:center;width:100%;height:44px;min-height:44px;padding:0;border:0;background:var(--form-surface);touch-action:none}.mobile-sheet-grabber span{width:36px;height:5px;border-radius:999px;background:currentColor;opacity:.4}.mobile-confirm-sheet{padding:0 20px calc(20px + env(safe-area-inset-bottom));background:var(--form-surface);color:var(--text);border:1px solid var(--form-border);box-shadow:var(--lg-shadow);overflow:auto}.mobile-confirm-sheet::backdrop{background:#0005;backdrop-filter:blur(6px)}.mobile-confirm-sheet{padding-top:20px}.mobile-confirm-actions{display:flex;flex-wrap:wrap;gap:12px}.mobile-confirm-actions button{min-height:44px;flex:1}
  #scrim{align-items:flex-end!important;padding:0!important}.sheet{width:100%!important;max-width:none!important;max-height:calc(100dvh - env(safe-area-inset-top) - 8px)!important;padding:16px 20px calc(24px + env(safe-area-inset-bottom))!important;border-radius:28px 28px 0 0!important;box-sizing:border-box}.sh{position:sticky;top:0;z-index:35;background:var(--form-surface)}.sh button{min-height:44px!important;min-width:44px!important;font-size:.9375rem!important}
  .sheet .grid,.account-panel-body .compact-form{grid-template-columns:minmax(0,1fr)!important}
  :is(.sheet,.account-panel-body,.search-pill-dialog) :is(input,select,textarea){font-size:1rem!important;min-height:48px;box-sizing:border-box}
@@ -58,7 +54,7 @@
  @keyframes mobile-sheet-enter{from{opacity:var(--motion-sheet-opacity);transform:translateY(var(--motion-sheetEnter))}to{opacity:1;transform:translateY(0)}}
 }
 @media(max-width:699px) and (prefers-reduced-motion:reduce){h1#lt{transform:none}.mobile-ledger-content{transition:none}.account-overlay[open]{animation:none}}
-@media(max-width:699px) and (prefers-reduced-transparency:reduce){.account-toolbar,#tabs.tabbar,.account-overlay,.mobile-shortcuts-sheet,.notification-panel{background:var(--form-surface)!important;backdrop-filter:none!important}}
+@media(max-width:699px) and (prefers-reduced-transparency:reduce){.account-toolbar,#tabs.tabbar,.account-overlay,.notification-panel{background:var(--form-surface)!important;backdrop-filter:none!important}}
 @media(max-width:699px){
  :is(.workspace-frame,.account-overlay,.notification-panel,.profile-menu,.sheet) button:not(.lg-switch){min-width:44px;min-height:44px}
  .lg-switch{height:28px!important;min-height:28px!important} /* The library's ::before supplies the 44 px hit region. */
@@ -94,15 +90,4 @@
  }
  body:not(.auth-page) .top-account-actions>.task-search>button{width:44px;height:44px;min-height:44px;padding:0}
  .top-account-actions{align-items:center!important;flex-wrap:nowrap;min-width:0}
- .top-account-actions .mobile-utility{display:flex;align-items:center;flex:none}
-}
-
-@media(max-width:699px){
- .mobile-shortcuts-sheet{color:var(--lb);overscroll-behavior:contain}
- .mobile-shortcuts-handle{display:flex;align-items:center;justify-content:center;height:28px;pointer-events:none}
- .mobile-shortcuts-handle>span{display:block;width:36px;height:4px;border-radius:999px;background:var(--lb2);opacity:.4}
- .mobile-shortcuts-sheet header{align-items:center}
- .mobile-shortcuts-sheet h2{margin:0;min-width:0;overflow-wrap:anywhere}
- .mobile-shortcuts-sheet header>.lg-button{flex:0 0 44px;height:44px;padding:0}
- .mobile-shortcut-list{min-width:0}
 }

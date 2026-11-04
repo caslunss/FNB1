@@ -38,7 +38,14 @@
 .profile-card-actions .lg-button{min-height:44px;font-size:12px}
 
 #accountOverlay .profile-extras{padding:0 24px 20px;color:var(--lb);background:transparent}
-.profile-extras>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:13px}
+.profile-extras>summary{
+ display:inline-flex;align-items:center;justify-content:center;gap:8px;width:fit-content;max-width:100%;min-height:44px;
+ box-sizing:border-box;padding:8px 14px;border:1px solid var(--lg-edge);border-radius:999px;background:var(--lg-fill);
+ box-shadow:var(--lg-shadow);color:var(--lb);font:500 12px/1.4 var(--lg-font);cursor:pointer;list-style:none;
+}
+.profile-extras>summary::-webkit-details-marker{display:none}
+.profile-extras-chevron{position:static;display:block;flex:none;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;transition:transform var(--motion-fast) var(--motion-ease)}
+.profile-extras[open]>summary .profile-extras-chevron{transform:rotate(180deg)}
 .profile-extras .streaming-pill{margin:12px 0}
 .profile-card-actions>.lg-button{flex:1 1 120px}
 @media(max-width:450px){#accountOverlay[data-panel=profile] .profile-hover-card{padding:20px!important}.profile-card-identity h2{font-size:21px}}

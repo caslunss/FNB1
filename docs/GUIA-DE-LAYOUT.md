@@ -442,3 +442,20 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Dias e meses usam FinanceCalendarButton: botão nativo do design compartilhado, sem cópias refrativas do conteúdo. Só aria-pressed=true desenha a seleção; dias não selecionados da agenda ficam neutros. Foco de teclado e indicadores de eventos continuam distintos de seleção. Não remover eventos reais que compartilham a mesma data.
 - Barra inferior oculta até 1024 px quando houver dialog aberto, scrim de lançamento, conexão bancária, editor de cartão, pagamento de fatura, importação bancária, revisão de compra ou editor expansível aberto. Acompanhamento do DOM evita depender apenas do teclado; CSS cobre os modais imediatamente.
 - Fechar uma janela filha não revela a barra enquanto o formulário pai continuar aberto. A barra volta após encerrar o último editor e mantém a aba selecionada. Desktop preservado. Medidas de compactação são descartadas durante ocultação para não gerar transforms inválidos na volta.
+
+## Calendário no perfil; remoção de Atalhos
+
+- Cabeçalho mobile não tem mais acionador ou painel de Atalhos. MobileExperience mantém apenas detecção de teclado, progresso do título e medida da barra.
+- Perfil oferece Calendário junto de Configurações e Sair, reutilizando o mesmo painel financeiro e respeitando a opção de visibilidade do calendário. Ao fechar, foco retorna ao avatar, pois o botão dentro do perfil foi substituído pelo painel.
+- Desktop mantém seu acesso superior ao calendário; estilos exclusivos do painel removido foram eliminados, preservando as folhas de confirmação compartilhadas.
+
+## Pílula de assinaturas no perfil
+
+- O disclosure de Assinaturas usa mini pílula com tokens de fundo, borda, sombra e raio compartilhados; alvo mínimo de 44 px. Chevron acompanha aberto/fechado com timing universal.
+- Summary/details mantêm Enter/Espaço e estado semântico nativos. Conteúdo de assinaturas e apoio permanece no mesmo disclosure, sem duplicação de dados.
+
+## Reflexos isolados por superfície
+
+- --lg-filter, --lg-rim, --lg-inner-mask e posição do brilho são dados geométricos locais. Controles compartilhados reiniciam esses valores para não herdar o mapa rasterizado de um card maior.
+- Mapas inline gerados por useRefraction continuam tendo prioridade; não desativar refração globalmente. Tokens de cor, blur e intensidade permanecem compartilhados.
+- Pseudo-camadas respeitam o raio do botão, não repetem a imagem e não recebem eventos; texto/ícone ficam acima do reflexo. Formulários e superfícies sem refração própria não mostram um reflexo emprestado do ancestral.
