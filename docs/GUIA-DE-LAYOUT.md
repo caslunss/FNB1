@@ -8,6 +8,8 @@ Este guia registra o padrão atual da interface. Deve ser consultado antes de ca
 
 Task C: o calendário permanece sempre disponível pelo atalho superior. A opção de ocultá-lo foi removida de Configurações; valores antigos de visibilidade são conservados no armazenamento, mas não condicionam a navegação nem o botão.
 
+Task C: Configurações não oferece ajustes de opacidade, desfoque, refração ou suavidade do vidro. A renderização fixa os padrões existentes: claro 66%/6 px; escuro 64%/16 px, suavidade 70%; intensidade 3. Paletas, temas e indicadores continuam disponíveis. Valores personalizados antigos são ignorados visualmente e conservados no armazenamento ao salvar outras preferências. As variáveis CSS, a composição e os componentes Liquid Glass permanecem.
+
 Após o login, a inicialização exibe apenas o guaxinim transparente em WebP, com descrição de carregamento para leitores de tela. A tela acompanha o tema e desaparece quando `auth-pending` é removido pelo fluxo existente, inclusive em caso de falha de inicialização.
 
 No mobile, os títulos de Resumo e das demais áreas desaparecem gradualmente nos primeiros 64 px de rolagem. A linha vazia é recolhida após 96 px e restaurada abaixo de 24 px, evitando oscilações causadas pela mudança de altura. O atalho de teclado para o conteúdo mantém o título visível ao receber foco. Com movimento reduzido, não aplicar a transformação do título. No desktop, o cabeçalho acompanha a rolagem normal da página. Não aplicar backdrop-filter no ancestral da barra inferior fixa: isso altera seu bloco de referência.

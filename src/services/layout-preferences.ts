@@ -79,15 +79,34 @@ function apply(){if(typeof document==='undefined')return;const theme=document.do
   for(const [key,value]of Object.entries(layoutTokens(current,theme)))document.documentElement.style.setProperty(key,value);
   document.documentElement.dataset.layoutReady='true';
 }
-function publish(next:LayoutPreferences){current=normalizeLayout(next);apply();for(const listener of listeners)listener();}
+function fixedGlass(next:LayoutPreferences){
+  return {...next,intensity:DEFAULT_LAYOUT.intensity,
+    light:{...next.light,opacity:DEFAULT_LAYOUT.light.opacity,blur:DEFAULT_LAYOUT.light.blur},
+    dark:{...next.dark,opacity:DEFAULT_LAYOUT.dark.opacity,blur:DEFAULT_LAYOUT.dark.blur,dim:DEFAULT_LAYOUT.dark.dim}};
+}
+function publish(next:LayoutPreferences){current=fixedGlass(normalizeLayout(next));apply();for(const listener of listeners)listener();}
 export function initializeLayout(){
   return initialization??=(async()=>{try{await window.planAuth?.ready;const raw=window.planAuth?.storage?.getItem(KEY);if(raw)current=normalizeLayout(JSON.parse(raw));}catch{}
     publish(current);const observer=new MutationObserver(apply);observer.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
     window.addEventListener('storage',event=>{if(event.key===window.planAuth?.key(KEY)){try{publish(event.newValue?JSON.parse(event.newValue):DEFAULT_LAYOUT);}catch{}}});
   })();
 }
-export function saveLayout(next:LayoutPreferences){const checked=normalizeLayout(next);const storage=window.planAuth?.storage;if(!storage)throw Error('Aguarde a abertura da sua conta.');storage.setItem(KEY,JSON.stringify(checked));publish(checked);}
-export function updateLayout(theme:Theme,field:string,value:number){const next=copy(current);if(field==='intensity')next.intensity=value;else if(['light','dark'].includes(theme)&&['opacity','blur','dim'].includes(field)&&Object.hasOwn(next[theme],field))(next[theme] as unknown as Record<string,number>)[field]=value;else throw Error('Opção de layout inválida.');saveLayout(next);}
+function isPreferenceRecord(value:unknown):value is Record<string,unknown>{return !!value&&typeof value==='object'&&!Array.isArray(value);}
+function storedPreferences(next:LayoutPreferences,raw:string|null){
+  let previous:unknown;try{previous=JSON.parse(raw||'null');}catch{}
+  if(!isPreferenceRecord(previous)||previous.version!==1)return next;
+  const saved:Record<string,unknown>={...previous,...next};
+  if('intensity' in previous)saved.intensity=previous.intensity;
+  for(const theme of ['light','dark'] as const){
+    const source=previous[theme];
+    if(!isPreferenceRecord(source))continue;
+    const fields:Record<string,unknown>={...next[theme]};
+    for(const field of ['opacity','blur','dim'])if(field in source)fields[field]=source[field];
+    saved[theme]=fields;
+  }
+  return saved;
+}
+export function saveLayout(next:LayoutPreferences){const checked=normalizeLayout(next);const storage=window.planAuth?.storage;if(!storage)throw Error('Aguarde a abertura da sua conta.');storage.setItem(KEY,JSON.stringify(storedPreferences(checked,storage.getItem(KEY))));publish(checked);}
 export function selectPalette(id:string){if(!PALETTES.some(p=>p.id===id))throw Error('Paleta inválida.');saveLayout({...copy(current),palette:id});}
 export function resetLayout(theme:Theme){const next=copy(current);Object.assign(next[theme],copy(DEFAULT_LAYOUT[theme]));next.intensity=DEFAULT_LAYOUT.intensity;next.palette=DEFAULT_LAYOUT.palette;next.circularProgress=true;next.indicators={};saveLayout(next);}
 
