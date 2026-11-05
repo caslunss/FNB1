@@ -32,6 +32,7 @@ export interface WorkspaceDom {
   '#offerSearch': HTMLFormElement;
   '#offerStatus': HTMLElement;
   '#pageDescription': HTMLElement;
+  '#pageTitle': HTMLSpanElement;
   '#pg': HTMLDivElement;
   '#profileUsername': HTMLInputElement;
   '#receiptCard': HTMLSelectElement;

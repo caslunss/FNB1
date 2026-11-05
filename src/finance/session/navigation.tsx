@@ -237,7 +237,7 @@ export function createNavigation(workspace: NavigationContext) {
         node.setAttribute('aria-disabled', 'true');
       }
     }
-    workspace.$('#lt').textContent = workspace.$('#it').textContent =
+    workspace.$('#pageTitle').textContent = workspace.$('#it').textContent =
       workspace.TITLES[workspace.S.tab === 'i' ? 'r' : workspace.S.tab];
     workspace.$('#pg').classList.toggle('nr', workspace.S.tab !== 'r');
 

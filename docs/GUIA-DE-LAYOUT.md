@@ -14,6 +14,8 @@ Cabeçalhos dos painéis de Configurações e Calendário permanecem no topo dur
 
 Interface financeira simples, centralizada e responsiva. Superfícies em Liquid Glass, volumes discretos, ícones de traço e cantos arredondados. Nenhum efeito pode comprometer leitura, foco ou área de toque. Preservar a refração dos controles da biblioteca; corrigir composição e recorte sem substituí-los por controles genéricos.
 
+A marca do guaxinim acompanha somente o título principal das áreas, no canto do cabeçalho do card grande. Configurações, Calendário e Notificações mantêm seus cabeçalhos sem a marca. Usar `RaccoonMark` com `page-heading`: ícone decorativo proporcional à fonte, sem botão ou foco adicional, mantendo o nome acessível do título. A imagem usa a marca transparente existente e contraste invertido no escuro; herda recolhimento, fade e movimento do cabeçalho, sem uma animação separada. Atualizações de rota alteram somente `#pageTitle`, preservando a marca.
+
 A paleta padrão é Branco envelhecido. Há variações pastéis de Outono e Inverno. O modo escuro usa as mesmas famílias de cores escurecidas, com reflexos suaves e ajuste de suavidade. Não substituir o modo atual por preto puro ou cores saturadas sem pedido do usuário.
 
 | Elemento | Regra |

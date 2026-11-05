@@ -1,0 +1,6 @@
+/* The mark inherits its heading's size, visibility and motion. */
+.page-heading{display:flex;align-items:center;gap:var(--ui-space-2);min-width:0}
+.page-heading>span{min-width:0;overflow-wrap:anywhere}
+.page-brand-icon{display:inline-flex;flex:0 0 auto;inline-size:1.1em;block-size:1.1em;pointer-events:none;user-select:none}
+.page-brand-icon img{display:block;width:100%;height:100%;object-fit:contain}
+:root[data-theme=dark] .page-brand-icon img{filter:invert(1)}
