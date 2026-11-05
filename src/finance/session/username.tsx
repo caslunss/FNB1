@@ -1,4 +1,5 @@
 import { errorDetails } from '../../services/errors.ts';
+import {reserveUsernameChange,usernameChangeStatus} from '../../services/username-policy';
 import type { WorkspaceRuntime } from './contracts';
 
 type UsernameContext = Pick<
@@ -101,6 +102,10 @@ export function createUsername(workspace: UsernameContext) {
 }
 
 export function initializeUsername(workspace: UsernameContext) {
+  workspace.scope.listen(window,'plan-username-editor-open',()=>{
+    const user=workspace.socialUser(),input=document.querySelector<HTMLInputElement>('#profileUsername');
+    if(user&&input){input.value=workspace.usernames[user]||'';input.focus({preventScroll:true});}
+  });
   // @workspace-step 292 FirstStatement
   workspace.usernames = {};
   // @workspace-end 292
@@ -112,18 +117,22 @@ export function initializeUsername(workspace: UsernameContext) {
     const form = e.target as HTMLFormElement,
       button = form.querySelector('button'),
       status = form.querySelector<HTMLElement>('#usernameStatus');
-    if (button!.disabled) return;
-    button!.disabled = true;
+    if (!button||!status||button.disabled) return;
+    button.disabled = true;
+    let rollback:(()=>void)|undefined;
     try {
+      const user=workspace.socialUser(),client=window.planAuth.client;
+      if(!user||!client)throw Error('Entre novamente para alterar seu usuário.');
       const username = workspace.normalizeUsername(
         new FormData(form).get('username'),
       );
       if (!workspace.validUsername(username))
         throw Error('Use de 3 a 40 letras, números ou sublinhado.');
-      const result = await window.planAuth
-        .client!.from('app_usernames')
+      if(username===workspace.usernames[user]){status.textContent='Este já é seu nome de usuário.';return;}
+      rollback=reserveUsernameChange();
+      const result = await client.from('app_usernames')
         .update({ username })
-        .eq('user_id', workspace.socialUser())
+        .eq('user_id', user)
         .select('username')
         .single();
       if (result.error)
@@ -132,12 +141,14 @@ export function initializeUsername(workspace: UsernameContext) {
             ? 'Este usuário já está em uso. Escolha outro.'
             : 'Não foi possível salvar. Tente novamente.',
         );
-      workspace.usernames[workspace.socialUser()!] = result.data.username;
-      status!.textContent = 'Usuário salvo: @' + result.data.username;
+      rollback=undefined;
+      workspace.usernames[user] = result.data.username;
+      if(form.isConnected)status.textContent = 'Usuário salvo: @' + result.data.username;
     } catch (error) {
-      if (form.isConnected) status!.textContent = errorDetails(error).message;
+      try{rollback?.();}catch{}
+      if (form.isConnected) status.textContent = errorDetails(error).message;
     } finally {
-      button!.disabled = false;
+      button.disabled = !usernameChangeStatus().allowed;
     }
   });
   // @workspace-end 297

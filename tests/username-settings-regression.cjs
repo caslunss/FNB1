@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict'),vm=require('node:vm');
+const {readExecutableSource}=require('./source-loader.cjs');
+(async()=>{
+ const policy=await import('../src/services/username-policy.ts');
+ const source=readExecutableSource('src/finance/session/username.tsx'),start=source.indexOf('export function initializeUsername');
+ assert(start>=0);const code=source.slice(start).replace(/^export /,'');
+ let raw=null,failedStorage=false,query='novo_usuario',reply={data:{username:'novo_usuario'},error:null},calls=0,submit;
+ const now=new Date(2026,10,5),storage={getItem:()=>raw,setItem:(_key,value)=>{if(failedStorage)throw Error('storage');raw=value},removeItem:()=>{raw=null}};
+ const button={disabled:false},status={textContent:''},form={id:'usernameForm',isConnected:true,querySelector:selector=>selector==='button'?button:status};
+ const workspace={usernames:{me:'original'},socialUser:()=> 'me',normalizeUsername:s=>String(s).trim(),validUsername:s=>/^[a-z0-9_]{3,40}$/.test(s),scope:{listen(_target,type,handler){if(type==='submit')submit=handler}}};
+ const builder={update(payload){calls++;assert.deepEqual(JSON.parse(JSON.stringify(payload)),{username:query});return this},eq(column,user){assert.equal(column,'user_id');assert.equal(user,'me');return this},select(){return this},async single(){return reply}};
+ const client={from(table){assert.equal(table,'app_usernames');return builder}};
+ const context=vm.createContext({window:{planAuth:{client}},document:{},FormData:class{get(){return query}},reserveUsernameChange:()=>policy.reserveUsernameChange(storage,now),usernameChangeStatus:()=>policy.usernameChangeStatus(storage,now),errorDetails:error=>({message:error.message})});
+ vm.runInContext(code,context);context.initializeUsername(workspace);
+ const event={target:form,preventDefault(){}};
+ reply={data:null,error:{code:'23505'}};await submit(event);assert.equal(calls,1);assert.equal(raw,null);assert.match(status.textContent,/já está em uso/);assert.equal(button.disabled,false);
+ failedStorage=true;await submit(event);assert.equal(calls,1);assert.equal(raw,null);failedStorage=false;
+ reply={data:{username:'novo_usuario'},error:null};await submit(event);assert.equal(calls,2);assert.equal(workspace.usernames.me,'novo_usuario');assert.match(status.textContent,/Usuário salvo/);assert.equal(policy.usernameChangeStatus(storage,now).allowed,false);
+ button.disabled=false;query='outra_troca';await submit(event);assert.equal(calls,2);assert.match(status.textContent,/uma vez por mês/);
+ console.log('PASS username settings: actual submit delegate, same database payload, duplicate rollback, storage failure before API, one successful monthly change');
+})().catch(error=>{console.error(error);process.exitCode=1});

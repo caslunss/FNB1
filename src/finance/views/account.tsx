@@ -1,49 +1,12 @@
-import { viewList } from '../../services/presentation.ts';
 import type { WorkspaceViewContext } from '../../types/views';
 // Presentation only: controller dependencies are injected at each render.
 export function vSettings(context: WorkspaceViewContext) {
   const { accountSettingsTab, accountSettingsView, integrationsView } = context;
   return (
-    <>
-      <div className="account-settings-tabs" role="tablist" aria-label="Configurações">
-        {viewList(
-          [
-            ['account', 'Conta'],
-            ['notifications', 'Notificações'],
-            ['layout', 'Layout'],
-            ['connections', 'Conexões'],
-          ].map(([key, label]) => (
-            <button
-              type="button"
-              role="tab"
-              id={'settingsTab-' + String(key)}
-              data-account-settings-tab={key}
-              aria-selected={accountSettingsTab === key}
-              aria-controls="settingsPanel"
-              tabIndex={Number(accountSettingsTab === key ? 0 : -1)}
-            >
-              {label}
-            </button>
-          )),
-        )}
-      </div>
-      <section
-        id="settingsPanel"
-        role="tabpanel"
-        tabIndex={0}
-        aria-labelledby={'settingsTab-' + String(accountSettingsTab)}
-      >
-        {accountSettingsTab === 'account' ? (
-          accountSettingsView()
-        ) : accountSettingsTab === 'layout' ? (
-          <div data-layout-settings=""></div>
-        ) : accountSettingsTab === 'connections' ? (
-          integrationsView()
-        ) : (
-          <div data-notification-preferences=""></div>
-        )}
-      </section>
-    </>
+    <div data-settings-navigation="" data-settings-initial={accountSettingsTab} data-settings-visitor={!window.planAuth.user||window.planAuth.user.is_anonymous===true?'true':'false'}>
+      {accountSettingsView()}
+      {integrationsView()}
+    </div>
   );
 }
 // end-view:vSettings

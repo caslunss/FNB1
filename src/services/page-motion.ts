@@ -6,7 +6,8 @@ const running=new Map<HTMLElement,ReturnType<typeof animate>>(),gestures=new Wea
 function finish(node:HTMLElement){const active=running.get(node);if(!active)return;active.stop();running.delete(node);for(const key of ['transform','filter','backdrop-filter','opacity','will-change'])node.style.removeProperty(key);node.removeAttribute('data-motion-entering');}
 function reveal(node:HTMLElement|null){
  if(!node?.isConnected)return;finish(node);
- const frames=node.matches?.('dialog[data-panel=profile]')?(reduced.matches?{opacity:[0,1]}:PROFILE_ENTER):pageFrames(reduced.matches);node.style.willChange="transform, opacity";
+ const settings=node.matches?.('dialog[data-panel=settings]')&&!!node.querySelector('.settings-navigation');
+ const frames=settings?{opacity:[0,1]}:node.matches?.('dialog[data-panel=profile]')?(reduced.matches?{opacity:[0,1]}:PROFILE_ENTER):pageFrames(reduced.matches);node.style.willChange="transform, opacity";
  node.dataset.motionEntering='';
  const animation=animate(node,frames,{...APP_SPRING,opacity:FADE,onComplete:()=>{if(running.get(node)!==animation)return;running.delete(node);for(const key of ['transform','filter','backdrop-filter','opacity','will-change'])node.style.removeProperty(key);node.removeAttribute('data-motion-entering')}});
  running.set(node,animation);
@@ -33,7 +34,13 @@ function bindCard(node:HTMLElement){
 function scan(){document.querySelectorAll<HTMLElement>('[data-tax-summary][role=button],[data-tax-summary]:is(button,a),[data-motion-card=interactive]').forEach(bindCard)}
 const observer=new MutationObserver(records=>{
  for(const record of records){if(record.type==='childList')for(const removed of record.removedNodes){if(!(removed instanceof HTMLElement)||removed.isConnected)continue;for(const card of [removed,...removed.querySelectorAll<HTMLElement>('[data-motion-card-ready]')])if(gestures.has(card))card.dispatchEvent(new Event('motion-dispose'));}if(record.type==='attributes'){const node=record.target as HTMLDialogElement;if(node.matches('dialog')&&node.open)reveal(node);else if(node.matches('#scrim')&&!node.hidden)reveal(node.querySelector<HTMLElement>('.sheet'));}}
- for(const record of records)if(record.type==='childList'&&(record.target as HTMLElement).matches?.('#accountOverlayContent'))reveal(document.querySelector<HTMLElement>('#accountOverlay[data-panel=settings] .account-panel-body'));
+ for(const record of records)if(record.type==='childList'&&(record.target as HTMLElement).matches?.('#accountOverlayContent')){
+  const dialog=document.querySelector<HTMLDialogElement>('#accountOverlay[data-panel=settings]'),body=dialog?.querySelector<HTMLElement>('.account-panel-body');
+  if(dialog?.querySelector('.settings-navigation')){
+   if(body)finish(body);
+   if(dialog.open&&!records.some(change=>change.type==='attributes'&&change.target===dialog&&change.attributeName==='open'))reveal(dialog);
+  }else reveal(body||null);
+ }
  for(const record of records)if(record.type==='attributes'&&record.attributeName==='aria-selected'&&(record.target as HTMLElement).matches?.('.account-settings-tabs [aria-selected=true]'))reveal(document.querySelector<HTMLElement>('#accountOverlay[data-panel=settings] .account-panel-body'));
  scan();
 });

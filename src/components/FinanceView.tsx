@@ -32,6 +32,7 @@ import {
   FinanceGlassCard as GlassCard,
 } from './LiquidControls.tsx';
 import LayoutSettings from './LayoutSettings.tsx';
+import Settings from './settings/Settings';
 
 // Apply the existing controls to JSX presentation nodes without parsing HTML.
 // Controllers keep one financial state and the same synchronous commit boundary.
@@ -160,6 +161,15 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
   if (node.nodeType !== 1 || ['SCRIPT', 'STYLE'].includes(node.tagName)) return null;
   const tag = node.localName,
     props: RenderProps = { key };
+  if(node.hasAttribute('data-settings-navigation')){
+    const controls=node.querySelector('[data-account-data-controls]');
+    return <Settings key={key} initialScreen={node.getAttribute('data-settings-initial')||'home'} isVisitor={node.getAttribute('data-settings-visitor')!=='false'}
+      identity={element(node.querySelector('.identity-fields'),'identity')}
+      username={element(node.querySelector('.username-card'),'username')}
+      sync={element(node.querySelector('.cloud-settings'),'sync')}
+      data={element(controls?.parentElement,'data')}
+      connections={element(node.querySelector('.integration-list'),'connections')}/>;
+  }
   for (const attribute of node.attributes) {
     const name = attribute.name;
     const mapped =

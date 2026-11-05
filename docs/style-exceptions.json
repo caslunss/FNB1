@@ -1,7 +1,7 @@
 {
-  "count": 604,
+  "count": 610,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "9820f46d4cb672e195a7fc258da02fddd1ae6702002b0e4cc39f6649ca967801",
+  "sha256": "92ef52f7c9608e57fce178b417a874f8bc4f2e0a67655d291e59aa24bffae749",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -2171,6 +2171,60 @@
       "property": "background-position",
       "value": "calc(100% - 10px) center,calc(100% - 5px) center",
       "reason": "Controle universal: prevalência do sistema atual sobre regras básicas e estilos internos da biblioteca."
+    },
+    {
+      "file": "src/styles/layout-settings.css",
+      "line": 691,
+      "selector": ".account-overlay[data-panel=settings] .settings-panel",
+      "conditions": "",
+      "property": "padding",
+      "value": "0",
+      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
+    },
+    {
+      "file": "src/styles/layout-settings.css",
+      "line": 711,
+      "selector": ".account-overlay[data-panel=settings]",
+      "conditions": "@media (max-width:699px)",
+      "property": "inset",
+      "value": "0",
+      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
+    },
+    {
+      "file": "src/styles/layout-settings.css",
+      "line": 711,
+      "selector": ".account-overlay[data-panel=settings]",
+      "conditions": "@media (max-width:699px)",
+      "property": "width",
+      "value": "100%",
+      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
+    },
+    {
+      "file": "src/styles/layout-settings.css",
+      "line": 711,
+      "selector": ".account-overlay[data-panel=settings]",
+      "conditions": "@media (max-width:699px)",
+      "property": "max-height",
+      "value": "100dvh",
+      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
+    },
+    {
+      "file": "src/styles/layout-settings.css",
+      "line": 711,
+      "selector": ".account-overlay[data-panel=settings]",
+      "conditions": "@media (max-width:699px)",
+      "property": "margin",
+      "value": "0",
+      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
+    },
+    {
+      "file": "src/styles/layout-settings.css",
+      "line": 711,
+      "selector": ".account-overlay[data-panel=settings]",
+      "conditions": "@media (max-width:699px)",
+      "property": "border-radius",
+      "value": "0",
+      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
     },
     {
       "file": "src/styles/liquid-glass.css",

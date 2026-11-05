@@ -685,3 +685,32 @@ body:not(.auth-page) .finance-select-trigger.lg-button{
 @media(prefers-reduced-transparency:reduce){
  #accountOverlay:not([data-panel=profile]) .account-overlay-header{background:var(--form-surface);backdrop-filter:none;-webkit-backdrop-filter:none}
 }
+
+/* Grouped Settings navigation; scoped so calendar/profile overlays keep their layout. */
+.account-overlay[data-panel=settings][open]{animation:none}
+.account-overlay[data-panel=settings] .settings-panel{padding:0!important}
+.settings-navigation-header{position:sticky;top:0;z-index:35;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:var(--ui-space-3);padding:var(--ui-space-4) var(--ui-space-5);background:var(--lg-navigation-fill);backdrop-filter:blur(var(--lg-blur));-webkit-backdrop-filter:blur(var(--lg-blur));border-bottom:1px solid var(--lg-edge)}
+.settings-navigation-header h2{margin:0;font-size:20px;line-height:1.3;text-align:center;overflow-wrap:anywhere}
+.settings-page-viewport{min-width:0;overflow:hidden}
+.settings-navigation-content{min-width:0;padding:var(--ui-space-5);overflow:clip}
+.settings-navigation :is(.settings-main-menu,.settings-account,.settings-sections){grid-template-columns:minmax(0,1fr)}
+.settings-navigation .settings-group-title{margin:0 0 var(--ui-space-2) var(--ui-space-4);font-size:12px;font-weight:500;color:var(--lb2)}
+.settings-list-group.te-glass-surface{padding:0;overflow:hidden;border-radius:var(--ui-radius-card)}
+.settings-menu-row.ui-button{--ui-button-fill:transparent;--ui-button-border:transparent;--ui-button-shadow:none;--ui-button-filter:none;--ui-radius-pill:0px;display:flex;width:100%;min-height:64px;text-align:left}
+.settings-menu-item+.settings-menu-item{border-top:1px solid var(--lg-edge)}
+.settings-menu-row .lg-button__label{width:100%;text-align:left}
+.settings-row-content{display:grid;grid-template-columns:24px minmax(0,1fr) 20px;align-items:center;gap:var(--ui-space-3);width:100%;padding:var(--ui-space-2) 0}
+.settings-row-content>span{min-width:0;white-space:normal;overflow-wrap:anywhere}
+.settings-icon{display:block;width:24px;height:24px;flex:none}
+.settings-row-content>.settings-icon:last-child{width:20px;height:20px;color:var(--lb2)}
+.settings-navigation .settings-back{--ui-button-fill:transparent;--ui-button-border:transparent;--ui-button-shadow:none;--ui-button-filter:none}
+.settings-account .identity-fields{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--ui-space-4)}
+.settings-account .username-card{margin:0}
+.settings-sections>.integration-list{display:grid;gap:var(--ui-space-4)}
+@media(max-width:699px){
+ .account-overlay[data-panel=settings]{inset:0!important;width:100%!important;height:100dvh;max-height:100dvh!important;margin:0!important;border-radius:0!important}
+ .settings-navigation-header{padding-top:calc(var(--ui-space-3) + env(safe-area-inset-top))}
+ .settings-navigation-content{padding:var(--ui-space-4) max(var(--ui-space-4),env(safe-area-inset-right)) calc(var(--ui-space-6) + env(safe-area-inset-bottom)) max(var(--ui-space-4),env(safe-area-inset-left))}
+}
+@media(prefers-reduced-transparency:reduce){.settings-navigation-header{background:var(--form-surface);backdrop-filter:none;-webkit-backdrop-filter:none}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.settings-navigation-header{background:var(--form-surface)}}

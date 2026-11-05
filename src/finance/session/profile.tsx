@@ -130,7 +130,7 @@ export function createProfile(workspace: ProfileContext) {
   }
 
   function identitySettingsView() {
-    const p = workspace.profileIdentity();
+    const p = workspace.profileIdentity(),user=window.planAuth.user,provider:unknown=user?.app_metadata?.provider||user?.identities?.[0]?.provider;
     return (
       <>
         <dl className="identity-fields">
@@ -143,8 +143,8 @@ export function createProfile(workspace: ProfileContext) {
             <dd>{p.email ? workspace.esc(p.email) : 'Sem e-mail vinculado'}</dd>
           </div>
           <div>
-            <dt>{'Acesso'}</dt>
-            <dd>{p.google ? 'Google' : 'Visitante'}</dd>
+            <dt>{'Método de login'}</dt>
+            <dd>{!user?'Visitante':provider==='google'?'Google':provider==='email'?'E-mail':'Conta autenticada'}</dd>
           </div>
         </dl>
         {workspace.usernameProfile()}

@@ -332,7 +332,7 @@ export function initializeNavigation(workspace: NavigationContext) {
   // @workspace-end 148
   // @workspace-step 149 FirstStatement
   workspace.accountPanel = null;
-  workspace.accountSettingsTab = 'account';
+  workspace.accountSettingsTab = 'home';
   workspace.overlayOpener = null;
   // @workspace-end 149
   // @workspace-step 150 FirstStatement

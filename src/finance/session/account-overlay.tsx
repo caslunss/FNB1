@@ -41,7 +41,7 @@ export function createAccountOverlay(workspace: AccountOverlayContext) {
     workspace.renderView(
       workspace.$('#accountOverlayContent'),
       <>
-        <button
+        {workspace.accountPanel!=='settings'&&<button
           type="button"
           className="mobile-sheet-grabber"
           data-mobile-expand=""
@@ -49,8 +49,8 @@ export function createAccountOverlay(workspace: AccountOverlayContext) {
           aria-expanded="false"
         >
           <span></span>
-        </button>
-        <header className="account-overlay-header">
+        </button>}
+        {workspace.accountPanel!=='settings'&&<header className="account-overlay-header">
           <h2 id="accountOverlayTitle">{title}</h2>
           <button
             className="btn g account-overlay-close"
@@ -60,7 +60,7 @@ export function createAccountOverlay(workspace: AccountOverlayContext) {
           >
             {workspace.P(<path d="m6 6 12 12M18 6 6 18"></path>)}
           </button>
-        </header>
+        </header>}
         <div
           className={
             'account-panel-body ' + String(workspace.accountPanel) + '-panel'
@@ -124,7 +124,7 @@ export function createAccountOverlay(workspace: AccountOverlayContext) {
     workspace
       .$('#calendarButton')
       ?.setAttribute('aria-expanded', String(panel === 'calendar'));
-    dialog.querySelector<HTMLButtonElement>('[data-close-account]')?.focus();
+    dialog.querySelector<HTMLButtonElement>('[data-close-account],.settings-back')?.focus();
   }
 
   function closeAccountPanel({ immediate = false } = {}) {
@@ -210,6 +210,7 @@ export function initializeAccountOverlay(workspace: AccountOverlayContext) {
     workspace.scope.listen(workspace.accountOverlay, 'close', () => {
       if (workspace.accountOverlay.open) return;
       workspace.accountPanel = null;
+      workspace.accountSettingsTab = 'home';
       workspace.$('#calendarButton')?.setAttribute('aria-expanded', 'false');
       document
         .querySelector<HTMLElement>('.app-symbol')
@@ -247,42 +248,20 @@ export function initializeAccountOverlay(workspace: AccountOverlayContext) {
       '[data-account-settings-tab]',
     );
     if (tab) {
-      workspace.accountSettingsTab = tab.dataset.accountSettingsTab!;
-      workspace.renderAccountPanel();
-      workspace.$('#settingsTab-' + workspace.accountSettingsTab)?.focus();
+      workspace.accountSettingsTab = tab.dataset.accountSettingsTab||'home';
       return;
     }
   });
   // @workspace-end 223
   // @workspace-step 224 ExpressionStatement
-  workspace.scope.listen(document, 'keydown', (e) => {
-    if (
-      (e.target as HTMLElement).matches('[data-account-settings-tab]') &&
-      ['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)
-    ) {
-      e.preventDefault();
-      const tabs = ['account', 'notifications', 'layout', 'connections'];
-      workspace.accountSettingsTab =
-        e.key === 'Home'
-          ? tabs[0]
-          : e.key === 'End'
-            ? tabs.at(-1)!
-            : tabs[
-                (tabs.indexOf(workspace.accountSettingsTab) +
-                  (e.key === 'ArrowRight' ? 1 : -1) +
-                  tabs.length) %
-                  tabs.length
-              ];
-      workspace.renderAccountPanel();
-      workspace.$('#settingsTab-' + workspace.accountSettingsTab)?.focus();
-    }
-  });
+  workspace.scope.listen(document, 'plan-settings-home', () => {workspace.accountSettingsTab='home';});
   // @workspace-end 224
   // @workspace-step 225 ExpressionStatement
   workspace.scope.listen(document, 'click', (e) => {
     if (
       (e.target as HTMLElement).closest<HTMLElement>('[data-cloud-settings]')
     ) {
+      workspace.accountSettingsTab='connections';
       workspace.S.tab = 'x';
       workspace.draw();
       document

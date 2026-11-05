@@ -57,11 +57,21 @@ As cores e limites estão em `src/services/layout-preferences.ts`. Os valores pa
 | Perfil | Avatar abre diretamente o card em overlay; foto dinâmica, notas financeiras e badges. Configurações e Sair no rodapé; assinaturas e apoio em seção expansível |
 | Conexões | Dentro de Configurações. Open Finance, Serasa e boletos; indicar indisponibilidade real |
 | Relatórios | Histórico mensal, importar CSV e exportar backup/CSV |
-| Configurações | Conta, Notificações, Layout e Conexões. Conta inclui dados e encerramento de sessão |
+| Configurações | Menu agrupado com Conta (somente autenticados), Layout e preferências, Notificações, Dados e conexões, Registro e segurança. Sincronização e gerenciamento de dados ficam em Dados e conexões |
 
 A navegação principal tem cinco áreas: Resumo, Compromissos, Planejamento, Investimentos e Análises. Cartões e Carbono respeitam as opções de visibilidade dentro de seus grupos. Perfil, calendário, notificações e pesquisa permanecem no conjunto superior; amigos e relatórios usam suas áreas financeiras. Não criar uma segunda rota para a mesma ação.
 
 O seletor global de mês pertence ao Resumo. Impostos reutiliza o mesmo MonthPicker, com período próprio e rótulo visível. Meses encerrados são somente leitura. Popups não devem deslocar permanentemente o conteúdo da página nem deixar duas janelas modais interativas ao mesmo tempo.
+
+## Configurações em listas agrupadas
+
+O painel abre no menu principal, com voltar à esquerda, título centralizado e sem busca. As linhas têm ícone, rótulo e chevron, dentro de superfícies compartilhadas em vidro. Os grupos ocupam uma única coluna em todos os tamanhos. Até 699 px, somente Configurações ocupa a tela inteira; Calendário e Perfil preservam seus painéis atuais. Acima desse breakpoint, usar o diálogo flutuante centralizado existente.
+
+As subtelas usam PageTransition e os presets de Motion existentes, com foco no título ao navegar e respeito a movimento reduzido. No novo painel, a entrada externa usa somente fade e a transição horizontal pertence às subtelas; a animação corporal legada não é aplicada em duplicidade. Um contêiner estático recorta o movimento horizontal, preservando o tamanho da janela. Voltar retorna ao menu; no menu, fecha Configurações. Escape em uma confirmação de dados fecha somente a confirmação. Os atalhos anteriores de notificações e integrações abrem diretamente a subtela correspondente.
+
+Conta aparece somente para usuários autenticados não anônimos. Exibe Nome, E-mail de login e Método de login, derivados do estado existente. “Alterar nome de usuário” revela o formulário atual. O bloqueio de uma alteração por mês civil usa metadados locais isolados pela conta; isso não constitui garantia entre dispositivos ou validação no servidor. A tabela atual não registra data de alteração e não foi migrada nesta tarefa.
+
+Layout e preferências mantém tema, paletas, indicadores, visibilidade de Cartões/Carbono e a escolha de dock Fixada/Padrão/Mini. Calendário continua sempre acessível, e ajustes de vidro removidos não retornam. Notificações mantém os quatro switches existentes. Dados e conexões reúne sincronização, recuperação, reset/exclusão e Open Finance/Serasa/Boletos, sem duplicar exportações de Relatórios. Registro e segurança contém apenas a estrutura vazia aprovada.
 
 ## Estrutura e espaçamento
 
