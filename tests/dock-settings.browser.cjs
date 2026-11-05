@@ -3,8 +3,8 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const base=process.env.QA_BASE_URL||'http://127.0.0.1:5173';
 const modes=[['pinned','Fixada'],['default','Padrão'],['mini','Mini']];
 const routes=[['data-summary-mode','overview'],['data-summary-mode','entries'],['data-area-view','commitments:debts'],['data-area-view','commitments:cards'],['data-area-view','commitments:friends'],['data-area-view','planning:purchases'],['data-area-view','planning:goals'],['navigate','v'],['data-area-view','analysis:taxes'],['data-area-view','analysis:reports'],['data-area-view','analysis:carbon']];
-async function settings(page){await page.evaluate(()=>window.planMobile.open('settings'));await page.getByRole('tab',{name:'Layout',exact:true}).click();await page.getByRole('radiogroup',{name:'Estilo da dock'}).waitFor()}
-async function close(page){await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('dialog[open]'));await page.waitForFunction(()=>!document.querySelector('.navigation-actions')?.hidden)}
+async function settings(page){await page.evaluate(()=>window.planMobile.open('settings'));await page.getByRole('button',{name:'Layout e preferências',exact:true}).click();await page.getByRole('radiogroup',{name:'Estilo da dock'}).waitFor()}
+async function close(page){if(await page.locator('#accountOverlay[open] .settings-navigation:not([data-settings-screen=home])').count()){await page.keyboard.press('Escape');await page.waitForSelector('.settings-main-menu')}await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('dialog[open]'));await page.waitForFunction(()=>!document.querySelector('.navigation-actions')?.hidden)}
 async function geometry(page,width){
  const data=await page.evaluate(()=>{
   const bar=document.querySelector('#tabs'),box=bar.getBoundingClientRect();
