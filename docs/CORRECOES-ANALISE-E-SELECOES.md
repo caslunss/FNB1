@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Correções de Análise e seleções — 05/11/2026
 
 Escopo: layout de Impostos, Relatórios e Carbono e ciclo de abertura do `FinanceSelect` compartilhado. Cálculos, APIs, persistência financeira e categorias não foram modificados.

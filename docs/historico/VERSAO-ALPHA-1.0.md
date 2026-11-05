@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Versão Alpha 1.0
 
 Revisão de 31/10/2026. Versão técnica: 1.0.0-alpha.1.

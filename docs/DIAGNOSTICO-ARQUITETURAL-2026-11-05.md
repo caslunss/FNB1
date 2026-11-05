@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Diagnóstico técnico e arquitetural — TEFinance
 
 Data: 05/11/2026. Base auditada: commit `0a3c874`. Este trabalho entrega diagnóstico e exemplos de correção; não altera a implementação nem publica uma versão.

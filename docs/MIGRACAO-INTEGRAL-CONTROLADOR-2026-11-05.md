@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Conclusão da migração estrutural do controlador
 
 Esta etapa complementa `MIGRACAO-CONTROLADOR-E-UI-2026-11-05.md` e encerra a pendência de decomposição do controlador. Alterações locais, sem publicação nesta solicitação.

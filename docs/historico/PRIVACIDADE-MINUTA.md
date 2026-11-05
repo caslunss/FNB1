@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Privacidade — minuta para revisão antes da publicação
 
 Este texto ainda não está publicado e precisa dos dados reais do responsável pelo aplicativo. Preencha: nome/razão social, contato para privacidade, data de vigência, regras de retenção e canal para solicitações.

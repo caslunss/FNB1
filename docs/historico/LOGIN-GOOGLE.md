@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Ativar o login Google
 
 A integração usa Google Identity Services e Supabase Auth. O Supabase valida o token Google, cria a conta e emite a sessão. Nenhum Client Secret vai no HTML. O SDK oficial 2.118.0 está incluído localmente, com licença.

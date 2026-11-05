@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Ativar pesquisa de produtos no Netlify
 
 O ZIP contém o projeto completo: src/, public/, package.json, package-lock.json, dist/, netlify/functions/shopping.mjs e netlify.toml.

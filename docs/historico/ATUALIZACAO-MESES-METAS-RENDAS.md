@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Meses, metas, rendas e upload
 
 - Seleção de mês no topo. O mês corrente passa a existir automaticamente ao abrir o app, sem exigir adicionar o período manualmente.

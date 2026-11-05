@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Limpeza de código — 03/11/2026
 
 ## Escopo

@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Sincronização por conta
 
 ## O que já foi configurado

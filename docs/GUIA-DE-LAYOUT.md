@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # TEFinance — guia de layout
 
 Versão Alpha 1.0 · atualizado em 05/11/2026.

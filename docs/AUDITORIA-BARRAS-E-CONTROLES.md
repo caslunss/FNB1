@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Auditoria de barras e controles Liquid Glass
 
 ## Padrão aplicado

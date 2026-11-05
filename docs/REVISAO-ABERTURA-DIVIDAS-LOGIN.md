@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Abertura, dívidas, login e mobile — 05/11/2026
 
 - Adicionar dívida: o adaptador FinanceView convertia o botão de cadastro em FinanceActionMenu, exigindo outro clique no item “Adicionar dívida”. A reprodução confirmou que o controlador abria no segundo clique. O cadastro agora abre diretamente no primeiro toque, com nome acessível. A exceção `data-direct-sheet` é explícita e não altera menus de exclusão/edição. Criação e persistência após reload foram verificadas no navegador.

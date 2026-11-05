@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Revisão de arquitetura, interface e dados
 
 Implementação sobre React/Vite, APIs Vercel e Supabase. Nenhuma publicação nem migração de banco foi realizada.

@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Execução do plano — 05/11/2026
 
 O plano da auditoria foi seguido na sequência para as mudanças locais. A **migração estrutural do controlador foi concluída** e está documentada em [Migração integral](MIGRACAO-INTEGRAL-CONTROLADOR-2026-11-05.md). A instalação/validação no Supabase continua pendente; não houve alteração do banco remoto nem deploy nesta etapa.

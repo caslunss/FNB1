@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # TEFinance — Versão Alpha 1.0
 
 Revisão de 31/10/2026. Consulte VERSAO-ALPHA-1.0.md para correções, validação e limites. O visual existente foi preservado.

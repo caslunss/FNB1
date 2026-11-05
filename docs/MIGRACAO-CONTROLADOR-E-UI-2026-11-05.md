@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Migração do controlador e correções prioritárias de UI
 
 > Histórico da primeira etapa. A pendência de decomposição do controlador foi concluída em [Migração integral](MIGRACAO-INTEGRAL-CONTROLADOR-2026-11-05.md). As limitações abaixo referentes ao controlador descrevem o estado anterior a essa conclusão.

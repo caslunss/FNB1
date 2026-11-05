@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Auditoria de layout e componentes
 
 Revisão de 03/11/2026. Código de referência: navegação atual de cinco áreas.

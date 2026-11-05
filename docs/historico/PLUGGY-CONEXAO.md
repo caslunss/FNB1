@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Conexão Pluggy no Netlify
 
 1. Publique o projeto completo pelo Git ou Netlify CLI, incluindo netlify/functions. Enviar somente dist não instala as funções.

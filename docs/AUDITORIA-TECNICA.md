@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Auditoria técnica — 03/11/2026
 
 ## Escopo e limites

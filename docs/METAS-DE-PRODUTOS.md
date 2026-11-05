@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Metas de produtos
 
 Planejamento → Metas passa a guardar produtos desejados. A meta geral de investimentos continua no Resumo, com os valores e o editor anteriores.

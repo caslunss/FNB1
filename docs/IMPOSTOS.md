@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Aba Impostos — operação e arquitetura
 
 ## Disponível

@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Auditoria geral da UI — 05/11/2026
 
 > Registro do diagnóstico na versão `c85e4ae`. As correções posteriores, evidências e pendências atualizadas estão em [Migração do controlador e correções prioritárias](MIGRACAO-CONTROLADOR-E-UI-2026-11-05.md). Os problemas descritos abaixo são históricos; consulte o resultado antes de tratá-los como bugs ainda abertos.

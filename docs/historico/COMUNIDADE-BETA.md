@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Beta e apoio ao projeto
 
 A tag Beta tester aparece para contas autenticadas com ID e data de criação válidos, dentro de COMMUNITY_PROGRAM em src/finance/workspace.tsx. Visitantes não recebem a tag. A regra usa created_at da conta validada pelo Supabase, sem alterar dados financeiros ou conceder permissões.

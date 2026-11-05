@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Crédito e economia — 30/10/2026
 
 - Calculadora de CDB retirada da interface. A biblioteca matemática permanece sem ser carregada pela página.

@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Migração estrutural e padronização global
 
 > Registro da etapa de conversão TypeScript/JSX. A refatoração visual posterior, solicitada para barras e controles, está em [AUDITORIA-BARRAS-E-CONTROLES.md](AUDITORIA-BARRAS-E-CONTROLES.md). Ela atualiza os acabamentos, o inventário de prioridades e resolve as diferenças de CSS entre desenvolvimento e produção relatadas naquela etapa.

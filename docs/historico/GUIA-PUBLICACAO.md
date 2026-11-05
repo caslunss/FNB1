@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # TEFinance — publicação e validação
 
 Verificado em 30/10/2026. Este pacote contém a interface e as Functions; publicar a prévia do ChatGPT não atualiza tefinance.netlify.app.

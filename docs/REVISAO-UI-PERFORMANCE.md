@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Revisão de interface e performance — 03/11/2026
 
 Repositório: caslunss/FNB1. Base: 1d83f275164e1d161002cd100cf46111dc47faaa.

@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Animações compartilhadas — Alpha 1.0
 
 Implementação React/TypeScript com `motion/react` (pacote `motion`). As molas são uma interpretação amortecida do movimento da plataforma, não constantes oficiais da Apple. O material Liquid Glass e a paleta existentes permanecem.

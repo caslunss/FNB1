@@ -1,3 +1,5 @@
+Versão do documento: 0.1.0-alpha.1
+
 # Perfil, opções de configuração, Amigos e Carbono — 29/10/2026
 
 - Identidade movida para opção na engrenagem, incluindo @usuário. Dados e relatórios agrupa importação, exportação, extratos, Open Finance e histórico mensal.
