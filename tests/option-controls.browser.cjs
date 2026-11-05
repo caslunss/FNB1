@@ -50,10 +50,17 @@ async function audit(page, key) {
     const dialog = document.querySelector('dialog[open]');
     if (dialog && dialog.scrollWidth > dialog.clientWidth+1) failures.push(['dialog overflow']);
     if (document.documentElement.scrollWidth > innerWidth) failures.push(['page overflow']);
-    return {failures,bars:bars.length,buttons:buttons.length};
+    return {failures,bars:bars.length,buttons:buttons.length,settingsScreen:document.querySelector('#accountOverlay[open] .settings-navigation')?.dataset.settingsScreen||null};
   });
   assert.deepEqual(result.failures, [], key + ': ' + JSON.stringify(result.failures));
-  assert(result.bars > 0, key + ': no visible option bars');
+  if (result.settingsScreen) {
+    const titles={home:'Configurações',layout:'Layout e preferências',notifications:'Notificações',connections:'Dados e conexões'};
+    assert(Object.hasOwn(titles,result.settingsScreen),key+': known Settings screen');
+    assert.equal(await page.locator('#accountOverlay[open] .settings-navigation').count(),1,key+': one Settings screen');
+    assert.equal(await page.locator('#accountOverlayTitle').innerText(),titles[result.settingsScreen]);
+    assert(result.buttons>0,key+': Settings controls must be visible');
+    if(result.settingsScreen==='home')assert.equal(await page.locator('.settings-main-menu .settings-menu-row').count(),4,'Visitor has four grouped options');
+  } else assert(result.bars > 0, key + ': no visible option bars');
   return {key,bars:result.bars,buttons:result.buttons};
 }
 async function navigate(page, kind, value) {
@@ -81,12 +88,18 @@ async function navigate(page, kind, value) {
         await navigate(page,kind,value);results.push(await audit(page,`${width}/${theme}/${name}`));
       }
       await page.evaluate(()=>window.planMobile.open('settings'));await page.waitForSelector('#accountOverlay[open]');
-      for (const name of ['Conta','Notificações','Layout','Conexões']) {
-        await page.getByRole('tab',{name,exact:true}).click();await page.waitForTimeout(200);
+      await page.waitForSelector('.settings-main-menu');
+      assert.equal(await page.getByRole('button',{name:'Conta',exact:true}).count(),0,'Account is hidden for the visitor fixture');
+      results.push(await audit(page,`${width}/${theme}/settings-menu`));
+      for (const [name,screen,content] of [['Notificações','notifications','.notification-preferences'],['Layout e preferências','layout','#layoutEditor'],['Dados e conexões','connections','.settings-sections']]) {
+        await page.locator('.settings-main-menu').getByRole('button',{name,exact:true}).click();await page.waitForSelector(`.settings-navigation[data-settings-screen=${screen}] ${content}`);await page.waitForTimeout(200);
         results.push(await audit(page,`${width}/${theme}/settings-${name}`));
+        await page.getByRole('button',{name:'Voltar para configurações',exact:true}).click();await page.waitForSelector('.settings-main-menu');
       }
-      await page.locator('#settingsTab-account').click();await page.keyboard.press('ArrowRight');
-      await page.waitForSelector('#settingsTab-notifications[aria-selected=true]');
+      await page.getByRole('button',{name:'Fechar configurações',exact:true}).focus();await page.keyboard.press('Tab');
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'settingsTab-layout');await page.keyboard.press('Tab');
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'settingsTab-notifications');await page.keyboard.press('Enter');
+      await page.waitForSelector('.settings-navigation[data-settings-screen=notifications] .notification-preferences');
       await page.evaluate(()=>document.querySelector('#accountOverlay').close());
       await page.locator('#notificationButton').click();await page.waitForSelector('#notificationPanel[open]');
       for (const name of ['Todas','Transações','Alertas']) {
@@ -102,10 +115,11 @@ async function navigate(page, kind, value) {
       console.log('PASS',width,theme,'pages, settings keyboard navigation, notifications and calendar');
     }
     await page.setViewportSize({width:320,height:900});
-    await page.evaluate(()=>window.planMobile.open('settings'));await page.getByRole('tab',{name:'Conexões',exact:true}).click();
+    await page.evaluate(()=>window.planMobile.open('settings'));await page.getByRole('button',{name:'Dados e conexões',exact:true}).click();
     await page.evaluate(()=>document.querySelector('#accountOverlay').close());await page.waitForTimeout(80);
     await page.evaluate(()=>window.planMobile.open('settings'));await page.waitForTimeout(200);
-    await audit(page,'reopened settings keeps selected tab visible');
+    assert.equal(await page.locator('.settings-navigation').getAttribute('data-settings-screen'),'home');
+    await audit(page,'reopened settings returns to the grouped menu');
     await page.evaluate(()=>document.querySelector('#accountOverlay').close());
     await navigate(page,'navigate','v');
     const investmentBar=page.locator('.investment-tabs');
