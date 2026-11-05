@@ -54,7 +54,7 @@ scenarios.push(
  {name:'tax-editor',run:async page=>{await route(page,'taxes');await page.getByRole('button',{name:'Adicionar análise tributária',exact:true}).click()}},
  {name:'tax-bank',fullPage:true,run:async page=>{await route(page,'taxes');await page.getByRole('button',{name:'Importar banco',exact:true}).click();await page.waitForSelector('.tax-bank')}}
 );
-for(const [tab,label]of [['account','Conta'],['notifications','Notificações'],['layout','Layout'],['connections','Conexões']])scenarios.push({name:'settings-'+tab,run:async page=>{await account(page,'settings');await page.getByRole('tab',{name:label,exact:true}).click()}});
+for(const [screen,label]of [['home','Configurações'],['notifications','Notificações'],['layout','Layout e preferências'],['connections','Dados e conexões']])scenarios.push({name:'settings-'+screen,run:async page=>{await account(page,'settings');if(screen==='home'){assert.equal(await page.getByRole('button',{name:'Conta',exact:true}).count(),0,'Account is hidden for the visitor fixture');assert.equal(await page.locator('.settings-main-menu .settings-menu-row').count(),4)}else await page.locator('.settings-main-menu').getByRole('button',{name:label,exact:true}).click();await page.waitForSelector(`.settings-navigation[data-settings-screen=${screen}]`)}});
 scenarios.push({name:'login',run:async(page,url)=>{await page.goto(url+'/login.html');await page.waitForSelector('#googleButton iframe')}},{name:'login-guest',run:async(page,url)=>{await page.goto(url+'/login.html');await page.waitForSelector('#googleButton iframe');await page.locator('#guestToggle').click()}});
 function sameSnapshot(before,after){
  if(before.text!==after.text||before.geometry.length!==after.geometry.length)return false;
