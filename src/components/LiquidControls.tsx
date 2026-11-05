@@ -4,11 +4,12 @@ import FinanceSelect from './FinanceSelect.tsx';
 import IOSButton from './motion/IOSButton.tsx';
 import {useMobileLayout,useBottomNavigationLayout} from '../services/mobile-layout.ts';
 import React, {useEffect,useLayoutEffect,useId, useRef, useState, useSyncExternalStore} from 'react';
-import {GlassCard,GlassMenu,GlassSwitch as LibrarySwitch, GlassSegmented, useRefraction, usePress} from '@zakisheriff/liquid-glass';
+import {GlassCard,GlassMenu,GlassSwitch as LibrarySwitch, useRefraction, usePress} from '@zakisheriff/liquid-glass';
 import {getLayout,subscribeLayout} from '../services/layout-preferences.ts';
+import {BUTTON_CLASSES,OPTION_BAR_CLASSES} from './control-classes';
 
 const useLayout=()=>useSyncExternalStore(subscribeLayout,getLayout);
-export function FinanceGlassButton({className='',shimmer=true,...props}:React.ComponentProps<typeof IOSButton>){const layout=useLayout();return <IOSButton {...props} className={`te-glass-button ${className}`} shimmer={shimmer} intensity={layout.intensity}/>}
+export function FinanceGlassButton({className='',shimmer=true,control='action',...props}:React.ComponentProps<typeof IOSButton>&{control?:'action'|'option'}){const layout=useLayout();return <IOSButton {...props} className={`te-glass-button ${BUTTON_CLASSES} ${control==='option'?'ui-option':''} ${className}`} shimmer={control==='option'?false:shimmer} intensity={layout.intensity}/>}
 // Calendar choices paint one selected state, without refractive copies of dates.
 export function FinanceCalendarButton({className='',...props}:React.ComponentProps<'button'>){
  return <button {...props} type="button" className={`finance-calendar-choice ${className}`}/>;
@@ -22,17 +23,58 @@ export function FinanceFieldButton({children,className='',...props}:React.Compon
 }
 export function FinanceTabButton({children,className='',...props}:Omit<React.ComponentProps<'button'>,'onDrag'|'onDragStart'|'onDragEnd'|'onAnimationStart'>){
  const bottom=useBottomNavigationLayout();
- if(!bottom)return <FinanceGlassButton {...props} className={className}>{children}</FinanceGlassButton>;
- return <button {...props} type="button" className={`lg-button te-glass-button nav-icon-button ${className}`}><span className="lg-button__label">{children}</span></button>;
+ if(!bottom)return <FinanceGlassButton {...props} control="option" className={`ui-icon ${className}`}>{children}</FinanceGlassButton>;
+ return <button {...props} type="button" className={`lg-button te-glass-button ${BUTTON_CLASSES} ui-option ui-icon nav-icon-button ${className}`}><span className="lg-button__label">{children}</span></button>;
 }
 const SurfaceRim=()=> <span className="te-surface-rim" aria-hidden="true"/>;
 export function FinanceGlassCard({children,className='',...props}:React.ComponentProps<typeof GlassCard>){const layout=useLayout();return <GlassCard {...props} className={`te-glass-surface ${className}`} intensity={Math.min(layout.intensity,2)}>{children}<SurfaceRim/></GlassCard>}
 
 // Custom surfaces preserve the app's vertical navigation and semantic sections.
 // Both hooks are the public extension API documented by the library.
-export function GlassSurface({as:Tag='section',className='',children,...props}:React.HTMLAttributes<HTMLElement>&{as?:React.ElementType}){
+export function GlassSurface({as:Tag='section',className='',children,...props}:React.HTMLAttributes<HTMLElement>&{as?:React.ElementType;ref?:React.Ref<HTMLElement>}){
   // A single CSS backdrop avoids cloning interactive descendants into nested mirrors.
   return <Tag className={`lg-glass lg-glass--host te-glass-surface ${className}`} data-liquid-glass="" {...props}>{children}<SurfaceRim/></Tag>;
+}
+
+export const FinanceOptionBar=React.forwardRef<HTMLElement,React.ComponentPropsWithoutRef<typeof GlassSurface>>(function FinanceOptionBar({className='',children,...props},forwarded){
+  const host=useRef<HTMLElement>(null!);
+  const placed=useRef<{selected:HTMLElement;width:number}|null>(null);
+  React.useImperativeHandle(forwarded,()=>host.current);
+  function revealSelection(){
+    const node=host.current,selected=node?.querySelector<HTMLElement>('[aria-selected=true],[aria-pressed=true],[aria-current=page]');
+    if(!node||!selected)return;
+    const width=node.clientWidth;
+    if(placed.current?.selected===selected&&placed.current.width===width)return;
+    placed.current={selected,width};
+    if(node.scrollWidth<=width)return;
+    const box=node.getBoundingClientRect(),item=selected.getBoundingClientRect(),padding=parseFloat(getComputedStyle(node).paddingLeft)+1;
+    if(item.left<box.left+padding)node.scrollLeft+=item.left-box.left-padding;
+    else if(item.right>box.right-padding)node.scrollLeft+=item.right-box.right+padding;
+  }
+  useLayoutEffect(revealSelection,[children]);
+  useLayoutEffect(()=>{
+    const observer=new ResizeObserver(revealSelection);
+    observer.observe(host.current);
+    return()=>observer.disconnect();
+  },[]);
+  return <GlassSurface {...props} ref={host} className={`${OPTION_BAR_CLASSES} ${className}`}>{children}</GlassSurface>;
+});
+
+type SegmentOption = string | {label:string;icon?:React.ReactNode;disabled?:boolean};
+/** Roving focus follows visual options without a lens that assumes zero grid gaps. */
+export function FinanceSegmentedControl({options,value,onChange,className='',...props}:{options:SegmentOption[];value:number;onChange:(index:number)=>void;className?:string;'aria-label':string}){
+  const bar=useRef<HTMLDivElement>(null!);
+  function keyDown(event:React.KeyboardEvent<HTMLElement>){
+    if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+    const enabled=options.map((option,index)=>typeof option!=='string'&&option.disabled?-1:index).filter(index=>index>=0);
+    if(!enabled.length)return;
+    event.preventDefault();
+    const current=enabled.indexOf(value),next=event.key==='Home'?enabled[0]:event.key==='End'?enabled.at(-1)!:enabled[(current+(event.key==='ArrowRight'?1:-1)+enabled.length)%enabled.length];
+    onChange(next);bar.current?.querySelectorAll<HTMLButtonElement>('button')[next]?.focus({preventScroll:true});
+  }
+  return <FinanceOptionBar as="div" ref={bar} role="tablist" {...props} className={`te-glass-segments ${className}`} onKeyDown={keyDown}>
+    {options.map((option,index)=>{const item=typeof option==='string'?{label:option}:option;return <FinanceGlassButton key={index} control="option" role="tab" aria-selected={value===index} aria-label={item.label} disabled={item.disabled} tabIndex={value===index?0:-1} className={`lg-track__item${item.icon?' ui-icon':''}`} onClick={()=>onChange(index)}>{item.icon||item.label}</FinanceGlassButton>})}
+  </FinanceOptionBar>;
 }
 
 // These hosts receive React-rendered icons from the existing controllers.
@@ -41,7 +83,7 @@ export function GlassActionHost({className='',...props}:React.ComponentProps<'bu
   const layout=useLayout();
   useRefraction(ref,{kind:'surface',strength:layout.intensity/5,bezel:12},!/(app-symbol|notification-button|calendar-button|friends-button)/.test(className));
   usePress(ref,{grow:0,lean:0,stretch:0});
-  return <button ref={ref} className={`lg-glass te-glass-host ${className}`} data-liquid-glass="" {...props}/>;
+  return <button ref={ref} className={`lg-glass te-glass-host ${BUTTON_CLASSES} ui-icon ${className}`} data-liquid-glass="" {...props}/>;
 }
 
 export function ThemeSwitch(){
@@ -63,8 +105,7 @@ export function FinanceSegments({items,label,className=''}:{items:{kind:string;v
   const selected=Math.max(0,items.findIndex(x=>x.selected));
   const [index,setIndex]=useState(selected);
   useEffect(()=>setIndex(selected),[selected]);
-  const layout=useLayout();
-  return <GlassSegmented className={`te-glass-segments ${className.replace(/\bsegments\b/g,'')}`} options={items.map(x=>mobile&&x.kind==='data-summary-mode'?({overview:'Resumo',behavior:'Hábitos',entries:'Lançamentos'}[x.value]||x.label):x.label)} value={index} intensity={layout.intensity} aria-label={label} onChange={next=>{
+  return <FinanceSegmentedControl className={className.replace(/\bsegments\b/g,'')} options={items.map(x=>mobile&&x.kind==='data-summary-mode'?({overview:'Resumo',behavior:'Hábitos',entries:'Lançamentos'}[x.value]||x.label):x.label)} value={index} aria-label={label} onChange={next=>{
     if(!Number.isInteger(next)||!items[next])return;
     setIndex(next);
     // Let the library finish its gesture before the controller replaces the view.
@@ -97,5 +138,5 @@ export function GlassActionEditor({label,icon,children,className='',initialOpen=
 
 export function SettingsOption({label,id,children}:{label:string;id?:string;children?:React.ReactNode}){
   const [open,setOpen]=useState(false);
-  return <FinanceGlassCard className={`card settings-option${open?' is-open':''}`}><button type="button" className="settings-option-trigger" aria-expanded={open} aria-controls={id} onClick={()=>setOpen(!open)}><span>{label}</span><span aria-hidden="true">{open?'−':'+'}</span></button><div id={id} className={`settings-option-body${open?' is-open':''}`} inert={!open||undefined} aria-hidden={!open}><div>{children}</div></div></FinanceGlassCard>;
+  return <FinanceGlassCard className={`card settings-option${open?' is-open':''}`}><FinanceGlassButton type="button" className="settings-option-trigger" aria-expanded={open} aria-controls={id} onClick={()=>setOpen(!open)}><span>{label}</span><span aria-hidden="true">{open?'−':'+'}</span></FinanceGlassButton><div id={id} className={`settings-option-body${open?' is-open':''}`} inert={!open||undefined} aria-hidden={!open}><div>{children}</div></div></FinanceGlassCard>;
 }

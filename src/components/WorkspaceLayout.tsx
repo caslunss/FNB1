@@ -4,7 +4,7 @@ import MobileExperience from './MobileExperience.tsx';
 import MonthPicker from './MonthPicker.tsx';
 import ToolbarSearch from './ToolbarSearch.tsx';
 import React from 'react';
-import {GlassSurface, GlassActionHost,FinanceGlassButton as GlassButton} from './LiquidControls.tsx';
+import {GlassSurface, FinanceOptionBar, GlassActionHost,FinanceGlassButton as GlassButton} from './LiquidControls.tsx';
 
 
 
@@ -24,7 +24,7 @@ export function WorkspaceLayout(){return <>
       <div id="appNotice" className="app-notice" role="status" hidden/>
       <p id="closedMonthNotice" className="closed-month-notice" role="status" hidden>Mês encerrado · somente leitura.</p><div id="app"/>
     </div></main>
-    <div className="nav-shell" id="navShell"><h1 className="t-lg" id="lt" tabIndex={-1}/><div className="top-account-actions"><GlassSurface as="div" className="account-bubbles account-toolbar" role="toolbar" aria-label="Conta, calendário e notificações"><GlassActionHost className="app-symbol" type="button" aria-label="Abrir perfil" aria-haspopup="dialog" aria-controls="accountOverlay" aria-expanded="false"/><GlassActionHost id="calendarButton" className="ib calendar-button" type="button" aria-label="Calendário" aria-haspopup="dialog" aria-controls="accountOverlay" aria-expanded="false"/><GlassActionHost id="notificationButton" className="ib notification-button" type="button" aria-label="Notificações" aria-controls="notificationPanel"/></GlassSurface><ToolbarSearch/><MobileExperience/></div><div className="rail-scene" aria-hidden="true"/><BottomNavigation/></div>
+    <div className="nav-shell" id="navShell"><h1 className="t-lg" id="lt" tabIndex={-1}/><div className="top-account-actions"><FinanceOptionBar as="div" className="account-bubbles account-toolbar" role="toolbar" aria-label="Conta, calendário e notificações"><GlassActionHost className="app-symbol" type="button" aria-label="Abrir perfil" aria-haspopup="dialog" aria-controls="accountOverlay" aria-expanded="false"/><GlassActionHost id="calendarButton" className="ib calendar-button" type="button" aria-label="Calendário" aria-haspopup="dialog" aria-controls="accountOverlay" aria-expanded="false"/><GlassActionHost id="notificationButton" className="ib notification-button" type="button" aria-label="Notificações" aria-controls="notificationPanel"/></FinanceOptionBar><ToolbarSearch/><MobileExperience/></div><div className="rail-scene" aria-hidden="true"/><BottomNavigation/></div>
   </div>
   <GlassSurface id="profileMenu" className="profile-menu" role="menu" aria-label="Menu do perfil" hidden/>
   <dialog id="accountOverlay" className="account-overlay" aria-labelledby="accountOverlayTitle"><div id="accountOverlayContent"/></dialog>

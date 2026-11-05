@@ -85,7 +85,7 @@ Não deixar uma borda retangular no `details` externo. O raio deve existir no fo
 | Exclusão | Variante `destructive`; confirmação descreve o impacto |
 | Alternância | `GlassSwitch`; estado e cor derivados do tema |
 | Slider | `GlassSlider`; rótulo e valor visíveis; sem alterar dimensões durante o gesto |
-| Abas segmentadas | `FinanceSegments` / `GlassSegmented`; preservar lente e refração |
+| Abas segmentadas | `FinanceSegments` / `FinanceSegmentedControl`; barra universal com seleção única, toque e teclado |
 | Campo | `GlassTextField` com rótulo visível; placeholder não substitui rótulo |
 | Upload | `FileUpload`; botão próprio e nome do arquivo |
 
@@ -152,7 +152,7 @@ Respeitar `prefers-reduced-motion`. Não somar duas animações de entrada no me
 | Arquivo | Responsabilidade |
 | --- | --- |
 | `src/components/LiquidControls.tsx` | Botões, superfícies, menus, segmentos e editores |
-| `src/components/FinanceView.tsx` | Converte templates para componentes React |
+| `src/components/FinanceView.tsx` | Adapta apresentações JSX aos componentes compartilhados |
 | `src/components/ProgressiveFields.tsx` | Campos básicos e opções avançadas |
 | `src/styles/liquid-glass.css` | Integração visual da biblioteca |
 | `src/styles/layout-settings.css` | Layout, popups e acabamento compartilhado |
@@ -530,3 +530,21 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 - Limpar dispensa os avisos atuais por identificador, mantendo gastos, relatórios, amigos e divisões. Persistência usa o storage escopado existente; visitantes mantêm na aba e contas no dispositivo. Novos eventos aparecem normalmente. Falha de gravação informa erro sem limpar a lista.
 - Botões de menu com texto usam action-menu-labeled; largura natural e conteúdo em linha. Menus somente com ícone conservam 44 px. Não aplicar a largura de ícone ao botão Adicionar.
 - Sino/central acompanham publicações financeiras, incluindo gastos criados pela API de impostos, sem depender de uma troca de aba.
+
+
+## Barras, opções e botões universais — 04/11/2026
+
+Atualização visual solicitada: esta seção substitui os acabamentos antigos de barras, abas e filtros descritos no histórico acima.
+
+- `FinanceOptionBar` e `FinanceSegmentedControl` compartilham `OPTION_BAR_CLASSES`: `gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-xl`. Os tokens de `option-controls.css` resolvem o material para a paleta e o desfoque escolhidos em Layout, incluindo WebKit. Não inserir fundos opacos ou cores de destaque próprios de cada página.
+- Uma barra possui uma única camada de desfoque. Suas opções inativas são transparentes; a seleção é branca com texto escuro nos dois temas. `aria-selected`, `aria-pressed` e `aria-current` conservam seus significados e usam o mesmo acabamento. Exclusão continua identificada pela cor semântica de perigo.
+- `FinanceGlassButton` é a ação universal: fonte 14 px/500, padding 8/16 px, raio de pílula e alvo mínimo de 44 px. Ícones usam 44 × 44 px e SVG de 20 px. Uma ação com texto pode crescer em altura/quebrar linha; o mês com rótulo não é um botão somente de ícone.
+- Barras usam espaçamento interno de 4 px, gap de 8 px e borda de 1 px. Na compactação da navegação mobile, somente o padding interno passa ao token de 2 px; os alvos de toque permanecem de 44 px. Mantidos os presets de movimento compartilhados e a preferência por movimento reduzido.
+- `FinanceSegmentedControl` usa uma linha flex com rolagem horizontal interna quando necessário e foco móvel por setas/Home/End. A lente antiga calculava posições supondo células sem gap; não a reutilizar nessa barra. A opção selecionada é mantida visível ao abrir e navegar pelo teclado. Não manter uma cópia visual desalinhada do estado selecionado.
+- Configurações, gráfico, Resumo/Lançamentos, investimentos, impostos, prazo de meta, ações superiores, calendário e filtros das notificações usam o mesmo contrato. Calendários mantêm sua grade de sete colunas, switches mantêm a geometria funcional e botões de linha mantêm o alinhamento dos dados; não tratá-los como abas ou ícones vazios.
+- As notificações mantêm seus dados, grupos, filtros, leitura e descarte persistente. `Limpar` usa a ação universal; fechar/configurar usam o mesmo ícone circular. No viewport estreito, o rodapé pode quebrar linha em vez de reduzir áreas clicáveis ou vazar para fora do popup.
+- Seletores usam `OPTION_MENU_CLASSES`; menus da biblioteca recebem os mesmos tokens pela camada compartilhada, com raio de card de 28 px, gap de 8 px e linhas em pílula. O menu tem a opacidade de leitura do tema para ocultar texto de baixo; somente a seleção interna é branca. Contratos de `select`, formulário, calendário, Escape e retorno de foco são preservados.
+- `app-entry.css` e `login-entry.css` declaram a ordem completa dos estilos. Não voltar a importar folhas compartilhadas e específicas separadamente nas entradas JS: o split do build pode mudar a cascata entre desenvolvimento e produção.
+- A camada `app-controls` centraliza as prioridades necessárias para a biblioteca. `app-focus`, declarada antes, mantém precedência para os indicadores de teclado. Não acrescentar correções locais de padding, seleção ou material às páginas.
+
+Barras de opções longas podem rolar horizontalmente dentro da própria pílula; essa exceção de navegação não permite overflow horizontal da página. Não empilhar oito abas em uma cápsula alta.

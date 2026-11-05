@@ -1,20 +1,7 @@
 import MotionProvider from './components/motion/MotionProvider.tsx';
 import React from 'react';
-import './styles/root.css';
-import './styles/tailwind.css';
+import './styles/login-entry.css';
 import {createRoot} from 'react-dom/client';
-import './styles/login-base.css';
-import '/public/assets/pastel.css';
-import '/public/assets/login-design.css';
-import '/public/assets/page-motion.css';
-import '@zakisheriff/liquid-glass/styles.css';
-import './styles/liquid-glass.css';
-import './styles/layout-settings.css';
-import './styles/login-fullscreen.css';
-import './styles/mobile.css';
-import './styles/control-surfaces.css';
-import './styles/focus.css';
-import './styles/universal-motion.css';
 import './services/auth.ts';
 import Login from './components/Login.tsx';
 

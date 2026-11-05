@@ -1,0 +1,1369 @@
+{
+  "scope": "Liquid Glass option bars, navigation, toolbars and action controls",
+  "sourceBaseCommit": "041eba24b445339255c172edf9d92d5f9c8b00ad",
+  "widths": [
+    320,
+    390,
+    768,
+    1024,
+    1440,
+    1920
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "productionStatesPassed": 228,
+  "additionalChecks": [
+    "selected option visible after reopening",
+    "manual horizontal scrolling survives unrelated input render",
+    "keyboard arrows and Home/End",
+    "focus-visible",
+    "scroll compaction and idle expansion"
+  ],
+  "developmentProductionComparison": {
+    "states": 44,
+    "matched": 44,
+    "properties": "content, geometry, typography, spacing, colors, shadows and backdrop",
+    "screenshotPixelIdentityClaimed": false
+  },
+  "legacyDeclarationsRemovedInInitialPass": 225,
+  "priorityDeclarationsBefore": 617,
+  "priorityDeclarationsAfter": 611,
+  "localChecks": {
+    "unitRegression": "passed",
+    "strictTypes": "passed",
+    "styleAudit": "passed",
+    "build": "passed",
+    "release": "passed",
+    "notificationsBrowser": "passed",
+    "ledgerBrowser": "passed",
+    "mobileFormsLoginBrowser": "passed",
+    "financialModuleBrowser": "passed"
+  },
+  "cases": [
+    {
+      "key": "320/light/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "320/light/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "320/light/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "320/light/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "320/light/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "320/light/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "320/light/goals",
+      "bars": 4,
+      "buttons": 11
+    },
+    {
+      "key": "320/light/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "320/light/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "320/light/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "320/light/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "320/light/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/light/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "320/light/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "320/light/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/light/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/light/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/light/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/light/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "320/dark/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "320/dark/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "320/dark/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "320/dark/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "320/dark/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "320/dark/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "320/dark/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "320/dark/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "320/dark/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "320/dark/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "320/dark/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "320/dark/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/dark/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "320/dark/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "320/dark/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/dark/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/dark/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/dark/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "320/dark/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "390/light/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "390/light/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "390/light/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "390/light/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "390/light/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "390/light/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "390/light/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "390/light/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "390/light/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "390/light/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "390/light/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "390/light/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/light/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "390/light/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "390/light/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/light/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/light/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/light/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/light/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "390/dark/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "390/dark/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "390/dark/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "390/dark/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "390/dark/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "390/dark/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "390/dark/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "390/dark/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "390/dark/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "390/dark/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "390/dark/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "390/dark/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/dark/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "390/dark/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "390/dark/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/dark/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/dark/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/dark/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "390/dark/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "768/light/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "768/light/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "768/light/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "768/light/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "768/light/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "768/light/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "768/light/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "768/light/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "768/light/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "768/light/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "768/light/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "768/light/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/light/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "768/light/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "768/light/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/light/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/light/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/light/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/light/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "768/dark/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "768/dark/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "768/dark/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "768/dark/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "768/dark/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "768/dark/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "768/dark/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "768/dark/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "768/dark/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "768/dark/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "768/dark/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "768/dark/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/dark/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "768/dark/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "768/dark/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/dark/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/dark/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/dark/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "768/dark/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1024/light/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1024/light/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "1024/light/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1024/light/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1024/light/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "1024/light/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "1024/light/goals",
+      "bars": 4,
+      "buttons": 11
+    },
+    {
+      "key": "1024/light/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1024/light/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "1024/light/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1024/light/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1024/light/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/light/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1024/light/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1024/light/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/light/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/light/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/light/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/light/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1024/dark/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1024/dark/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "1024/dark/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1024/dark/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1024/dark/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "1024/dark/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "1024/dark/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1024/dark/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1024/dark/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "1024/dark/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1024/dark/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1024/dark/settings-Conta",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/dark/settings-Notificações",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1024/dark/settings-Layout",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1024/dark/settings-Conexões",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/dark/notifications-Todas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/dark/notifications-Transações",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/dark/notifications-Alertas",
+      "bars": 4,
+      "buttons": 15
+    },
+    {
+      "key": "1024/dark/calendar",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1440/light/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1440/light/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "1440/light/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1440/light/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1440/light/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "1440/light/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "1440/light/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1440/light/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1440/light/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "1440/light/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1440/light/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1440/light/settings-Conta",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/light/settings-Notificações",
+      "bars": 5,
+      "buttons": 19
+    },
+    {
+      "key": "1440/light/settings-Layout",
+      "bars": 5,
+      "buttons": 27
+    },
+    {
+      "key": "1440/light/settings-Conexões",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/light/notifications-Todas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/light/notifications-Transações",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/light/notifications-Alertas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/light/calendar",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1440/dark/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1440/dark/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "1440/dark/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1440/dark/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1440/dark/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "1440/dark/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "1440/dark/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1440/dark/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1440/dark/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "1440/dark/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1440/dark/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1440/dark/settings-Conta",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/dark/settings-Notificações",
+      "bars": 5,
+      "buttons": 19
+    },
+    {
+      "key": "1440/dark/settings-Layout",
+      "bars": 5,
+      "buttons": 27
+    },
+    {
+      "key": "1440/dark/settings-Conexões",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/dark/notifications-Todas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/dark/notifications-Transações",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/dark/notifications-Alertas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1440/dark/calendar",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1920/light/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1920/light/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "1920/light/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1920/light/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1920/light/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "1920/light/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "1920/light/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1920/light/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1920/light/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "1920/light/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1920/light/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1920/light/settings-Conta",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/light/settings-Notificações",
+      "bars": 5,
+      "buttons": 19
+    },
+    {
+      "key": "1920/light/settings-Layout",
+      "bars": 5,
+      "buttons": 27
+    },
+    {
+      "key": "1920/light/settings-Conexões",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/light/notifications-Todas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/light/notifications-Transações",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/light/notifications-Alertas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/light/calendar",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1920/dark/overview",
+      "bars": 5,
+      "buttons": 17
+    },
+    {
+      "key": "1920/dark/entries",
+      "bars": 5,
+      "buttons": 15
+    },
+    {
+      "key": "1920/dark/debts",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1920/dark/cards",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1920/dark/friends",
+      "bars": 4,
+      "buttons": 17
+    },
+    {
+      "key": "1920/dark/purchases",
+      "bars": 4,
+      "buttons": 13
+    },
+    {
+      "key": "1920/dark/goals",
+      "bars": 4,
+      "buttons": 12
+    },
+    {
+      "key": "1920/dark/investments",
+      "bars": 4,
+      "buttons": 22
+    },
+    {
+      "key": "1920/dark/taxes",
+      "bars": 6,
+      "buttons": 20
+    },
+    {
+      "key": "1920/dark/reports",
+      "bars": 4,
+      "buttons": 16
+    },
+    {
+      "key": "1920/dark/carbon",
+      "bars": 4,
+      "buttons": 14
+    },
+    {
+      "key": "1920/dark/settings-Conta",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/dark/settings-Notificações",
+      "bars": 5,
+      "buttons": 19
+    },
+    {
+      "key": "1920/dark/settings-Layout",
+      "bars": 5,
+      "buttons": 27
+    },
+    {
+      "key": "1920/dark/settings-Conexões",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/dark/notifications-Todas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/dark/notifications-Transações",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/dark/notifications-Alertas",
+      "bars": 5,
+      "buttons": 20
+    },
+    {
+      "key": "1920/dark/calendar",
+      "bars": 5,
+      "buttons": 17
+    }
+  ],
+  "visualComparisons": [
+    {
+      "key": "320-light-page-summary",
+      "same": true
+    },
+    {
+      "key": "320-light-page-entries",
+      "same": true
+    },
+    {
+      "key": "320-light-page-investments",
+      "same": true
+    },
+    {
+      "key": "320-light-page-taxes",
+      "same": true
+    },
+    {
+      "key": "320-light-investments-Selic",
+      "same": true
+    },
+    {
+      "key": "320-light-date-picker",
+      "same": true
+    },
+    {
+      "key": "320-light-notifications-all",
+      "same": true
+    },
+    {
+      "key": "320-light-settings-account",
+      "same": true
+    },
+    {
+      "key": "320-light-settings-layout",
+      "same": true
+    },
+    {
+      "key": "320-light-settings-connections",
+      "same": true
+    },
+    {
+      "key": "320-light-login",
+      "same": true
+    },
+    {
+      "key": "320-dark-page-summary",
+      "same": true
+    },
+    {
+      "key": "320-dark-page-entries",
+      "same": true
+    },
+    {
+      "key": "320-dark-page-investments",
+      "same": true
+    },
+    {
+      "key": "320-dark-page-taxes",
+      "same": true
+    },
+    {
+      "key": "320-dark-investments-Selic",
+      "same": true
+    },
+    {
+      "key": "320-dark-date-picker",
+      "same": true
+    },
+    {
+      "key": "320-dark-notifications-all",
+      "same": true
+    },
+    {
+      "key": "320-dark-settings-account",
+      "same": true
+    },
+    {
+      "key": "320-dark-settings-layout",
+      "same": true
+    },
+    {
+      "key": "320-dark-settings-connections",
+      "same": true
+    },
+    {
+      "key": "320-dark-login",
+      "same": true
+    },
+    {
+      "key": "1440-light-page-summary",
+      "same": true
+    },
+    {
+      "key": "1440-light-page-entries",
+      "same": true
+    },
+    {
+      "key": "1440-light-page-investments",
+      "same": true
+    },
+    {
+      "key": "1440-light-page-taxes",
+      "same": true
+    },
+    {
+      "key": "1440-light-investments-Selic",
+      "same": true
+    },
+    {
+      "key": "1440-light-date-picker",
+      "same": true
+    },
+    {
+      "key": "1440-light-notifications-all",
+      "same": true
+    },
+    {
+      "key": "1440-light-settings-account",
+      "same": true
+    },
+    {
+      "key": "1440-light-settings-layout",
+      "same": true
+    },
+    {
+      "key": "1440-light-settings-connections",
+      "same": true
+    },
+    {
+      "key": "1440-light-login",
+      "same": true
+    },
+    {
+      "key": "1440-dark-page-summary",
+      "same": true
+    },
+    {
+      "key": "1440-dark-page-entries",
+      "same": true
+    },
+    {
+      "key": "1440-dark-page-investments",
+      "same": true
+    },
+    {
+      "key": "1440-dark-page-taxes",
+      "same": true
+    },
+    {
+      "key": "1440-dark-investments-Selic",
+      "same": true
+    },
+    {
+      "key": "1440-dark-date-picker",
+      "same": true
+    },
+    {
+      "key": "1440-dark-notifications-all",
+      "same": true
+    },
+    {
+      "key": "1440-dark-settings-account",
+      "same": true
+    },
+    {
+      "key": "1440-dark-settings-layout",
+      "same": true
+    },
+    {
+      "key": "1440-dark-settings-connections",
+      "same": true
+    },
+    {
+      "key": "1440-dark-login",
+      "same": true
+    }
+  ],
+  "limits": [
+    "Chromium viewport emulation; no physical iOS/Safari certification",
+    "External integrations mocked in visual fixtures",
+    "No deployment or production provider activation in this refactor"
+  ]
+}

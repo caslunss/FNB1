@@ -20,7 +20,7 @@
 #app.layout-r>.te-glass-surface{width:100%;margin:0!important}
 #app .te-glass-surface::before{--lg-glass-blur:20px}
 #app .te-glass-surface.identity-card{background:transparent!important}
-.te-glass-surface.account-bubbles,.te-glass-surface.tabbar{--lg-glass-fill:var(--lg-navigation-fill);background:transparent!important;isolation:isolate;backdrop-filter:none;-webkit-backdrop-filter:none}
+.te-glass-surface.account-bubbles,.te-glass-surface.tabbar{isolation:isolate}
 .te-glass-surface.account-bubbles{position:absolute}
 .te-glass-surface.notification-panel{--lg-glass-fill:var(--lg-menu-fill);position:fixed;isolation:isolate;background:transparent}
 body:not(.auth-page) :is(.btn,.ib).te-glass-button{
@@ -29,19 +29,13 @@ body:not(.auth-page) :is(.btn,.ib).te-glass-button{
 }
 .lg-button__label{display:inline-flex;align-items:center;justify-content:center;gap:var(--ui-space-2);min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}
 .lg-button__label>svg{flex:none}
-#tabs.tabbar .te-glass-button{height:44px;min-height:var(--ui-touch-target);width:44px;padding:0!important;background-color:transparent!important;touch-action:pan-y}
-#tabs.tabbar .lg-button__label{display:inline-flex!important;position:static!important;inset:auto;opacity:1;transform:none;width:24px;height:24px;align-items:center;justify-content:center;padding:0;background:none;box-shadow:none;white-space:normal;z-index:1}
+#tabs.tabbar .te-glass-button{height:44px;min-height:var(--ui-touch-target);width:44px;touch-action:pan-y}
+#tabs.tabbar .lg-button__label{display:inline-flex!important;position:static!important;inset:auto;opacity:1;transform:none;width:24px;height:24px;align-items:center;justify-content:center;white-space:normal;z-index:1}
 #tabs.tabbar .lg-button__label svg.i{display:block!important;width:24px;height:24px}
-#tabs.tabbar .te-glass-button[aria-current="page"]{--lg-fill:var(--lg-segment-selection);background-color:var(--lg-fill)!important;box-shadow:inset 0 0 0 1px var(--lg-edge),var(--lg-shadow)!important}
 .te-glass-host{--lg-glass-fill:transparent;box-shadow:var(--lg-shadow)!important;touch-action:pan-y}
 .te-glass-host.settings-top{--lg-glass-fill:var(--lg-fill);position:absolute}
 .te-theme-control{display:flex;align-items:center;justify-content:space-between;gap:var(--ui-space-5);min-height:var(--ui-touch-target);max-width:100%;font-size:13px;color:var(--lb)}
 .te-theme-control .lg-switch{flex:0 0 64px;box-shadow:none!important}
-.te-glass-segments{max-width:100%;min-width:0;margin-bottom:var(--ui-space-3);--lg-item-h:44px;--lg-item-w:0px;--lg-pad:5px;font:600 13px/1.3 var(--ui-font);touch-action:pan-y}
-.te-glass-segments .lg-track__item{min-width:0;min-height:var(--ui-touch-target);line-height:1.3;padding:0 14px;font:inherit;white-space:nowrap}
-body:not(.auth-page) .te-glass-segments .lg-track__item{border:0!important;background:transparent!important;box-shadow:none!important}
-.entry-toolbar .te-glass-segments{flex:0 1 auto;margin:0}
-.summary-switch.te-glass-segments,.profile-tabs.te-glass-segments{display:inline-flex;align-self:flex-start}
 .lg-glass:focus-visible{outline:3px solid var(--tint);outline-offset:3px}
 /* Editing surfaces retain their stronger fill for reliable text contrast. */
 .sheet,#receiptDialog,.compact-form.card{--lg-fill:var(--form-surface);background:var(--form-surface)!important}
@@ -53,8 +47,6 @@ body:not(.auth-page) .te-glass-segments .lg-track__item{border:0!important;backg
 .auth-page .lg-button.local-link{height:auto;min-height:48px;width:100%;white-space:normal;line-height:1.4;touch-action:pan-y}
 .auth-page .background-motion{position:fixed}
 @media(max-width:699px){
-  .entry-toolbar .te-glass-segments{order:-1;flex-basis:100%;width:100%}
-  .te-glass-segments .lg-track__item{padding:0 9px;font-size:12px}
   .te-theme-control{width:100%}
   .te-glass-surface.account-bubbles{position:fixed}
 }
@@ -67,7 +59,6 @@ body:not(.auth-page) .te-glass-segments .lg-track__item{border:0!important;backg
 /* Composite surfaces use one backdrop. Interactive children keep their own library effects. */
 .te-glass-surface.lg-glass--host{isolation:isolate;--lg-glass-fill:var(--lg-panel-fill);background:var(--lg-glass-fill)!important;backdrop-filter:blur(var(--lg-panel-blur)) saturate(1.12);-webkit-backdrop-filter:blur(var(--lg-panel-blur)) saturate(1.12);box-shadow:var(--lg-shadow)}
 .te-glass-surface.lg-glass--host::before,.te-glass-surface.lg-glass--host::after{content:none!important}
-.te-glass-surface.lg-glass--host:is(.tabbar,.account-toolbar,.task-search){--lg-glass-fill:var(--lg-navigation-fill);backdrop-filter:blur(var(--lg-blur)) saturate(1.12);-webkit-backdrop-filter:blur(var(--lg-blur)) saturate(1.12)}
 .te-glass-surface.lg-glass--host>.te-surface-rim{pointer-events:none;z-index:0}
 @media(prefers-reduced-transparency:reduce){.te-glass-surface.lg-glass--host{background:var(--card)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 /* Refraction maps are local geometry, never inheritable material tokens.

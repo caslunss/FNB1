@@ -2,7 +2,7 @@ import {errorDetails} from '../services/errors.ts';
 import {finance} from '../services/finance-runtime.ts';
 import React,{useEffect,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
-import {GlassSurface,GlassTextField,FinanceGlassButton as GlassButton} from './LiquidControls.tsx';
+import {FinanceOptionBar,GlassTextField,FinanceGlassButton as GlassButton} from './LiquidControls.tsx';
 
 const EMPTY={type:'',category:'',from:'',to:'',min:'',max:''};
 const LABELS:Record<string,string>={i:'Entrada',g:'Gasto',d:'Dívida',k:'Compra'};
@@ -17,7 +17,7 @@ export default function ToolbarSearch(){
   useEffect(()=>{const onKey=(e:KeyboardEvent)=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&!document.querySelector('#scrim:not([hidden]),dialog[open]')){e.preventDefault();open();}};window.addEventListener('keydown',onKey);return()=>window.removeEventListener('keydown',onKey)},[]);
   useEffect(()=>{const show=()=>open();addEventListener('plan-mobile-search',show);return()=>removeEventListener('plan-mobile-search',show)},[]);
   function change(e:React.ChangeEvent<HTMLInputElement|HTMLSelectElement>){setFilters(previous=>({...previous,[e.target.name]:e.target.value}));}
-  return <><GlassSurface as="div" className="task-search"><GlassButton ref={trigger} className="ib" type="button" aria-label="Pesquisar" onClick={open}><SearchIcon/></GlassButton></GlassSurface>{createPortal(<dialog ref={dialog} className="search-pill-dialog" aria-label="Pesquisar" onClose={()=>{setActive(false);trigger.current?.focus()}} onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}>
+  return <><FinanceOptionBar as="div" className="task-search"><GlassButton ref={trigger} className="ib" type="button" aria-label="Pesquisar" onClick={open}><SearchIcon/></GlassButton></FinanceOptionBar>{createPortal(<dialog ref={dialog} className="search-pill-dialog" aria-label="Pesquisar" onClose={()=>{setActive(false);trigger.current?.focus()}} onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}>
     <div className="search-pill-center">
       <form className="search-pill-row" onSubmit={e=>{e.preventDefault();search()}}>
         <GlassTextField className="search-pill-input"><button className="search-submit-icon" type="submit" aria-label="Buscar"><SearchIcon/></button><input ref={input} name="query" type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Pesquisar" aria-label="Pesquisar registros" autoComplete="off"/></GlassTextField>

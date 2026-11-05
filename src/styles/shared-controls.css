@@ -57,7 +57,6 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
  .area-toolbar{margin:var(--ui-space-1) 0 var(--ui-space-5)}
  .area-switch .lg-segmented__option{min-width:0}
  .area-content,.summary-behavior{gap:var(--ui-space-4)}
- .account-settings-tabs{flex-wrap:wrap}
 }
 /* Shared card geometry: spending habits and every planning item use this surface. */
 :root{--content-card-gap:24px;--content-card-padding:clamp(18px,2vw,28px)}
@@ -124,7 +123,6 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 #app.layout-i .entry-summary strong{font-size:18px;margin-top:var(--ui-space-1)}
 #app.layout-i .entry-summary .ledger-balance strong{font-size:22px}
 #app.layout-i .entry-toolbar{display:flex;align-items:center;justify-content:space-between;gap:var(--ui-space-3);margin:0;flex-wrap:wrap}
-#app.layout-i .entry-toolbar .te-glass-segments{margin:0;flex:0 1 auto;max-width:100%}
 #app.layout-i .entry-toolbar>.te-action-menu{margin-left:auto;flex:none}
 .ledger-date{font-size:13px;font-weight:600;color:var(--lb2);margin:var(--ui-space-6) 0 var(--ui-space-2)}
 .ledger-date:first-child{margin-top:0}
@@ -134,6 +132,5 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
  #app.layout-i .entry-summary{padding:var(--ui-space-4);gap:var(--ui-space-2)!important}
  #app.layout-i .entry-summary>div{padding-bottom:var(--ui-space-2)}
  #app.layout-i .entry-summary>div:last-child{padding-bottom:0;border-bottom:0}
- #app.layout-i .entry-toolbar .te-glass-segments{flex-basis:auto;width:auto;order:0}
  #app.layout-i .entry-toolbar>.te-action-menu{margin-left:0}
 }

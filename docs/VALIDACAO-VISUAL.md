@@ -1,5 +1,7 @@
 # Validação visual da migração TypeScript/JSX
 
+> Comparação histórica da migração. A auditoria posterior de barras e controles corrige a ordem dos estilos e a perda do `backdrop-filter` na minificação. Os resultados do novo design e da comparação desenvolvimento/produção estão em [AUDITORIA-BARRAS-E-CONTROLES.md](AUDITORIA-BARRAS-E-CONTROLES.md).
+
 ## Método
 
 A versão anterior é a cópia integral do rascunho existente no início desta tarefa, executada em uma segunda porta local. A comparação usa o mesmo Chromium, dados financeiros, data, fuso, tema e respostas simuladas nas duas versões.

@@ -16,6 +16,7 @@ import AccountDataControls from './AccountDataControls.tsx';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
+import {BUTTON_CLASSES,OPTION_BAR_CLASSES,TOOLBAR_CLASSES} from './control-classes';
 import {
   GlassSurface,
   FinanceTabButton,
@@ -25,6 +26,7 @@ import {
   GlassActionEditor,
   ThemeSwitch,
   FinanceSegments,
+  FinanceOptionBar,
   FinanceGlassButton as GlassButton,
   FinanceGlassCard as GlassCard,
 } from './LiquidControls.tsx';
@@ -178,6 +180,12 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
       props.style![name] = node.style.getPropertyValue(property);
     }
   }
+  if (['account-settings-tabs','cal-nav','social-tabs'].some(name=>node.classList.contains(name)))
+    props.className=`${props.className || ''} ${OPTION_BAR_CLASSES}`;
+  if (['entry-toolbar','chart-toolbar','cal-nav','settings-actions','plan-actions'].some(name=>node.classList.contains(name)))
+    props.className=`${props.className || ''} ${TOOLBAR_CLASSES}`;
+  if ((['a','summary'].includes(tag)&&node.classList.contains('btn')) || node.classList.contains('profile-menu-item'))
+    props.className=`${props.className || ''} ${BUTTON_CLASSES}`;
   if (tag === 'input') {
     if (node.type !== 'file' && node.hasAttribute('value')) props.defaultValue = node.getAttribute('value')!;
     if (['checkbox', 'radio'].includes(node.type)) props.defaultChecked = node.hasAttribute('checked');
@@ -408,12 +416,14 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
       node.classList.contains('ib') ||
       node.hasAttribute('data-t') ||
       node.getAttribute('role') === 'menuitem' ||
+      node.getAttribute('role') === 'tab' ||
       node.classList.contains('launch-option'))
   ) {
     return React.createElement(
       GlassButton,
       {
         ...props,
+        control: node.getAttribute('role') === 'tab' ? 'option' : 'action',
         type: props.type ?? 'submit',
         variant: node.getAttribute('role') === 'menuitem' ? 'clear' : 'glass',
         destructive:
@@ -467,6 +477,8 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
       children,
     );
   }
+  if (props.className?.includes('ui-option-bar'))
+    return React.createElement(FinanceOptionBar, {...props,as:tag as React.ElementType}, children);
   return React.createElement(tag, props, children);
 }
 

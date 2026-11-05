@@ -42,6 +42,7 @@ jobs:
           node tests/design-system.browser.cjs
           node tests/finance-migration.browser.cjs
           node tests/ledger-actions.browser.cjs
+          UI_WIDTHS=320,1440 node tests/option-controls.browser.cjs
           VISUAL_WIDTHS=320,1440 VISUAL_THEMES=light,dark VISUAL_AUDIT_DIR=/tmp/fnb-visual-ci node tests/visual-audit.browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()

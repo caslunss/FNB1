@@ -4,8 +4,8 @@
  .tax-page>p{margin:0;line-height:1.6}
  .tax-page>.tax-toolbar{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:var(--ui-space-4);width:100%;min-width:0}
  body:not(.auth-page) .tax-toolbar>.month-selector.pill.month-selector-labeled{justify-self:center;margin-inline:auto}
- .tax-page>.tax-toolbar>.tax-actions{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);align-items:center;gap:10px;width:100%;min-width:0}
- body:not(.auth-page) .tax-toolbar>.tax-actions>.lg-button{width:100%;min-width:0;min-height:var(--ui-touch-target);margin:0;padding:10px var(--ui-space-2)}
+ .tax-page>.tax-toolbar>.tax-actions{width:100%;min-width:0}
+ body:not(.auth-page) .tax-toolbar>.tax-actions>.lg-button{width:auto;min-width:0;min-height:var(--ui-touch-target);margin:0;padding:10px var(--ui-space-2)}
  body:not(.auth-page) .tax-toolbar>.tax-actions>.tax-add-analysis{width:44px;height:44px;min-width:var(--ui-touch-target);padding:0;font-size:22px}
  .tax-toolbar .lg-button__label{min-width:0;white-space:normal;text-align:center}
  .tax-kpis{align-items:stretch;gap:var(--ui-space-3)}

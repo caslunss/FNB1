@@ -1,14 +1,7 @@
+import '../src/styles/app-entry.css';
 import MotionProvider from '../src/components/motion/MotionProvider.tsx';
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import '../src/styles/root.css';
-import '../src/styles/workspace.css';
-import '../public/assets/pastel.css';
-import '../public/assets/page-motion.css';
-import '@zakisheriff/liquid-glass/styles.css';
-import '../src/styles/liquid-glass.css';
-import '../src/styles/layout-settings.css';
-import '../src/styles/mobile.css';
 import '../src/services/page-motion.ts';
 import App from '../src/App.tsx';
 const data={items:[{id:'q1',d:'Assinatura mensal',v:1990,c:'Assinaturas',p:'Pix',date:'2026-10-22'},{id:'q2',d:'Compra com descrição muito longa para verificar quebra de texto e valores',v:12345678,c:'Necessidades',p:'Cartão de crédito',date:'2026-10-22'},{id:'q3',d:'Mercado',v:12543,c:'Alimentação',p:'Pix',date:'2026-11-22'}],receipts:[{id:'q4',d:'Renda cadastrada',v:20000000,date:'2026-10-22'},{id:'q5',d:'Renda futura',v:20000000,date:'2026-11-22'}],debts:[{n:'Dívida parcelada para validar gráfico e texto longo',v:500000,p:6,s:0,paid:1}],limits:[{Alimentação:200000,Necessidades:12000000}],goal:{v:3000000,e:5},profile:{name:'Pessoa de teste'},splits:[],reports:{},monthCount:6,offers:[],cart:[{id:'qa-plan',name:'Notebook para trabalho e estudo com descrição longa',targetCents:400000,priceCents:350001,shippingCents:3999,reservedCents:100000,date:'2026-10-31',installments:3,priority:'alta',category:'Necessidades',goal:true,people:['Ana'],status:'planned',purchase:null,url:'',affiliate:false}]};

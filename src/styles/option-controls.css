@@ -1,0 +1,135 @@
+/* One contract for action buttons, option pills and navigation surfaces.
+   Important declarations are confined to this layer to beat library/legacy paint.
+   app-focus is declared earlier: its important focus ring keeps precedence. */
+:root{
+ --ui-control-gap:var(--ui-space-2);
+ --ui-control-padding:var(--ui-space-1);
+ --ui-control-compact-padding:2px;
+ --ui-control-border-width:1px;
+ --ui-control-icon-size:20px;
+ --ui-control-blur:var(--lg-blur,24px);
+ --ui-control-fill:var(--lg-fill);
+ --ui-bar-fill:var(--lg-navigation-fill);
+ --ui-control-border:var(--lg-edge);
+ --ui-control-selected:#fff;
+ --ui-control-selected-text:#1d1d1f;
+ --ui-control-selected-muted:#56565b;
+ --ui-control-hover:rgb(255 255 255 / .14);
+ --ui-control-font-size:14px;
+ --ui-control-font-weight:500;
+ --ui-control-shadow:var(--lg-shadow);
+}
+@layer app-controls{
+ :is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu){
+  box-sizing:border-box;min-width:0;max-width:100%;
+  background:var(--ui-bar-fill)!important;
+  border:var(--ui-control-border-width) solid var(--ui-control-border)!important;
+  border-radius:var(--ui-radius-pill)!important;
+  box-shadow:var(--ui-control-shadow)!important;
+  backdrop-filter:blur(var(--ui-control-blur)) saturate(1.12)!important;
+  -webkit-backdrop-filter:blur(var(--ui-control-blur)) saturate(1.12)!important;
+  color:var(--lb);--lg-glass-fill:var(--ui-bar-fill);
+ }
+ .ui-option-bar{
+  display:flex!important;flex-wrap:nowrap!important;align-items:center!important;
+  gap:var(--ui-control-gap)!important;padding:var(--ui-control-padding)!important;
+  width:fit-content;height:auto!important;min-height:calc(var(--ui-touch-target) + 2 * var(--ui-control-padding) + 2 * var(--ui-control-border-width))!important;
+  isolation:isolate;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;touch-action:pan-x pan-y;
+ }
+ .ui-option-bar::-webkit-scrollbar{display:none}
+ .ui-option-bar::before,.ui-option-bar::after{content:none!important}
+ :is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item){
+  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
+  min-width:var(--ui-touch-target);min-height:var(--ui-touch-target)!important;
+  max-width:100%;height:auto!important;vertical-align:middle;touch-action:pan-y;
+  gap:var(--ui-control-gap)!important;padding:var(--ui-button-py,var(--ui-space-2)) var(--ui-button-px,var(--ui-space-4))!important;
+  font:var(--ui-control-font-weight) var(--ui-control-font-size)/1.4 var(--ui-font)!important;
+  color:var(--ui-button-color,var(--lg-fg,var(--lb)))!important;background:var(--ui-button-fill,var(--ui-control-fill))!important;
+  border:var(--ui-control-border-width) solid var(--ui-button-border,var(--ui-control-border))!important;border-radius:var(--ui-radius-pill)!important;
+  box-shadow:var(--ui-button-shadow,var(--ui-control-shadow))!important;
+  backdrop-filter:var(--ui-button-filter,var(--lg-filter,) blur(var(--ui-control-blur)) saturate(1.12))!important;
+  -webkit-backdrop-filter:var(--ui-button-filter,var(--lg-filter,) blur(var(--ui-control-blur)) saturate(1.12))!important;
+  --lg-glass-fill:var(--ui-control-fill);
+ }
+ .ui-button::before,.ui-button::after{content:none!important}
+ :is(.ui-option,.ui-option-bar .ui-button){
+  flex:0 0 auto!important;touch-action:pan-x pan-y!important;--lg-glass-fill:transparent;
+  --ui-button-fill:transparent;--ui-button-shadow:none;--ui-button-border:transparent;--ui-button-filter:none;
+ }
+ :is(.ui-button,.ui-option-bar button):is([aria-pressed=true],[aria-selected=true],[aria-current=page]){
+  --lg-fg:var(--ui-control-selected-text);--lg-fg-muted:var(--ui-control-selected-muted);
+  --lb:var(--ui-control-selected-text);--lb2:var(--ui-control-selected-muted);
+  --lg-glass-fill:var(--ui-control-selected);
+  --ui-button-color:var(--ui-control-selected-text);--ui-button-fill:var(--ui-control-selected);
+  --ui-button-border:var(--ui-control-border);--ui-button-shadow:var(--ui-control-shadow);
+ }
+ :is(.ui-button,.te-action-menu .lg-menu__item)[data-destructive]{--ui-button-color:var(--redT)}
+ :is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item):is(:disabled,[aria-disabled=true]){opacity:.45;cursor:default}
+ :is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button){
+  display:inline-flex;flex:0 0 var(--ui-touch-target)!important;
+  width:var(--ui-touch-target)!important;height:var(--ui-touch-target)!important;
+  min-width:var(--ui-touch-target)!important;--ui-button-px:0px;--ui-button-py:0px;--ui-control-font-size:var(--ui-control-icon-size);
+ }
+ .ui-button.ui-icon svg,.ui-button.ib svg{width:var(--ui-control-icon-size);height:var(--ui-control-icon-size);flex:none}
+ .ui-option-bar .ui-button .lg-button__label{font:inherit;min-width:0;gap:var(--ui-control-gap)}
+ .te-glass-segments.ui-option-bar{--lg-item-h:var(--ui-touch-target);margin-bottom:0}
+ .te-glass-segments.ui-option-bar .lg-track__item{white-space:normal;width:auto;flex:1 1 auto}
+ .account-settings-tabs.ui-option-bar{margin-bottom:var(--ui-space-6);width:100%}
+ .account-settings-tabs.ui-option-bar button::after{content:none}
+ .account-settings-tabs.ui-option-bar button{flex:1 1 auto}
+ :is(.ui-toolbar,.plan-actions,.progressive-actions,.settings-actions,.tax-actions,.entry-toolbar,.chart-toolbar,.summary-toolbar,.top-account-actions,.notification-footer){
+  align-items:center!important;gap:var(--ui-control-gap)!important;min-width:0;
+ }
+ .ui-toolbar{display:flex;flex-wrap:wrap}
+ .ui-option-bar.month-picker-year{width:100%;flex-wrap:nowrap}
+ .ui-option-bar.month-picker-year strong{flex:1;min-width:0;text-align:center}
+ .ui-option-bar.task-search{flex:none}
+ .notification-footer{flex-wrap:wrap;gap:var(--ui-control-gap)}
+ .notification-filters.ui-option-bar{flex:0 1 auto;flex-wrap:nowrap}
+ .notification-filters .ui-button{white-space:nowrap}
+ :is(.ui-option-menu,.te-action-menu .lg-menu){background:var(--lg-menu-fill)!important;border-radius:var(--ui-radius-card)!important}
+ .te-action-menu .lg-menu__content{padding:var(--ui-space-1);gap:var(--ui-control-gap)}
+ .te-action-menu .lg-menu__item{width:100%;justify-content:flex-start;--ui-button-fill:transparent;--ui-button-shadow:none;--ui-button-border:transparent}
+ .te-action-menu .lg-menu__label{min-width:0;white-space:normal;overflow-wrap:anywhere}
+ .te-action-menu .lg-menu__item:focus-visible{--ui-button-fill:var(--ui-control-hover)}
+ @media(hover:hover) and (pointer:fine){
+  :is(.ui-button,.te-action-menu .lg-menu__item):not(:disabled):not([aria-disabled=true]):not([aria-pressed=true]):not([aria-selected=true]):not([aria-current=page]):hover{--ui-button-fill:var(--ui-control-hover)}
+ }
+ @media(max-width:1024px){
+  .navigation-actions .ui-option-bar{flex-wrap:nowrap}
+  .navigation-actions .ui-option-bar .ui-button{flex:1 1 0!important;width:auto!important}
+  .navigation-actions[data-compact=true] .ui-option-bar{--ui-control-padding:2px;min-height:50px!important}
+ }
+ @media(prefers-reduced-transparency:reduce){
+  :is(.ui-option-bar,.ui-button,.te-action-menu .lg-menu){--ui-bar-fill:var(--card);--ui-control-fill:var(--card);--ui-control-blur:0px;--ui-button-filter:none}
+  .ui-option-bar .ui-option:not([aria-selected=true]):not([aria-pressed=true]):not([aria-current=page]){--ui-button-fill:transparent}
+  .ui-button:is([aria-pressed=true],[aria-selected=true],[aria-current=page]){--ui-button-fill:var(--ui-control-selected)}
+ }
+ @media(forced-colors:active){
+  :is(.ui-button,.ui-option-bar){--ui-control-border:CanvasText;--ui-button-border:CanvasText;--ui-button-fill:Canvas;--ui-bar-fill:Canvas;--ui-button-color:CanvasText;--ui-button-filter:none;--ui-control-blur:0px}
+  .ui-button:is([aria-pressed=true],[aria-selected=true],[aria-current=page]){--ui-button-fill:Highlight;--ui-button-color:HighlightText;forced-color-adjust:none}
+ }
+}
+
+/* Unlayered geometry for native listbox rows; no library surface is nested here. */
+ .ui-option-menu{display:grid;gap:var(--ui-control-gap);padding:var(--ui-control-padding)}
+ .ui-option-menu .finance-select-option{
+  min-height:var(--ui-touch-target);gap:var(--ui-control-gap);padding:var(--ui-space-2) var(--ui-space-4);
+  border-radius:var(--ui-radius-pill);font:var(--ui-control-font-weight) var(--ui-control-font-size)/1.4 var(--ui-font);
+ }
+ .ui-option-menu .finance-select-option[aria-selected=true]{background:var(--ui-control-selected);color:var(--ui-control-selected-text);font-weight:var(--ui-control-font-weight)}
+ .ui-option-menu .finance-select-option:not([aria-selected=true]).is-active{background:var(--ui-control-hover)}
+
+@layer app-controls{
+ :is(.finance-calendar-choice,.cal-day)[aria-pressed=true]{background:var(--ui-control-selected)!important;color:var(--ui-control-selected-text)!important}
+}
+
+.settings-option-trigger .lg-button__label{display:flex;width:100%;justify-content:space-between;text-align:left}
+a.ui-button,summary.ui-button{display:inline-flex;text-decoration:none;list-style:none;cursor:pointer;transition:scale var(--motion-fast) var(--motion-ease),opacity var(--motion-fast) var(--motion-ease)}
+summary.ui-button::-webkit-details-marker{display:none}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){:is(a,summary).ui-button:hover{scale:var(--motion-hover)}}
+@media(prefers-reduced-motion:no-preference){:is(a,summary).ui-button:active{scale:var(--motion-press)}}
+
+.ui-option-menu .finance-select-option.is-active{outline:none;box-shadow:inset 0 0 0 1px var(--focus-color)}
+@media(forced-colors:active){.ui-option-menu .finance-select-option.is-active{outline:2px solid Highlight;outline-offset:-2px}}

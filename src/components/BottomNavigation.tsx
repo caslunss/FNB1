@@ -1,7 +1,7 @@
 import {animate} from 'motion';
 import {APP_SPRING} from '../services/motion-presets.ts';
 import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
-import {GlassSurface} from './LiquidControls.tsx';
+import {FinanceOptionBar} from './LiquidControls.tsx';
 import {useBottomNavigationLayout} from '../services/mobile-layout.ts';
 
 export default function BottomNavigation() {
@@ -46,6 +46,6 @@ export default function BottomNavigation() {
     return()=>{clearTimeout(idle);removeEventListener('scroll',scroll);reduced.removeEventListener('change',expand);nav?.removeEventListener('focusin',expand)};
   },[mobile]);
   return <div ref={host} className="navigation-actions" hidden={mobile&&blocked} data-compact={compact?'true':'false'}>
-    <GlassSurface as="nav" className="tabbar glass" id="tabs" aria-label="Seções"/>
+    <FinanceOptionBar as="nav" className="tabbar glass" id="tabs" aria-label="Seções"/>
   </div>;
 }

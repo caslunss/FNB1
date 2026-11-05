@@ -1,5 +1,7 @@
 # Migração estrutural e padronização global
 
+> Registro da etapa de conversão TypeScript/JSX. A refatoração visual posterior, solicitada para barras e controles, está em [AUDITORIA-BARRAS-E-CONTROLES.md](AUDITORIA-BARRAS-E-CONTROLES.md). Ela atualiza os acabamentos, o inventário de prioridades e resolve as diferenças de CSS entre desenvolvimento e produção relatadas naquela etapa.
+
 ## Estado atual
 
 O frontend React/Vite foi convertido integralmente: os 39 arquivos JSX e 37 arquivos JavaScript que ainda existiam em `src` passaram a TSX/TypeScript. A árvore atual contém 101 arquivos TS/TSX, incluindo contratos e declarações. Não restam arquivos `.js` ou `.jsx` em `src`.

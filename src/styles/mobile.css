@@ -9,12 +9,12 @@
  body:not(.auth-page) .nav-shell{order:-1;position:sticky!important;inset:0 0 auto!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto!important;gap:var(--ui-space-1)!important;margin:0!important;padding:calc(env(safe-area-inset-top) + var(--ui-space-2)) max(var(--ui-space-4),env(safe-area-inset-right)) 10px max(var(--ui-space-4),env(safe-area-inset-left))!important;width:100%!important;box-sizing:border-box;z-index:60;isolation:isolate;background:var(--bg);border-radius:0!important}
  h1#lt{grid-column:1!important;grid-row:2!important;justify-self:start!important;text-align:left!important;font:700 2.125rem/1.2 -apple-system,BlinkMacSystemFont,system-ui,sans-serif!important;letter-spacing:-.035em;margin:0!important;transform:scale(calc(1 - var(--mobile-title-progress,0)*.28));transform-origin:left center;overflow-wrap:anywhere;min-height:0!important}
  .top-account-actions{grid-row:1!important;grid-column:1!important;position:static!important;display:flex!important;justify-content:flex-end!important;gap:var(--ui-space-2)!important;width:auto!important;margin:0!important}
- body:not(.auth-page) .account-bubbles.account-toolbar{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;gap:var(--ui-space-1)!important;width:auto!important;height:52px!important;padding:var(--ui-space-1)!important;border-radius:var(--ui-radius-pill)!important;box-sizing:border-box}
+ body:not(.auth-page) .account-bubbles.account-toolbar{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;width:auto!important;height:52px!important;box-sizing:border-box}
  .account-toolbar #friendsButton{display:none!important}
  .account-toolbar #calendarButton:not([hidden]){display:grid!important}
  .account-toolbar>button{width:44px!important;height:44px!important;min-width:var(--ui-touch-target)!important;min-height:var(--ui-touch-target)!important}
  .navigation-actions{position:fixed!important;inset:auto max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))!important;display:block!important;width:calc(100% - max(12px,env(safe-area-inset-right)) - max(12px,env(safe-area-inset-left)))!important;max-width:560px!important;justify-self:stretch!important;margin:0 auto!important;z-index:70}
- body:not(.auth-page) #tabs.tabbar{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;justify-content:space-around!important;width:100%!important;max-width:560px!important;height:auto!important;border-radius:32px!important;margin:0 auto!important;box-sizing:border-box}
+ body:not(.auth-page) #tabs.tabbar{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;justify-content:space-around!important;width:100%!important;max-width:560px!important;height:auto!important;margin:0 auto!important;box-sizing:border-box}
  #tabs button{flex:1!important;min-width:var(--ui-touch-target)!important;width:auto!important;height:auto!important;min-height:58px!important;padding:var(--ui-space-1) 2px!important;border-radius:25px!important}
  #tabs button .lg-button__label{display:flex!important;flex-direction:row!important;gap:var(--ui-space-1)!important;width:100%;height:auto!important}
  #tabs button svg{width:22px!important;height:22px!important;flex-shrink:0}
@@ -22,7 +22,6 @@
  body.mobile-keyboard-open .navigation-actions{visibility:hidden}
  .summary-toolbar{display:flex!important;flex-wrap:wrap!important;gap:10px!important;margin:var(--ui-space-2) 0 var(--ui-space-4)!important}
  #summaryModes{flex:1 0 100%!important;width:100%!important;min-width:0!important}
- #summaryModes .te-glass-segments{width:100%!important;min-height:var(--ui-touch-target)!important}
  #summaryModes [role=tab]{min-height:var(--ui-touch-target)!important;font-size:.875rem!important;min-width:0!important}
  .summary-toolbar .ib{min-width:var(--ui-touch-target)!important;min-height:var(--ui-touch-target)!important}
  #app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:var(--ui-space-4)!important}
@@ -55,7 +54,7 @@
  @keyframes mobile-sheet-enter{from{opacity:var(--motion-sheet-opacity);transform:translateY(var(--motion-sheetEnter))}to{opacity:1;transform:translateY(0)}}
 }
 @media(max-width:699px) and (prefers-reduced-motion:reduce){h1#lt{transform:none}.mobile-ledger-content{transition:none}.account-overlay[open]{animation:none}}
-@media(max-width:699px) and (prefers-reduced-transparency:reduce){.account-toolbar,#tabs.tabbar,.account-overlay,.notification-panel{background:var(--form-surface)!important;backdrop-filter:none!important}}
+@media(max-width:699px) and (prefers-reduced-transparency:reduce){.account-overlay,.notification-panel{background:var(--form-surface)!important;backdrop-filter:none!important}}
 @media(max-width:699px){
  :is(.workspace-frame,.account-overlay,.notification-panel,.profile-menu,.sheet) button:not(.lg-switch){min-width:var(--ui-touch-target);min-height:var(--ui-touch-target)}
  .lg-switch{height:28px!important;min-height:28px!important} /* The library's ::before supplies the 44 px hit region. */
@@ -69,7 +68,7 @@
 }
 @media(max-width:699px){
  body:not(.auth-page) #tabs.tabbar .mobile-tab-label{display:none!important}
- body:not(.auth-page) #tabs.tabbar{min-height:62px!important;padding:var(--ui-space-1)!important;gap:0!important}
+ body:not(.auth-page) #tabs.tabbar{min-height:62px!important}
  body:not(.auth-page) #tabs.tabbar button{min-width:var(--ui-touch-target)!important;min-height:52px!important;flex:1 1 0!important}
  body:not(.auth-page) #tabs.tabbar button .lg-button__label{flex-direction:row!important;justify-content:center!important}
 }
@@ -87,9 +86,9 @@
 
 @media(max-width:699px){
  body:not(.auth-page) .top-account-actions>.task-search{
-  display:flex!important;align-items:center;justify-content:center;width:52px;height:52px;min-height:52px;flex:0 0 52px;padding:var(--ui-space-1);border-radius:var(--ui-radius-pill);
+  display:flex!important;align-items:center;justify-content:center;width:52px;height:52px;min-height:52px;flex:0 0 52px;
  }
- body:not(.auth-page) .top-account-actions>.task-search>button{width:44px;height:44px;min-height:var(--ui-touch-target);padding:0}
+ body:not(.auth-page) .top-account-actions>.task-search>button{width:44px;height:44px;min-height:var(--ui-touch-target)}
  .top-account-actions{align-items:center!important;flex-wrap:nowrap;min-width:0}
 }
 

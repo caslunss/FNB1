@@ -1,6 +1,7 @@
 import {createPortal} from 'react-dom';
 import React, {Children, isValidElement, useEffect, useId, useLayoutEffect, useRef, useState} from 'react';
 import {FinanceFieldButton as Button} from './LiquidControls.tsx';
+import {OPTION_MENU_CLASSES} from './control-classes';
 
 type SelectProps=React.ComponentProps<'select'>&{label?:string;nativeControl?:boolean};
 const normalize = (text:string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
@@ -144,7 +145,7 @@ function CustomSelect({label, nativeControl = false, value, defaultValue, onChan
     if (open) list.current?.querySelector(`[data-index="${active}"]`)?.scrollIntoView({block: 'nearest'});
   }, [open, active]);
 
-  const popup = <div ref={list} id={listId} popover={supported?'manual':undefined} role="listbox" aria-label={label || props['aria-label']} className="finance-select-list" hidden={!supported&&!open}>
+  const popup = <div ref={list} id={listId} popover={supported?'manual':undefined} role="listbox" aria-label={label || props['aria-label']} className={`finance-select-list ${OPTION_MENU_CLASSES}`} hidden={!supported&&!open}>
       {options.map((option, index) => <div key={option.value} id={`${uid}-${index}`} role="option"
         aria-selected={option.value === selected} aria-disabled={option.disabled || undefined}
         data-index={index} className={`finance-select-option${index === active ? ' is-active' : ''}`}

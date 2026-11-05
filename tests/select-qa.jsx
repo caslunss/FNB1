@@ -1,17 +1,8 @@
+import '../src/styles/app-entry.css';
 import React, {useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import FinanceSelect from '../src/components/FinanceSelect.tsx';
 import {GlassTextField} from '../src/components/LiquidControls.tsx';
-import '../src/styles/root.css';
-import '../src/styles/workspace.css';
-import '@zakisheriff/liquid-glass/styles.css';
-import '../src/styles/liquid-glass.css';
-import '../src/styles/layout-settings.css';
-import '../src/styles/mobile.css';
-import '../src/styles/shared-controls.css';
-import '../src/styles/control-surfaces.css';
-import '../src/styles/universal-motion.css';
-import '../src/styles/focus.css';
 
 function QA() {
   const [value, setValue] = useState('a'), [result, setResult] = useState(''), [count, setCount] = useState(0);

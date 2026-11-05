@@ -1,7 +1,6 @@
 import {LoginEntrance,LoginItem} from './motion/LoginEntrance.tsx';
 import React, {useEffect,useState} from 'react';
-import {GlassSegmented} from '@zakisheriff/liquid-glass';
-import {GlassTextField,FinanceGlassButton as GlassButton} from './LiquidControls.tsx';
+import {FinanceSegmentedControl,GlassTextField,FinanceGlassButton as GlassButton} from './LiquidControls.tsx';
 import {initializeLayout} from '../services/layout-preferences.ts';
 
 let initialized:Promise<unknown>|undefined;
@@ -15,7 +14,7 @@ function LoginThemeControl(){
     setDark(index===1);
   }
   const icon=(path:React.ReactNode)=><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{path}</svg>;
-  return <div className="login-theme-control"><GlassSegmented aria-label="Tema da tela de login" value={dark?1:0} onChange={change} intensity={2} options={[
+  return <div className="login-theme-control"><FinanceSegmentedControl aria-label="Tema da tela de login" value={dark?1:0} onChange={change} options={[
     {label:'Modo claro',icon:icon(<><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></>)},
     {label:'Modo escuro',icon:icon(<path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/>)},
   ]}/></div>;
