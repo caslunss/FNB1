@@ -10,3 +10,11 @@ dist/__*-qa.html
 dist/
 .vercel/
 *.zip
+
+# Local verification artifacts and uncommitted audit reports
+/playwright-report/
+/test-results/
+/coverage/
+/AUDIT_REPORT.md
+/FEATURE_REPORT.md
+/CLEANUP_REPORT.md
