@@ -558,3 +558,7 @@ No `FinanceSelect`, mantenha `hidden` ligado ao estado fechado em ambos os modos
 ### Abertura e login — 05/11/2026
 
 O loading acompanha a preparação real de acesso/dados, sem atrasos decorativos nem alegação de verificar provedores externos. Falhas preservam dados e permitem recarregar. Fundos do login derivam dos tokens do tema; arte PNG usa fade ligado ao carregamento e respeita movimento reduzido. Adicionar dívida abre diretamente o formulário, sem menu intermediário.
+
+### Marca e login — 05/11/2026
+
+A marca passa a ser o guaxinim enviado pelo usuário, com fundo transparente. Login usa composição de uma coluna centralizada em todos os tamanhos, sem os antigos títulos e logo de gráfico. Manter labels de autenticação, erros e informações necessárias de visitante. Arte tem fade após carregar, respeita reduced motion e inverte os traços no tema escuro para manter contraste.

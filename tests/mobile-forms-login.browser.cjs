@@ -91,10 +91,9 @@ async function swipe(page, target) {
         assert.equal(state.overflow, false, width + '/' + theme + ': page overflow');
         assert.equal(state.border, '0px', width + '/' + theme + ': old card border');
         assert.equal(state.scheme, 'light'); assert.equal(state.radius, '999px'); assert.equal(state.clip, 'hidden');
-        if (width <= 760) {
-          assert.equal(state.panel, 'rgba(0, 0, 0, 0)'); assert(Math.abs(state.access.x) < 1); assert(Math.abs(state.access.width - width) < 1);
-          assert.equal(state.shade.width, width); assert.equal(state.shade.height, 700);
-        } else assert(state.access.x >= width / 2 - 1, 'desktop split preserved');
+        assert.equal(state.panel, 'rgba(0, 0, 0, 0)');
+        assert(Math.abs(state.access.x+state.access.width/2-width/2)<1, 'login centered at every width');
+        assert.equal(state.shade.width,width);assert.equal(state.shade.height,700);
       }
     }
     await login.setViewportSize({width: 390, height: 700});
@@ -106,6 +105,6 @@ async function swipe(page, target) {
     await login.emulateMedia({reducedMotion: 'no-preference', forcedColors: 'active'});
     assert.equal(await login.locator('.google-area').isVisible(), true);
     assert.deepEqual(errors, []);
-    console.log('PASS login: 12 width/theme combinations, full mobile surface, desktop split, isolated Google iframe fixture, guest form and accessibility modes');
+    console.log('PASS login: 12 width/theme combinations, full mobile surface, centered raccoon layout, isolated Google iframe fixture, guest form and accessibility modes');
   } finally {await browser.close();}
 })().catch(error => {console.error(error); process.exitCode = 1;});

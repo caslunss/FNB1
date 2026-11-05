@@ -1,0 +1,7 @@
+const assert=require('node:assert/strict');
+(async()=>{const {takeQuota}=await import('../server/shared/quota.mjs');let calls=0;assert.equal((await takeQuota({subject:'u',operation:'shopping',limit:1,seconds:15},{},()=>{calls++})).status,503);assert.equal(calls,0);
+ const a=await import('../server/functions/shopping.mjs?worker=1'),b=await import('../server/functions/shopping.mjs?worker=2');let used=0,paid=0;
+ const net=async(url,opts)=>{if(String(url).includes('/auth/'))return Response.json({id:'same-user'});if(String(url).includes('/rpc/')){assert.equal(JSON.parse(opts.body).p_subject,'same-user');return Response.json(++used<=1)}paid++;return Response.json({shopping_results:[]})};
+ const req=()=>new Request('https://app.test',{method:'POST',headers:{Authorization:'Bearer test.token'},body:JSON.stringify({action:'search',query:'notebook'})});const env={SUPABASE_SECRET_KEY:'test-only',SERPAPI_API_KEY:'test-only'};
+ assert.equal((await a.handle(req(),env,net)).status,200);const denied=await b.handle(req(),env,net);assert.equal(denied.status,429);assert.equal(denied.headers.get('Retry-After'),'15');assert.equal(paid,1);assert.equal((await takeQuota({subject:'u',operation:'shopping',limit:1,seconds:15},env,async()=>Response.json({bad:true}))).status,503);console.log('PASS durable quota contract: two workers, one allowance, failure closed and retry header');
+})().catch(e=>{console.error(e);process.exitCode=1});

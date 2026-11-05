@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
-import {handle,publicURL,cleanProduct} from '../server/functions/shopping.mjs';
+import {handle as protectedHandle,publicURL,cleanProduct} from '../server/functions/shopping.mjs';
 assert.equal(publicURL('http://localhost/a'),'');assert.equal(publicURL('https://127.0.0.1/a'),'');assert.equal(cleanProduct({name:'X',image:'javascript:1'}).image,'');
+// Provider contract tests isolate the separately tested durable quota.
+const handle=(req,env,net)=>protectedHandle(req,env,net,async()=>({status:200}));
 const req=(action='search',payload={query:'notebook'})=>new Request('https://app.test/api/shopping',{method:'POST',headers:{Authorization:'Bearer test.token'},body:JSON.stringify({action,...payload})});
 let id=0;
 const mock=(result,status=200)=>async(url)=>{

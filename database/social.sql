@@ -1,0 +1,28 @@
+-- Fresh database baseline. Existing deployments must reconcile their schema before applying.
+begin;
+create table public.app_usernames(user_id uuid primary key default auth.uid() references auth.users(id) on delete cascade,username text not null unique check(username ~ '^[a-z0-9_]{3,40}$'));
+alter table public.app_usernames enable row level security;
+revoke all on public.app_usernames from public,anon,authenticated;
+grant select on public.app_usernames to authenticated;
+grant insert(user_id,username),update(username) on public.app_usernames to authenticated;
+create policy username_read on public.app_usernames for select to authenticated using(true);
+create policy username_insert on public.app_usernames for insert to authenticated with check(user_id=(select auth.uid()));
+create policy username_update on public.app_usernames for update to authenticated using(user_id=(select auth.uid())) with check(user_id=(select auth.uid()));
+create table public.app_friends(id uuid primary key default gen_random_uuid(),sender uuid not null references auth.users(id) on delete cascade,recipient uuid not null references auth.users(id) on delete cascade,status text not null default 'pending' check(status in ('pending','accepted','declined')),created_at timestamptz not null default now(),check(sender<>recipient));
+create unique index friend_active_pair on public.app_friends(least(sender,recipient),greatest(sender,recipient)) where status<>'declined';
+alter table public.app_friends enable row level security;
+revoke all on public.app_friends from public,anon,authenticated;
+grant select on public.app_friends to authenticated;
+grant insert(sender,recipient),update(status) on public.app_friends to authenticated;
+create policy friend_read on public.app_friends for select to authenticated using((select auth.uid()) in (sender,recipient));
+create policy friend_insert on public.app_friends for insert to authenticated with check(sender=(select auth.uid()) and status='pending');
+create policy friend_update on public.app_friends for update to authenticated using(recipient=(select auth.uid()) and status='pending') with check(recipient=(select auth.uid()) and status in ('accepted','declined'));
+create table public.app_shared_expenses(id uuid primary key default gen_random_uuid(),sender uuid not null references auth.users(id) on delete cascade,recipient uuid not null references auth.users(id) on delete cascade,description text not null check(length(description) between 1 and 240),cents bigint not null check(cents between 1 and 100000000000),expense_date date not null,status text not null default 'pending' check(status in ('pending','accepted','declined')),created_at timestamptz not null default now(),check(sender<>recipient));
+alter table public.app_shared_expenses enable row level security;
+revoke all on public.app_shared_expenses from public,anon,authenticated;
+grant select on public.app_shared_expenses to authenticated;
+grant insert(sender,recipient,description,cents,expense_date),update(status) on public.app_shared_expenses to authenticated;
+create policy share_read on public.app_shared_expenses for select to authenticated using((select auth.uid()) in (sender,recipient));
+create policy share_insert on public.app_shared_expenses for insert to authenticated with check(sender=(select auth.uid()) and status='pending' and exists(select 1 from public.app_friends f where f.status='accepted' and ((f.sender=app_shared_expenses.sender and f.recipient=app_shared_expenses.recipient) or (f.recipient=app_shared_expenses.sender and f.sender=app_shared_expenses.recipient))));
+create policy share_update on public.app_shared_expenses for update to authenticated using(recipient=(select auth.uid()) and status='pending') with check(recipient=(select auth.uid()) and status in ('accepted','declined'));
+commit;

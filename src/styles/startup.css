@@ -5,3 +5,5 @@
 @media(prefers-reduced-motion:reduce){.startup-progress{animation:none}}
 
 .startup-content{display:contents}
+
+:root[data-theme=dark] .startup-screen img{filter:invert(1)}

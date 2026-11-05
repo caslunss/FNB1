@@ -56,7 +56,7 @@ export interface BankAccount {
   type: string;
 }
 export interface TaxResponses {
-  list: { records: TaxRecord[] };
+  list: { records: TaxRecord[]; nextCursor?: string };
   save: { record: TaxRecord };
   preview: { record: TaxRecord };
   status: { ibpt: boolean };

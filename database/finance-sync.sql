@@ -1,3 +1,5 @@
+begin;
+create schema if not exists private;
 create table public.app_finance_workspaces (
  user_id uuid primary key default auth.uid() references auth.users(id) on delete cascade,
  record jsonb not null,
@@ -33,3 +35,5 @@ $$;
 revoke all on function private.app_finance_revision() from public,anon,authenticated;
 create trigger app_finance_revision before update on public.app_finance_workspaces for each row execute function private.app_finance_revision();
 comment on table public.app_finance_workspaces is 'Account-owned v3 app snapshot. Clients update only after matching the previously read revision. RLS and column grants prevent changing ownership or server revision.';
+
+commit;

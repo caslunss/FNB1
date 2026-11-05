@@ -1,0 +1,33 @@
+name: Production UI
+on: [pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  production-ui:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm install --prefix "$RUNNER_TEMP/browsers" --no-package-lock playwright@1.58.2
+      - run: '"$RUNNER_TEMP/browsers/node_modules/.bin/playwright" install --with-deps chromium webkit'
+      - name: Production browser contracts
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/browsers/node_modules/playwright"
+          export CHROMIUM_PATH="$(node -e 'process.stdout.write(require(process.env.PLAYWRIGHT_MODULE).chromium.executablePath())')"
+          export QA_BASE_URL=http://127.0.0.1:5175
+          npm run preview -- --port 5175 > /tmp/preview.log 2>&1 &
+          trap 'kill $! || true' EXIT
+          for attempt in $(seq 1 30); do
+            curl --silent --fail "$QA_BASE_URL" && break
+            sleep 1
+          done
+          node tests/login-brand.browser.cjs
+          QA_ENGINE=webkit node tests/login-brand.browser.cjs
+          node tests/startup-debt.browser.cjs
+          QA_SKIP_FIXTURE=1 node tests/analysis-selects.browser.cjs

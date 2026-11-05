@@ -5,7 +5,7 @@
 .login-still-background::after{content:"";position:absolute;inset:0;background:var(--bg);opacity:.55;mix-blend-mode:color}
 
 .auth-page .login-background-shade{background:color-mix(in srgb,var(--bg) 35%,transparent)}
-:root .auth-page .login-shell.login-fullscreen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-content:stretch;width:100%;max-width:none;min-height:100dvh;margin:0;padding:0;gap:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible;backdrop-filter:none}
+:root .auth-page .login-shell.login-fullscreen{display:grid;width:100%;max-width:none;min-height:100dvh;margin:0;gap:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible;backdrop-filter:none}
 .auth-page .login-fullscreen::before,.auth-page .login-fullscreen::after{display:none}
 .login-introduction{min-width:0;padding:clamp(40px,7vw,110px);display:flex;flex-direction:column;justify-content:center;color:var(--text)}
 .login-eyebrow{font-size:11px;letter-spacing:.16em;font-weight:600;opacity:.75}
@@ -40,3 +40,15 @@
 .login-center-art{display:block;align-self:center;object-fit:contain;opacity:0;transition:opacity var(--motion-calm) var(--motion-ease);mask-image:radial-gradient(ellipse,black 45%,transparent 74%)}
 .login-center-art.is-ready{opacity:1}
 @media(prefers-reduced-motion:reduce){.login-center-art{transition:none}}
+
+/* Centered login: decorative copy and the former logo were removed. */
+:root .auth-page .login-shell.login-fullscreen{grid-template-columns:minmax(0,1fr);align-content:center;justify-items:center;padding:var(--ui-space-6)}
+.auth-page .login-fullscreen .login-access{width:min(100%,400px);box-sizing:border-box;padding:var(--ui-space-6);background:transparent;backdrop-filter:none}
+.auth-page .login-fullscreen .login-access-heading{justify-content:center;margin:0 auto var(--ui-space-6)}
+.login-logo-slot{display:grid;place-items:center;min-height:160px;width:100%}
+.login-logo-slot img{width:clamp(180px,40vw,280px);height:auto;object-fit:contain}
+
+.login-logo-art{opacity:0;transition:opacity var(--motion-calm) var(--motion-ease)}
+.login-logo-art.is-ready{opacity:1}
+:root[data-theme=dark] .login-logo-art{filter:invert(1)}
+@media(prefers-reduced-motion:reduce){.login-logo-art{transition:none}}

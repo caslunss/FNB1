@@ -66,7 +66,7 @@ import {errorDetails} from './errors.ts';
   }
   async function flush(){cancel(timer);timer=undefined;return exclusive(async()=>{try{await writePending();}catch(error){failed(error);}return {...state};});}
   async function poll(){return exclusive(async()=>{if(stopped)return;if(meta.dirty&&state.mode!=='conflict'){try{await writePending();}catch(error){failed(error);}return;}try{await reconcile(await remote.read());}catch(error){failed(error);}});}
-  function backup(local:string|null,row:SyncRow|null){const raw=storage.getItem(BACKUPS);const previous=raw?JSON.parse(raw):[];if(!Array.isArray(previous))throw Error('BACKUP_INVALID');previous.push({createdAt:new Date().toISOString(),local:local?JSON.parse(local):null,cloud:row?.record||null,cloudRevision:row?.revision||0});storage.setItem(BACKUPS,JSON.stringify(previous));}
+  function backup(local:string|null,row:SyncRow|null){const raw=storage.getItem(BACKUPS);const previous=raw?JSON.parse(raw):[];if(!Array.isArray(previous))throw Error('BACKUP_INVALID');previous.push({createdAt:new Date().toISOString(),local:local?JSON.parse(local):null,cloud:row?.record||null,cloudRevision:row?.revision||0});const encoded=JSON.stringify(previous);if(new TextEncoder().encode(encoded).length>2_000_000)throw Error('Exporte e remova as cópias antigas antes de resolver outro conflito.');storage.setItem(BACKUPS,encoded);}
   async function resolve(choice:string){return exclusive(async()=>{
    if(!['local','cloud'].includes(choice))throw Error('INVALID_CHOICE');
    if(connected&&!hooks.canApply()){emit('conflict',{reason:'editing'});return {...state};}
@@ -110,3 +110,6 @@ function initializeCloud(root:Window){
 }
 if(typeof window!=='undefined')initializeCloud(window);
 export const cloud=typeof window!=='undefined'?window.planCloud:undefined;
+
+/** Removes only exported recovery copies; financial records/outbox remain intact. */
+export function clearSyncCopies(){window.planAuth.storage.removeItem(BACKUPS)}

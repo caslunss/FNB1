@@ -1,7 +1,8 @@
+import {takeQuota} from '../shared/quota.mjs';
 export const operations={quotes:'/api/v2/stocks/quote',history:'/api/v2/stocks/historical',dividends:'/api/v2/stocks/dividends',balance:'/api/v2/stocks/balance-sheet',fiis:'/api/v2/fii/indicators',currency:'/api/v2/currency',inflation:'/api/v2/inflation',interest:'/api/v2/prime-rate'};
 const cache=new Map();let blockedUntil=0;
 export function retryDelay(value,now=Date.now()){if(!value)return 60;const seconds=Number(value);return Number.isFinite(seconds)&&seconds>=0?Math.max(1,Math.ceil(seconds)):Math.max(1,Math.ceil((Date.parse(value)-now)/1000)||60);}
-export async function handle(req,env=process.env,net=fetch){
+export async function handle(req,env=process.env,net=fetch,quota=takeQuota){
  const reply=(status,data,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store',...extra}});
  if(req.method!=='GET')return reply(405,{error:'Método não permitido.'});
  const input=new URL(req.url),kind=input.searchParams.get('kind')||'quotes',path=operations[kind];if(!path)return reply(400,{error:'Consulta inválida.'});
@@ -16,6 +17,7 @@ export async function handle(req,env=process.env,net=fetch){
  if(!env.BRAPI_TOKEN)return reply(503,{error:'Consulta de investimentos ainda não ativada. Tente novamente mais tarde.'});
  const key=url.href,saved=cache.get(key);if(saved&&saved.until>Date.now())return reply(200,saved.value);
  if(blockedUntil>Date.now()){const wait=Math.ceil((blockedUntil-Date.now())/1000);return reply(429,{error:'Limite de consultas atingido. Aguarde para tentar novamente.',retryAfter:wait},{'Retry-After':String(wait)});}
+ const budget=await quota({subject:'public-market',operation:'investments',limit:60,seconds:60},env,net);if(budget.status!==200)return reply(budget.status,{error:budget.error},budget.retryAfter?{'Retry-After':String(budget.retryAfter)}:{});
  try{
   const response=await net(url,{headers:{Authorization:'Bearer '+env.BRAPI_TOKEN},signal:AbortSignal.timeout(15000)});
   if(response.status===429){const wait=retryDelay(response.headers.get('Retry-After'));blockedUntil=Date.now()+wait*1000;return reply(429,{error:'Limite de consultas atingido. Aguarde para tentar novamente.',retryAfter:wait},{'Retry-After':String(wait)});}
