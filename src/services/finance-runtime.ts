@@ -5,6 +5,7 @@ type SnapshotKey='taxes'|'credit'|'productGoals'|'goal'|'mobile';
 type State<K extends SnapshotKey>=ReturnType<FinanceServices[K]['getState']>;
 const snapshots=new Map<SnapshotKey,{json:string;value:unknown;revision:number;reader:unknown}>();
 let revision=0;
+let registrationEpoch=0,publishQueued=false;
 const listeners=new Set<()=>void>();
 export function getFinanceSnapshot<K extends SnapshotKey>(key:K):State<K>{
  const reader=finance[key].getState,previous=snapshots.get(key);
@@ -15,6 +16,25 @@ export function getFinanceSnapshot<K extends SnapshotKey>(key:K):State<K>{
 }
 export function subscribeFinance(listener:()=>void){listeners.add(listener);return()=>{listeners.delete(listener)}}
 export function publishFinance(){revision++;for(const listener of listeners)listener()}
+
+/** Batch domain publications without relying on compatibility globals. */
+export function requestFinancePublish(){
+ if(publishQueued)return;
+ publishQueued=true;const epoch=registrationEpoch;
+ queueMicrotask(()=>{if(epoch!==registrationEpoch)return;publishQueued=false;publishFinance()});
+}
+
+/** A session restores its registrations when startup fails or the app unmounts. */
+export function captureFinanceRegistration(){
+ const previous=Object.getOwnPropertyDescriptors(finance);
+ return()=>{
+  for(const key of Object.keys(finance))Reflect.deleteProperty(finance,key);
+  Object.defineProperties(finance,previous);
+  snapshots.clear();
+  registrationEpoch++;publishQueued=false;
+  revision++;
+ };
+}
 
 /** Fail before rendering a financial page if an integration has an incomplete contract. */
 export function assertFinanceReady(){

@@ -48,16 +48,14 @@
  :is(.sheet,.account-panel-body,.search-pill-dialog) :is(input,select,textarea){font-size:1rem!important;min-height:48px;box-sizing:border-box}
  :is(.sheet,.account-panel-body) :is(button,[role=tab]){min-height:var(--ui-touch-target);min-width:var(--ui-touch-target)}.settings-actions{gap:var(--ui-space-3)!important}.settings-actions button{min-height:48px!important}
  .plan-table{display:block!important}.plan-table thead{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}.plan-table tbody{display:grid;gap:var(--ui-space-3)}.plan-table tr{display:grid;padding:var(--ui-space-3);border-radius:20px;background:var(--form-surface)}.plan-table td{display:flex;justify-content:space-between;gap:var(--ui-space-3);flex-wrap:wrap}.plan-table td[data-label]::before{content:attr(data-label);font-weight:500}
- .calendar-panel{padding-inline:0!important}.calendar-panel .calendar-card{padding:var(--ui-space-3) 5px!important;width:100%!important;margin-inline:0!important}.cal-grid{grid-template-columns:repeat(7,minmax(44px,1fr))!important;gap:0!important}.cal-day{min-width:var(--ui-touch-target)!important;min-height:var(--ui-touch-target)!important;aspect-ratio:auto!important}.calendar-panel .calendar-card~.card{margin-inline:var(--ui-space-3)!important;padding:var(--ui-space-4)!important}
- .profile-menu{max-height:80dvh;overflow:auto}.profile-menu-item{min-height:52px!important;font-size:1rem!important}.notification-panel{left:12px!important;right:12px!important;width:auto!important;max-width:none!important;max-height:65dvh!important;overflow:auto}
+ .calendar-panel{padding-inline:0!important}.calendar-panel .calendar-card{padding:var(--ui-space-3) 5px!important;width:100%!important;margin-inline:0!important}.cal-grid{grid-template-columns:repeat(7,minmax(44px,1fr))!important;gap:0!important}.cal-day{min-width:var(--ui-touch-target)!important;min-height:var(--ui-touch-target)!important;aspect-ratio:auto!important}.calendar-panel .calendar-card~.card{margin-inline:var(--ui-space-3)!important;padding:var(--ui-space-4)!important}.notification-panel{left:12px!important;right:12px!important;width:auto!important;max-width:none!important;max-height:65dvh!important;overflow:auto}
  .search-pill-center{top:calc(env(safe-area-inset-top) + 16px)!important;width:calc(100% - 24px)!important;max-width:none!important}.search-filter-toggle{width:56px!important;min-height:56px!important}.search-filters{grid-template-columns:minmax(0,1fr)!important}.search-pill-popover{max-height:calc(100dvh - env(safe-area-inset-top) - 120px)!important;overflow:auto}.search-results{max-height:52dvh!important}.search-result{min-height:56px!important}
  .login-shell{padding:calc(var(--ui-space-6) + env(safe-area-inset-top)) var(--ui-space-5) calc(var(--ui-space-5) + env(safe-area-inset-bottom))!important;min-height:100dvh;box-sizing:border-box}.auth-page button{font-size:1rem;min-height:52px}
  @keyframes mobile-sheet-enter{from{opacity:var(--motion-sheet-opacity);transform:translateY(var(--motion-sheetEnter))}to{opacity:1;transform:translateY(0)}}
 }
-@media(max-width:699px) and (prefers-reduced-motion:reduce){h1#lt{transform:none}.mobile-ledger-content{transition:none}.account-overlay[open]{animation:none}}
+@media(max-width:699px) and (prefers-reduced-motion:reduce){.mobile-ledger-content{transition:none}.account-overlay[open]{animation:none}}
 @media(max-width:699px) and (prefers-reduced-transparency:reduce){.account-overlay,.notification-panel{background:var(--form-surface)!important;backdrop-filter:none!important}}
 @media(max-width:699px){
- :is(.workspace-frame,.account-overlay,.notification-panel,.profile-menu,.sheet) button:not(.lg-switch){min-width:var(--ui-touch-target);min-height:var(--ui-touch-target)}
  .lg-switch{height:28px!important;min-height:28px!important} /* The library's ::before supplies the 44 px hit region. */
  .daily-chart{height:200px!important}
 }
@@ -77,12 +75,10 @@
 @media(max-width:699px){
  /* Fullscreen login has no nested outer gutter; each half owns its padding. */
  :root .auth-page .login-shell.login-fullscreen{padding:0!important;grid-template-columns:minmax(0,1fr);width:100%;min-width:0}
- .login-introduction{padding:88px var(--ui-space-6) var(--ui-space-7)}
  .login-access{padding:var(--ui-space-7) var(--ui-space-6) calc(32px + env(safe-area-inset-bottom))}
  .login-access-heading{min-width:0;gap:var(--ui-space-3)}.login-access-heading>div:last-child{min-width:0}
  .login-access-heading h2{font-size:clamp(20px,5.5vw,24px);overflow-wrap:anywhere}
  .auth-page .login-theme-control{position:fixed!important;inset:calc(env(safe-area-inset-top) + 12px) max(16px,env(safe-area-inset-right)) auto auto!important;margin:0!important;z-index:20}
- .apple-provider button{display:grid;place-items:center}
 }
 
 @media(max-width:699px){
@@ -94,3 +90,6 @@
 }
 
 .account-toolbar #calendarButton[hidden]{display:none!important}
+
+@media(max-width:699px){.nav-shell[data-title-collapsed] h1#lt:not(:focus){position:absolute!important;pointer-events:none;opacity:0}.nav-shell[data-title-collapsed]{grid-template-rows:auto!important}}
+@media(max-width:699px) and (prefers-reduced-motion:reduce){h1#lt{transform:none!important}}

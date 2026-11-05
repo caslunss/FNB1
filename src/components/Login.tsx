@@ -20,7 +20,7 @@ function LoginThemeControl(){
   ]}/></div>;
 }
 export default function Login(){
-  const [imageReady,setImageReady]=useState(false);
+  const [imageReady,setImageReady]=useState(false),[imageStage,setImageStage]=useState<'webp'|'png'|'failed'>('webp');
   useEffect(()=>{
     initializeLayout();
     initialized ??= Promise.all([
@@ -32,10 +32,10 @@ export default function Login(){
     <div className="login-background-shade" aria-hidden="true"/>
     <LoginThemeControl/>
     <main className="login-shell login-fullscreen" aria-label="Acesso">
-      <LoginEntrance className="login-access"><LoginItem className="login-access-heading"><div className="login-logo-slot"><picture><source srcSet="/assets/raccoon-logo.webp" type="image/webp"/><img className={`login-logo-art${imageReady?' is-ready':''}`} src="/assets/raccoon-logo.png" alt="Guaxinim — logo do site" width="240" height="201" onLoad={()=>setImageReady(true)}/></picture></div></LoginItem>
+      <LoginEntrance className="login-access"><LoginItem className="login-access-heading"><div className="login-logo-slot">{imageStage==='failed'?<span role="img" aria-label="Logo do guaxinim indisponível">TEFinance</span>:<picture>{imageStage==='webp'&&<source srcSet="/assets/raccoon-logo.webp" type="image/webp"/>}<img key={imageStage} className={`login-logo-art${imageReady?' is-ready':''}`} src="/assets/raccoon-logo.png" alt="Guaxinim — logo do site" width="240" height="201" onLoad={()=>setImageReady(true)} onError={()=>{setImageReady(false);setImageStage(imageStage==='webp'?'png':'failed')}}/></picture>}</div></LoginItem>
       <div className="login-actions"><LoginItem className="login-providers">
         <div id="googleButton" className="google-area"><button className="google-placeholder" type="button" disabled aria-describedby="loginStatus" title="Carregando login Google"><img src="./assets/google-g.png" alt="" width="20" height="20"/>Entrar com Google</button></div>
-        <div className="apple-provider"><button id="appleButton" type="button" disabled aria-label="Entrar com Apple — disponível após configuração"><img src="./assets/apple-signin.png" alt="Entrar com Apple" width="320" height="44"/></button></div>
+
       </LoginItem>
       <LoginItem><GlassButton id="guestToggle" className="local-link" type="button" intensity={3} aria-expanded="false" aria-controls="guestForm">Continuar como visitante</GlassButton></LoginItem>
       <form id="guestForm" hidden><label htmlFor="guestName" className="lg-input__label">Seu nome</label><GlassTextField><input id="guestName" name="name" autoComplete="given-name" maxLength={60} required/></GlassTextField><p className="guest-note">Dados temporários nesta aba do navegador.</p><GlassButton className="local-link" type="submit" intensity={3}>Entrar</GlassButton><p id="guestStatus" className="login-error" role="status"/></form>

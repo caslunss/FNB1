@@ -25,7 +25,6 @@ export interface WorkspaceDom {
   '#it': HTMLSpanElement;
   '#legacyBackup': HTMLButtonElement;
   '#lt': HTMLElement;
-  '#menu': HTMLDivElement;
   '#mes': HTMLInputElement;
   '#monthStatus': HTMLSpanElement;
   '#navShell': HTMLDivElement;

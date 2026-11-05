@@ -1,5 +1,5 @@
 import {MOTION,FADE} from '../../services/motion-presets.ts';
-import React,{type ReactNode} from 'react';
+import { type ReactNode } from 'react';
 import {AnimatePresence,motion,useIsPresent,useReducedMotion,useWillChange} from 'motion/react';
 import {iosDefaultSpring} from './transitions';
 type Props={routeKey:string;children:ReactNode;direction?:1|-1;className?:string;initial?:boolean;slide?:boolean};

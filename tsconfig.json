@@ -17,7 +17,8 @@
     "allowImportingTsExtensions": true,
     "types": [
       "vite/client"
-    ]
+    ],
+    "noUnusedLocals": true
   },
   "include": [
     "src"

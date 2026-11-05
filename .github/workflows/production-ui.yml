@@ -30,4 +30,5 @@ jobs:
           node tests/login-brand.browser.cjs
           QA_ENGINE=webkit node tests/login-brand.browser.cjs
           node tests/startup-debt.browser.cjs
+          node tests/ui-priority.browser.cjs
           QA_SKIP_FIXTURE=1 node tests/analysis-selects.browser.cjs

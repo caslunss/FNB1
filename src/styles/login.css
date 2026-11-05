@@ -1,0 +1,80 @@
+
+:root{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:var(--bg);color:var(--text);font:400 16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;letter-spacing:-.02em;padding:clamp(var(--ui-space-4),4vw,56px);display:flex;flex-direction:column;justify-content:center}
+a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:disabled{cursor:default}[hidden]{display:none!important}:focus-visible{outline:3px solid var(--tint);outline-offset:4px}
+.google-area{justify-content:center}
+.google-placeholder{border:1px solid #747775;display:flex;align-items:center;justify-content:center;padding:0 var(--ui-space-3)}
+.google-placeholder img{flex:none}
+.local-link{display:flex;justify-content:center;align-items:center;min-height:48px;padding:var(--ui-space-3);text-decoration:none;border-radius:var(--ui-radius-pill);font-size:14px;font-weight:600;text-align:center;background:var(--soft);color:var(--text)}
+.local-link:hover{background:var(--line)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(prefers-contrast:more){:root[data-theme],:root{--muted:var(--text);--line:currentColor}}
+.login-error{line-height:1.6;color:var(--text);overflow-wrap:anywhere}
+.auth-page{isolation:isolate}
+.login-providers{display:grid;gap:16px;width:100%;min-width:0}.google-area{display:block;width:100%;min-width:0;min-height:44px}.google-placeholder{width:100%;height:44px;opacity:1;border-radius:999px;box-shadow:none!important;background:#fff!important;color:#1f1f1f!important;font:500 14px/20px Arial,sans-serif;letter-spacing:.25px;white-space:nowrap;gap:10px}.google-placeholder img{display:block;position:static;width:20px!important;height:20px!important;min-width:20px;max-width:none;object-fit:contain;opacity:1;filter:none;background:#fff}.login-error{text-align:center;font-size:12px;margin:0}
+@media(max-width:360px){.auth-page{padding:16px}}
+.auth-page{position:relative}
+.login-background-shade{position:fixed;inset:0;z-index:-1;pointer-events:none;background:rgba(242,240,231,.1)}
+.auth-page .guest-note,.auth-page .login-error{color:var(--text)}
+
+/* Match the app capsule controls, with quiet depth instead of glow. */
+.auth-page .login-actions{display:grid;gap:20px;width:min(100%,320px);min-width:0;margin: auto auto 0;flex:none}
+.auth-page .login-actions .login-providers{gap:16px}
+.auth-page .login-actions .local-link{width:100%;margin:0;min-height:48px}
+.auth-page .login-actions #guestForm{display:grid;gap:12px;min-width:0}
+.auth-page .login-actions #guestForm .guest-note{margin:0;font-size:12px;line-height:1.5}
+.auth-page .login-actions #guestName{width:100%;min-width:0}
+@media(max-width:520px){.auth-page{padding:24px 16px}}
+@media(max-height:650px) and (min-width:521px){.auth-page{padding-bottom:84px}}
+
+/* The library's sliding lens uses subtle sun/moon icons and accessible labels. */
+.auth-page .login-theme-control .lg-track{width:112px;height:48px;min-height:48px;min-width:0;border-radius:999px;grid-template-columns:repeat(2,minmax(0,1fr));}
+.auth-page .login-theme-control .lg-track__item{min-width:0;width:100%;min-height:44px;padding:0;gap:0;box-sizing:border-box;color:var(--text);border:0!important;background:transparent!important;box-shadow:none!important;}
+.auth-page .login-theme-control .lg-track__item svg{width:20px;height:20px;opacity:.72;}
+.auth-page .login-theme-control .lg-track__item[aria-selected=true] svg{opacity:1;}
+.auth-page .login-theme-control .lg-nav__label{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+.auth-page.login-leaving .login-theme-control{visibility:hidden;}
+@media(max-width:520px){.auth-page .login-theme-control{position:relative;inset:auto;align-self:center;order:1;margin:20px auto 0;width:max-content;}}
+
+/* Full viewport entry with a palette-tinted still image. */
+.auth-page{padding:0!important;display:block;background:var(--bg)!important}
+.auth-page #root{min-height:100dvh}
+.login-still-background{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 20% 20%,color-mix(in srgb,var(--tint) 24%,transparent),transparent 65%),radial-gradient(ellipse at 80% 80%,color-mix(in srgb,var(--card) 80%,transparent),transparent 65%),var(--bg)}
+.login-still-background::after{content:"";position:absolute;inset:0;background:var(--bg);opacity:.55;mix-blend-mode:color}
+
+.auth-page .login-background-shade{background:color-mix(in srgb,var(--bg) 35%,transparent)}
+:root .auth-page .login-shell.login-fullscreen{display:grid;width:100%;max-width:none;min-height:100dvh;margin:0;gap:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible;backdrop-filter:none}
+.auth-page .login-fullscreen::before,.auth-page .login-fullscreen::after{display:none}
+.login-access{display:flex;flex-direction:column;justify-content:center;padding:80px clamp(var(--ui-space-7),6vw,96px);background:color-mix(in srgb,var(--card) 72%,transparent);backdrop-filter:blur(28px);min-width:0}
+.login-access-heading{display:flex;align-items:center;gap:var(--ui-space-4);width:min(100%,360px);margin:0 auto 40px}
+.auth-page .login-fullscreen .login-actions{margin:0 auto;width:min(100%,320px);gap:18px}
+.auth-page .login-theme-control{position:fixed;right:24px;bottom:24px;margin:0;z-index:10}
+@media(max-width:760px){:root .auth-page .login-shell.login-fullscreen{grid-template-columns:minmax(0,1fr)}.login-access{padding:40px var(--ui-space-7) 100px}.login-access-heading{width:min(100%,320px);margin-bottom:var(--ui-space-7)}.auth-page .login-theme-control{right:16px;bottom:16px}}
+@media(prefers-reduced-transparency:reduce){.login-access{background:var(--card);backdrop-filter:none}}
+
+/* The mobile tint covers the entire viewport instead of drawing a second panel. */
+@media(max-width:760px){
+ .auth-page .login-background-shade{background:color-mix(in srgb,var(--card) 72%,transparent);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px)}
+ .auth-page .login-access{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media(max-width:760px) and (prefers-reduced-transparency:reduce){
+ .auth-page .login-background-shade{background:var(--card);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+/* Keep the official provider iframe on a light canvas, within its pill surface. */
+.auth-page .google-area{color-scheme:light;border-radius:var(--ui-radius-pill);overflow:hidden;isolation:isolate}
+.auth-page .google-area iframe{color-scheme:light;border:0}
+.auth-page .google-area:focus-within{box-shadow:0 0 0 2px var(--focus-color),0 0 0 4px var(--focus-halo)}
+
+/* Centered login: decorative copy and the former logo were removed. */
+:root .auth-page .login-shell.login-fullscreen{grid-template-columns:minmax(0,1fr);align-content:center;justify-items:center;padding:var(--ui-space-6)}
+.auth-page .login-fullscreen .login-access{width:min(100%,400px);box-sizing:border-box;padding:var(--ui-space-6);background:transparent;backdrop-filter:none}
+.auth-page .login-fullscreen .login-access-heading{justify-content:center;margin:0 auto var(--ui-space-6)}
+.login-logo-slot{display:grid;place-items:center;min-height:160px;width:100%}
+.login-logo-slot img{width:clamp(180px,40vw,280px);height:auto;object-fit:contain}
+
+.login-logo-art{opacity:0;transition:opacity var(--motion-calm) var(--motion-ease)}
+.login-logo-art.is-ready{opacity:1}
+:root[data-theme=dark] .login-logo-art{filter:invert(1)}
+@media(prefers-reduced-motion:reduce){.login-logo-art{transition:none}}

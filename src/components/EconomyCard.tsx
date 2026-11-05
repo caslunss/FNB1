@@ -1,7 +1,7 @@
 import {readMarketData} from '../services/public-market-cache.ts';
 import LoadingSkeleton from './LoadingSkeleton.tsx';
 import SmoothState from './SmoothState.tsx';
-import React,{useEffect,useRef,useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {FinanceGlassButton as Button,FinanceGlassCard as Card} from './LiquidControls.tsx';
 import {ECONOMY_SERIES,buildEconomySeries} from '../services/economy.ts';
 const pct=(n:number)=>n.toLocaleString('pt-BR',{maximumFractionDigits:2})+'%';

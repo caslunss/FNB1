@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function LoadingSkeleton({label = 'Carregando conteúdo…'}) {
   return <div className="loading-skeleton" role="status" aria-busy="true" aria-label={label}>

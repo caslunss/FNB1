@@ -4,7 +4,7 @@ type BankResponses={accounts:{accounts:BankAccount[]};transactions:{rows:BankImp
 import {errorDetails} from '../services/errors.ts';
 import {auth as sessionAuth} from '../services/auth.ts';
 import {finance} from '../services/finance-runtime.ts';
-import React,{useState} from 'react';import {FinanceGlassCard as Card,FinanceGlassButton as Button,GlassTextField as Field} from './LiquidControls.tsx';
+import { useState } from 'react';import {FinanceGlassCard as Card,FinanceGlassButton as Button,GlassTextField as Field} from './LiquidControls.tsx';
 const money=(n:number)=>(n/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 export default function TaxBankImport({onImported}:{onImported?:(rows:BankImportRow[])=>Promise<void>}){
  const [accounts,setAccounts]=useState<BankAccount[]>([]),[account,setAccount]=useState(''),[rows,setRows]=useState<BankImportRow[]>([]),[selected,setSelected]=useState<string[]>([]),[after,setAfter]=useState<string|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[note,setNote]=useState(''),[card,setCard]=useState(''),[uf,setUf]=useState('');const cards=finance.credit?.getState().cards.filter(c=>c.active)||[];

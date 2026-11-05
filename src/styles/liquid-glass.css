@@ -40,12 +40,7 @@ body:not(.auth-page) :is(.btn,.ib).te-glass-button{
 /* Editing surfaces retain their stronger fill for reliable text contrast. */
 .sheet,#receiptDialog,.compact-form.card{--lg-fill:var(--form-surface);background:var(--form-surface)!important}
 .lg-button[data-destructive]{--lg-red:var(--redT);color:var(--lg-red)!important}
-.auth-page .te-glass-login{--lg-glass-fill:rgb(247 244 236 / .32);background:transparent!important;isolation:isolate;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:var(--lg-shadow)}
-:root[data-theme="dark"] .auth-page .te-glass-login{--lg-glass-fill:rgb(27 39 46 / .56)}
-.auth-page .te-glass-login::before{background-image:var(--lg-rim,linear-gradient(transparent,transparent)),linear-gradient(var(--lg-glass-fill),var(--lg-glass-fill));backdrop-filter:var(--lg-filter,) blur(22px) saturate(1.2);-webkit-backdrop-filter:blur(22px) saturate(1.2);filter:none;z-index:0}
-.auth-page .te-glass-login::after{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:none;z-index:0}
 .auth-page .lg-button.local-link{height:auto;min-height:48px;width:100%;white-space:normal;line-height:1.4;touch-action:pan-y}
-.auth-page .background-motion{position:fixed}
 @media(max-width:699px){
   .te-theme-control{width:100%}
   .te-glass-surface.account-bubbles{position:fixed}
@@ -55,7 +50,6 @@ body:not(.auth-page) :is(.btn,.ib).te-glass-button{
   .lg-glass,.lg-glass::before{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 }
 @media(prefers-reduced-motion:reduce){.lg-glass{scale:1!important;translate:0 0!important;transition:none!important}}
-@media(max-width:520px){.auth-page .background-motion{position:relative;inset:auto}}
 /* Composite surfaces use one backdrop. Interactive children keep their own library effects. */
 .te-glass-surface.lg-glass--host{isolation:isolate;--lg-glass-fill:var(--lg-panel-fill);background:var(--lg-glass-fill)!important;backdrop-filter:blur(var(--lg-panel-blur)) saturate(1.12);-webkit-backdrop-filter:blur(var(--lg-panel-blur)) saturate(1.12);box-shadow:var(--lg-shadow)}
 .te-glass-surface.lg-glass--host::before,.te-glass-surface.lg-glass--host::after{content:none!important}

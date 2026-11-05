@@ -1,3 +1,4 @@
+import {calendarKeys} from './calendar-keyboard';
 import { presentationTree, type PresentationNode, type ElementNode } from '../services/presentation-tree';
 import type { Root } from 'react-dom/client';
 import SubscriptionsCard from './SubscriptionsCard.tsx';
@@ -184,8 +185,9 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
     props.className=`${props.className || ''} ${OPTION_BAR_CLASSES}`;
   if (['entry-toolbar','chart-toolbar','cal-nav','settings-actions','plan-actions'].some(name=>node.classList.contains(name)))
     props.className=`${props.className || ''} ${TOOLBAR_CLASSES}`;
-  if ((['a','summary'].includes(tag)&&node.classList.contains('btn')) || node.classList.contains('profile-menu-item'))
+  if (['a','summary'].includes(tag)&&node.classList.contains('btn'))
     props.className=`${props.className || ''} ${BUTTON_CLASSES}`;
+  if(node.classList.contains('cal-grid'))props.onKeyDown=(event:React.KeyboardEvent<HTMLElement>)=>calendarKeys(event,7);
   if (tag === 'input') {
     if (node.type !== 'file' && node.hasAttribute('value')) props.defaultValue = node.getAttribute('value')!;
     if (['checkbox', 'radio'].includes(node.type)) props.defaultChecked = node.hasAttribute('checked');
@@ -369,8 +371,6 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
         className={`${props.className || ''}${node.getAttribute('data-a') === 'addmonth' ? ' month-action' : ''}`}
       />
     );
-  if (tag === 'button' && node.classList.contains('profile-menu-item'))
-    return React.createElement('button', props, children);
   if (tag === 'button' && node.hasAttribute('data-theme-toggle')) return <ThemeSwitch key={key} />;
   if (node.hasAttribute('data-share-debt')) return <ShareDebt key={key} />;
   if (node.hasAttribute('data-product-goals')) return <DeferredPage key={key} page="productGoals" />;
@@ -506,4 +506,14 @@ export function renderView(target: HTMLElement | null | undefined, content: Reac
   const revision = ++entry.revision;
   flushSync(() => entry!.root.render(<FinanceView key={revision} content={content} />));
   entry.signature = signature;
+}
+
+/** Unmount only targets owned by the ending workspace session. */
+export function disposeViews(targets: Iterable<HTMLElement>) {
+  for (const target of targets) {
+    const entry = roots.get(target);
+    if (!entry) continue;
+    entry.root.unmount();
+    roots.delete(target);
+  }
 }

@@ -1,5 +1,5 @@
 import {auth as sessionAuth} from '../services/auth.ts';
-import React,{useEffect,useState} from 'react';
+import { useEffect, useState } from 'react';
 import {FinanceGlassSwitch as GlassSwitch} from './LiquidControls.tsx';
 import {NOTIFICATION_KEY,readNotificationPreferences,saveNotificationPreference} from '../services/notification-preferences.ts';
 

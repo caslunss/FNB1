@@ -1,14 +1,14 @@
 # TEFinance — guia de layout
 
-Versão Alpha 1.0 · atualizado em 31/10/2026.
+Versão Alpha 1.0 · atualizado em 05/11/2026.
 
 Este guia registra o padrão atual da interface. Deve ser consultado antes de cada alteração visual. Pedidos explícitos do usuário têm prioridade; mudanças aprovadas devem ser refletidas aqui. O guia não representa certificação de conformidade da Apple.
 
 ## Direção visual
 
-Após o login, a inicialização exibe apenas o guaxinim em PNG transparente, com descrição de carregamento para leitores de tela. A tela acompanha o tema e desaparece quando `auth-pending` é removido pelo fluxo existente, inclusive em caso de falha de inicialização.
+Após o login, a inicialização exibe apenas o guaxinim transparente em WebP, com descrição de carregamento para leitores de tela. A tela acompanha o tema e desaparece quando `auth-pending` é removido pelo fluxo existente, inclusive em caso de falha de inicialização.
 
-No mobile, os títulos de Resumo e das demais áreas desaparecem gradualmente nos primeiros 64 px de rolagem e reaparecem ao voltar ao topo. O atalho de teclado para o conteúdo mantém o título visível ao receber foco. No desktop, o cabeçalho acompanha a rolagem normal da página.
+No mobile, os títulos de Resumo e das demais áreas desaparecem gradualmente nos primeiros 64 px de rolagem. A linha vazia é recolhida após 96 px e restaurada abaixo de 24 px, evitando oscilações causadas pela mudança de altura. O atalho de teclado para o conteúdo mantém o título visível ao receber foco. Com movimento reduzido, não aplicar a transformação do título. No desktop, o cabeçalho acompanha a rolagem normal da página. Não aplicar backdrop-filter no ancestral da barra inferior fixa: isso altera seu bloco de referência.
 
 Cabeçalhos dos painéis de Configurações e Calendário permanecem no topo durante a rolagem, com o material translúcido de navegação (`--lg-navigation-fill` e `--lg-blur`). Respeitar transparência reduzida e usar fundo opaco em navegadores sem suporte ao blur.
 
@@ -32,7 +32,7 @@ As cores e limites estão em `src/services/layout-preferences.ts`. Os valores pa
 
 | Área | Conteúdo e comportamento |
 | --- | --- |
-| Login | Tela dividida no desktop; conteúdo empilhado no mobile. Guaxinim em PNG transparente no cabeçalho de acesso, com traços invertidos no tema escuro. Google, Apple e visitante conforme a configuração existente. Preservar os textos principais atuais |
+| Login | Uma coluna centralizada em todos os tamanhos. Guaxinim transparente em WebP, com fallback explícito PNG e identificação textual se ambas as imagens falharem; traços invertidos no tema escuro. Google e visitante conforme a configuração existente; Apple indisponível fica oculto. Preservar labels, erros e avisos necessários |
 | Resumo | Visão geral e Lançamentos. Comportamento é uma seção da Visão geral; seletor de mês e organização de cards no mesmo grupo |
 | Visão geral | Gráfico principal, distribuição, maiores gastos, categorias e dívidas. Cards em colunas quando houver espaço |
 | Comportamento | Totais e indicadores por categoria, dia e mês. Mesma largura, tipografia e superfícies do Resumo |
@@ -87,7 +87,7 @@ Não deixar uma borda retangular no `details` externo. O raio deve existir no fo
 | Ação comum | `FinanceGlassButton`; mínimo de 44 × 44 px; texto centralizado |
 | Ícone | Circular, 44 px, ícone de 20–24 px, `aria-label` descritivo |
 | Ação de adicionar | Mais; quando for necessário identificar a função, usar pílula curta |
-| Três pontos e ações | `FinanceActionMenu` com `GlassMenu`; nunca um segundo menu genérico |
+| Três pontos e ações | `FinanceActionMenu` com `GlassMenu`; uma única ação não destrutiva pode abrir diretamente. Nunca um segundo menu genérico |
 | Exclusão | Variante `destructive`; confirmação descreve o impacto |
 | Alternância | `GlassSwitch`; estado e cor derivados do tema |
 | Slider | `GlassSlider`; rótulo e valor visíveis; sem alterar dimensões durante o gesto |
@@ -568,3 +568,15 @@ O loading acompanha a preparação real de acesso/dados, sem atrasos decorativos
 ### Marca e login — 05/11/2026
 
 A marca passa a ser o guaxinim enviado pelo usuário, com fundo transparente. Login usa composição de uma coluna centralizada em todos os tamanhos, sem os antigos títulos e logo de gráfico. Manter labels de autenticação, erros e informações necessárias de visitante. Arte tem fade após carregar, respeita reduced motion e inverte os traços no tema escuro para manter contraste.
+
+### Consolidação de UI e controlador — 05/11/2026
+
+- `src/styles/login.css` é a folha específica do login. Não restaurar as três folhas antigas nem vídeos/imagens sem consumidores. A marca canônica é `raccoon-logo.webp`, com `raccoon-logo.png` como original/fallback no login.
+- Notificações passam `padding="0px"` pela API de Card; o espaçamento fica na linha interna. Evitar competir com padding inline por novas exceções CSS.
+- Calendários de dia, mês e agenda compartilham `calendarKeys`: setas e Home/End movem foco entre botões habilitados. As grades mantêm sete colunas para dias e três para meses. Ao abrir calendário sobre um lançamento, Escape fecha somente o diálogo superior, preservando o formulário.
+- Configurações usa o título Visibilidade e identifica o destino real das opções: Cartões em Compromissos, Carbono em Análises e Calendário no topo. As chaves salvas permanecem compatíveis.
+- Menus de ações usam apenas o renderer React e o dispatcher compartilhado; não restaurar os hosts `#menu`/`#profileMenu` nem criar botões temporários para disparar comandos.
+- Comandos financeiros ficam em `src/finance/controllers`: lançamentos/recorrências, dívidas, metas/divisões e prévia CSV. Dependências são tipadas e injetadas; persistência e rollback permanecem no orquestrador. Contextos com estado substituível usam getters para evitar referências antigas após restauração.
+- `workspace.tsx` é a entrada de uma sessão; estado, persistência, formulários, renderers e integrações residem em `src/finance/session`. `assembly.ts` conserva a ordem de inicialização. Não restaurar uma closure central nem duplicar serviços para caminhos antigos. O resultado integral está em `MIGRACAO-INTEGRAL-CONTROLADOR-2026-11-05.md`.
+- Recursos do controlador pertencem a `SessionScope`: listeners, timers, assinatura financeira, pesquisa, animações e URLs temporárias. Manter limpeza de overlays e raízes de apresentação ao encerrar a sessão; não apagar dados durante esse descarte. Componentes React continuam usando seus próprios cleanups de efeitos.
+- Domínios publicam pelo módulo financeiro, não por aliases globais de compatibilidade. `noUnusedLocals` impede reintrodução de imports e bindings sem uso; não desativar a checagem para acomodar código antigo.

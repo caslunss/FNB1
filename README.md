@@ -5,6 +5,7 @@ Projeto React/Vite organizado para publicar frontend e APIs na Vercel. Comece po
 ## Estrutura
 
 - `src/`: interface e lógica financeira.
+- `src/finance/controllers/`: comandos financeiros tipados; `src/finance/session/`: estado, persistência, apresentação e ciclo de vida por domínio. `workspace.tsx` apenas inicia e protege a sessão. Consulte [a migração integral](docs/MIGRACAO-INTEGRAL-CONTROLADOR-2026-11-05.md).
 - `public/`: imagens, estilos e configuração pública do login.
 - `api/`: sete entradas HTTP da Vercel.
 - `server/functions/`: controladores das integrações, fora da pasta pública.

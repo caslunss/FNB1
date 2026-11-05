@@ -1,5 +1,4 @@
 import {finance} from '../services/finance-runtime.ts';
-import React from 'react';
 import {FinanceGlassCard as Card,FinanceGlassButton as Button} from './LiquidControls.tsx';
 const money=(cents:number)=>(cents/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 export default function SubscriptionsCard({summary}:{summary:ReturnType<typeof import('../services/subscriptions').subscriptionSummary>}){

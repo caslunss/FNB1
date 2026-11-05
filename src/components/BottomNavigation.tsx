@@ -1,6 +1,6 @@
 import {animate} from 'motion';
 import {APP_SPRING} from '../services/motion-presets.ts';
-import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {FinanceOptionBar} from './LiquidControls.tsx';
 import {useBottomNavigationLayout} from '../services/mobile-layout.ts';
 

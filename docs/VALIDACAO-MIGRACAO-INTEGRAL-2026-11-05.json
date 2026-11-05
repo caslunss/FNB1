@@ -1,0 +1,861 @@
+{
+  "status": "passed",
+  "scope": "Migração estrutural integral do controlador; working tree local",
+  "migration": {
+    "entry": "src/finance/workspace.tsx",
+    "beforeLines": 3037,
+    "afterLines": 37,
+    "domainFactories": 30,
+    "migratedFunctions": 169,
+    "namedInitializers": 29,
+    "noUnusedLocals": true
+  },
+  "checks": {
+    "unitAndRegressionScripts": 46,
+    "typescript": "passed",
+    "styles": "passed — 601 exceções inventariadas",
+    "build": "passed",
+    "release": "passed",
+    "bundleBudget": "passed"
+  },
+  "browser": {
+    "engine": "Chromium",
+    "realSessionLifecycle": "passed",
+    "financialModuleIntegration": "passed",
+    "productionLedger": "passed — 8 combinações",
+    "productionNotifications": "passed — 8 combinações",
+    "sharedControls": "passed — 76 estados",
+    "priorityUi": "passed"
+  },
+  "visual": {
+    "reference": "Snapshot local do controlador e fontes antes desta rodada, usando a mesma configuração Vite de produção",
+    "comparedStates": 200,
+    "equalStates": 200,
+    "differences": 0,
+    "errors": 0,
+    "widths": [
+      320,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "comparison": "Conteúdo, geometria e estilos computados dos elementos selecionados; tolerância geométrica de 0,25 px",
+    "automatedPixelDiff": false,
+    "artifacts": "/tmp/fnb-integral-verified",
+    "cases": [
+      {
+        "key": "320-light-page-summary",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-entries",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-debts",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-cards",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-friends",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-purchases",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-goals",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-investments",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-taxes",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-reports",
+        "equal": true
+      },
+      {
+        "key": "320-light-page-carbon",
+        "equal": true
+      },
+      {
+        "key": "320-light-investments-Histórico",
+        "equal": true
+      },
+      {
+        "key": "320-light-investments-Dividendos",
+        "equal": true
+      },
+      {
+        "key": "320-light-investments-Balanços",
+        "equal": true
+      },
+      {
+        "key": "320-light-investments-FIIs",
+        "equal": true
+      },
+      {
+        "key": "320-light-investments-Câmbio",
+        "equal": true
+      },
+      {
+        "key": "320-light-investments-IPCA",
+        "equal": true
+      },
+      {
+        "key": "320-light-investments-Selic",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-income",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-income-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-expense",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-expense-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-debt",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-debt-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-limit",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-limit-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-light-sheet-select",
+        "equal": true
+      },
+      {
+        "key": "320-light-date-picker",
+        "equal": true
+      },
+      {
+        "key": "320-light-profile",
+        "equal": true
+      },
+      {
+        "key": "320-light-profile-subscriptions",
+        "equal": true
+      },
+      {
+        "key": "320-light-calendar",
+        "equal": true
+      },
+      {
+        "key": "320-light-summary-month",
+        "equal": true
+      },
+      {
+        "key": "320-light-notifications-all",
+        "equal": true
+      },
+      {
+        "key": "320-light-notifications-transactions",
+        "equal": true
+      },
+      {
+        "key": "320-light-notifications-alerts",
+        "equal": true
+      },
+      {
+        "key": "320-light-search",
+        "equal": true
+      },
+      {
+        "key": "320-light-search-filters",
+        "equal": true
+      },
+      {
+        "key": "320-light-receipt",
+        "equal": true
+      },
+      {
+        "key": "320-light-credit-editor",
+        "equal": true
+      },
+      {
+        "key": "320-light-credit-month",
+        "equal": true
+      },
+      {
+        "key": "320-light-goal-editor",
+        "equal": true
+      },
+      {
+        "key": "320-light-purchase-editor",
+        "equal": true
+      },
+      {
+        "key": "320-light-tax-editor",
+        "equal": true
+      },
+      {
+        "key": "320-light-tax-bank",
+        "equal": true
+      },
+      {
+        "key": "320-light-settings-account",
+        "equal": true
+      },
+      {
+        "key": "320-light-settings-notifications",
+        "equal": true
+      },
+      {
+        "key": "320-light-settings-layout",
+        "equal": true
+      },
+      {
+        "key": "320-light-settings-connections",
+        "equal": true
+      },
+      {
+        "key": "320-light-login",
+        "equal": true
+      },
+      {
+        "key": "320-light-login-guest",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-summary",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-entries",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-debts",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-cards",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-friends",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-purchases",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-goals",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-investments",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-taxes",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-reports",
+        "equal": true
+      },
+      {
+        "key": "320-dark-page-carbon",
+        "equal": true
+      },
+      {
+        "key": "320-dark-investments-Histórico",
+        "equal": true
+      },
+      {
+        "key": "320-dark-investments-Dividendos",
+        "equal": true
+      },
+      {
+        "key": "320-dark-investments-Balanços",
+        "equal": true
+      },
+      {
+        "key": "320-dark-investments-FIIs",
+        "equal": true
+      },
+      {
+        "key": "320-dark-investments-Câmbio",
+        "equal": true
+      },
+      {
+        "key": "320-dark-investments-IPCA",
+        "equal": true
+      },
+      {
+        "key": "320-dark-investments-Selic",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-income",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-income-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-expense",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-expense-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-debt",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-debt-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-limit",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-limit-expanded",
+        "equal": true
+      },
+      {
+        "key": "320-dark-sheet-select",
+        "equal": true
+      },
+      {
+        "key": "320-dark-date-picker",
+        "equal": true
+      },
+      {
+        "key": "320-dark-profile",
+        "equal": true
+      },
+      {
+        "key": "320-dark-profile-subscriptions",
+        "equal": true
+      },
+      {
+        "key": "320-dark-calendar",
+        "equal": true
+      },
+      {
+        "key": "320-dark-summary-month",
+        "equal": true
+      },
+      {
+        "key": "320-dark-notifications-all",
+        "equal": true
+      },
+      {
+        "key": "320-dark-notifications-transactions",
+        "equal": true
+      },
+      {
+        "key": "320-dark-notifications-alerts",
+        "equal": true
+      },
+      {
+        "key": "320-dark-search",
+        "equal": true
+      },
+      {
+        "key": "320-dark-search-filters",
+        "equal": true
+      },
+      {
+        "key": "320-dark-receipt",
+        "equal": true
+      },
+      {
+        "key": "320-dark-credit-editor",
+        "equal": true
+      },
+      {
+        "key": "320-dark-credit-month",
+        "equal": true
+      },
+      {
+        "key": "320-dark-goal-editor",
+        "equal": true
+      },
+      {
+        "key": "320-dark-purchase-editor",
+        "equal": true
+      },
+      {
+        "key": "320-dark-tax-editor",
+        "equal": true
+      },
+      {
+        "key": "320-dark-tax-bank",
+        "equal": true
+      },
+      {
+        "key": "320-dark-settings-account",
+        "equal": true
+      },
+      {
+        "key": "320-dark-settings-notifications",
+        "equal": true
+      },
+      {
+        "key": "320-dark-settings-layout",
+        "equal": true
+      },
+      {
+        "key": "320-dark-settings-connections",
+        "equal": true
+      },
+      {
+        "key": "320-dark-login",
+        "equal": true
+      },
+      {
+        "key": "320-dark-login-guest",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-summary",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-entries",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-debts",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-cards",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-friends",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-purchases",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-goals",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-investments",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-taxes",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-reports",
+        "equal": true
+      },
+      {
+        "key": "1440-light-page-carbon",
+        "equal": true
+      },
+      {
+        "key": "1440-light-investments-Histórico",
+        "equal": true
+      },
+      {
+        "key": "1440-light-investments-Dividendos",
+        "equal": true
+      },
+      {
+        "key": "1440-light-investments-Balanços",
+        "equal": true
+      },
+      {
+        "key": "1440-light-investments-FIIs",
+        "equal": true
+      },
+      {
+        "key": "1440-light-investments-Câmbio",
+        "equal": true
+      },
+      {
+        "key": "1440-light-investments-IPCA",
+        "equal": true
+      },
+      {
+        "key": "1440-light-investments-Selic",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-income",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-income-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-expense",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-expense-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-debt",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-debt-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-limit",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-limit-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-light-sheet-select",
+        "equal": true
+      },
+      {
+        "key": "1440-light-date-picker",
+        "equal": true
+      },
+      {
+        "key": "1440-light-profile",
+        "equal": true
+      },
+      {
+        "key": "1440-light-profile-subscriptions",
+        "equal": true
+      },
+      {
+        "key": "1440-light-calendar",
+        "equal": true
+      },
+      {
+        "key": "1440-light-summary-month",
+        "equal": true
+      },
+      {
+        "key": "1440-light-notifications-all",
+        "equal": true
+      },
+      {
+        "key": "1440-light-notifications-transactions",
+        "equal": true
+      },
+      {
+        "key": "1440-light-notifications-alerts",
+        "equal": true
+      },
+      {
+        "key": "1440-light-search",
+        "equal": true
+      },
+      {
+        "key": "1440-light-search-filters",
+        "equal": true
+      },
+      {
+        "key": "1440-light-receipt",
+        "equal": true
+      },
+      {
+        "key": "1440-light-credit-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-light-credit-month",
+        "equal": true
+      },
+      {
+        "key": "1440-light-goal-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-light-purchase-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-light-tax-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-light-tax-bank",
+        "equal": true
+      },
+      {
+        "key": "1440-light-settings-account",
+        "equal": true
+      },
+      {
+        "key": "1440-light-settings-notifications",
+        "equal": true
+      },
+      {
+        "key": "1440-light-settings-layout",
+        "equal": true
+      },
+      {
+        "key": "1440-light-settings-connections",
+        "equal": true
+      },
+      {
+        "key": "1440-light-login",
+        "equal": true
+      },
+      {
+        "key": "1440-light-login-guest",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-summary",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-entries",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-debts",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-cards",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-friends",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-purchases",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-goals",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-investments",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-taxes",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-reports",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-page-carbon",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-investments-Histórico",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-investments-Dividendos",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-investments-Balanços",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-investments-FIIs",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-investments-Câmbio",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-investments-IPCA",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-investments-Selic",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-income",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-income-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-expense",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-expense-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-debt",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-debt-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-limit",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-limit-expanded",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-sheet-select",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-date-picker",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-profile",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-profile-subscriptions",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-calendar",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-summary-month",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-notifications-all",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-notifications-transactions",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-notifications-alerts",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-search",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-search-filters",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-receipt",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-credit-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-credit-month",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-goal-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-purchase-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-tax-editor",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-tax-bank",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-settings-account",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-settings-notifications",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-settings-layout",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-settings-connections",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-login",
+        "equal": true
+      },
+      {
+        "key": "1440-dark-login-guest",
+        "equal": true
+      }
+    ]
+  },
+  "bundleAppGzip": {
+    "beforeBytes": 87838,
+    "afterBytes": 93033,
+    "deltaBytes": 5195,
+    "withinBudget": true
+  },
+  "limits": {
+    "liveProvidersValidated": false,
+    "physicalIosValidated": false,
+    "deployed": false
+  }
+}

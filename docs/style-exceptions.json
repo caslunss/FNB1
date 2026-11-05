@@ -1,7 +1,7 @@
 {
-  "count": 609,
+  "count": 601,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "d743f1428524d4b89fd8f4e940f68da84d1a529d666a6db1a10bf1e03fe5c4c5",
+  "sha256": "7addf25fbf1a1302d190546b31460a679f154791078bf0a448f0b4a0abcab5f7",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -950,7 +950,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 85,
+      "line": 83,
       "selector": ".te-surface-rim",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "display",
@@ -959,7 +959,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 94,
+      "line": 92,
       "selector": ".te-glass-nested",
       "conditions": "",
       "property": "--lg-glass-fill",
@@ -968,7 +968,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 94,
+      "line": 92,
       "selector": ".te-glass-nested",
       "conditions": "",
       "property": "box-shadow",
@@ -977,7 +977,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 96,
+      "line": 94,
       "selector": "#app .compact-form.card.te-glass-surface",
       "conditions": "",
       "property": "--lg-glass-fill",
@@ -986,7 +986,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 97,
+      "line": 95,
       "selector": ".workspace-main.wrap",
       "conditions": "@media (max-width:699px)",
       "property": "padding-top",
@@ -995,7 +995,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 113,
+      "line": 111,
       "selector": "html[data-layout-ready] .workspace-frame",
       "conditions": "",
       "property": "border",
@@ -1004,7 +1004,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 113,
+      "line": 111,
       "selector": "html[data-layout-ready] .workspace-frame",
       "conditions": "",
       "property": "box-shadow",
@@ -1013,7 +1013,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 118,
+      "line": 116,
       "selector": "body:not(.auth-page) span.te-action-menu:is(.btn,.ib)",
       "conditions": "",
       "property": "background",
@@ -1022,7 +1022,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 118,
+      "line": 116,
       "selector": "body:not(.auth-page) span.te-action-menu:is(.btn,.ib)",
       "conditions": "",
       "property": "border",
@@ -1031,7 +1031,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 118,
+      "line": 116,
       "selector": "body:not(.auth-page) span.te-action-menu:is(.btn,.ib)",
       "conditions": "",
       "property": "box-shadow",
@@ -1040,7 +1040,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 118,
+      "line": 116,
       "selector": "body:not(.auth-page) span.te-action-menu:is(.btn,.ib)",
       "conditions": "",
       "property": "padding",
@@ -1049,7 +1049,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 134,
+      "line": 132,
       "selector": ".te-action-editor>details>summary[hidden]",
       "conditions": "",
       "property": "display",
@@ -1058,7 +1058,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 140,
+      "line": 138,
       "selector": ".te-text-field.lg-input__field>input,.te-text-field.lg-input__field>select,.te-text-field.lg-input__field>textarea",
       "conditions": "",
       "property": "border",
@@ -1067,7 +1067,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 140,
+      "line": 138,
       "selector": ".te-text-field.lg-input__field>input,.te-text-field.lg-input__field>select,.te-text-field.lg-input__field>textarea",
       "conditions": "",
       "property": "box-shadow",
@@ -1076,7 +1076,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 140,
+      "line": 138,
       "selector": ".te-text-field.lg-input__field>input,.te-text-field.lg-input__field>select,.te-text-field.lg-input__field>textarea",
       "conditions": "",
       "property": "background",
@@ -1085,7 +1085,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 150,
+      "line": 148,
       "selector": ".layout-color-value .te-text-field .layout-hex",
       "conditions": "",
       "property": "padding",
@@ -1094,7 +1094,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 161,
+      "line": 159,
       "selector": ":root #app .category-track.is-limit>i",
       "conditions": "",
       "property": "width",
@@ -1103,7 +1103,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 170,
+      "line": 168,
       "selector": "#settingsTop.settings-top",
       "conditions": "",
       "property": "box-shadow",
@@ -1112,7 +1112,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 171,
+      "line": 169,
       "selector": "#settingsTop[hidden]",
       "conditions": "",
       "property": "display",
@@ -1121,7 +1121,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 172,
+      "line": 170,
       "selector": "#settingsTop>button",
       "conditions": "",
       "property": "display",
@@ -1130,7 +1130,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 172,
+      "line": 170,
       "selector": "#settingsTop>button",
       "conditions": "",
       "property": "padding",
@@ -1139,7 +1139,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 190,
+      "line": 188,
       "selector": ".settings-option::before",
       "conditions": "",
       "property": "background-image",
@@ -1148,7 +1148,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 191,
+      "line": 189,
       "selector": ".settings-option>.te-surface-rim",
       "conditions": "",
       "property": "opacity",
@@ -1157,7 +1157,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 193,
+      "line": 191,
       "selector": ".te-action-menu .lg-menu-anchor>button",
       "conditions": "",
       "property": "border-radius",
@@ -1166,7 +1166,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 198,
+      "line": 196,
       "selector": ".month-action .lg-menu-anchor>button",
       "conditions": "",
       "property": "border-radius",
@@ -1175,7 +1175,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 213,
+      "line": 211,
       "selector": ".palette-choice.lg-button",
       "conditions": "",
       "property": "border-radius",
@@ -1184,7 +1184,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 221,
+      "line": 219,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details",
       "conditions": "",
       "property": "border",
@@ -1193,7 +1193,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 221,
+      "line": 219,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details",
       "conditions": "",
       "property": "box-shadow",
@@ -1202,7 +1202,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 227,
+      "line": 225,
       "selector": ".shared-message textarea",
       "conditions": "",
       "property": "min-height",
@@ -1211,7 +1211,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 234,
+      "line": 232,
       "selector": ".search-pill-input.te-text-field",
       "conditions": "",
       "property": "background",
@@ -1220,7 +1220,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 235,
+      "line": 233,
       "selector": ".search-pill-input>input",
       "conditions": "",
       "property": "min-height",
@@ -1229,7 +1229,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 236,
+      "line": 234,
       "selector": ".search-filter-toggle.lg-button",
       "conditions": "",
       "property": "border-radius",
@@ -1238,7 +1238,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 242,
+      "line": 240,
       "selector": "#app .settings-option",
       "conditions": "",
       "property": "padding",
@@ -1247,7 +1247,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 242,
+      "line": 240,
       "selector": "#app .settings-option",
       "conditions": "",
       "property": "border-radius",
@@ -1256,7 +1256,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 243,
+      "line": 241,
       "selector": "#app .settings-option.is-open",
       "conditions": "",
       "property": "padding",
@@ -1265,7 +1265,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 243,
+      "line": 241,
       "selector": "#app .settings-option.is-open",
       "conditions": "",
       "property": "border-radius",
@@ -1274,7 +1274,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 256,
+      "line": 254,
       "selector": ".progressive-advanced[hidden]",
       "conditions": "",
       "property": "display",
@@ -1283,7 +1283,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 259,
+      "line": 257,
       "selector": "#scrim .sheet",
       "conditions": "",
       "property": "border-radius",
@@ -1292,7 +1292,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 262,
+      "line": 260,
       "selector": "#app .te-compact-form.card",
       "conditions": "@media (max-width:520px)",
       "property": "padding",
@@ -1301,61 +1301,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 265,
-      "selector": ".profile-menu",
-      "conditions": "",
-      "property": "position",
-      "value": "fixed",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 266,
-      "selector": ".profile-menu[hidden]",
-      "conditions": "",
-      "property": "display",
-      "value": "none",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 266,
-      "selector": ".profile-menu-item.lg-button",
-      "conditions": "",
-      "property": "background",
-      "value": "transparent",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 266,
-      "selector": ".profile-menu-item.lg-button",
-      "conditions": "",
-      "property": "box-shadow",
-      "value": "none",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 266,
-      "selector": ".profile-menu-item:hover,.profile-menu-item:focus-visible",
-      "conditions": "",
-      "property": "background",
-      "value": "var(--lg-fill)",
-      "reason": "Estado de interação: preservar o foco do tema, o estado desabilitado e a leitura do controle."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 266,
-      "selector": ".profile-menu-item:hover,.profile-menu-item:focus-visible",
-      "conditions": "",
-      "property": "box-shadow",
-      "value": "var(--lg-shadow)",
-      "reason": "Estado de interação: preservar o foco do tema, o estado desabilitado e a leitura do controle."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 268,
+      "line": 264,
       "selector": ".account-panel-body .settings-option",
       "conditions": "",
       "property": "padding",
@@ -1364,7 +1310,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 268,
+      "line": 264,
       "selector": ".account-panel-body .settings-option",
       "conditions": "",
       "property": "border-radius",
@@ -1373,7 +1319,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 268,
+      "line": 264,
       "selector": ".account-panel-body .settings-option.is-open",
       "conditions": "",
       "property": "padding",
@@ -1382,7 +1328,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 268,
+      "line": 264,
       "selector": ".account-panel-body .settings-option.is-open",
       "conditions": "",
       "property": "border-radius",
@@ -1391,16 +1337,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 272,
-      "selector": ".profile-menu-item.lg-button::before",
-      "conditions": "",
-      "property": "background",
-      "value": "transparent",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-chart",
       "conditions": "",
       "property": "border",
@@ -1409,7 +1346,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-chart",
       "conditions": "",
       "property": "background",
@@ -1418,7 +1355,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-chart",
       "conditions": "",
       "property": "box-shadow",
@@ -1427,7 +1364,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "border",
@@ -1436,7 +1373,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "box-shadow",
@@ -1445,7 +1382,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "background",
@@ -1454,7 +1391,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "border-radius",
@@ -1463,7 +1400,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-track",
       "conditions": "",
       "property": "border",
@@ -1472,7 +1409,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-track",
       "conditions": "",
       "property": "box-shadow",
@@ -1481,7 +1418,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 282,
+      "line": 274,
       "selector": "#app .period-track",
       "conditions": "",
       "property": "background",
@@ -1490,7 +1427,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 296,
+      "line": 288,
       "selector": ".account-toolbar .calendar-button",
       "conditions": "",
       "property": "position",
@@ -1499,7 +1436,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 296,
+      "line": 288,
       "selector": ".account-toolbar .calendar-button",
       "conditions": "",
       "property": "inset",
@@ -1508,7 +1445,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 297,
+      "line": 289,
       "selector": ".calendar-button[hidden]",
       "conditions": "",
       "property": "display",
@@ -1517,7 +1454,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 298,
+      "line": 290,
       "selector": "#app .credit-heading>.credit-add",
       "conditions": "",
       "property": "padding",
@@ -1526,7 +1463,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 299,
+      "line": 291,
       "selector": ".credit-invoice",
       "conditions": "",
       "property": "margin",
@@ -1535,7 +1472,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 300,
+      "line": 292,
       "selector": ".layout-c>.card",
       "conditions": "",
       "property": "margin",
@@ -1544,7 +1481,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 303,
+      "line": 295,
       "selector": ".cal-nav>.lg-button",
       "conditions": "",
       "property": "padding",
@@ -1553,7 +1490,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 312,
+      "line": 304,
       "selector": "body:not(.auth-page) .navbar",
       "conditions": "",
       "property": "display",
@@ -1562,7 +1499,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "position",
@@ -1571,7 +1508,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "width",
@@ -1580,7 +1517,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "height",
@@ -1589,7 +1526,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "opacity",
@@ -1598,7 +1535,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "overflow",
@@ -1607,7 +1544,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "padding",
@@ -1616,7 +1553,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "margin",
@@ -1625,7 +1562,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".upload-input",
       "conditions": "",
       "property": "border",
@@ -1634,25 +1571,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
-      "selector": ".reports-panel>.card+.card",
-      "conditions": "",
-      "property": "margin-top",
-      "value": "22px",
-      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 314,
-      "selector": ".reports-panel>.card",
-      "conditions": "",
-      "property": "padding",
-      "value": "var(--ui-space-6)",
-      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".entry-toolbar-floating",
       "conditions": "",
       "property": "gap",
@@ -1661,7 +1580,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 314,
+      "line": 306,
       "selector": ".entry-toolbar-floating",
       "conditions": "",
       "property": "row-gap",
@@ -1670,16 +1589,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 315,
-      "selector": ".reports-panel>.card",
-      "conditions": "@media (max-width:600px)",
-      "property": "padding",
-      "value": "18px",
-      "reason": "Responsividade: manter a disposição existente no breakpoint correspondente."
-    },
-    {
-      "file": "src/styles/layout-settings.css",
-      "line": 315,
+      "line": 307,
       "selector": ".entry-toolbar-floating>.btn",
       "conditions": "@media (max-width:600px)",
       "property": "flex",
@@ -1688,7 +1598,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 315,
+      "line": 307,
       "selector": "body:not(.auth-page) .entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "justify-content",
@@ -1697,7 +1607,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 315,
+      "line": 307,
       "selector": "body:not(.auth-page) .entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "gap",
@@ -1706,7 +1616,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 315,
+      "line": 307,
       "selector": "#app .ledger-detail[disabled]",
       "conditions": "",
       "property": "opacity",
@@ -1715,7 +1625,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 316,
+      "line": 308,
       "selector": "body:not(.auth-page) .navbar[hidden]",
       "conditions": "",
       "property": "display",
@@ -1724,7 +1634,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 317,
+      "line": 309,
       "selector": "body:not(.auth-page) .cal-day.selected",
       "conditions": "",
       "property": "background",
@@ -1733,7 +1643,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 317,
+      "line": 309,
       "selector": "body:not(.auth-page) .cal-day.selected",
       "conditions": "",
       "property": "color",
@@ -1742,7 +1652,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 317,
+      "line": 309,
       "selector": "body:not(.auth-page) .cal-day.selected",
       "conditions": "",
       "property": "box-shadow",
@@ -1751,7 +1661,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 335,
+      "line": 327,
       "selector": "html[data-layout-ready] .workspace-frame",
       "conditions": "",
       "property": "grid-template-columns",
@@ -1760,7 +1670,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 337,
+      "line": 329,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "",
       "property": "position",
@@ -1769,7 +1679,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 337,
+      "line": 329,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "",
       "property": "inset",
@@ -1778,7 +1688,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 337,
+      "line": 329,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "",
       "property": "margin",
@@ -1787,7 +1697,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 339,
+      "line": 331,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "position",
@@ -1796,7 +1706,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 339,
+      "line": 331,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "inset",
@@ -1805,7 +1715,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 339,
+      "line": 331,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "display",
@@ -1814,7 +1724,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 339,
+      "line": 331,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "flex-direction",
@@ -1823,7 +1733,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 342,
+      "line": 334,
       "selector": "body:not(.auth-page)",
       "conditions": "@media (max-width:999px)",
       "property": "padding",
@@ -1832,7 +1742,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 342,
+      "line": 334,
       "selector": "html[data-layout-ready] .workspace-frame",
       "conditions": "@media (max-width:999px)",
       "property": "display",
@@ -1841,7 +1751,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 342,
+      "line": 334,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "@media (max-width:999px)",
       "property": "margin",
@@ -1850,7 +1760,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 342,
+      "line": 334,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "@media (max-width:999px)",
       "property": "padding",
@@ -1859,7 +1769,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 343,
+      "line": 335,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "@media (max-width:520px)",
       "property": "margin",
@@ -1868,7 +1778,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 343,
+      "line": 335,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "@media (max-width:520px)",
       "property": "padding",
@@ -1877,7 +1787,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 349,
+      "line": 341,
       "selector": ".navigation-actions #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "order",
@@ -1886,7 +1796,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 359,
+      "line": 351,
       "selector": "body:not(.auth-page) .top-account-actions .task-search",
       "conditions": "",
       "property": "position",
@@ -1895,7 +1805,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 359,
+      "line": 351,
       "selector": "body:not(.auth-page) .top-account-actions .task-search",
       "conditions": "",
       "property": "inset",
@@ -1904,7 +1814,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 359,
+      "line": 351,
       "selector": "body:not(.auth-page) .top-account-actions .task-search",
       "conditions": "",
       "property": "margin",
@@ -1913,7 +1823,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 360,
+      "line": 352,
       "selector": "body:not(.auth-page) .top-account-actions .task-search>button",
       "conditions": "",
       "property": "margin",
@@ -1922,7 +1832,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 365,
+      "line": 357,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "",
       "property": "padding-inline",
@@ -1931,7 +1841,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 370,
+      "line": 362,
       "selector": "#app.layout-r>[data-card-key]",
       "conditions": "",
       "property": "margin",
@@ -1940,7 +1850,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 373,
+      "line": 365,
       "selector": "#app .overview .daily-chart",
       "conditions": "",
       "property": "height",
@@ -1949,7 +1859,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 389,
+      "line": 381,
       "selector": "#app .overview .daily-chart",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -1958,7 +1868,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 395,
+      "line": 387,
       "selector": "#app.layout-r[data-summary-view=behavior]>.card",
       "conditions": "",
       "property": "margin",
@@ -1967,7 +1877,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 399,
+      "line": 391,
       "selector": "#app.layout-i>.entry-summary,#app.layout-i>.entry-toolbar",
       "conditions": "",
       "property": "margin",
@@ -1976,7 +1886,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 400,
+      "line": 392,
       "selector": "#app.layout-i>.unified-ledger",
       "conditions": "",
       "property": "margin",
@@ -1985,7 +1895,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 401,
+      "line": 393,
       "selector": "#app.layout-i>.card:not(.unified-ledger)",
       "conditions": "",
       "property": "margin",
@@ -1994,7 +1904,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 409,
+      "line": 401,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "position",
@@ -2003,7 +1913,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 409,
+      "line": 401,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "transform",
@@ -2012,7 +1922,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 409,
+      "line": 401,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "translate",
@@ -2021,7 +1931,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 409,
+      "line": 401,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "scale",
@@ -2030,7 +1940,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 412,
+      "line": 404,
       "selector": "#app.layout-r[data-summary-view=behavior]>.card,#app.layout-i>*,#app.layout-d>*,#app.layout-s>*,#app.layout-e>*",
       "conditions": "@media (max-width:699px)",
       "property": "grid-column",
@@ -2039,7 +1949,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 416,
+      "line": 408,
       "selector": "body:not(.auth-page) .nav-shell>#lt",
       "conditions": "",
       "property": "margin",
@@ -2048,7 +1958,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 418,
+      "line": 410,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "",
       "property": "padding-top",
@@ -2057,7 +1967,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 419,
+      "line": 411,
       "selector": "#app.layout-i>.entry-toolbar",
       "conditions": "",
       "property": "justify-content",
@@ -2066,7 +1976,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 419,
+      "line": 411,
       "selector": "#app.layout-i>.entry-toolbar",
       "conditions": "",
       "property": "gap",
@@ -2075,7 +1985,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 420,
+      "line": 412,
       "selector": ".calendar-panel>.card",
       "conditions": "",
       "property": "margin",
@@ -2084,7 +1994,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 420,
+      "line": 412,
       "selector": ".friends-panel>.card",
       "conditions": "",
       "property": "margin",
@@ -2093,7 +2003,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 426,
+      "line": 418,
       "selector": "#summaryToolbar[hidden]",
       "conditions": "",
       "property": "display",
@@ -2102,7 +2012,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 428,
+      "line": 420,
       "selector": "body:not(.auth-page) #summaryToolbar .summary-switch",
       "conditions": "",
       "property": "margin",
@@ -2111,7 +2021,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 428,
+      "line": 420,
       "selector": "body:not(.auth-page) #summaryToolbar .summary-switch",
       "conditions": "",
       "property": "max-width",
@@ -2120,7 +2030,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 430,
+      "line": 422,
       "selector": "body:not(.auth-page) #app.layout-i>.entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "justify-content",
@@ -2129,7 +2039,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 430,
+      "line": 422,
       "selector": "body:not(.auth-page) #app.layout-i>.entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "gap",
@@ -2138,7 +2048,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 435,
+      "line": 427,
       "selector": "body:not(.auth-page) #summaryToolbar .summary-switch[data-lg-copy]",
       "conditions": "",
       "property": "max-width",
@@ -2147,7 +2057,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 452,
+      "line": 444,
       "selector": ".te-editor-toggle.te-editor-pill.lg-button",
       "conditions": "",
       "property": "width",
@@ -2156,7 +2066,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 523,
+      "line": 515,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details>form.card",
       "conditions": "",
       "property": "border-radius",
@@ -2165,7 +2075,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 524,
+      "line": 516,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details>form.card",
       "conditions": "",
       "property": "background",
@@ -2174,7 +2084,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 604,
+      "line": 596,
       "selector": ".economy-metrics button",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -2183,7 +2093,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 604,
+      "line": 596,
       "selector": ".economy-metrics button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -2192,7 +2102,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 630,
+      "line": 622,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-image",
@@ -2201,7 +2111,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 631,
+      "line": 623,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-position",
@@ -2210,7 +2120,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 632,
+      "line": 624,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-size",
@@ -2219,7 +2129,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 632,
+      "line": 624,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-repeat",
@@ -2228,7 +2138,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 638,
+      "line": 630,
       "selector": "body .te-text-field.lg-input__field>select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-position",
@@ -2372,70 +2282,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 43,
-      "selector": ".auth-page .te-glass-login",
-      "conditions": "",
-      "property": "background",
-      "value": "transparent",
-      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
-    },
-    {
-      "file": "src/styles/liquid-glass.css",
-      "line": 43,
-      "selector": ".auth-page .te-glass-login",
-      "conditions": "",
-      "property": "backdrop-filter",
-      "value": "none",
-      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
-    },
-    {
-      "file": "src/styles/liquid-glass.css",
-      "line": 43,
-      "selector": ".auth-page .te-glass-login",
-      "conditions": "",
-      "property": "-webkit-backdrop-filter",
-      "value": "none",
-      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
-    },
-    {
-      "file": "src/styles/liquid-glass.css",
-      "line": 46,
-      "selector": ".auth-page .te-glass-login::after",
-      "conditions": "",
-      "property": "filter",
-      "value": "none",
-      "reason": "Composição do vidro: impedir reflexos duplicados, recortes ou heranças incompatíveis da biblioteca."
-    },
-    {
-      "file": "src/styles/liquid-glass.css",
-      "line": 46,
-      "selector": ".auth-page .te-glass-login::after",
-      "conditions": "",
-      "property": "-webkit-filter",
-      "value": "none",
-      "reason": "Composição do vidro: impedir reflexos duplicados, recortes ou heranças incompatíveis da biblioteca."
-    },
-    {
-      "file": "src/styles/liquid-glass.css",
-      "line": 46,
-      "selector": ".auth-page .te-glass-login::after",
-      "conditions": "",
-      "property": "backdrop-filter",
-      "value": "none",
-      "reason": "Composição do vidro: impedir reflexos duplicados, recortes ou heranças incompatíveis da biblioteca."
-    },
-    {
-      "file": "src/styles/liquid-glass.css",
-      "line": 46,
-      "selector": ".auth-page .te-glass-login::after",
-      "conditions": "",
-      "property": "-webkit-backdrop-filter",
-      "value": "none",
-      "reason": "Composição do vidro: impedir reflexos duplicados, recortes ou heranças incompatíveis da biblioteca."
-    },
-    {
-      "file": "src/styles/liquid-glass.css",
-      "line": 55,
+      "line": 50,
       "selector": ".lg-glass,.lg-glass::before",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "backdrop-filter",
@@ -2444,7 +2291,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 55,
+      "line": 50,
       "selector": ".lg-glass,.lg-glass::before",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "-webkit-backdrop-filter",
@@ -2453,7 +2300,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 57,
+      "line": 52,
       "selector": ".lg-glass",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "scale",
@@ -2462,7 +2309,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 57,
+      "line": 52,
       "selector": ".lg-glass",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "translate",
@@ -2471,7 +2318,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 57,
+      "line": 52,
       "selector": ".lg-glass",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "transition",
@@ -2480,7 +2327,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 60,
+      "line": 54,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "",
       "property": "background",
@@ -2489,7 +2336,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 61,
+      "line": 55,
       "selector": ".te-glass-surface.lg-glass--host::before,.te-glass-surface.lg-glass--host::after",
       "conditions": "",
       "property": "content",
@@ -2498,7 +2345,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 63,
+      "line": 57,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "background",
@@ -2507,7 +2354,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 63,
+      "line": 57,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "backdrop-filter",
@@ -2516,7 +2363,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 63,
+      "line": 57,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "-webkit-backdrop-filter",
@@ -2524,8 +2371,8 @@
       "reason": "Controle universal: prevalência do sistema atual sobre regras básicas e estilos internos da biblioteca."
     },
     {
-      "file": "src/styles/login-base.css",
-      "line": 7,
+      "file": "src/styles/login.css",
+      "line": 6,
       "selector": "[hidden]",
       "conditions": "",
       "property": "display",
@@ -2533,8 +2380,80 @@
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
-      "file": "src/styles/login-fullscreen.css",
-      "line": 2,
+      "file": "src/styles/login.css",
+      "line": 16,
+      "selector": ".google-placeholder",
+      "conditions": "",
+      "property": "box-shadow",
+      "value": "none",
+      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 16,
+      "selector": ".google-placeholder",
+      "conditions": "",
+      "property": "background",
+      "value": "#fff",
+      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 16,
+      "selector": ".google-placeholder",
+      "conditions": "",
+      "property": "color",
+      "value": "#1f1f1f",
+      "reason": "Identidade visual: preservar tipografia, legibilidade e tokens de tema já vigentes."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 16,
+      "selector": ".google-placeholder img",
+      "conditions": "",
+      "property": "width",
+      "value": "20px",
+      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 16,
+      "selector": ".google-placeholder img",
+      "conditions": "",
+      "property": "height",
+      "value": "20px",
+      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 34,
+      "selector": ".auth-page .login-theme-control .lg-track__item",
+      "conditions": "",
+      "property": "border",
+      "value": "0",
+      "reason": "Controle universal: prevalência do sistema atual sobre regras básicas e estilos internos da biblioteca."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 34,
+      "selector": ".auth-page .login-theme-control .lg-track__item",
+      "conditions": "",
+      "property": "background",
+      "value": "transparent",
+      "reason": "Controle universal: prevalência do sistema atual sobre regras básicas e estilos internos da biblioteca."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 34,
+      "selector": ".auth-page .login-theme-control .lg-track__item",
+      "conditions": "",
+      "property": "box-shadow",
+      "value": "none",
+      "reason": "Controle universal: prevalência do sistema atual sobre regras básicas e estilos internos da biblioteca."
+    },
+    {
+      "file": "src/styles/login.css",
+      "line": 42,
       "selector": ".auth-page",
       "conditions": "",
       "property": "padding",
@@ -2542,8 +2461,8 @@
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
-      "file": "src/styles/login-fullscreen.css",
-      "line": 2,
+      "file": "src/styles/login.css",
+      "line": 42,
       "selector": ".auth-page",
       "conditions": "",
       "property": "background",
@@ -4118,25 +4037,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
-      "selector": ".profile-menu-item",
-      "conditions": "@media (max-width:699px)",
-      "property": "min-height",
-      "value": "52px",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/mobile.css",
-      "line": 52,
-      "selector": ".profile-menu-item",
-      "conditions": "@media (max-width:699px)",
-      "property": "font-size",
-      "value": "1rem",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 51,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "left",
@@ -4145,7 +4046,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 51,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "right",
@@ -4154,7 +4055,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 51,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -4163,7 +4064,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 51,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -4172,7 +4073,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 51,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -4181,7 +4082,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-pill-center",
       "conditions": "@media (max-width:699px)",
       "property": "top",
@@ -4190,7 +4091,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-pill-center",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -4199,7 +4100,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-pill-center",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -4208,7 +4109,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-filter-toggle",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -4217,7 +4118,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-filter-toggle",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4226,7 +4127,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-filters",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -4235,7 +4136,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-pill-popover",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -4244,7 +4145,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-results",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -4253,7 +4154,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 52,
       "selector": ".search-result",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4262,7 +4163,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 54,
+      "line": 53,
       "selector": ".login-shell",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -4271,7 +4172,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 58,
+      "line": 57,
       "selector": ".account-overlay,.notification-panel",
       "conditions": "@media (max-width:699px) and (prefers-reduced-transparency:reduce)",
       "property": "background",
@@ -4280,7 +4181,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 58,
+      "line": 57,
       "selector": ".account-overlay,.notification-panel",
       "conditions": "@media (max-width:699px) and (prefers-reduced-transparency:reduce)",
       "property": "backdrop-filter",
@@ -4289,7 +4190,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 61,
+      "line": 59,
       "selector": ".lg-switch",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -4298,7 +4199,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 61,
+      "line": 59,
       "selector": ".lg-switch",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4307,7 +4208,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 62,
+      "line": 60,
       "selector": ".daily-chart",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -4316,7 +4217,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 71,
+      "line": 69,
       "selector": "body:not(.auth-page) #tabs.tabbar .mobile-tab-label",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -4325,7 +4226,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 72,
+      "line": 70,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4334,7 +4235,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 73,
+      "line": 71,
       "selector": "body:not(.auth-page) #tabs.tabbar button",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -4343,7 +4244,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 73,
+      "line": 71,
       "selector": "body:not(.auth-page) #tabs.tabbar button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4352,7 +4253,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 73,
+      "line": 71,
       "selector": "body:not(.auth-page) #tabs.tabbar button",
       "conditions": "@media (max-width:699px)",
       "property": "flex",
@@ -4361,7 +4262,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 74,
+      "line": 72,
       "selector": "body:not(.auth-page) #tabs.tabbar button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "flex-direction",
@@ -4370,7 +4271,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 74,
+      "line": 72,
       "selector": "body:not(.auth-page) #tabs.tabbar button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "justify-content",
@@ -4379,7 +4280,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 79,
+      "line": 77,
       "selector": ":root .auth-page .login-shell.login-fullscreen",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -4388,7 +4289,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 84,
+      "line": 81,
       "selector": ".auth-page .login-theme-control",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -4397,7 +4298,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 84,
+      "line": 81,
       "selector": ".auth-page .login-theme-control",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -4406,7 +4307,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 84,
+      "line": 81,
       "selector": ".auth-page .login-theme-control",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -4415,7 +4316,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 90,
+      "line": 86,
       "selector": "body:not(.auth-page) .top-account-actions>.task-search",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -4424,7 +4325,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 93,
+      "line": 89,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "align-items",
@@ -4433,12 +4334,39 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 96,
+      "line": 92,
       "selector": ".account-toolbar #calendarButton[hidden]",
       "conditions": "",
       "property": "display",
       "value": "none",
       "reason": "Controle universal: prevalência do sistema atual sobre regras básicas e estilos internos da biblioteca."
+    },
+    {
+      "file": "src/styles/mobile.css",
+      "line": 94,
+      "selector": ".nav-shell[data-title-collapsed] h1#lt:not(:focus)",
+      "conditions": "@media (max-width:699px)",
+      "property": "position",
+      "value": "absolute",
+      "reason": "Estado de interação: preservar o foco do tema, o estado desabilitado e a leitura do controle."
+    },
+    {
+      "file": "src/styles/mobile.css",
+      "line": 94,
+      "selector": ".nav-shell[data-title-collapsed]",
+      "conditions": "@media (max-width:699px)",
+      "property": "grid-template-rows",
+      "value": "auto",
+      "reason": "Responsividade: manter a disposição existente no breakpoint correspondente."
+    },
+    {
+      "file": "src/styles/mobile.css",
+      "line": 95,
+      "selector": "h1#lt",
+      "conditions": "@media (max-width:699px) and (prefers-reduced-motion:reduce)",
+      "property": "transform",
+      "value": "none",
+      "reason": "Acessibilidade: prevalência sobre efeitos e estilos da biblioteca neste modo."
     },
     {
       "file": "src/styles/month-controls.css",
@@ -5324,7 +5252,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 151,
+      "line": 147,
       "selector": ".t-lg",
       "conditions": "@media (min-width:1000px)",
       "property": "margin",
@@ -5333,7 +5261,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 163,
+      "line": 159,
       "selector": ".glass",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "background",
@@ -5342,7 +5270,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 163,
+      "line": 159,
       "selector": ".glass",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "backdrop-filter",
@@ -5351,7 +5279,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 163,
+      "line": 159,
       "selector": ".glass",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "-webkit-backdrop-filter",
@@ -5360,7 +5288,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 184,
+      "line": 180,
       "selector": "#tabs.tabbar button span",
       "conditions": "",
       "property": "display",
@@ -5369,7 +5297,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 200,
+      "line": 196,
       "selector": ".sheet",
       "conditions": "",
       "property": "background",
@@ -5378,7 +5306,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 200,
+      "line": 196,
       "selector": ".sheet",
       "conditions": "",
       "property": "backdrop-filter",
@@ -5387,7 +5315,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 200,
+      "line": 196,
       "selector": ".sheet",
       "conditions": "",
       "property": "-webkit-backdrop-filter",
@@ -5396,7 +5324,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 201,
+      "line": 197,
       "selector": ".sheet input,.sheet select,.entry-panel input,.compact-form input",
       "conditions": "",
       "property": "background",
@@ -5405,7 +5333,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 212,
+      "line": 208,
       "selector": ".desktop-brand",
       "conditions": "",
       "property": "display",
@@ -5414,7 +5342,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 249,
+      "line": 245,
       "selector": "*,*::before,*::after",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "animation",
@@ -5423,7 +5351,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 249,
+      "line": 245,
       "selector": "*,*::before,*::after",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "transition",
@@ -5432,7 +5360,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 249,
+      "line": 245,
       "selector": "*,*::before,*::after",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "scroll-behavior",
@@ -5441,7 +5369,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 250,
+      "line": 246,
       "selector": ".workspace-main.wrap",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "background",
@@ -5450,7 +5378,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 256,
+      "line": 252,
       "selector": ".economy-metrics button",
       "conditions": "",
       "property": "padding",
@@ -5459,7 +5387,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 256,
+      "line": 252,
       "selector": ".economy-metrics button",
       "conditions": "",
       "property": "border-radius",
@@ -5468,7 +5396,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 256,
+      "line": 252,
       "selector": ".economy-metrics button",
       "conditions": "",
       "property": "height",
@@ -5477,7 +5405,7 @@
     },
     {
       "file": "src/styles/workspace.css",
-      "line": 256,
+      "line": 252,
       "selector": ".economy-metrics button",
       "conditions": "@media (max-width:400px)",
       "property": "padding",

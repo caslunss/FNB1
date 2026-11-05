@@ -42,6 +42,8 @@ jobs:
           node tests/mobile-forms-login.browser.cjs
           node tests/analysis-selects.browser.cjs
           node tests/startup-debt.browser.cjs
+          node tests/ui-priority.browser.cjs
+          node tests/workspace-session.browser.cjs
           node tests/audit-ui.browser.cjs
           node tests/design-system.browser.cjs
           node tests/finance-migration.browser.cjs

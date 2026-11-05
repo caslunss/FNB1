@@ -8,4 +8,10 @@ const sources=[];function walk(directory){for(const entry of fs.readdirSync(dire
 assert.equal(sources.filter(file=>/\.(?:js|jsx)$/.test(file)).length,0,'Frontend must remain TypeScript/TSX');
 for(const file of sources.filter(file=>/\.(?:ts|tsx)$/.test(file))){const code=fs.readFileSync(file,'utf8');assert(!/@ts-(?:ignore|nocheck)|:\s*any\b|\bas\s+any\b/.test(code),file+' must not bypass type checking');assert(!/parseFromString\([^;]*['\"]text\/html['\"]/.test(code),file+' must render JSX without HTML parsing')}
 const config=JSON.parse(fs.readFileSync('tsconfig.json','utf8'));assert.equal(config.compilerOptions.strict,true);assert.equal(config.compilerOptions.allowJs,false);
+assert.equal(config.compilerOptions.noUnusedLocals,true,'unused imports/context bindings must stay out of the migrated graph');
+const entry=fs.readFileSync('src/finance/workspace.tsx','utf8');
+assert(!/function (?:draw|persist|atomic|openSheet|saveSheet|saveShopping)\b|\b(?:let|const) (?:S|CARDS|DEBTS|CART)\b/.test(entry),'workspace entry must only assemble and own a session');
+for(const file of sources.filter(file=>file.startsWith('src/finance/session/')&&file.endsWith('.tsx'))){
+ const code=fs.readFileSync(file,'utf8');assert(!/globalThis\.planFinanceChanged/.test(code),'domains must publish through their module contract');assert(!/\b(?:document|window)\.addEventListener\(/.test(code),'domain listeners must be owned by SessionScope');
+}
 console.log('PASS architecture: module-only component APIs, domain views, pure calculations and global style budget');

@@ -2,6 +2,8 @@
 
 Data: 05/11/2026. Base auditada: commit `0a3c874`. Este trabalho entrega diagnóstico e exemplos de correção; não altera a implementação nem publica uma versão.
 
+> Diagnóstico histórico dessa base. O resultado atualizado da decomposição do controlador, incluindo os arquivos que substituem as referências antigas a `workspace.tsx`, está em [Migração integral](MIGRACAO-INTEGRAL-CONTROLADOR-2026-11-05.md). Pendências de banco/provedores permanecem separadas desse trabalho.
+
 ## Escopo, evidência e limites
 
 O projeto é **React 19 + Vite 8**, com handlers Web Request/Response na Vercel, Supabase Auth/Postgres/Edge Functions e integrações externas. Não é Next.js. Há TypeScript estrito no frontend, mas os handlers de servidor continuam em JS/MJS.

@@ -5,7 +5,7 @@ html.login-arrival body{background:var(--main,#f3f1e9)!important}
 @media(prefers-reduced-motion:reduce){.login-expansion{display:none}}
 
 /* Motion owns entry transforms; suppress older CSS effects on the same surface. */
-html[data-motion-ready] :is(#accountOverlay[open],#profileMenu,#scrim .sheet){animation:none!important}
+html[data-motion-ready] :is(#accountOverlay[open],#scrim .sheet){animation:none!important}
 .smooth-state{min-width:0;display:flow-root}.smooth-state>div{display:flow-root;min-width:0}
 [data-tax-summary][data-motion-card-ready],[data-motion-card=interactive]{transform-origin:center;touch-action:manipulation}
 @media(prefers-reduced-motion:reduce){[data-motion-entering]{filter:none!important;backdrop-filter:none!important;transform:none!important}}

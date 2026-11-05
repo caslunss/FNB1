@@ -21,7 +21,7 @@ async function test(name,fn){await fn();passed++;console.log('PASS '+name);}
   let reads=0;const rows=Array.from({length:10000},(_,i)=>({get date(){reads++;return '2026-'+(i%2?'10':'11')+'-'+String(i%31+1).padStart(2,'0')},v:(i%999+1)/100}));
   const ctx={itemsInMonth:i=>rows.filter(x=>x.date.startsWith(['2026-10','2026-11'][i])),receiptsInMonth:i=>[],S:{m:1,items:rows,receipts:rows},chartMetric:'g',M:['Out/26','Nov/26'],monthKeyForIndex:i=>['2026-10','2026-11'][i],pad:n=>String(n).padStart(2,'0'),toCents:v=>Math.round(v*100),sum:r=>r.reduce((n,x)=>n+Math.round(x.v*100),0)/100};
   const source=between('function dailyBars(){','function contextActivity(){');
-  const old=source.replace(/const totals=new Map\s*\(\);[\s\S]*?const current=/,"const series=idx=>{const k=monthKeyForIndex(idx);return Array.from({length:days},(_,i)=>sum(source.filter(x=>x.date===`${k}-${pad(i+1)}`)));};\n const current=");
+  const old=source.replace(/const totals=new Map\s*(?:\(\))?;[\s\S]*?const current=/,"const series=idx=>{const k=monthKeyForIndex(idx);return Array.from({length:days},(_,i)=>sum(source.filter(x=>x.date===`${k}-${pad(i+1)}`)));};\n const current=");
   const c=fixtureContext(ctx);vm.runInContext(old,c);const before=vm.runInContext('dailyBars()',c),oldReads=reads;reads=0;
   vm.runInContext(source,c);assert.equal(renderFixture(vm.runInContext('dailyBars()',c)),renderFixture(before));assert.ok(reads<=rows.length*4);assert.ok(oldReads>reads*10);
   console.log(`  Leituras de data: ${oldReads} → ${reads} (10 mil registros).`);

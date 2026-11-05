@@ -1,3 +1,4 @@
+import {calendarKeys} from './calendar-keyboard';
 import CalendarIcon from './CalendarIcon.tsx';
 import {localDay} from '../services/dates.ts';
 import React, {useId, useRef, useState} from 'react';
@@ -24,7 +25,7 @@ export default function DatePicker(props:React.ComponentProps<'input'>) {
     const [y, m, d] = value.split('-').map(Number);
     setMonth(new Date(y, m - 1, d)); setSelected(field.value);
     setLimits({min: field.min, max: field.max});
-    dialog.current.showModal();
+    dialog.current.showModal();requestAnimationFrame(()=>dialog.current.querySelector<HTMLElement>('[aria-pressed=true]:not(:disabled),.date-picker-grid button:not(:disabled)')?.focus());
   }
   function choose(value:string) {
     const field = input.current;
@@ -44,7 +45,7 @@ export default function DatePicker(props:React.ComponentProps<'input'>) {
     {createPortal(<dialog ref={dialog} className="month-picker-dialog date-picker-dialog" aria-labelledby={title} onClose={() => trigger.current?.focus({preventScroll: true})} onClick={e => {if (e.target === dialog.current) dialog.current.close();}}>
       <header><h2 id={title}>Selecionar data</h2><Button type="button" className="ib" aria-label="Fechar calendário" onClick={() => dialog.current.close()}>×</Button></header>
       <FinanceOptionBar as="div" className="month-picker-year"><Button type="button" className="ib" aria-label="Mês anterior" disabled={!!limits.min && previous <= limits.min.slice(0, 7) + '-01'} onClick={() => setMonth(new Date(year, index - 1, 1))}>‹</Button><strong aria-live="polite">{month.toLocaleDateString('pt-BR', {month: 'long', year: 'numeric'})}</strong><Button type="button" className="ib" aria-label="Próximo mês" disabled={!!limits.max && next >= limits.max} onClick={() => setMonth(new Date(year, index + 1, 1))}>›</Button></FinanceOptionBar>
-      <div className="date-picker-grid" role="group" aria-label="Dias do mês">{['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(day => <span key={day} className="cal-weekday">{day}</span>)}
+      <div className="date-picker-grid" onKeyDown={event=>calendarKeys(event,7)} role="group" aria-label="Dias do mês">{['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(day => <span key={day} className="cal-weekday">{day}</span>)}
         {Array.from({length: offset}, (_, i) => <span key={`empty-${i}`} aria-hidden="true"/>)}
         {Array.from({length: days}, (_, i) => {const value = iso(year, index, i + 1); return <FinanceCalendarButton key={value} type="button" aria-label={new Date(year, index, i + 1).toLocaleDateString('pt-BR', {dateStyle: 'full'})} aria-pressed={value === selected} disabled={!!(limits.min && value < limits.min || limits.max && value > limits.max)} onClick={() => choose(value)}>{i + 1}</FinanceCalendarButton>;})}
       </div>

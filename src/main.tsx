@@ -1,5 +1,4 @@
 import MotionProvider from './components/motion/MotionProvider.tsx';
-import React from 'react';
 import './styles/app-entry.css';
 import {createRoot} from 'react-dom/client';
 import './services/auth.ts';

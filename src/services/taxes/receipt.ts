@@ -1,4 +1,4 @@
-import type {TaxInput,TaxItem} from '../../types/taxes';
+import type { TaxInput } from '../../types/taxes';
 import {moneyText,amount} from './domain.ts';
 export function documentMoney(token:string){
  const normalized=/^\d{1,3}(?:\.\d{3})+,\d{2}$/.test(token)?token.replaceAll('.',''):token;

@@ -1,4 +1,3 @@
-import React from 'react';
 import EconomyCard from './EconomyCard.tsx';
 import Investments from './Investments.tsx';
 
