@@ -8,7 +8,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
   const page=await context.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto(process.env.QA_BASE_URL||'http://127.0.0.1:5173');await page.waitForFunction(()=>window.planMobile&&document.documentElement.dataset.layoutReady);
   await page.locator('#calendarButton').click();await page.waitForSelector('#accountOverlay[open] .calendar-card');await page.keyboard.press('Escape');
-  await page.evaluate(()=>window.planMobile.open('settings'));await page.getByRole('tab',{name:'Layout',exact:true}).click();
+  await page.evaluate(()=>window.planMobile.open('settings'));await page.getByRole('button',{name:'Layout e preferências',exact:true}).click();
   assert.equal(await page.getByRole('switch',{name:'Mostrar Calendário no topo'}).count(),0);
   if(disabled)assert.equal(await page.evaluate(()=>JSON.parse(sessionStorage.getItem('plan12guest:plan12layout_v1')).sections.calendar),false,'legacy saved value is preserved');
   await page.keyboard.press('Escape');await page.reload();await page.waitForFunction(()=>window.planMobile);
