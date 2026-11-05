@@ -107,7 +107,7 @@ export function analysisView(context: WorkspaceViewContext) {
   return (
     <>
       {areaNavigation('analysis', 'Seções de análises')}
-      <div className="area-content">
+      <div className="area-content analysis-content">
         {areaViews.analysis === 'reports' ? (
           reportsView()
         ) : areaViews.analysis === 'carbon' ? (

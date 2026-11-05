@@ -20,6 +20,7 @@ function LoginThemeControl(){
   ]}/></div>;
 }
 export default function Login(){
+  const [imageReady,setImageReady]=useState(false);
   useEffect(()=>{
     initializeLayout();
     initialized ??= Promise.all([
@@ -31,7 +32,7 @@ export default function Login(){
     <div className="login-background-shade" aria-hidden="true"/>
     <LoginThemeControl/>
     <main className="login-shell login-fullscreen" aria-label="Acesso">
-      <section className="login-introduction"><h1>Mais equilíbrio.<br/>Mais possibilidades.</h1></section>
+      <section className="login-introduction"><img className={`login-center-art${imageReady?' is-ready':''}`} src="/assets/tefinance-logo.png" alt="TEFinance" width="160" height="160" onLoad={()=>setImageReady(true)} onError={()=>setImageReady(false)}/><h1>Mais equilíbrio.<br/>Mais possibilidades.</h1></section>
       <LoginEntrance className="login-access"><LoginItem className="login-access-heading"><div className="login-brand"><img src="./assets/tefinance-logo.png" alt="TEFinance" width="48" height="48"/></div><div><h2>Entre para organizar<br/>o que importa.</h2></div></LoginItem>
       <div className="login-actions"><LoginItem className="login-providers">
         <div id="googleButton" className="google-area"><button className="google-placeholder" type="button" disabled aria-describedby="loginStatus" title="Carregando login Google"><img src="./assets/google-g.png" alt="" width="20" height="20"/>Entrar com Google</button></div>

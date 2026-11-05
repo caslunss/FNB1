@@ -61,6 +61,7 @@ async function navigate(page, kind, value) {
   if (value==='v') await page.waitForSelector('.investment-tabs');
   if (value==='analysis:taxes') await page.waitForSelector('.tax-page');
   await page.waitForTimeout(450);
+  await page.waitForFunction(()=>!document.querySelector('#app')?.inert&&[...document.querySelectorAll('#app .ui-option-bar')].some(node=>node.getClientRects().length));
   await page.mouse.move(0,0);
 }
 (async()=>{

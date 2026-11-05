@@ -1,9 +1,9 @@
 /* Full viewport entry with a palette-tinted still image. */
 .auth-page{padding:0!important;display:block;background:var(--bg)!important}
 .auth-page #root{min-height:100dvh}
-.login-still-background{position:fixed;inset:0;z-index:-2;background:var(--bg) url('/assets/login-light.jpg') center/cover no-repeat}
+.login-still-background{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 20% 20%,color-mix(in srgb,var(--tint) 24%,transparent),transparent 65%),radial-gradient(ellipse at 80% 80%,color-mix(in srgb,var(--card) 80%,transparent),transparent 65%),var(--bg)}
 .login-still-background::after{content:"";position:absolute;inset:0;background:var(--bg);opacity:.55;mix-blend-mode:color}
-:root[data-theme=dark] .login-still-background{background-image:url('/assets/login-dark.jpg')}
+
 .auth-page .login-background-shade{background:color-mix(in srgb,var(--bg) 35%,transparent)}
 :root .auth-page .login-shell.login-fullscreen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-content:stretch;width:100%;max-width:none;min-height:100dvh;margin:0;padding:0;gap:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible;backdrop-filter:none}
 .auth-page .login-fullscreen::before,.auth-page .login-fullscreen::after{display:none}
@@ -36,3 +36,7 @@
 .auth-page .google-area{color-scheme:light;border-radius:var(--ui-radius-pill);overflow:hidden;isolation:isolate}
 .auth-page .google-area iframe{color-scheme:light;border:0}
 .auth-page .google-area:focus-within{box-shadow:0 0 0 2px var(--focus-color),0 0 0 4px var(--focus-halo)}
+
+.login-center-art{display:block;align-self:center;object-fit:contain;opacity:0;transition:opacity var(--motion-calm) var(--motion-ease);mask-image:radial-gradient(ellipse,black 45%,transparent 74%)}
+.login-center-art.is-ready{opacity:1}
+@media(prefers-reduced-motion:reduce){.login-center-art{transition:none}}

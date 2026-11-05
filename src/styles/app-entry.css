@@ -19,3 +19,5 @@
 @import "./universal-motion.css";
 @import "./notification-center.css";
 @import "./option-controls.css";
+
+@import "./startup.css";

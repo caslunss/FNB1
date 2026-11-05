@@ -145,7 +145,10 @@ function CustomSelect({label, nativeControl = false, value, defaultValue, onChan
     if (open) list.current?.querySelector(`[data-index="${active}"]`)?.scrollIntoView({block: 'nearest'});
   }, [open, active]);
 
-  const popup = <div ref={list} id={listId} popover={supported?'manual':undefined} role="listbox" aria-label={label || props['aria-label']} className={`finance-select-list ${OPTION_MENU_CLASSES}`} hidden={!supported&&!open}>
+  // CSS layout must never expose a closed native popover (or its portal fallback).
+  const popup = <div ref={list} id={listId} popover={supported?'manual':undefined} role="listbox" aria-label={label || props['aria-label']} className={`finance-select-list ${OPTION_MENU_CLASSES}`} hidden={!open}
+      // A list inside a field label must not activate the hidden select again.
+      onClick={event => event.preventDefault()}>
       {options.map((option, index) => <div key={option.value} id={`${uid}-${index}`} role="option"
         aria-selected={option.value === selected} aria-disabled={option.disabled || undefined}
         data-index={index} className={`finance-select-option${index === active ? ' is-active' : ''}`}

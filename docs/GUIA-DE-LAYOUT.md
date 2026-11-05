@@ -548,3 +548,13 @@ Atualização visual solicitada: esta seção substitui os acabamentos antigos d
 - A camada `app-controls` centraliza as prioridades necessárias para a biblioteca. `app-focus`, declarada antes, mantém precedência para os indicadores de teclado. Não acrescentar correções locais de padding, seleção ou material às páginas.
 
 Barras de opções longas podem rolar horizontalmente dentro da própria pílula; essa exceção de navegação não permite overflow horizontal da página. Não empilhar oito abas em uma cápsula alta.
+
+### Verificações de Análise e seleções — 05/11/2026
+
+A geometria de Análise reside em `tax-layout.css`: a grade separa as abas do conteúdo e controla os espaços entre cards, sem somar margens legadas. Passe o padding responsivo pela API de `GlassCard`, pois a biblioteca define esse valor inline. Ações de importar/adicionar/atualizar são uma toolbar; filtros continuam em `FinanceOptionBar`.
+
+No `FinanceSelect`, mantenha `hidden` ligado ao estado fechado em ambos os modos. Nunca aplique `display` indiscriminadamente a `[popover]`; use o estado aberto. O clique na lista não deve provocar a ativação implícita do seletor oculto por um `label`. A regressão específica está em `tests/analysis-selects.browser.cjs`.
+
+### Abertura e login — 05/11/2026
+
+O loading acompanha a preparação real de acesso/dados, sem atrasos decorativos nem alegação de verificar provedores externos. Falhas preservam dados e permitem recarregar. Fundos do login derivam dos tokens do tema; arte PNG usa fade ligado ao carregamento e respeita movimento reduzido. Adicionar dívida abre diretamente o formulário, sem menu intermediário.

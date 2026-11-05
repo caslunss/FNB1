@@ -1,0 +1,192 @@
+{
+  "date": "2026-11-05",
+  "browser": "Chromium",
+  "comparison": "development vs production build",
+  "viewportWidths": [
+    320,
+    390,
+    1440
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "comparisons": 42,
+  "differences": 0,
+  "desktopRecapturedAfterHistoryColumnFix": [
+    "1440-light-page-taxes",
+    "1440-light-tax-bank",
+    "1440-dark-page-taxes",
+    "1440-dark-tax-bank"
+  ],
+  "cases": [
+    {
+      "key": "320-light-page-taxes",
+      "same": true
+    },
+    {
+      "key": "320-light-page-reports",
+      "same": true
+    },
+    {
+      "key": "320-light-page-carbon",
+      "same": true
+    },
+    {
+      "key": "320-light-sheet-select",
+      "same": true
+    },
+    {
+      "key": "320-light-search-filters",
+      "same": true
+    },
+    {
+      "key": "320-light-tax-editor",
+      "same": true
+    },
+    {
+      "key": "320-light-tax-bank",
+      "same": true
+    },
+    {
+      "key": "320-dark-page-taxes",
+      "same": true
+    },
+    {
+      "key": "320-dark-page-reports",
+      "same": true
+    },
+    {
+      "key": "320-dark-page-carbon",
+      "same": true
+    },
+    {
+      "key": "320-dark-sheet-select",
+      "same": true
+    },
+    {
+      "key": "320-dark-search-filters",
+      "same": true
+    },
+    {
+      "key": "320-dark-tax-editor",
+      "same": true
+    },
+    {
+      "key": "320-dark-tax-bank",
+      "same": true
+    },
+    {
+      "key": "390-light-page-taxes",
+      "same": true
+    },
+    {
+      "key": "390-light-page-reports",
+      "same": true
+    },
+    {
+      "key": "390-light-page-carbon",
+      "same": true
+    },
+    {
+      "key": "390-light-sheet-select",
+      "same": true
+    },
+    {
+      "key": "390-light-search-filters",
+      "same": true
+    },
+    {
+      "key": "390-light-tax-editor",
+      "same": true
+    },
+    {
+      "key": "390-light-tax-bank",
+      "same": true
+    },
+    {
+      "key": "390-dark-page-taxes",
+      "same": true
+    },
+    {
+      "key": "390-dark-page-reports",
+      "same": true
+    },
+    {
+      "key": "390-dark-page-carbon",
+      "same": true
+    },
+    {
+      "key": "390-dark-sheet-select",
+      "same": true
+    },
+    {
+      "key": "390-dark-search-filters",
+      "same": true
+    },
+    {
+      "key": "390-dark-tax-editor",
+      "same": true
+    },
+    {
+      "key": "390-dark-tax-bank",
+      "same": true
+    },
+    {
+      "key": "1440-light-page-taxes",
+      "same": true
+    },
+    {
+      "key": "1440-light-page-reports",
+      "same": true
+    },
+    {
+      "key": "1440-light-page-carbon",
+      "same": true
+    },
+    {
+      "key": "1440-light-sheet-select",
+      "same": true
+    },
+    {
+      "key": "1440-light-search-filters",
+      "same": true
+    },
+    {
+      "key": "1440-light-tax-editor",
+      "same": true
+    },
+    {
+      "key": "1440-light-tax-bank",
+      "same": true
+    },
+    {
+      "key": "1440-dark-page-taxes",
+      "same": true
+    },
+    {
+      "key": "1440-dark-page-reports",
+      "same": true
+    },
+    {
+      "key": "1440-dark-page-carbon",
+      "same": true
+    },
+    {
+      "key": "1440-dark-sheet-select",
+      "same": true
+    },
+    {
+      "key": "1440-dark-search-filters",
+      "same": true
+    },
+    {
+      "key": "1440-dark-tax-editor",
+      "same": true
+    },
+    {
+      "key": "1440-dark-tax-bank",
+      "same": true
+    }
+  ]
+}

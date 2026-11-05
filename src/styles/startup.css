@@ -1,0 +1,7 @@
+.startup-screen{position:fixed;inset:0;z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--ui-space-5);padding:var(--ui-space-6);box-sizing:border-box;background:var(--bg);color:var(--lb);text-align:center}
+.startup-screen img{object-fit:contain}
+.startup-progress{width:120px;height:4px;border-radius:var(--ui-radius-pill);background:var(--tint);animation:startup-pulse var(--motion-skeleton) var(--motion-ease) infinite alternate}
+@keyframes startup-pulse{from{opacity:.3;transform:scaleX(.5)}to{opacity:1;transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.startup-progress{animation:none}}
+
+.startup-content{display:contents}

@@ -93,7 +93,7 @@ export function vD(context: WorkspaceViewContext) {
       </section>
       <div className="row section-heading">
         <h2>{'Suas dívidas'}</h2>
-        <button className="btn t" data-a="sheet" data-k="d">
+        <button className="btn t" type="button" aria-label="Adicionar dívida" data-direct-sheet="" data-a="sheet" data-k="d">
           {ICON.plus}
         </button>
       </div>

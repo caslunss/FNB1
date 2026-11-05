@@ -113,7 +113,10 @@
 }
 
 /* Unlayered geometry for native listbox rows; no library surface is nested here. */
- .ui-option-menu{display:grid;gap:var(--ui-control-gap);padding:var(--ui-control-padding)}
+ /* A display rule on every popover overrides the browser's closed state. */
+ .ui-option-menu{gap:var(--ui-control-gap);padding:var(--ui-control-padding)}
+ .ui-option-menu:not([popover]):not([hidden]){display:grid}
+ .ui-option-menu:popover-open{display:grid}
  .ui-option-menu .finance-select-option{
   min-height:var(--ui-touch-target);gap:var(--ui-control-gap);padding:var(--ui-space-2) var(--ui-space-4);
   border-radius:var(--ui-radius-pill);font:var(--ui-control-font-weight) var(--ui-control-font-size)/1.4 var(--ui-font);

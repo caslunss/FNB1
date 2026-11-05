@@ -338,6 +338,7 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
     tag === 'button' &&
     (node.getAttribute('data-a') === 'menu' ||
       (node.getAttribute('data-a') === 'sheet' &&
+        !node.hasAttribute('data-direct-sheet') &&
         !node.hasAttribute('data-income-kind') &&
         !node.hasAttribute('data-id') &&
         !node.classList.contains('category-line') &&

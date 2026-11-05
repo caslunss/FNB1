@@ -1,17 +1,45 @@
-/* Mobile analysis: centered period and one predictable action row. */
+/* Analysis owns its grid gaps; legacy card margins must not add a second gap. */
+#app.layout-f{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--ui-space-5)}
+.analysis-content{--analysis-gap:var(--ui-space-5);gap:var(--analysis-gap)}
+.analysis-content>.card,.analysis-content .tax-page>.card,.analysis-content .tax-charts>.card{margin:0}
+.analysis-content>.card{padding:var(--content-card-padding)}
+.tax-page{--analysis-kpi-padding:var(--ui-space-5);display:grid;gap:var(--analysis-gap,var(--ui-space-5));min-width:0}
+.tax-page>p{margin:0;line-height:1.6}
+.tax-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;min-width:0}
+.tax-toolbar .tax-toolbar-actions{justify-content:center;max-width:100%}
+.tax-toolbar .lg-button__label{min-width:0;white-space:normal;text-align:center}
+.tax-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:1fr;gap:var(--ui-space-4);align-items:stretch}
+.tax-kpis [data-tax-summary]{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;min-width:0;min-height:116px;box-sizing:border-box;cursor:pointer}
+.tax-kpis [data-tax-summary]:focus-visible{outline:2px solid var(--tint);outline-offset:4px}
+.tax-kpis [data-tax-summary]>.foot{display:block;line-height:1.5;overflow-wrap:anywhere}
+.tax-kpis strong{display:block;font-size:clamp(22px,2vw,32px);margin-top:var(--ui-space-3);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.tax-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--analysis-gap,var(--ui-space-5));min-width:0}
+.tax-history-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--ui-space-4);margin-bottom:var(--ui-space-4);min-width:0}
+.tax-history-heading>h2{margin:0}
+.tax-history-heading>.tax-filters{max-width:100%;min-width:0}
+@media(min-width:700px){
+ .tax-history .tax-purchase{grid-template-columns:minmax(0,1fr) minmax(112px,160px) 100px}
+ .tax-history .tax-purchase>div:nth-child(2){text-align:right;font-variant-numeric:tabular-nums}
+ .tax-history .tax-purchase>button{width:100%}
+}
+@media(max-width:1099px){.tax-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:699px){
- .tax-page{gap:var(--ui-space-4)}
- .tax-page>p{margin:0;line-height:1.6}
- .tax-page>.tax-toolbar{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:var(--ui-space-4);width:100%;min-width:0}
+ #app.layout-f{gap:var(--ui-space-4)}
+ .analysis-content{--analysis-gap:var(--ui-space-4)}
+ .tax-page{--analysis-kpi-padding:var(--ui-space-4)}
+ .tax-page>.tax-toolbar{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:var(--ui-space-4);width:100%}
  body:not(.auth-page) .tax-toolbar>.month-selector.pill.month-selector-labeled{justify-self:center;margin-inline:auto}
- .tax-page>.tax-toolbar>.tax-actions{width:100%;min-width:0}
- body:not(.auth-page) .tax-toolbar>.tax-actions>.lg-button{width:auto;min-width:0;min-height:var(--ui-touch-target);margin:0;padding:10px var(--ui-space-2)}
- body:not(.auth-page) .tax-toolbar>.tax-actions>.tax-add-analysis{width:44px;height:44px;min-width:var(--ui-touch-target);padding:0;font-size:22px}
- .tax-toolbar .lg-button__label{min-width:0;white-space:normal;text-align:center}
- .tax-kpis{align-items:stretch;gap:var(--ui-space-3)}
- .tax-kpis [data-tax-summary]{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;min-height:116px;padding:var(--ui-space-4);box-sizing:border-box}
- .tax-kpis [data-tax-summary]>.foot{line-height:1.5;overflow-wrap:anywhere}
- .tax-charts>.card,.tax-history.card,.tax-bank.card{padding:var(--ui-space-5)!important;box-sizing:border-box;max-width:100%}
+ .tax-toolbar>.tax-toolbar-actions{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);width:100%}
+ .tax-toolbar-actions>.lg-button:not(.tax-add-analysis){width:100%;align-self:stretch}
+ .tax-toolbar-actions>.tax-add-analysis{justify-self:center;align-self:center}
+ .tax-kpis{gap:var(--ui-space-3)}
+ .tax-kpis strong{font-size:1.375rem}
+ .tax-kpis .foot{font-size:.75rem}
+ .tax-charts{grid-template-columns:minmax(0,1fr)}
+ .tax-history-heading>.tax-filters{width:100%}
+}
+/* Expanded bank/editor layouts retain shared fields and action buttons. */
+@media(max-width:699px){
  .tax-bank>.tax-actions{align-items:center;gap:10px}
  .tax-bank>.tax-actions>.te-text-field{flex:1 1 100%;min-width:0}
  .tax-bank>.tax-actions>.lg-button{flex:1 1 120px;min-width:0}
