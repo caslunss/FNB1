@@ -1,7 +1,7 @@
 {
-  "count": 601,
+  "count": 604,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "7addf25fbf1a1302d190546b31460a679f154791078bf0a448f0b4a0abcab5f7",
+  "sha256": "9820f46d4cb672e195a7fc258da02fddd1ae6702002b0e4cc39f6649ca967801",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -18,7 +18,7 @@
       "selector": "body:not(.auth-page) .navigation-actions",
       "conditions": "@media (max-width:1024px)",
       "property": "inset",
-      "value": "auto max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))",
+      "value": "var(--dock-inset,auto max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)))",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -36,7 +36,7 @@
       "selector": "body:not(.auth-page) .navigation-actions",
       "conditions": "@media (max-width:1024px)",
       "property": "width",
-      "value": "calc(100% - max(12px,env(safe-area-inset-right)) - max(12px,env(safe-area-inset-left)))",
+      "value": "var(--dock-width,calc(100% - max(12px,env(safe-area-inset-right)) - max(12px,env(safe-area-inset-left))))",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -45,7 +45,7 @@
       "selector": "body:not(.auth-page) .navigation-actions",
       "conditions": "@media (max-width:1024px)",
       "property": "max-width",
-      "value": "380px",
+      "value": "var(--dock-max-width,380px)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -54,7 +54,7 @@
       "selector": "body:not(.auth-page) .navigation-actions",
       "conditions": "@media (max-width:1024px)",
       "property": "margin",
-      "value": "0 auto",
+      "value": "var(--dock-margin,0 auto)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -207,7 +207,7 @@
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "flex",
-      "value": "1 1 0",
+      "value": "var(--dock-button-flex,1 1 0)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -225,7 +225,7 @@
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "width",
-      "value": "auto",
+      "value": "var(--dock-button-width,auto)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -374,7 +374,34 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 32,
+      "line": 37,
+      "selector": "html[data-dock-style=pinned] .workspace-main.wrap",
+      "conditions": "",
+      "property": "padding-bottom",
+      "value": "calc(100px + env(safe-area-inset-bottom))",
+      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
+    },
+    {
+      "file": "src/styles/bottom-navigation.css",
+      "line": 54,
+      "selector": "html[data-dock-style=pinned] body:not(.auth-page) .navigation-actions[hidden],\nhtml[data-dock-style=pinned] body:not(.auth-page):has(dialog[open],#scrim:not([hidden])) .navigation-actions,\nhtml[data-dock-style=pinned] body.mobile-keyboard-open .navigation-actions",
+      "conditions": "",
+      "property": "display",
+      "value": "none",
+      "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
+    },
+    {
+      "file": "src/styles/bottom-navigation.css",
+      "line": 56,
+      "selector": "html[data-dock-style=pinned] .workspace-main.wrap",
+      "conditions": "@media (max-width:699px)",
+      "property": "padding-bottom",
+      "value": "calc(var(--mobile-tab-height,70px) + 98px + env(safe-area-inset-bottom))",
+      "reason": "Responsividade: manter a disposição existente no breakpoint correspondente."
+    },
+    {
+      "file": "src/styles/bottom-navigation.css",
+      "line": 60,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "@media (min-width:700px) and (max-width:1024px)",
       "property": "padding-bottom",
@@ -383,7 +410,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 37,
+      "line": 65,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar,\n body:not(.auth-page) .navigation-actions #tabs button,\n body:not(.auth-page) .navigation-actions #tabs button svg",
       "conditions": "@media (max-width:1024px) and (prefers-reduced-motion:reduce)",
       "property": "transition",
@@ -392,7 +419,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 38,
+      "line": 66,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button svg",
       "conditions": "@media (max-width:1024px) and (prefers-reduced-motion:reduce)",
       "property": "transform",
@@ -401,7 +428,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 56,
+      "line": 84,
       "selector": "body:not(.auth-page) .navigation-actions[hidden],\n body:not(.auth-page):has(dialog[open]) .navigation-actions,\n body:not(.auth-page):has(#scrim:not([hidden])) .navigation-actions",
       "conditions": "@media (max-width:1024px)",
       "property": "display",
@@ -4446,7 +4473,7 @@
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "border-radius",
-      "value": "var(--ui-radius-pill)",
+      "value": "var(--ui-bar-radius,var(--ui-radius-pill))",
       "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
     },
     {
@@ -4518,7 +4545,7 @@
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "padding",
-      "value": "var(--ui-control-padding)",
+      "value": "var(--ui-bar-padding,var(--ui-control-padding))",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
@@ -4527,7 +4554,7 @@
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "height",
-      "value": "auto",
+      "value": "var(--ui-bar-height,auto)",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
@@ -4536,7 +4563,7 @@
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "min-height",
-      "value": "calc(var(--ui-touch-target) + 2 * var(--ui-control-padding) + 2 * var(--ui-control-border-width))",
+      "value": "var(--ui-bar-min-height,calc(var(--ui-touch-target) + 2 * var(--ui-control-padding) + 2 * var(--ui-control-border-width)))",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
@@ -4761,7 +4788,7 @@
       "selector": ".navigation-actions .ui-option-bar .ui-button",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "flex",
-      "value": "1 1 0",
+      "value": "var(--dock-button-flex,1 1 0)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -4770,7 +4797,7 @@
       "selector": ".navigation-actions .ui-option-bar .ui-button",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "width",
-      "value": "auto",
+      "value": "var(--dock-button-width,auto)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {

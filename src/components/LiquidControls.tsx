@@ -41,7 +41,7 @@ export const FinanceOptionBar=React.forwardRef<HTMLElement,React.ComponentPropsW
   const placed=useRef<{selected:HTMLElement;width:number}|null>(null);
   React.useImperativeHandle(forwarded,()=>host.current);
   function revealSelection(){
-    const node=host.current,selected=node?.querySelector<HTMLElement>('[aria-selected=true],[aria-pressed=true],[aria-current=page]');
+    const node=host.current,selected=node?.querySelector<HTMLElement>('[aria-selected=true],[aria-pressed=true],[aria-current=page],label:has(>input[type=radio]:checked)');
     if(!node||!selected)return;
     const width=node.clientWidth;
     if(placed.current?.selected===selected&&placed.current.width===width)return;

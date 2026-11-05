@@ -24,7 +24,7 @@
   box-sizing:border-box;min-width:0;max-width:100%;
   background:var(--ui-bar-fill)!important;
   border:var(--ui-control-border-width) solid var(--ui-control-border)!important;
-  border-radius:var(--ui-radius-pill)!important;
+  border-radius:var(--ui-bar-radius,var(--ui-radius-pill))!important;
   box-shadow:var(--ui-control-shadow)!important;
   backdrop-filter:blur(var(--ui-control-blur)) saturate(1.12)!important;
   -webkit-backdrop-filter:blur(var(--ui-control-blur)) saturate(1.12)!important;
@@ -32,8 +32,8 @@
  }
  .ui-option-bar{
   display:flex!important;flex-wrap:nowrap!important;align-items:center!important;
-  gap:var(--ui-control-gap)!important;padding:var(--ui-control-padding)!important;
-  width:fit-content;height:auto!important;min-height:calc(var(--ui-touch-target) + 2 * var(--ui-control-padding) + 2 * var(--ui-control-border-width))!important;
+  gap:var(--ui-control-gap)!important;padding:var(--ui-bar-padding,var(--ui-control-padding))!important;
+  width:fit-content;height:var(--ui-bar-height,auto)!important;min-height:var(--ui-bar-min-height,calc(var(--ui-touch-target) + 2 * var(--ui-control-padding) + 2 * var(--ui-control-border-width)))!important;
   isolation:isolate;
   overflow-x:auto;overflow-y:hidden;scrollbar-width:none;touch-action:pan-x pan-y;
  }
@@ -55,9 +55,9 @@
  .ui-button::before,.ui-button::after{content:none!important}
  :is(.ui-option,.ui-option-bar .ui-button){
   flex:0 0 auto!important;touch-action:pan-x pan-y!important;--lg-glass-fill:transparent;
-  --ui-button-fill:transparent;--ui-button-shadow:none;--ui-button-border:transparent;--ui-button-filter:none;
+  --ui-button-fill:transparent;--ui-button-shadow:var(--ui-option-focus-shadow,none);--ui-button-border:transparent;--ui-button-filter:none;
  }
- :is(.ui-button,.ui-option-bar button):is([aria-pressed=true],[aria-selected=true],[aria-current=page]){
+ :is(.ui-button,.ui-option-bar button):is([aria-pressed=true],[aria-selected=true],[aria-current=page],:has(>input[type=radio]:checked)){
   --lg-fg:var(--ui-control-selected-text);--lg-fg-muted:var(--ui-control-selected-muted);
   --lb:var(--ui-control-selected-text);--lb2:var(--ui-control-selected-muted);
   --lg-glass-fill:var(--ui-control-selected);
@@ -94,21 +94,21 @@
  .te-action-menu .lg-menu__label{min-width:0;white-space:normal;overflow-wrap:anywhere}
  .te-action-menu .lg-menu__item:focus-visible{--ui-button-fill:var(--ui-control-hover)}
  @media(hover:hover) and (pointer:fine){
-  :is(.ui-button,.te-action-menu .lg-menu__item):not(:disabled):not([aria-disabled=true]):not([aria-pressed=true]):not([aria-selected=true]):not([aria-current=page]):hover{--ui-button-fill:var(--ui-control-hover)}
+  :is(.ui-button,.te-action-menu .lg-menu__item):not(:disabled):not([aria-disabled=true]):not([aria-pressed=true]):not([aria-selected=true]):not([aria-current=page]):not(:has(>input[type=radio]:checked)):hover{--ui-button-fill:var(--ui-control-hover)}
  }
  @media(max-width:1024px){
   .navigation-actions .ui-option-bar{flex-wrap:nowrap}
-  .navigation-actions .ui-option-bar .ui-button{flex:1 1 0!important;width:auto!important}
+  .navigation-actions .ui-option-bar .ui-button{flex:var(--dock-button-flex,1 1 0)!important;width:var(--dock-button-width,auto)!important}
   .navigation-actions[data-compact=true] .ui-option-bar{--ui-control-padding:2px;min-height:50px!important}
  }
  @media(prefers-reduced-transparency:reduce){
   :is(.ui-option-bar,.ui-button,.te-action-menu .lg-menu){--ui-bar-fill:var(--card);--ui-control-fill:var(--card);--ui-control-blur:0px;--ui-button-filter:none}
-  .ui-option-bar .ui-option:not([aria-selected=true]):not([aria-pressed=true]):not([aria-current=page]){--ui-button-fill:transparent}
-  .ui-button:is([aria-pressed=true],[aria-selected=true],[aria-current=page]){--ui-button-fill:var(--ui-control-selected)}
+  .ui-option-bar .ui-option:not([aria-selected=true]):not([aria-pressed=true]):not([aria-current=page]):not(:has(>input[type=radio]:checked)){--ui-button-fill:transparent}
+  .ui-button:is([aria-pressed=true],[aria-selected=true],[aria-current=page],:has(>input[type=radio]:checked)){--ui-button-fill:var(--ui-control-selected)}
  }
  @media(forced-colors:active){
   :is(.ui-button,.ui-option-bar){--ui-control-border:CanvasText;--ui-button-border:CanvasText;--ui-button-fill:Canvas;--ui-bar-fill:Canvas;--ui-button-color:CanvasText;--ui-button-filter:none;--ui-control-blur:0px}
-  .ui-button:is([aria-pressed=true],[aria-selected=true],[aria-current=page]){--ui-button-fill:Highlight;--ui-button-color:HighlightText;forced-color-adjust:none}
+  .ui-button:is([aria-pressed=true],[aria-selected=true],[aria-current=page],:has(>input[type=radio]:checked)){--ui-button-fill:Highlight;--ui-button-color:HighlightText;forced-color-adjust:none}
  }
 }
 

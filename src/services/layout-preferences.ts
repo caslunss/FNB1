@@ -1,7 +1,8 @@
 export type Theme='light'|'dark';
+export type DockStyle='pinned'|'default'|'mini';
 export interface ThemePalette {accent:string;background:string;surface:string}
 export interface ThemePreferences extends ThemePalette {opacity:number;blur:number;dim?:number}
-export interface LayoutPreferences {version:number;palette:string;intensity:number;circularProgress:boolean;indicators:Record<string,boolean>;sections:Record<string,boolean>;light:ThemePreferences;dark:ThemePreferences&{dim:number}}
+export interface LayoutPreferences {version:number;palette:string;intensity:number;dockStyle:DockStyle;circularProgress:boolean;indicators:Record<string,boolean>;sections:Record<string,boolean>;light:ThemePreferences;dark:ThemePreferences&{dim:number}}
 const KEY='plan12layout_v1';
 export const PALETTES=Object.freeze([
  {id:'aged-white',name:'Branco envelhecido',season:'Essencial',light:{accent:'#557789',background:'#e7e5de',surface:'#f7f4ec'},dark:{accent:'#bac3c5',background:'#17191a',surface:'#272a2b'}},
@@ -12,14 +13,20 @@ export const PALETTES=Object.freeze([
  {id:'winter-lavender',name:'Lavanda',season:'Inverno',light:{accent:'#77718d',background:'#e3e1eb',surface:'#f1eff8'},dark:{accent:'#bfb8d5',background:'#19181f',surface:'#2c2936'}},
  {id:'winter-sage',name:'Sálvia',season:'Inverno',light:{accent:'#5c7c76',background:'#e0e7e2',surface:'#eff5ef'},dark:{accent:'#acc8bf',background:'#151c1a',surface:'#25312c'}},
 ]);
-export const DEFAULT_LAYOUT:LayoutPreferences=Object.freeze({version:1,palette:'aged-white',intensity:3,circularProgress:true,indicators:Object.freeze({}),sections:Object.freeze({credit:true,carbon:true,calendar:true}),
+export const DEFAULT_LAYOUT:LayoutPreferences=Object.freeze({version:1,palette:'aged-white',intensity:3,dockStyle:'default',circularProgress:true,indicators:Object.freeze({}),sections:Object.freeze({credit:true,carbon:true,calendar:true}),
   light:Object.freeze({accent:'#557789',background:'#e7e5de',surface:'#f7f4ec',opacity:66,blur:6}),
   dark:Object.freeze({accent:'#bac3c5',background:'#17191a',surface:'#272a2b',opacity:64,blur:16,dim:70}),
 });
 const copy=<T>(x:T):T=>JSON.parse(JSON.stringify(x));
 const bounded=(x:number|undefined,lo:number,hi:number,fallback:number)=>Number.isFinite(x)?Math.max(lo,Math.min(hi,Math.round(x!))):fallback;
+export function normalizeDockStyle(value:unknown,legacySize?:unknown):DockStyle{
+  if(value==='pinned'||value==='default'||value==='mini')return value;
+  if(value===undefined&&(legacySize==='mini'||legacySize==='Mini'))return 'mini';
+  return 'default';
+}
 export function normalizeLayout(input?:Partial<LayoutPreferences>|null):LayoutPreferences{
   const next=copy(DEFAULT_LAYOUT);if(!input||input.version!==1)return next;
+  next.dockStyle=normalizeDockStyle(input.dockStyle,'dockSize' in input?input.dockSize:undefined);
   const palette=PALETTES.find(x=>x.id===input.palette)||PALETTES[0];next.palette=palette.id;
   next.intensity=bounded(input.intensity,1,10,next.intensity);
   next.sections={credit:typeof input.sections?.credit==='boolean'?input.sections.credit:true,carbon:typeof input.sections?.carbon==='boolean'?input.sections.carbon:true,calendar:typeof input.sections?.calendar==='boolean'?input.sections.calendar:true};
@@ -78,6 +85,7 @@ export const subscribeLayout=(listener:()=>void)=>{listeners.add(listener);retur
 function apply(){if(typeof document==='undefined')return;const theme=document.documentElement.dataset.theme==='dark'?'dark':'light';
   for(const [key,value]of Object.entries(layoutTokens(current,theme)))document.documentElement.style.setProperty(key,value);
   document.documentElement.dataset.layoutReady='true';
+  document.documentElement.dataset.dockStyle=current.dockStyle;
 }
 function fixedGlass(next:LayoutPreferences){
   return {...next,intensity:DEFAULT_LAYOUT.intensity,
@@ -108,7 +116,9 @@ function storedPreferences(next:LayoutPreferences,raw:string|null){
 }
 export function saveLayout(next:LayoutPreferences){const checked=normalizeLayout(next);const storage=window.planAuth?.storage;if(!storage)throw Error('Aguarde a abertura da sua conta.');storage.setItem(KEY,JSON.stringify(storedPreferences(checked,storage.getItem(KEY))));publish(checked);}
 export function selectPalette(id:string){if(!PALETTES.some(p=>p.id===id))throw Error('Paleta inválida.');saveLayout({...copy(current),palette:id});}
-export function resetLayout(theme:Theme){const next=copy(current);Object.assign(next[theme],copy(DEFAULT_LAYOUT[theme]));next.intensity=DEFAULT_LAYOUT.intensity;next.palette=DEFAULT_LAYOUT.palette;next.circularProgress=true;next.indicators={};saveLayout(next);}
+export function resetLayout(theme:Theme){const next=copy(current);Object.assign(next[theme],copy(DEFAULT_LAYOUT[theme]));next.intensity=DEFAULT_LAYOUT.intensity;next.palette=DEFAULT_LAYOUT.palette;next.dockStyle=DEFAULT_LAYOUT.dockStyle;next.circularProgress=true;next.indicators={};saveLayout(next);}
+
+export function setDockStyle(style:DockStyle){if(!['pinned','default','mini'].includes(style))throw Error('Estilo da dock inválido.');saveLayout({...copy(current),dockStyle:style});}
 
 export function setCircularProgress(enabled:boolean){if(typeof enabled!=='boolean')throw Error('Preferência inválida.');saveLayout({...copy(current),circularProgress:enabled});}
 export function setIndicatorVisible(key:string,enabled:boolean){if(typeof key!=='string'||!key||key.length>180||typeof enabled!=='boolean')throw Error('Indicador inválido.');saveLayout({...copy(current),indicators:{...current.indicators,[key]:enabled}});}
