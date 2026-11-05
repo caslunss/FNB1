@@ -1,3 +1,4 @@
+import {APP_VERSION_LABEL} from '../../version';
 import {useEffect,useRef,useState,type ReactNode} from 'react';
 import {FinanceGlassButton,FinanceGlassCard} from '../LiquidControls';
 import PageTransition from '../motion/PageTransition';
@@ -23,7 +24,7 @@ export default function Settings({initialScreen,isVisitor,identity,username,sync
    <h2 id="accountOverlayTitle" ref={title} tabIndex={-1}>{SETTINGS_TITLES[screen]}</h2><span aria-hidden="true"/>
   </header>
   <div className="settings-page-viewport"><PageTransition routeKey={screen} direction={direction} initial={false} className="settings-navigation-content">
-   {screen==='home'?<nav className="settings-main-menu grid gap-6" aria-label="Configurações">{groups.filter(group=>!isVisitor||group.items[0]!=='account').map(group=><section key={group.label} aria-label={group.label}><h3 className="settings-group-title">{group.label}</h3><FinanceGlassCard className="settings-list-group" padding="0px">{group.items.map(row)}</FinanceGlassCard></section>)}</nav>:screen==='account'?<AccountTab identity={identity} username={username}/>:screen==='layout'?<PreferencesTab/>:screen==='notifications'?<NotificationsTab/>:screen==='connections'?<DataConnectionsTab sync={sync} data={data} connections={connections}/>:<SecurityTab/>}
+   {screen==='home'?<nav className="settings-main-menu grid gap-6" aria-label="Configurações">{groups.filter(group=>!isVisitor||group.items[0]!=='account').map(group=><section key={group.label} aria-label={group.label}><h3 className="settings-group-title">{group.label}</h3><FinanceGlassCard className="settings-list-group" padding="0px">{group.items.map(row)}</FinanceGlassCard></section>)}<p className="foot">{APP_VERSION_LABEL}</p></nav>:screen==='account'?<AccountTab identity={identity} username={username}/>:screen==='layout'?<PreferencesTab/>:screen==='notifications'?<NotificationsTab/>:screen==='connections'?<DataConnectionsTab sync={sync} data={data} connections={connections}/>:<SecurityTab/>}
   </PageTransition></div>
  </section>;
 }
