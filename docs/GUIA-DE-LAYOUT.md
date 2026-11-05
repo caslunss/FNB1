@@ -6,6 +6,8 @@ Este guia registra o padrão atual da interface. Deve ser consultado antes de ca
 
 ## Direção visual
 
+Task C: o calendário permanece sempre disponível pelo atalho superior. A opção de ocultá-lo foi removida de Configurações; valores antigos de visibilidade são conservados no armazenamento, mas não condicionam a navegação nem o botão.
+
 Após o login, a inicialização exibe apenas o guaxinim transparente em WebP, com descrição de carregamento para leitores de tela. A tela acompanha o tema e desaparece quando `auth-pending` é removido pelo fluxo existente, inclusive em caso de falha de inicialização.
 
 No mobile, os títulos de Resumo e das demais áreas desaparecem gradualmente nos primeiros 64 px de rolagem. A linha vazia é recolhida após 96 px e restaurada abaixo de 24 px, evitando oscilações causadas pela mudança de altura. O atalho de teclado para o conteúdo mantém o título visível ao receber foco. Com movimento reduzido, não aplicar a transformação do título. No desktop, o cabeçalho acompanha a rolagem normal da página. Não aplicar backdrop-filter no ancestral da barra inferior fixa: isso altera seu bloco de referência.

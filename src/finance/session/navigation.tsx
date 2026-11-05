@@ -123,7 +123,7 @@ export function createNavigation(workspace: NavigationContext) {
         ? 'profile'
         : workspace.S.tab === 'x'
           ? 'settings'
-          : workspace.S.tab === 'c' && getLayout().sections.calendar
+          : workspace.S.tab === 'c'
             ? 'calendar'
             : null;
     if (['u', 'x', 'c'].includes(workspace.S.tab)) workspace.S.tab = 'r';
@@ -293,7 +293,7 @@ export function createNavigation(workspace: NavigationContext) {
 
     const calendarButton = workspace.$('#calendarButton');
     if (calendarButton) {
-      calendarButton.hidden = !getLayout().sections.calendar;
+      calendarButton.hidden = false;
       calendarButton.setAttribute(
         'aria-expanded',
         String(

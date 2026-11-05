@@ -1,7 +1,6 @@
 import { registerSplit as migrated_registerSplit } from '../controllers/planning';
 import { isSafeInteger } from '../../services/type-guards.ts';
 import { core_splitShares } from '../calculations.ts';
-import { getLayout } from '../../services/layout-preferences.ts';
 import type { WorkspaceRuntime } from './contracts';
 
 type SplitFormContext = Pick<
@@ -151,10 +150,8 @@ export function initializeSplitForm(workspace: SplitFormContext) {
     const ui = (e.target as HTMLElement).closest<HTMLElement>('[data-ui]');
     if (ui) {
       if (ui.dataset.ui === 'calendar') {
-        if (getLayout().sections.calendar) {
-          workspace.S.tab = 'c';
-          workspace.draw();
-        }
+        workspace.S.tab = 'c';
+        workspace.draw();
       } else if (ui.dataset.ui === 'theme') workspace.toggleTheme();
       return;
     }
