@@ -17,6 +17,9 @@
 .login-access-heading{display:flex;align-items:center;gap:var(--ui-space-4);width:min(100%,360px);margin:0 auto 40px}
 .auth-page .login-fullscreen .login-brand{width:48px;height:48px;margin:0;flex:none}
 .auth-page .login-fullscreen .login-brand img{width:48px;height:48px;opacity:.7}
+.auth-page .login-fullscreen .login-raccoon{width:96px;height:88px}
+.auth-page .login-fullscreen .login-raccoon img{width:100%;height:100%;object-fit:contain;opacity:1}
+:root[data-theme=dark] .auth-page .login-raccoon img{filter:invert(1)}
 .login-access-heading h2{font-size:24px;line-height:1.3;margin:0 0 5px;font-weight:550;letter-spacing:-.035em}
 .login-access-heading p{font-size:13px;margin:0;opacity:.7}
 .auth-page .login-fullscreen .login-actions{margin:0 auto;width:min(100%,320px);gap:18px}

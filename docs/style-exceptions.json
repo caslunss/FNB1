@@ -1,7 +1,7 @@
 {
   "count": 609,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "56c1cb2be97e60dc88d27bb1ab8206dcba252025a3cc8aba3813d202d7c3c85b",
+  "sha256": "d743f1428524d4b89fd8f4e940f68da84d1a529d666a6db1a10bf1e03fe5c4c5",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -2822,7 +2822,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "grid-row",
@@ -2831,7 +2831,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "grid-column",
@@ -2840,7 +2840,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -2849,7 +2849,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -2858,7 +2858,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "justify-content",
@@ -2867,7 +2867,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -2876,7 +2876,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -2885,7 +2885,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 11,
+      "line": 12,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -2894,7 +2894,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 12,
+      "line": 13,
       "selector": "body:not(.auth-page) .account-bubbles.account-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -2903,7 +2903,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 12,
+      "line": 13,
       "selector": "body:not(.auth-page) .account-bubbles.account-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -2912,7 +2912,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 12,
+      "line": 13,
       "selector": "body:not(.auth-page) .account-bubbles.account-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -2921,7 +2921,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 12,
+      "line": 13,
       "selector": "body:not(.auth-page) .account-bubbles.account-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "flex-direction",
@@ -2930,7 +2930,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 12,
+      "line": 13,
       "selector": "body:not(.auth-page) .account-bubbles.account-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -2939,7 +2939,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 12,
+      "line": 13,
       "selector": "body:not(.auth-page) .account-bubbles.account-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -2948,7 +2948,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 13,
+      "line": 14,
       "selector": ".account-toolbar #friendsButton",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -2957,7 +2957,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 14,
+      "line": 15,
       "selector": ".account-toolbar #calendarButton:not([hidden])",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -2966,7 +2966,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 15,
+      "line": 16,
       "selector": ".account-toolbar>button",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -2975,7 +2975,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 15,
+      "line": 16,
       "selector": ".account-toolbar>button",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -2984,7 +2984,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 15,
+      "line": 16,
       "selector": ".account-toolbar>button",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -2993,7 +2993,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 15,
+      "line": 16,
       "selector": ".account-toolbar>button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3002,7 +3002,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 16,
+      "line": 17,
       "selector": ".navigation-actions",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -3011,7 +3011,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 16,
+      "line": 17,
       "selector": ".navigation-actions",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -3020,7 +3020,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 16,
+      "line": 17,
       "selector": ".navigation-actions",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3029,7 +3029,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 16,
+      "line": 17,
       "selector": ".navigation-actions",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3038,7 +3038,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 16,
+      "line": 17,
       "selector": ".navigation-actions",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -3047,7 +3047,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 16,
+      "line": 17,
       "selector": ".navigation-actions",
       "conditions": "@media (max-width:699px)",
       "property": "justify-self",
@@ -3056,7 +3056,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 16,
+      "line": 17,
       "selector": ".navigation-actions",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -3065,7 +3065,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -3074,7 +3074,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -3083,7 +3083,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3092,7 +3092,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "flex-direction",
@@ -3101,7 +3101,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "justify-content",
@@ -3110,7 +3110,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3119,7 +3119,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -3128,7 +3128,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -3137,7 +3137,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -3146,7 +3146,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 18,
+      "line": 19,
       "selector": "#tabs button",
       "conditions": "@media (max-width:699px)",
       "property": "flex",
@@ -3155,7 +3155,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 18,
+      "line": 19,
       "selector": "#tabs button",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3164,7 +3164,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 18,
+      "line": 19,
       "selector": "#tabs button",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3173,7 +3173,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 18,
+      "line": 19,
       "selector": "#tabs button",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -3182,7 +3182,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 18,
+      "line": 19,
       "selector": "#tabs button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3191,7 +3191,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 18,
+      "line": 19,
       "selector": "#tabs button",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3200,7 +3200,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 18,
+      "line": 19,
       "selector": "#tabs button",
       "conditions": "@media (max-width:699px)",
       "property": "border-radius",
@@ -3209,7 +3209,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 19,
+      "line": 20,
       "selector": "#tabs button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3218,7 +3218,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 19,
+      "line": 20,
       "selector": "#tabs button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "flex-direction",
@@ -3227,7 +3227,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 19,
+      "line": 20,
       "selector": "#tabs button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3236,7 +3236,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 19,
+      "line": 20,
       "selector": "#tabs button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -3245,7 +3245,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 20,
+      "line": 21,
       "selector": "#tabs button svg",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3254,7 +3254,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 20,
+      "line": 21,
       "selector": "#tabs button svg",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -3263,7 +3263,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 21,
+      "line": 22,
       "selector": "#tabs .mobile-tab-label",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3272,7 +3272,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 23,
+      "line": 24,
       "selector": ".summary-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3281,7 +3281,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 23,
+      "line": 24,
       "selector": ".summary-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "flex-wrap",
@@ -3290,7 +3290,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 23,
+      "line": 24,
       "selector": ".summary-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3299,7 +3299,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 23,
+      "line": 24,
       "selector": ".summary-toolbar",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -3308,7 +3308,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 24,
+      "line": 25,
       "selector": "#summaryModes",
       "conditions": "@media (max-width:699px)",
       "property": "flex",
@@ -3317,7 +3317,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 24,
+      "line": 25,
       "selector": "#summaryModes",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3326,7 +3326,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 24,
+      "line": 25,
       "selector": "#summaryModes",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3335,7 +3335,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 25,
+      "line": 26,
       "selector": "#summaryModes [role=tab]",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3344,7 +3344,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 25,
+      "line": 26,
       "selector": "#summaryModes [role=tab]",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3353,7 +3353,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 25,
+      "line": 26,
       "selector": "#summaryModes [role=tab]",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3362,7 +3362,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 26,
+      "line": 27,
       "selector": ".summary-toolbar .ib",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3371,7 +3371,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 26,
+      "line": 27,
       "selector": ".summary-toolbar .ib",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3380,7 +3380,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 27,
+      "line": 28,
       "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3389,7 +3389,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 27,
+      "line": 28,
       "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -3398,7 +3398,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 27,
+      "line": 28,
       "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3407,7 +3407,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 28,
+      "line": 29,
       "selector": "#app>*",
       "conditions": "@media (max-width:699px)",
       "property": "grid-column",
@@ -3416,7 +3416,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 28,
+      "line": 29,
       "selector": "#app>*",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3425,7 +3425,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 28,
+      "line": 29,
       "selector": "#app>*",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3434,7 +3434,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 28,
+      "line": 29,
       "selector": "#app>*",
       "conditions": "@media (max-width:699px)",
       "property": "margin-inline",
@@ -3443,7 +3443,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 29,
+      "line": 30,
       "selector": "#app .overview",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3452,7 +3452,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 29,
+      "line": 30,
       "selector": ".overview-total",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3461,7 +3461,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 29,
+      "line": 30,
       "selector": ".overview-total",
       "conditions": "@media (max-width:699px)",
       "property": "line-height",
@@ -3470,7 +3470,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 31,
+      "line": 32,
       "selector": ".category-gauges",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -3479,7 +3479,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 31,
+      "line": 32,
       "selector": ".category-gauges",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3488,7 +3488,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 31,
+      "line": 32,
       "selector": ".category-name",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3497,7 +3497,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 31,
+      "line": 32,
       "selector": ".category-value",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3506,7 +3506,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 32,
+      "line": 33,
       "selector": ".category-expense-name",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3515,7 +3515,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 32,
+      "line": 33,
       "selector": ".category-expense-value",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3524,7 +3524,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 33,
+      "line": 34,
       "selector": ".investment-goal-inner",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -3533,7 +3533,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 33,
+      "line": 34,
       "selector": ".investment-goal-inner",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3542,7 +3542,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 33,
+      "line": 34,
       "selector": ".investment-goal-inner strong",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3551,7 +3551,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 35,
+      "line": 36,
       "selector": ".entry-summary",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3560,7 +3560,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 35,
+      "line": 36,
       "selector": ".entry-summary",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -3569,7 +3569,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 35,
+      "line": 36,
       "selector": ".entry-summary",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3578,7 +3578,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 35,
+      "line": 36,
       "selector": ".entry-summary>div",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3587,7 +3587,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 35,
+      "line": 36,
       "selector": ".entry-summary strong",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3596,7 +3596,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 36,
+      "line": 37,
       "selector": ".entry-toolbar-floating",
       "conditions": "@media (max-width:699px)",
       "property": "flex-wrap",
@@ -3605,7 +3605,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 36,
+      "line": 37,
       "selector": ".entry-toolbar-floating",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3614,7 +3614,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 36,
+      "line": 37,
       "selector": ".entry-toolbar-floating>.te-action-menu:has(button[aria-label=\"Adicionar lançamento\"])",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -3623,7 +3623,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 37,
+      "line": 38,
       "selector": ".ledger-row",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -3632,7 +3632,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 37,
+      "line": 38,
       "selector": ".ledger-row",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -3641,7 +3641,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 37,
+      "line": 38,
       "selector": ".ledger-row",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3650,7 +3650,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 37,
+      "line": 38,
       "selector": ".ledger-detail",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3659,7 +3659,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 37,
+      "line": 38,
       "selector": ".ledger-detail",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3668,7 +3668,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 37,
+      "line": 38,
       "selector": ".ledger-detail small",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3677,7 +3677,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 37,
+      "line": 38,
       "selector": ".ledger-amount",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3686,7 +3686,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 39,
+      "line": 40,
       "selector": ".mobile-swipe-actions button",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3695,7 +3695,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 39,
+      "line": 40,
       "selector": ".mobile-swipe-actions button",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3704,7 +3704,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 39,
+      "line": 40,
       "selector": ".mobile-swipe-actions button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3713,7 +3713,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 39,
+      "line": 40,
       "selector": ".mobile-swipe-actions button",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3722,7 +3722,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 39,
+      "line": 40,
       "selector": ".mobile-swipe-actions button",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3731,7 +3731,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 40,
+      "line": 41,
       "selector": ".account-overlay,.month-picker-dialog,.mobile-confirm-sheet",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -3740,7 +3740,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 40,
+      "line": 41,
       "selector": ".account-overlay,.month-picker-dialog,.mobile-confirm-sheet",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -3749,7 +3749,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 40,
+      "line": 41,
       "selector": ".account-overlay,.month-picker-dialog,.mobile-confirm-sheet",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3758,7 +3758,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 40,
+      "line": 41,
       "selector": ".account-overlay,.month-picker-dialog,.mobile-confirm-sheet",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -3767,7 +3767,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 40,
+      "line": 41,
       "selector": ".account-overlay,.month-picker-dialog,.mobile-confirm-sheet",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -3776,7 +3776,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 40,
+      "line": 41,
       "selector": ".account-overlay,.month-picker-dialog,.mobile-confirm-sheet",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -3785,7 +3785,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 40,
+      "line": 41,
       "selector": ".account-overlay,.month-picker-dialog,.mobile-confirm-sheet",
       "conditions": "@media (max-width:699px)",
       "property": "border-radius",
@@ -3794,7 +3794,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 41,
+      "line": 42,
       "selector": ".account-overlay.mobile-expanded",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -3803,7 +3803,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 42,
+      "line": 43,
       "selector": ".account-overlay-header",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -3812,7 +3812,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 42,
+      "line": 43,
       "selector": ".account-overlay-header",
       "conditions": "@media (max-width:699px)",
       "property": "top",
@@ -3821,7 +3821,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 42,
+      "line": 43,
       "selector": ".account-overlay-header",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3830,7 +3830,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 42,
+      "line": 43,
       "selector": ".account-overlay-header h2",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3839,7 +3839,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 42,
+      "line": 43,
       "selector": ".account-overlay-close",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3848,7 +3848,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 42,
+      "line": 43,
       "selector": ".account-overlay-close",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3857,7 +3857,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 43,
+      "line": 44,
       "selector": ".account-panel-body",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3866,7 +3866,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 43,
+      "line": 44,
       "selector": ".account-panel-body .card",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3875,7 +3875,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 43,
+      "line": 44,
       "selector": ".account-panel-body .card",
       "conditions": "@media (max-width:699px)",
       "property": "border-radius",
@@ -3884,7 +3884,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": "#scrim",
       "conditions": "@media (max-width:699px)",
       "property": "align-items",
@@ -3893,7 +3893,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": "#scrim",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3902,7 +3902,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sheet",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -3911,7 +3911,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sheet",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -3920,7 +3920,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sheet",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -3929,7 +3929,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sheet",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -3938,7 +3938,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sheet",
       "conditions": "@media (max-width:699px)",
       "property": "border-radius",
@@ -3947,7 +3947,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sh button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -3956,7 +3956,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sh button",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -3965,7 +3965,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 45,
+      "line": 46,
       "selector": ".sh button",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3974,7 +3974,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 46,
+      "line": 47,
       "selector": ".sheet .grid,.account-panel-body .compact-form",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -3983,7 +3983,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 47,
+      "line": 48,
       "selector": ":is(.sheet,.account-panel-body,.search-pill-dialog) :is(input,select,textarea)",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -3992,7 +3992,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 48,
+      "line": 49,
       "selector": ".settings-actions",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -4001,7 +4001,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 48,
+      "line": 49,
       "selector": ".settings-actions button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4010,7 +4010,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 49,
+      "line": 50,
       "selector": ".plan-table",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -4019,7 +4019,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".calendar-panel",
       "conditions": "@media (max-width:699px)",
       "property": "padding-inline",
@@ -4028,7 +4028,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".calendar-panel .calendar-card",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -4037,7 +4037,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".calendar-panel .calendar-card",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -4046,7 +4046,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".calendar-panel .calendar-card",
       "conditions": "@media (max-width:699px)",
       "property": "margin-inline",
@@ -4055,7 +4055,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".cal-grid",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -4064,7 +4064,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".cal-grid",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
@@ -4073,7 +4073,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".cal-day",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -4082,7 +4082,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".cal-day",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4091,7 +4091,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".cal-day",
       "conditions": "@media (max-width:699px)",
       "property": "aspect-ratio",
@@ -4100,7 +4100,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".calendar-panel .calendar-card~.card",
       "conditions": "@media (max-width:699px)",
       "property": "margin-inline",
@@ -4109,7 +4109,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 50,
+      "line": 51,
       "selector": ".calendar-panel .calendar-card~.card",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -4118,7 +4118,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 51,
+      "line": 52,
       "selector": ".profile-menu-item",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4127,7 +4127,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 51,
+      "line": 52,
       "selector": ".profile-menu-item",
       "conditions": "@media (max-width:699px)",
       "property": "font-size",
@@ -4136,7 +4136,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 51,
+      "line": 52,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "left",
@@ -4145,7 +4145,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 51,
+      "line": 52,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "right",
@@ -4154,7 +4154,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 51,
+      "line": 52,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -4163,7 +4163,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 51,
+      "line": 52,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -4172,7 +4172,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 51,
+      "line": 52,
       "selector": ".notification-panel",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -4181,7 +4181,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-pill-center",
       "conditions": "@media (max-width:699px)",
       "property": "top",
@@ -4190,7 +4190,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-pill-center",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -4199,7 +4199,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-pill-center",
       "conditions": "@media (max-width:699px)",
       "property": "max-width",
@@ -4208,7 +4208,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-filter-toggle",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -4217,7 +4217,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-filter-toggle",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4226,7 +4226,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-filters",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
@@ -4235,7 +4235,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-pill-popover",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -4244,7 +4244,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-results",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -4253,7 +4253,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 52,
+      "line": 53,
       "selector": ".search-result",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4262,7 +4262,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 53,
+      "line": 54,
       "selector": ".login-shell",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -4271,7 +4271,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 57,
+      "line": 58,
       "selector": ".account-overlay,.notification-panel",
       "conditions": "@media (max-width:699px) and (prefers-reduced-transparency:reduce)",
       "property": "background",
@@ -4280,7 +4280,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 57,
+      "line": 58,
       "selector": ".account-overlay,.notification-panel",
       "conditions": "@media (max-width:699px) and (prefers-reduced-transparency:reduce)",
       "property": "backdrop-filter",
@@ -4289,7 +4289,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 60,
+      "line": 61,
       "selector": ".lg-switch",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -4298,7 +4298,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 60,
+      "line": 61,
       "selector": ".lg-switch",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4307,7 +4307,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 61,
+      "line": 62,
       "selector": ".daily-chart",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -4316,7 +4316,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 70,
+      "line": 71,
       "selector": "body:not(.auth-page) #tabs.tabbar .mobile-tab-label",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -4325,7 +4325,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 71,
+      "line": 72,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4334,7 +4334,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 72,
+      "line": 73,
       "selector": "body:not(.auth-page) #tabs.tabbar button",
       "conditions": "@media (max-width:699px)",
       "property": "min-width",
@@ -4343,7 +4343,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 72,
+      "line": 73,
       "selector": "body:not(.auth-page) #tabs.tabbar button",
       "conditions": "@media (max-width:699px)",
       "property": "min-height",
@@ -4352,7 +4352,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 72,
+      "line": 73,
       "selector": "body:not(.auth-page) #tabs.tabbar button",
       "conditions": "@media (max-width:699px)",
       "property": "flex",
@@ -4361,7 +4361,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 73,
+      "line": 74,
       "selector": "body:not(.auth-page) #tabs.tabbar button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "flex-direction",
@@ -4370,7 +4370,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 73,
+      "line": 74,
       "selector": "body:not(.auth-page) #tabs.tabbar button .lg-button__label",
       "conditions": "@media (max-width:699px)",
       "property": "justify-content",
@@ -4379,7 +4379,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 78,
+      "line": 79,
       "selector": ":root .auth-page .login-shell.login-fullscreen",
       "conditions": "@media (max-width:699px)",
       "property": "padding",
@@ -4388,7 +4388,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 83,
+      "line": 84,
       "selector": ".auth-page .login-theme-control",
       "conditions": "@media (max-width:699px)",
       "property": "position",
@@ -4397,7 +4397,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 83,
+      "line": 84,
       "selector": ".auth-page .login-theme-control",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -4406,7 +4406,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 83,
+      "line": 84,
       "selector": ".auth-page .login-theme-control",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -4415,7 +4415,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 89,
+      "line": 90,
       "selector": "body:not(.auth-page) .top-account-actions>.task-search",
       "conditions": "@media (max-width:699px)",
       "property": "display",
@@ -4424,7 +4424,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 92,
+      "line": 93,
       "selector": ".top-account-actions",
       "conditions": "@media (max-width:699px)",
       "property": "align-items",
@@ -4433,7 +4433,7 @@
     },
     {
       "file": "src/styles/mobile.css",
-      "line": 95,
+      "line": 96,
       "selector": ".account-toolbar #calendarButton[hidden]",
       "conditions": "",
       "property": "display",

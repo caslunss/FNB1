@@ -6,6 +6,12 @@ Este guia registra o padrão atual da interface. Deve ser consultado antes de ca
 
 ## Direção visual
 
+Após o login, a inicialização exibe apenas o guaxinim em PNG transparente, com descrição de carregamento para leitores de tela. A tela acompanha o tema e desaparece quando `auth-pending` é removido pelo fluxo existente, inclusive em caso de falha de inicialização.
+
+No mobile, os títulos de Resumo e das demais áreas desaparecem gradualmente nos primeiros 64 px de rolagem e reaparecem ao voltar ao topo. O atalho de teclado para o conteúdo mantém o título visível ao receber foco. No desktop, o cabeçalho acompanha a rolagem normal da página.
+
+Cabeçalhos dos painéis de Configurações e Calendário permanecem no topo durante a rolagem, com o material translúcido de navegação (`--lg-navigation-fill` e `--lg-blur`). Respeitar transparência reduzida e usar fundo opaco em navegadores sem suporte ao blur.
+
 Interface financeira simples, centralizada e responsiva. Superfícies em Liquid Glass, volumes discretos, ícones de traço e cantos arredondados. Nenhum efeito pode comprometer leitura, foco ou área de toque. Preservar a refração dos controles da biblioteca; corrigir composição e recorte sem substituí-los por controles genéricos.
 
 A paleta padrão é Branco envelhecido. Há variações pastéis de Outono e Inverno. O modo escuro usa as mesmas famílias de cores escurecidas, com reflexos suaves e ajuste de suavidade. Não substituir o modo atual por preto puro ou cores saturadas sem pedido do usuário.
@@ -26,7 +32,7 @@ As cores e limites estão em `src/services/layout-preferences.ts`. Os valores pa
 
 | Área | Conteúdo e comportamento |
 | --- | --- |
-| Login | Tela dividida no desktop; conteúdo empilhado no mobile. Google, Apple e visitante conforme a configuração existente. Preservar os textos principais atuais |
+| Login | Tela dividida no desktop; conteúdo empilhado no mobile. Guaxinim em PNG transparente no cabeçalho de acesso, com traços invertidos no tema escuro. Google, Apple e visitante conforme a configuração existente. Preservar os textos principais atuais |
 | Resumo | Visão geral e Lançamentos. Comportamento é uma seção da Visão geral; seletor de mês e organização de cards no mesmo grupo |
 | Visão geral | Gráfico principal, distribuição, maiores gastos, categorias e dívidas. Cards em colunas quando houver espaço |
 | Comportamento | Totais e indicadores por categoria, dia e mês. Mesma largura, tipografia e superfícies do Resumo |

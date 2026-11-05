@@ -680,3 +680,16 @@ body:not(.auth-page) .finance-select-trigger.lg-button{
 .action-menu-labeled .lg-button__icon{width:auto;min-width:0;height:auto;display:inline-flex;align-items:center}
 .action-trigger-label{display:inline-flex;align-items:center;justify-content:center;gap:var(--ui-space-2);white-space:nowrap;font:600 13px/1.3 var(--ui-font)}
 .action-trigger-label svg{flex:none}
+
+/* Shared frosted header for scrolling account panels. */
+#accountOverlay:not([data-panel=profile]) .account-overlay-header{
+ position:sticky;top:0;z-index:35;
+ background:var(--lg-navigation-fill);
+ backdrop-filter:blur(var(--lg-blur));-webkit-backdrop-filter:blur(var(--lg-blur));
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ #accountOverlay:not([data-panel=profile]) .account-overlay-header{background:var(--form-surface)}
+}
+@media(prefers-reduced-transparency:reduce){
+ #accountOverlay:not([data-panel=profile]) .account-overlay-header{background:var(--form-surface);backdrop-filter:none;-webkit-backdrop-filter:none}
+}

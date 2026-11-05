@@ -33,7 +33,7 @@ export default function Login(){
     <LoginThemeControl/>
     <main className="login-shell login-fullscreen" aria-label="Acesso">
       <section className="login-introduction"><img className={`login-center-art${imageReady?' is-ready':''}`} src="/assets/tefinance-logo.png" alt="TEFinance" width="160" height="160" onLoad={()=>setImageReady(true)} onError={()=>setImageReady(false)}/><h1>Mais equilíbrio.<br/>Mais possibilidades.</h1></section>
-      <LoginEntrance className="login-access"><LoginItem className="login-access-heading"><div className="login-brand"><img src="./assets/tefinance-logo.png" alt="TEFinance" width="48" height="48"/></div><div><h2>Entre para organizar<br/>o que importa.</h2></div></LoginItem>
+      <LoginEntrance className="login-access"><LoginItem className="login-access-heading"><div className="login-brand login-raccoon"><img src="./assets/login-raccoon.png" alt="Guaxinim do TEFinance" width="96" height="88"/></div><div><h2>Entre para organizar<br/>o que importa.</h2></div></LoginItem>
       <div className="login-actions"><LoginItem className="login-providers">
         <div id="googleButton" className="google-area"><button className="google-placeholder" type="button" disabled aria-describedby="loginStatus" title="Carregando login Google"><img src="./assets/google-g.png" alt="" width="20" height="20"/>Entrar com Google</button></div>
         <div className="apple-provider"><button id="appleButton" type="button" disabled aria-label="Entrar com Apple — disponível após configuração"><img src="./assets/apple-signin.png" alt="Entrar com Apple" width="320" height="44"/></button></div>
