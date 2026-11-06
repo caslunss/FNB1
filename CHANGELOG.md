@@ -25,6 +25,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ### Correções locais posteriores (2026-11-06)
 
+- Envios existentes usam RiFileCloudLine e aceitam renderFileIcon; removida a herança de stroke/fill que ocultava ícones Remix. Formatos e limites preservados. Migração completa da UI BoardUI depende do código oficial indisponível pela rede.
+
 - Campo de pesquisa adaptado do BoardUI enviado pelo proprietário, com React Aria, ícones Remix, limpeza e estado de busca real; filtros, resultados, atalhos e temas preservados.
 
 - Ajuste visual solicitado: logo alinhada verticalmente à barra de conta no mobile, sem deslocamento horizontal; marca de 52 px no desktop. Cores categóricas dos gráficos vinculadas à paleta ativa em tons suaves, preservando dados e alertas.
