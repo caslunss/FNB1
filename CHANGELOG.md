@@ -26,6 +26,7 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 ### Correções locais posteriores (2026-11-06)
 
 - F01: quota bancária aplicada no entrypoint HTTP por usuário autenticado e operação; limites independentes e rejeição antes de consultar o Pluggy, com 429/Retry-After ou 503 se a quota não puder ser verificada.
+- F02: amigos e propostas de divisão lidos com paginação estável, cancelamento e rejeição de páginas repetidas; nomes de usuário consultados em lotes sem truncar a lista em 100 registros. A regra mensal local foi preservada.
 
 ### Limitações conhecidas
 
@@ -33,6 +34,6 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 - Safari, iPhone físico e provedores reais não foram verificados nesta rodada. Testes locais usam mocks e bloqueiam tráfego externo.
 - Testes E2E de origem legada tiveram os seletores de Configurações atualizados; a comparação pixel a pixel continua dependente de referência local aprovada. Capturas concluídas não equivalem a essa comparação.
 - Um teste de seleção apresentou falha de medição intermitente na baseline paralela; passou isoladamente e depois das edições, sem alteração de timing.
-- F01 (quota bancária) foi integrada localmente nesta rodada, sem consultar provedores reais. F02 (paginação social) permanece no stash 08cc1fd até sua integração separada.
+- F01 (quota bancária) e F02 (paginação social) foram integradas localmente nesta rodada. O stash original 08cc1fd foi preservado; provedores e dados reais não foram consultados.
 - A limpeza de código da Task B e os demais fixes da auditoria não foram executados nesta rodada. A falha de resiliência do login quando seu módulo não carrega permanece reportada.
 - Nenhuma publicação, tag ou deploy foi realizado pelo agente.

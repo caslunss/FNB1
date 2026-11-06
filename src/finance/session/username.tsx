@@ -1,4 +1,5 @@
 import { errorDetails } from '../../services/errors.ts';
+import {readUsernameBatches} from '../../services/social-pagination';
 import {reserveUsernameChange,usernameChangeStatus} from '../../services/username-policy';
 import type { WorkspaceRuntime } from './contracts';
 
@@ -30,7 +31,8 @@ export function createUsername(workspace: UsernameContext) {
     const me = workspace.socialUser();
     if (!me || workspace.scope.disposed) return;
     const client = window.planAuth.client;
-    const created = await client!
+    if (!client) throw Error('Serviço de conta indisponível.');
+    const created = await client
       .from('app_usernames')
       .upsert(
         { user_id: me, username: 'u_' + me.replaceAll('-', '') },
@@ -41,7 +43,13 @@ export function createUsername(workspace: UsernameContext) {
     const ids = [
       ...new Set([me, ...workspace.social.friends.map(workspace.friendCode)]),
     ];
-    const result = await client!
+    if (ids.length > 100) {
+      const usernames = await readUsernameBatches(ids, batch => client.from('app_usernames')
+        .select('user_id,username').in('user_id', batch).abortSignal(workspace.scope.signal), workspace.scope.signal);
+      if (!workspace.scope.disposed) workspace.usernames = usernames;
+      return;
+    }
+    const result = await client
       .from('app_usernames')
       .select('user_id,username')
       .in('user_id', ids);

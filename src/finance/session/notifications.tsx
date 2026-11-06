@@ -1,4 +1,5 @@
 import { viewList } from '../../services/presentation.ts';
+import {readSocialPages} from '../../services/social-pagination';
 import type {
   ShoppingPlan,
   Friend,
@@ -297,22 +298,39 @@ export function createNotifications(workspace: NotificationsContext) {
       return;
     workspace.social.busy = true;
     try {
+      const pageSize = 100;
+      const client = window.planAuth.client;
+      if (!client) throw Error('Serviço de conta indisponível.');
       const results = await Promise.all([
-        window.planAuth
-          .client!.from('app_friends')
+        client.from('app_friends')
           .select('*')
           .order('created_at', { ascending: false })
-          .limit(100),
-        window.planAuth
-          .client!.from('app_shared_expenses')
+          .limit(pageSize),
+        client.from('app_shared_expenses')
           .select('*')
           .order('created_at', { ascending: false })
-          .limit(100),
+          .limit(pageSize),
       ]);
       if (workspace.scope.disposed) return;
       for (const r of results) if (r.error) throw r.error;
-      workspace.social.friends = results[0].data!;
-      workspace.social.shares = results[1].data!;
+      const fetchPage = (table: 'app_friends' | 'app_shared_expenses', cursor: import('../../services/social-pagination').SocialCursor | undefined) => {
+        let query = client.from(table).select('*')
+          .order('created_at', {ascending: false}).order('id', {ascending: false})
+          .limit(pageSize).abortSignal(workspace.scope.signal);
+        if (cursor) query = query.or(`created_at.lt.${cursor.createdAt},and(created_at.eq.${cursor.createdAt},id.lt.${cursor.id})`);
+        return query;
+      };
+      const [friends, shares] = await Promise.all([
+        results[0].data?.length === pageSize
+          ? readSocialPages<Friend>(cursor => fetchPage('app_friends', cursor), workspace.scope.signal)
+          : Promise.resolve(results[0].data || []),
+        results[1].data?.length === pageSize
+          ? readSocialPages<SharedExpense>(cursor => fetchPage('app_shared_expenses', cursor), workspace.scope.signal)
+          : Promise.resolve(results[1].data || []),
+      ]);
+      if (workspace.scope.disposed) return;
+      workspace.social.friends = friends;
+      workspace.social.shares = shares;
       await workspace.refreshUsernames();
       workspace.social.error = '';
     } catch (e) {
