@@ -25,6 +25,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ### Correções locais posteriores (2026-11-06)
 
+- Login redesenhado com logo evidente, textos em português, card Liquid Glass e prévia de entrar/cadastrar com e-mail e senha. Google e visitante preservados. O formulário novo apenas informa indisponibilidade: não autentica, cadastra, envia ou armazena credenciais.
+
 - Envios existentes usam RiFileCloudLine e aceitam renderFileIcon; removida a herança de stroke/fill que ocultava ícones Remix. Formatos e limites preservados. Migração completa da UI BoardUI depende do código oficial indisponível pela rede.
 
 - Campo de pesquisa adaptado do BoardUI enviado pelo proprietário, com React Aria, ícones Remix, limpeza e estado de busca real; filtros, resultados, atalhos e temas preservados.
@@ -46,6 +48,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 - Verificação local final: 58 scripts de regressão e 19 suítes browser aprovados; 400 estados comparados com a base 1678ded, com 400 pares dentro das tolerâncias de pixels existentes. Execução retomada por grupos completos após interrupção do ambiente, sem editar testes. Uma comparação de pixels inicialmente falhou (399/400); a repetição integral de 320 px escuro passou, e ambos os resultados foram preservados. Essa é uma comparação de regressão local, não uma validação de produção ou aprovação estética externa.
 
 ### Limitações conhecidas
+
+- O teste legado tests/profile-layout.cjs proíbe campos email/password e conflita com a prévia de login aprovada nesta rodada. Foi mantido intacto; a suíte completa não está verde até revisão autorizada dessa expectativa.
 
 - A regra mensal de nome de usuário é LOCAL ONLY, por dispositivo/conta; não é imposta no servidor nem garante exclusividade entre aparelhos.
 - Safari, iPhone físico e provedores reais não foram verificados nesta rodada. Testes locais usam mocks e bloqueiam tráfego externo.

@@ -610,3 +610,7 @@ No mobile até 699 px, somente a marca sobe para alinhar seu centro à barra de 
 A pesquisa global usa SearchField adaptado da BoardUI: superfície em pílula com tokens do tema, ícone Remix, limpeza contextual e loading ligado ao debounce real. Filtros e resultados mantêm sua estrutura. Escape limpa texto antes de fechar; Ctrl/Cmd+K abre a busca.
 
 Os controles existentes de arquivo usam RiFileCloudLine (24 px, cor secundária do tema) e permitem renderFileIcon. Os limites específicos de CSV, nota e XML/TXT continuam os mesmos. A substituição completa por FileUpload da BoardUI depende da implementação oficial; o exemplo PDF/PNG de 4 MB não muda os formatos atualmente suportados.
+
+## Login aprovado em 06/11/2026
+
+Login com apresentação da marca e card de acesso em duas colunas no desktop e empilhados no mobile. Logo em evidência, textos explicativos e tokens existentes. Entrar/criar conta por e-mail é somente prévia, identificada como Em breve; campos não persistem nem enviam credenciais. Google e visitante mantêm seus contratos. Telas pequenas permitem rolagem integral, sem esconder a parte inferior do formulário.

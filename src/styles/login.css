@@ -78,3 +78,49 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
 .login-logo-art.is-ready{opacity:1}
 :root[data-theme=dark] .login-logo-art{filter:invert(1)}
 @media(prefers-reduced-motion:reduce){.login-logo-art{transition:none}}
+
+/* Owner-approved login redesign. Provider and guest IDs/contracts stay intact. */
+.auth-page .login-shell.login-fullscreen:has(.login-redesign){padding:80px clamp(16px,5vw,72px);align-content:center}
+.auth-page .login-fullscreen .login-access.login-redesign{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);align-items:center;gap:clamp(32px,6vw,88px);width:min(100%,1080px);padding:0;}
+.auth-page .login-fullscreen .login-redesign .login-access-heading{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;min-width:0;margin:0;gap:24px}
+.login-redesign .login-logo-slot{width:224px;min-height:0;justify-items:start}
+.login-redesign .login-logo-slot img{display:block;width:224px;max-width:100%;height:auto}
+.login-brand-copy{max-width:480px}
+.login-eyebrow{margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--lb2)}
+.login-brand-copy h1{font-size:clamp(32px,4vw,52px);line-height:1.12;letter-spacing:-.045em;margin:0 0 20px;max-width:13ch;color:var(--text)}
+.login-brand-copy>p:last-of-type{font-size:16px;line-height:1.7;color:var(--lb2);margin:0;max-width:38ch}
+.login-brand-topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.login-brand-topics span{border:1px solid var(--form-border);background:var(--glass);padding:6px 12px;border-radius:var(--ui-radius-pill);font-size:12px;color:var(--lb2)}
+.auth-page .login-fullscreen .login-redesign .login-auth-card{width:100%;margin:0;padding:28px;border:1px solid var(--form-border);border-radius:var(--ui-radius-card);background:var(--lg-panel-fill);box-shadow:var(--lg-shadow);backdrop-filter:blur(var(--lg-panel-blur));-webkit-backdrop-filter:blur(var(--lg-panel-blur));gap:16px}
+.login-card-heading h2{font-size:25px;line-height:1.25;letter-spacing:-.035em;margin:0 0 8px;color:var(--text)}
+.login-card-heading>p:last-child{font-size:13px;line-height:1.5;color:var(--lb2);margin:0}
+.login-email-preview{display:grid;gap:12px;min-width:0}
+.login-preview-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:var(--lb2)}
+.login-coming-soon{padding:3px 9px;background:var(--soft);border:1px solid var(--form-border);border-radius:var(--ui-radius-pill);font-size:11px}
+.login-preview-help{margin:0;color:var(--lb2);font-size:12px;line-height:1.5}
+.login-email-form{display:grid;gap:14px;margin:0;min-width:0}
+.login-email-form>label{display:grid;gap:7px;min-width:0;color:var(--text);font-size:13px;font-weight:500}
+.login-email-form .te-text-field{width:100%;min-width:0}
+.login-email-form input{width:100%;min-width:0;min-height:44px;font-size:16px}
+.login-email-form .login-email-submit{width:100%;min-height:48px;background:var(--btn);color:var(--on-accent)}
+.login-preview-notice{font-size:12px;line-height:1.5;margin:0;color:var(--lb2)}
+.login-preview-notice:empty{display:none}
+.login-method-divider{display:flex;align-items:center;gap:12px;color:var(--lb2);font-size:11px}
+.login-method-divider::before,.login-method-divider::after{content:"";flex:1;height:1px;background:var(--sep)}
+@media(max-width:760px){
+ .auth-page .login-shell.login-fullscreen:has(.login-redesign){align-content:start}
+ .auth-page .login-fullscreen .login-access.login-redesign{grid-template-columns:minmax(0,1fr);width:min(100%,440px);gap:28px;padding:84px 16px calc(32px + env(safe-area-inset-bottom))}
+ .auth-page .login-fullscreen .login-redesign .login-access-heading{align-items:center;text-align:center;gap:16px}
+ .login-redesign .login-logo-slot{width:152px;justify-items:center}
+ .login-redesign .login-logo-slot img{width:152px}
+ .login-brand-copy h1{font-size:30px;max-width:18ch;margin:0 auto 12px}
+ .login-brand-copy>p:last-of-type{font-size:14px;max-width:34ch;margin:auto}
+ .login-brand-topics{display:none}
+ .auth-page .login-fullscreen .login-redesign .login-auth-card{padding:22px;gap:16px}
+ .login-card-heading h2{font-size:23px}
+}
+@media(prefers-reduced-transparency:reduce){.auth-page .login-fullscreen .login-redesign .login-auth-card{background:var(--card);backdrop-filter:none;-webkit-backdrop-filter:none}}
+@supports not (backdrop-filter:blur(1px)){.auth-page .login-fullscreen .login-redesign .login-auth-card{background:var(--card)}}
+
+.auth-page:has(.login-redesign) .login-theme-control{top:24px;bottom:auto}
+.login-redesign .google-area{display:flex;justify-content:center}

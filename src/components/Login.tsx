@@ -20,6 +20,22 @@ function LoginThemeControl(){
     {label:'Modo escuro',icon:icon(<path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/>)},
   ]}/></div>;
 }
+function EmailAccessPreview(){
+  const [mode,setMode]=useState(0),[notice,setNotice]=useState('');
+  const registering=mode===1;
+  return <section className="login-email-preview" aria-label="Prévia do acesso por e-mail">
+    <div className="login-preview-heading"><span>Acesso por e-mail</span><span className="login-coming-soon">Em breve</span></div>
+    <FinanceSegmentedControl aria-label="Entrar ou criar conta" value={mode} onChange={next=>{setMode(next);setNotice('')}} options={['Entrar','Criar conta']}/>
+    <p id="emailPreviewHelp" className="login-preview-help">Esta área é uma prévia. Para acessar agora, use Google ou visitante.</p>
+    <form key={mode} className="login-email-form" noValidate aria-describedby="emailPreviewHelp" onSubmit={event=>{event.preventDefault();setNotice('O acesso por e-mail ainda está em preparação. Entre com Google ou continue como visitante.')}}>
+      {registering&&<label htmlFor="previewName">Seu nome<GlassTextField><input id="previewName" name="preview-name" placeholder="Como você quer ser chamado?" autoComplete="off" maxLength={60}/></GlassTextField></label>}
+      <label htmlFor="previewEmail">E-mail<GlassTextField><input id="previewEmail" name="preview-email" type="email" placeholder="voce@exemplo.com" autoComplete="off"/></GlassTextField></label>
+      <label htmlFor="previewPassword">Senha<GlassTextField><input id="previewPassword" name="preview-password" type="password" placeholder={registering?'Crie uma senha':'Sua senha'} autoComplete="off"/></GlassTextField></label>
+      <GlassButton type="submit" className="login-email-submit">{registering?'Criar conta com e-mail':'Entrar com e-mail'}</GlassButton>
+    </form>
+    <p className="login-preview-notice" role="status">{notice}</p>
+  </section>;
+}
 export default function Login(){
   const [imageReady,setImageReady]=useState(false),[imageStage,setImageStage]=useState<'webp'|'png'|'failed'>('webp');
   useEffect(()=>{
@@ -46,15 +62,18 @@ export default function Login(){
     <div className="login-background-shade" aria-hidden="true"/>
     <LoginThemeControl/>
     <main className="login-shell login-fullscreen" aria-label="Acesso">
-      <LoginEntrance className="login-access"><LoginItem className="login-access-heading"><div className="login-logo-slot">{imageStage==='failed'?<span role="img" aria-label="Logo do guaxinim indisponível">TEFinance</span>:<picture>{imageStage==='webp'&&<source srcSet="/assets/raccoon-logo.webp" type="image/webp"/>}<img key={imageStage} className={`login-logo-art${imageReady?' is-ready':''}`} src="/assets/raccoon-logo.png" alt="Guaxinim — logo do site" width="240" height="201" onLoad={()=>setImageReady(true)} onError={()=>{setImageReady(false);setImageStage(imageStage==='webp'?'png':'failed')}}/></picture>}</div></LoginItem>
-      <div className="login-actions"><LoginItem className="login-providers">
+      <LoginEntrance className="login-access login-redesign"><LoginItem className="login-access-heading"><div className="login-logo-slot">{imageStage==='failed'?<span role="img" aria-label="Logo do guaxinim indisponível">TEFinance</span>:<picture>{imageStage==='webp'&&<source srcSet="/assets/raccoon-logo.webp" type="image/webp"/>}<img key={imageStage} className={`login-logo-art${imageReady?' is-ready':''}`} src="/assets/raccoon-logo.png" alt="Guaxinim — logo do site" width="240" height="201" onLoad={()=>setImageReady(true)} onError={()=>{setImageReady(false);setImageStage(imageStage==='webp'?'png':'failed')}}/></picture>}</div><div className="login-brand-copy"><p className="login-eyebrow">TEFinance</p><h1>Mais clareza para o seu dinheiro.</h1><p>Organize seus gastos, acompanhe suas metas e planeje o próximo passo com tranquilidade.</p><div className="login-brand-topics" aria-label="O que você pode organizar"><span>Gastos</span><span>Metas</span><span>Planejamento</span></div></div></LoginItem>
+      <div className="login-actions login-auth-card"><LoginItem><header className="login-card-heading"><p className="login-eyebrow">Seu espaço financeiro</p><h2>Que bom ter você por aqui.</h2><p>Escolha como quer continuar.</p></header></LoginItem>
+      <LoginItem className="login-providers">
         <div id="googleButton" className="google-area"><button className="google-placeholder" type="button" disabled aria-describedby="loginStatus" title="Carregando login Google"><img src="./assets/google-g.png" alt="" width="20" height="20"/>Entrar com Google</button></div>
 
       </LoginItem>
       <LoginItem><GlassButton id="guestToggle" className="local-link" type="button" intensity={3} aria-expanded="false" aria-controls="guestForm">Continuar como visitante</GlassButton></LoginItem>
       <form id="guestForm" hidden><label htmlFor="guestName" className="lg-input__label">Seu nome</label><GlassTextField><input id="guestName" name="name" autoComplete="given-name" maxLength={60} required/></GlassTextField><p className="guest-note">Dados temporários nesta aba do navegador.</p><GlassButton className="local-link" type="submit" intensity={3}>Entrar</GlassButton><p id="guestStatus" className="login-error" role="status"/></form>
       <GlassButton id="loginRetry" type="button" hidden>Tentar novamente</GlassButton>
-      <p id="loginStatus" className="sr-only" role="status" aria-live="polite">Carregando login Google.</p></div>
+      <p id="loginStatus" className="sr-only" role="status" aria-live="polite">Carregando login Google.</p>
+      <LoginItem><div className="login-method-divider"><span>acesso por e-mail · em breve</span></div></LoginItem>
+      <LoginItem><EmailAccessPreview/></LoginItem></div>
       </LoginEntrance>
     </main>
   </>;
