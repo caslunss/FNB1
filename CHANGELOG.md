@@ -34,6 +34,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 - F03: snapshots serializados idênticos são validados uma vez, sem ordenação recursiva; comparação semântica e rejeição de snapshots inválidos preservadas.
 
+- F05 (mitigação): consultas públicas de mercado idênticas e simultâneas compartilham uma chamada e uma quota por instância; cada resposta tem corpo independente e falhas liberam nova tentativa. A repartição da quota global continua sendo decisão do proprietário.
+
 ### Limitações conhecidas
 
 - A regra mensal de nome de usuário é LOCAL ONLY, por dispositivo/conta; não é imposta no servidor nem garante exclusividade entre aparelhos.

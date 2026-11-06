@@ -1,6 +1,6 @@
 import {takeQuota} from '../shared/quota.mjs';
 export const operations={quotes:'/api/v2/stocks/quote',history:'/api/v2/stocks/historical',dividends:'/api/v2/stocks/dividends',balance:'/api/v2/stocks/balance-sheet',fiis:'/api/v2/fii/indicators',currency:'/api/v2/currency',inflation:'/api/v2/inflation',interest:'/api/v2/prime-rate'};
-const cache=new Map();let blockedUntil=0;
+const cache=new Map(),pending=new Map();let blockedUntil=0;
 export function retryDelay(value,now=Date.now()){if(!value)return 60;const seconds=Number(value);return Number.isFinite(seconds)&&seconds>=0?Math.max(1,Math.ceil(seconds)):Math.max(1,Math.ceil((Date.parse(value)-now)/1000)||60);}
 export async function handle(req,env=process.env,net=fetch,quota=takeQuota){
  const reply=(status,data,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store',...extra}});
@@ -17,6 +17,8 @@ export async function handle(req,env=process.env,net=fetch,quota=takeQuota){
  if(!env.BRAPI_TOKEN)return reply(503,{error:'Consulta de investimentos ainda não ativada. Tente novamente mais tarde.'});
  const key=url.href,saved=cache.get(key);if(saved&&saved.until>Date.now())return reply(200,saved.value);
  if(blockedUntil>Date.now()){const wait=Math.ceil((blockedUntil-Date.now())/1000);return reply(429,{error:'Limite de consultas atingido. Aguarde para tentar novamente.',retryAfter:wait},{'Retry-After':String(wait)});}
+ const running=pending.get(key);if(running)return(await running).clone();
+ const task=(async()=>{
  const budget=await quota({subject:'public-market',operation:'investments',limit:60,seconds:60},env,net);if(budget.status!==200)return reply(budget.status,{error:budget.error},budget.retryAfter?{'Retry-After':String(budget.retryAfter)}:{});
  try{
   const response=await net(url,{headers:{Authorization:'Bearer '+env.BRAPI_TOKEN},signal:AbortSignal.timeout(15000)});
@@ -28,5 +30,8 @@ export async function handle(req,env=process.env,net=fetch,quota=takeQuota){
   const data=await response.json();const value={kind,source:'Dados de mercado',checkedAt:new Date().toISOString(),data};
   if(cache.size>=100)cache.delete(cache.keys().next().value);cache.set(key,{value,until:Date.now()+(kind==='quotes'?60000:300000)});return reply(200,value);
  }catch{return reply(502,{error:'Não foi possível consultar os dados de mercado. Tente novamente.'});}
+ })();
+ pending.set(key,task);
+ try{return(await task).clone();}finally{pending.delete(key);}
 }
 export default req=>handle(req);
