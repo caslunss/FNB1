@@ -1,11 +1,7 @@
 import {errorDetails} from './errors.ts';
 import {waitWithTimeout,loadGoogleScript} from './login-network.ts';
 'use strict';
-// Visitor access must remain available even when the Google service fails.
 const byId=<T extends HTMLElement=HTMLElement>(id:string)=>document.getElementById(id) as T;
-const guestToggle=byId('guestToggle'),guestForm=byId('guestForm');
-guestToggle.addEventListener('click',()=>{const open=guestForm.hidden;guestForm.hidden=!open;guestToggle.setAttribute('aria-expanded',String(open));if(open)byId<HTMLInputElement>('guestName').focus();});
-guestForm.addEventListener('submit',event=>{event.preventDefault();try{planAuth.useLocal(byId<HTMLInputElement>('guestName').value);}catch(error){byId('guestStatus').textContent=errorDetails(error).message||'Não foi possível entrar como visitante.';}});
 let setupBusy=false,providerObserver:ResizeObserver|undefined;
 async function configureGoogle(){
  if(setupBusy)return;setupBusy=true;const retry=byId('loginRetry');retry.hidden=true;

@@ -2,6 +2,7 @@ import {LoginEntrance,LoginItem} from './motion/LoginEntrance.tsx';
 import React, {useEffect,useState} from 'react';
 import {FinanceSegmentedControl,GlassTextField,FinanceGlassButton as GlassButton} from './LiquidControls.tsx';
 import {initializeLayout} from '../services/layout-preferences.ts';
+import {bindGuestAccess} from '../services/login-guest.ts';
 
 let initialized:Promise<unknown>|undefined;
 function LoginThemeControl(){
@@ -22,10 +23,23 @@ function LoginThemeControl(){
 export default function Login(){
   const [imageReady,setImageReady]=useState(false),[imageStage,setImageStage]=useState<'webp'|'png'|'failed'>('webp');
   useEffect(()=>{
-    initializeLayout();
+    const unbindGuest=bindGuestAccess();
+    let active=true;
+    const retry=document.getElementById('loginRetry');
+    const reload=()=>location.reload();
     initialized ??= Promise.all([
+      initializeLayout(),
       import('../services/login-transition.ts'),
     ]).then(()=>import('../services/login.ts'));
+    const pending=initialized;
+    void pending.catch(()=>{
+      if(initialized===pending)initialized=undefined;
+      if(!active)return;
+      const status=document.getElementById('loginStatus');
+      if(status){status.textContent='Não foi possível carregar o acesso. Tente novamente.';status.className='login-error';}
+      if(retry){retry.hidden=false;retry.addEventListener('click',reload);}
+    });
+    return ()=>{active=false;unbindGuest();retry?.removeEventListener('click',reload);};
   },[]);
   return <>
     <div className="login-still-background" aria-hidden="true"/>
