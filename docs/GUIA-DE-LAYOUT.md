@@ -614,3 +614,5 @@ Os controles existentes de arquivo usam RiFileCloudLine (24 px, cor secundária 
 ## Login aprovado em 06/11/2026
 
 Login com apresentação da marca e card de acesso em duas colunas no desktop e empilhados no mobile. Logo em evidência, textos explicativos e tokens existentes. Entrar/criar conta por e-mail é somente prévia, identificada como Em breve; campos não persistem nem enviam credenciais. Google e visitante mantêm seus contratos. Telas pequenas permitem rolagem integral, sem esconder a parte inferior do formulário.
+
+No login, por solicitação do proprietário, não exibir “Seu espaço financeiro”, “TEFinance” nem “Mais clareza para o seu dinheiro”. A saudação do card passa a título principal sem alterar sua tipografia. Logo e acessos existentes permanecem.

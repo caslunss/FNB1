@@ -92,7 +92,7 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
 .login-brand-topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
 .login-brand-topics span{border:1px solid var(--form-border);background:var(--glass);padding:6px 12px;border-radius:var(--ui-radius-pill);font-size:12px;color:var(--lb2)}
 .auth-page .login-fullscreen .login-redesign .login-auth-card{width:100%;margin:0;padding:28px;border:1px solid var(--form-border);border-radius:var(--ui-radius-card);background:var(--lg-panel-fill);box-shadow:var(--lg-shadow);backdrop-filter:blur(var(--lg-panel-blur));-webkit-backdrop-filter:blur(var(--lg-panel-blur));gap:16px}
-.login-card-heading h2{font-size:25px;line-height:1.25;letter-spacing:-.035em;margin:0 0 8px;color:var(--text)}
+.login-card-heading h1{font-size:25px;line-height:1.25;letter-spacing:-.035em;margin:0 0 8px;color:var(--text)}
 .login-card-heading>p:last-child{font-size:13px;line-height:1.5;color:var(--lb2);margin:0}
 .login-email-preview{display:grid;gap:12px;min-width:0}
 .login-preview-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:var(--lb2)}
@@ -117,7 +117,7 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
  .login-brand-copy>p:last-of-type{font-size:14px;max-width:34ch;margin:auto}
  .login-brand-topics{display:none}
  .auth-page .login-fullscreen .login-redesign .login-auth-card{padding:22px;gap:16px}
- .login-card-heading h2{font-size:23px}
+ .login-card-heading h1{font-size:23px}
 }
 @media(prefers-reduced-transparency:reduce){.auth-page .login-fullscreen .login-redesign .login-auth-card{background:var(--card);backdrop-filter:none;-webkit-backdrop-filter:none}}
 @supports not (backdrop-filter:blur(1px)){.auth-page .login-fullscreen .login-redesign .login-auth-card{background:var(--card)}}

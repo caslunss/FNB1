@@ -25,6 +25,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ### Correções locais posteriores (2026-11-06)
 
+- Removidos do login os textos “Seu espaço financeiro”, “TEFinance” e “Mais clareza para o seu dinheiro”. O título de boas-vindas mantém a semântica de título principal e o mesmo estilo; acessos e campos preservados.
+
 - Login redesenhado com logo evidente, textos em português, card Liquid Glass e prévia de entrar/cadastrar com e-mail e senha. Google e visitante preservados. O formulário novo apenas informa indisponibilidade: não autentica, cadastra, envia ou armazena credenciais.
 
 - Envios existentes usam RiFileCloudLine e aceitam renderFileIcon; removida a herança de stroke/fill que ocultava ícones Remix. Formatos e limites preservados. Migração completa da UI BoardUI depende do código oficial indisponível pela rede.
