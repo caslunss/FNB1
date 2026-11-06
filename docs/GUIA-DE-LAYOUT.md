@@ -602,3 +602,7 @@ A marca passa a ser o guaxinim enviado pelo usuário, com fundo transparente. Lo
 - `workspace.tsx` é a entrada de uma sessão; estado, persistência, formulários, renderers e integrações residem em `src/finance/session`. `assembly.ts` conserva a ordem de inicialização. Não restaurar uma closure central nem duplicar serviços para caminhos antigos. O resultado integral está em `MIGRACAO-INTEGRAL-CONTROLADOR-2026-11-05.md`.
 - Recursos do controlador pertencem a `SessionScope`: listeners, timers, assinatura financeira, pesquisa, animações e URLs temporárias. Manter limpeza de overlays e raízes de apresentação ao encerrar a sessão; não apagar dados durante esse descarte. Componentes React continuam usando seus próprios cleanups de efeitos.
 - Domínios publicam pelo módulo financeiro, não por aliases globais de compatibilidade. `noUnusedLocals` impede reintrodução de imports e bindings sem uso; não desativar a checagem para acomodar código antigo.
+
+## Ajuste aprovado em 06/11/2026
+
+No mobile até 699 px, somente a marca sobe para alinhar seu centro à barra de perfil/notificações; sua posição horizontal e o título são preservados. No desktop acima de 1024 px, a marca mede 52 px. Gráficos usam as oito cores categóricas do tema, derivadas do destaque ativo e tons suaves; indicadores semânticos de alerta permanecem.

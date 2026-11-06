@@ -25,6 +25,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ### Correções locais posteriores (2026-11-06)
 
+- Ajuste visual solicitado: logo alinhada verticalmente à barra de conta no mobile, sem deslocamento horizontal; marca de 52 px no desktop. Cores categóricas dos gráficos vinculadas à paleta ativa em tons suaves, preservando dados e alertas.
+
 - F01: quota bancária aplicada no entrypoint HTTP por usuário autenticado e operação; limites independentes e rejeição antes de consultar o Pluggy, com 429/Retry-After ou 503 se a quota não puder ser verificada.
 - F02: amigos e propostas de divisão lidos com paginação estável, cancelamento e rejeição de páginas repetidas; nomes de usuário consultados em lotes sem truncar a lista em 100 registros. A regra mensal local foi preservada.
 

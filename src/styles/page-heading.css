@@ -4,3 +4,11 @@
 .page-brand-icon{display:inline-flex;flex:0 0 auto;inline-size:1.1em;block-size:1.1em;pointer-events:none;user-select:none}
 .page-brand-icon img{display:block;width:100%;height:100%;object-fit:contain}
 :root[data-theme=dark] .page-brand-icon img{filter:invert(1)}
+
+/* Approved brand sizing: mobile changes only the mark's vertical placement. */
+@media(max-width:699px){
+ .page-heading>.page-brand-icon{align-self:flex-start;position:relative;top:calc(-26px - var(--ui-space-1));transform:translateY(-50%)}
+}
+@media(min-width:1025px){
+ .page-brand-icon{inline-size:52px;block-size:52px}
+}
