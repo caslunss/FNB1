@@ -36,12 +36,15 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 - F05 (mitigação): consultas públicas de mercado idênticas e simultâneas compartilham uma chamada e uma quota por instância; cada resposta tem corpo independente e falhas liberam nova tentativa. A repartição da quota global continua sendo decisão do proprietário.
 
+- Task B: revisão segura sem exclusões especulativas, README corrigido e regras permanentes alinhadas; nenhum CSS ou valor Motion foi modificado.
+- Verificação local final: 58 scripts de regressão e 19 suítes browser aprovados; 400 estados comparados com a base 1678ded, com 400 pares dentro das tolerâncias de pixels existentes. Execução retomada por grupos completos após interrupção do ambiente, sem editar testes. Uma comparação de pixels inicialmente falhou (399/400); a repetição integral de 320 px escuro passou, e ambos os resultados foram preservados. Essa é uma comparação de regressão local, não uma validação de produção ou aprovação estética externa.
+
 ### Limitações conhecidas
 
 - A regra mensal de nome de usuário é LOCAL ONLY, por dispositivo/conta; não é imposta no servidor nem garante exclusividade entre aparelhos.
 - Safari, iPhone físico e provedores reais não foram verificados nesta rodada. Testes locais usam mocks e bloqueiam tráfego externo.
-- Testes E2E de origem legada tiveram os seletores de Configurações atualizados; a comparação pixel a pixel continua dependente de referência local aprovada. Capturas concluídas não equivalem a essa comparação.
 - Um teste de seleção apresentou falha de medição intermitente na baseline paralela; passou isoladamente e depois das edições, sem alteração de timing.
 - F01 (quota bancária) e F02 (paginação social) foram integradas localmente nesta rodada. O stash original 08cc1fd foi preservado; provedores e dados reais não foram consultados.
-- Task B: revisão segura concluída sem exclusão de código por busca estática; README alinhado à versão e aos testes locais isolados. Outros fixes continuam separados. A recuperação do login foi corrigida e coberta por testes locais de falha de chunk.
+- Deno/Supabase Edge não foi executado: os handlers foram testados em Node com transportes simulados; empacotamento e runtime Edge requerem validação isolada adicional.
+- A quota pública de mercado continua global; a coalescência vale por instância, sem redistribuir limites entre usuários.
 - Nenhuma publicação, tag ou deploy foi realizado pelo agente.
