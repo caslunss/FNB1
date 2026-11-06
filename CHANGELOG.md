@@ -25,6 +25,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ### Correções locais posteriores (2026-11-06)
 
+- Modo escuro padrão com base preta, superfícies neutras em níveis, texto mais claro e seleção cinza inspirados na imagem fornecida. Azul de marca, modo claro, valores Liquid Glass/Motion e cores dos gráficos protegidos de categorias/investimentos preservados. O guia online da Apple não pôde ser consultado por bloqueio de rede.
+
 - Destaque padrão alterado para azul #0000FF, com adaptação de legibilidade no escuro. Gráficos diários, por período, dívidas, divisões e evolução tributária inspirados na referência: barras suaves, grade discreta e área em degradê. Categorias, metas de investimento, mercado, valores e cálculos preservados; paletas alternativas continuam disponíveis.
 
 - Removidos do login os textos “Seu espaço financeiro”, “TEFinance” e “Mais clareza para o seu dinheiro”. O título de boas-vindas mantém a semântica de título principal e o mesmo estilo; acessos e campos preservados.

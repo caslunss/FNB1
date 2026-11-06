@@ -16,10 +16,10 @@
   --lg-navigation-fill:rgb(28 39 44 / .78);--lg-menu-fill:rgb(32 42 47 / .97);
   --lg-segment-selection:rgb(179 206 216 / .15);--lg-rim-opacity:.44;
 }
-#app .te-glass-surface{--lg-glass-fill:var(--lg-panel-fill);background:transparent!important;isolation:isolate;box-shadow:var(--lg-shadow)!important}
+#app .te-glass-surface{--lg-glass-fill:var(--lg-panel-fill);background:var(--content-panel-fill,transparent)!important;isolation:isolate;box-shadow:var(--lg-shadow)!important}
 #app.layout-r>.te-glass-surface{width:100%;margin:0!important}
 #app .te-glass-surface::before{--lg-glass-blur:20px}
-#app .te-glass-surface.identity-card{background:transparent!important}
+#app .te-glass-surface.identity-card{background:var(--content-panel-fill,transparent)!important}
 .te-glass-surface.account-bubbles,.te-glass-surface.tabbar{isolation:isolate}
 .te-glass-surface.account-bubbles{position:absolute}
 .te-glass-surface.notification-panel{--lg-glass-fill:var(--lg-menu-fill);position:fixed;isolation:isolate;background:transparent}

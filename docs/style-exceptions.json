@@ -1,7 +1,7 @@
 {
   "count": 610,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "92ef52f7c9608e57fce178b417a874f8bc4f2e0a67655d291e59aa24bffae749",
+  "sha256": "0d68661840a3ecee41170afc44afc4ce512787caed523a020ddc406c8afe611f",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -972,7 +972,7 @@
       "selector": "#app :is(.info-block,.debt-block).te-glass-surface",
       "conditions": "",
       "property": "background",
-      "value": "transparent",
+      "value": "var(--content-panel-fill,transparent)",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
@@ -2232,7 +2232,7 @@
       "selector": "#app .te-glass-surface",
       "conditions": "",
       "property": "background",
-      "value": "transparent",
+      "value": "var(--content-panel-fill,transparent)",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
@@ -2259,7 +2259,7 @@
       "selector": "#app .te-glass-surface.identity-card",
       "conditions": "",
       "property": "background",
-      "value": "transparent",
+      "value": "var(--content-panel-fill,transparent)",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {

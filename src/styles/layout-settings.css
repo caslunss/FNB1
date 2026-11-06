@@ -57,7 +57,7 @@ html[data-layout-ready] :is(.sheet,#receiptDialog,.compact-form.card){color:var(
 
 /* Content glass stays calmer than navigation and never turns charts into controls. */
 #app :is(.te-glass-surface,.debt-block){border:1px solid var(--lg-edge);border-radius:var(--pill-radius,var(--ui-radius-card))}
-#app :is(.info-block,.debt-block).te-glass-surface{--lg-glass-fill:var(--lg-panel-fill);background:transparent!important;isolation:isolate;box-shadow:var(--lg-shadow)}
+#app :is(.info-block,.debt-block).te-glass-surface{--lg-glass-fill:var(--lg-panel-fill);background:var(--content-panel-fill,transparent)!important;isolation:isolate;box-shadow:var(--lg-shadow)}
 #app .debt-block{appearance:none;font:inherit;cursor:pointer;width:100%;text-align:left}
 #app .debt-block:focus-visible{outline:3px solid var(--tint);outline-offset:3px}
 #app :is(.card,.overview,.stage,.info-block,.identity-card){min-width:0}

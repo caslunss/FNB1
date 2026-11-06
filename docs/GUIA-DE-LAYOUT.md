@@ -620,3 +620,7 @@ No login, por solicitação do proprietário, não exibir “Seu espaço finance
 ## Azul e gráficos — 06/11/2026
 
 O destaque padrão é #0000FF nos dois temas; texto e gráficos no escuro podem usar derivados legíveis. Gráficos de movimentação, períodos, dívidas, divisões e evolução tributária seguem a referência de barras arredondadas e linhas com área suave. Categorias e investimentos conservam cores e formatos anteriores por tokens de escopo preservado. Paletas alternativas e dados salvos permanecem. Não interpolar novos valores nem alterar escalas financeiras para simular curvas.
+
+## Modo escuro — 06/11/2026
+
+Referência visual: imagem Apple Stocks enviada pelo proprietário; link indicado https://developer.apple.com/design/human-interface-guidelines/dark-mode (não consultado nesta rodada: rede retornou 403). Aplicação de princípios gerais de hierarquia de superfícies e contraste, sem alegar certificação Apple. Base padrão #000000, superfície #1c1c1e, elevação cinza e texto principal #f5f5f7. Seleção escura usa cinza com texto claro; azul #0000FF continua como destaque com derivados legíveis. O modo claro, dados, paletas alternativas e valores de vidro/movimento permanecem. Gráficos de categorias/investimentos conservam suas cores anteriores por escopo próprio.

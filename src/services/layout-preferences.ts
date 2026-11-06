@@ -5,7 +5,7 @@ export interface ThemePreferences extends ThemePalette {opacity:number;blur:numb
 export interface LayoutPreferences {version:number;palette:string;intensity:number;dockStyle:DockStyle;circularProgress:boolean;indicators:Record<string,boolean>;sections:Record<string,boolean>;light:ThemePreferences;dark:ThemePreferences&{dim:number}}
 const KEY='plan12layout_v1';
 export const PALETTES=Object.freeze([
- {id:'aged-white',name:'Branco envelhecido',season:'Essencial',light:{accent:'#0000FF',background:'#e7e5de',surface:'#f7f4ec'},dark:{accent:'#0000FF',background:'#17191a',surface:'#272a2b'}},
+ {id:'aged-white',name:'Branco envelhecido',season:'Essencial',light:{accent:'#0000FF',background:'#e7e5de',surface:'#f7f4ec'},dark:{accent:'#0000FF',background:'#000000',surface:'#1c1c1e'}},
  {id:'autumn-sand',name:'Areia',season:'Outono',light:{accent:'#856d57',background:'#e8e0d6',surface:'#f6eee4'},dark:{accent:'#c9af93',background:'#1b1816',surface:'#302924'}},
  {id:'autumn-peach',name:'Damasco',season:'Outono',light:{accent:'#966d62',background:'#ecdfd7',surface:'#f9eee7'},dark:{accent:'#d6aea1',background:'#1d1918',surface:'#322926'}},
  {id:'autumn-rose',name:'Rosa chá',season:'Outono',light:{accent:'#8d6e79',background:'#e9dfe2',surface:'#f7edf0'},dark:{accent:'#cbb0bb',background:'#1c181c',surface:'#302830'}},
@@ -15,7 +15,7 @@ export const PALETTES=Object.freeze([
 ]);
 export const DEFAULT_LAYOUT:LayoutPreferences=Object.freeze({version:1,palette:'aged-white',intensity:3,dockStyle:'default',circularProgress:true,indicators:Object.freeze({}),sections:Object.freeze({credit:true,carbon:true,calendar:true}),
   light:Object.freeze({accent:'#0000FF',background:'#e7e5de',surface:'#f7f4ec',opacity:66,blur:6}),
-  dark:Object.freeze({accent:'#0000FF',background:'#17191a',surface:'#272a2b',opacity:64,blur:16,dim:70}),
+  dark:Object.freeze({accent:'#0000FF',background:'#000000',surface:'#1c1c1e',opacity:64,blur:16,dim:70}),
 });
 const copy=<T>(x:T):T=>JSON.parse(JSON.stringify(x));
 const bounded=(x:number|undefined,lo:number,hi:number,fallback:number)=>Number.isFinite(x)?Math.max(lo,Math.min(hi,Math.round(x!))):fallback;
@@ -58,21 +58,25 @@ export function layoutTokens(layout:LayoutPreferences,theme:string){
   // Categories and investments retain their established accent independently of the new default.
   const protectedAccent=normalized.palette==='aged-white'?(dark?'#bac3c5':'#557789'):p.accent;
   const panelOpacity=Math.max(.4,Math.min(.98,opacity+(dark?.12:-.04))),backdrop=mix(p.background,p.surface,panelOpacity);
+  const protectedBackground=normalized.palette==='aged-white'&&dark?'#17191a':p.background;
+  const protectedSurface=normalized.palette==='aged-white'&&dark?'#272a2b':p.surface;
+  const protectedBackdrop=mix(protectedBackground,protectedSurface,panelOpacity);
   const dim=dark?p.dim!/100:0;
-  const gentleText=(bg:string)=>readableColor(dark?'#dce1e5':bestText(bg),bg);
+  const gentleText=(bg:string)=>readableColor(dark?'#f5f5f7':bestText(bg),bg);
   const text=gentleText(p.background),cardText=gentleText(backdrop),formText=gentleText(p.surface);
-  const accent=readableColor(p.accent,p.background),muted=readableColor(mix(text,p.background,.3),p.background);
+  const accent=readableColor(p.accent,dark?p.surface:p.background),muted=readableColor(mix(text,p.background,.3),p.background);
   const fill=dark?mix(p.surface,'#ffffff',.062):'#ffffff';
   const controlText=bestText(mix(p.background,fill,opacity)),cardControlText=bestText(mix(backdrop,fill,opacity));
-  return {'--bg':p.background,'--main':p.background,'--card':p.surface,'--elev':mix(p.surface,text,.04),'--lb':text,'--lb2':muted,'--text':text,'--muted':muted,
+  return {'--content-panel-fill':dark?rgba(p.surface,panelOpacity):'transparent','--bg':p.background,'--main':p.background,'--card':p.surface,'--elev':dark?mix(p.surface,'#ffffff',.08):mix(p.surface,text,.04),'--lb':text,'--lb2':muted,'--text':text,'--muted':muted,
     '--layout-card-text':cardText,'--layout-card-muted':readableColor(mix(cardText,backdrop,.3),backdrop),'--layout-card-accent':readableColor(p.accent,backdrop),'--layout-card-control-text':cardControlText,'--layout-form-text':formText,
     '--tint':dark?accent:p.accent,'--tintT':accent,'--btn':mix(p.surface,p.accent,.22),'--on-accent':text,'--fill':mix(p.surface,text,.07),'--sel':mix(p.surface,p.accent,.18),
     '--sep':mix(p.surface,text,.18),'--border':mix(p.surface,text,.14),'--line':mix(p.surface,text,.18),'--soft':mix(p.surface,text,.05),'--edge':dark?'rgb(255 255 255 / .09)':'rgb(255 255 255 / .7)',
     '--pill-surface':p.surface,'--pill-border':mix(p.surface,text,.12),'--form-surface':p.surface,'--form-field':mix(p.surface,text,.05),'--form-border':mix(p.surface,text,.2),'--form-label':text,'--sheetbg':p.surface,
-    '--chart-accent':readableColor(p.accent,backdrop),'--chart-grid':rgba(cardText,dark?.09:.1),'--chart-wash':rgba(p.accent,dark?.08:.1),'--chart-muted':mix(p.surface,p.accent,.32),'--rail':p.surface,'--glass':rgba(fill,opacity),'--chart-previous':mix(p.surface,p.accent,.14),'--layout-glow':rgba(p.accent,dark?.04:.12),
-    '--c0':readableColor(mix(protectedAccent,'#8296a0',.65),backdrop),'--c1':readableColor(mix(protectedAccent,'#ac9c80',.65),backdrop),'--c2':readableColor(mix(protectedAccent,'#788f9e',.65),backdrop),'--c3':readableColor(mix(protectedAccent,'#83978a',.65),backdrop),'--c4':readableColor(mix(protectedAccent,'#ac8984',.65),backdrop),'--c5':readableColor(mix(protectedAccent,'#958ba5',.65),backdrop),'--c6':readableColor(mix(protectedAccent,'#7d9999',.65),backdrop),'--c7':readableColor(mix(protectedAccent,'#ac909d',.65),backdrop),
-    '--preserved-accent':protectedAccent,'--preserved-accent-text':readableColor(protectedAccent,p.background),'--preserved-chart-accent':readableColor(protectedAccent,backdrop),'--preserved-chart-previous':mix(p.surface,protectedAccent,.4),'--preserved-chart-wash':rgba(protectedAccent,dark?.08:.1),'--preserved-chart-muted':mix(p.surface,protectedAccent,.32),'--preserved-btn':mix(p.surface,protectedAccent,.22),'--preserved-selection':mix(p.surface,protectedAccent,.18),'--preserved-layout-glow':rgba(protectedAccent,dark?.04:.12),
+    '--chart-accent':readableColor(p.accent,backdrop),'--chart-grid':rgba(cardText,dark?.09:.1),'--chart-wash':rgba(p.accent,dark?.08:.1),'--chart-muted':mix(p.surface,p.accent,.32),'--rail':p.surface,'--glass':rgba(fill,opacity),'--chart-previous':mix(p.surface,p.accent,.14),'--layout-glow':rgba(dark?mix(p.surface,'#ffffff',.12):p.accent,dark?.04:.12),
+    '--c0':readableColor(mix(protectedAccent,'#8296a0',.65),protectedBackdrop),'--c1':readableColor(mix(protectedAccent,'#ac9c80',.65),protectedBackdrop),'--c2':readableColor(mix(protectedAccent,'#788f9e',.65),protectedBackdrop),'--c3':readableColor(mix(protectedAccent,'#83978a',.65),protectedBackdrop),'--c4':readableColor(mix(protectedAccent,'#ac8984',.65),protectedBackdrop),'--c5':readableColor(mix(protectedAccent,'#958ba5',.65),protectedBackdrop),'--c6':readableColor(mix(protectedAccent,'#7d9999',.65),protectedBackdrop),'--c7':readableColor(mix(protectedAccent,'#ac909d',.65),protectedBackdrop),
+    '--preserved-accent':protectedAccent,'--preserved-accent-text':readableColor(protectedAccent,protectedBackground),'--preserved-chart-accent':readableColor(protectedAccent,protectedBackdrop),'--preserved-chart-previous':mix(protectedSurface,protectedAccent,.4),'--preserved-chart-wash':rgba(protectedAccent,dark?.08:.1),'--preserved-chart-muted':mix(protectedSurface,protectedAccent,.32),'--preserved-btn':mix(protectedSurface,protectedAccent,.22),'--preserved-selection':mix(protectedSurface,protectedAccent,.18),'--preserved-layout-glow':rgba(protectedAccent,dark?.04:.12),
     '--greenT':readableColor(dark?'#30db5b':'#248a3d',backdrop),'--redT':readableColor(dark?'#ff6961':'#d70015',backdrop),
+    '--ui-control-selected':dark?mix(p.surface,'#ffffff',.12):'#fff','--ui-control-selected-text':dark?text:'#1d1d1f','--ui-control-selected-muted':dark?muted:'#56565b',
     '--lg-fg':controlText,'--lg-fg-muted':muted,'--lg-accent':accent,'--lg-fill':rgba(fill,opacity),'--lg-fill-pressed':rgba(fill,dark?Math.min(.98,opacity+.05):.92),
     '--lg-panel-fill':rgba(p.surface,panelOpacity),'--lg-navigation-fill':rgba(fill,dark?opacity:Math.max(.4,opacity-.18)),
     '--lg-menu-fill':rgba(mix(p.surface,text,.04),.96),'--lg-edge':dark?`rgb(255 255 255 / ${(.09-dim*.05).toFixed(3)})`:'rgb(0 0 0 / .06)',

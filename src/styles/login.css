@@ -124,3 +124,7 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
 
 .auth-page:has(.login-redesign) .login-theme-control{top:24px;bottom:auto}
 .login-redesign .google-area{display:flex;justify-content:center}
+
+/* Dark entry uses neutral layers; brand color remains an accent. */
+:root[data-theme=dark] .auth-page .login-still-background{background:var(--bg)}
+:root[data-theme=dark] .auth-page .login-background-shade{background:transparent}
