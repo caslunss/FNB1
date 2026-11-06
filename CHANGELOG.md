@@ -32,6 +32,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 - F04: leitura incremental limitada dos corpos de banco, compras, tributos e exclusão de conta, com cancelamento antecipado. Limites lógicos, Unicode/BOM e mensagens/status existentes preservados.
 
+- F03: snapshots serializados idênticos são validados uma vez, sem ordenação recursiva; comparação semântica e rejeição de snapshots inválidos preservadas.
+
 ### Limitações conhecidas
 
 - A regra mensal de nome de usuário é LOCAL ONLY, por dispositivo/conta; não é imposta no servidor nem garante exclusividade entre aparelhos.

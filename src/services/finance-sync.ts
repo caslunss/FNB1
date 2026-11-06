@@ -24,7 +24,12 @@ import {errorDetails} from './errors.ts';
   function emit(mode:string,extra:Partial<CloudState>={}){state={...state,...extra,mode,lastSynced:meta.lastSynced,revision:meta.revision};try{onState({...state});}catch{}return state;}
   function saveMeta(){storage.setItem(META,JSON.stringify(meta));}
   function readLocal(){const value=storage.getItem(WORKSPACE);return value===null?null:recordText(value);}
-  function equal(a:unknown,b:unknown){return !!a&&!!b&&canonical(a)===canonical(b);}
+  function equal(a:unknown,b:unknown){
+   if(!a||!b)return false;
+   // Identical serialized snapshots need validation, but no recursive key sorting.
+   if(typeof a==='string'&&a===b){recordText(a);return true;}
+   return canonical(a)===canonical(b);
+  }
   function later(delay=700){if(stopped||state.mode==='conflict')return;cancel(timer);timer=schedule(()=>flush(),delay);}
   function conflict(row:SyncRow|null){meta.dirty=true;saveMeta();emit('conflict',{remoteRevision:row?.revision||0});}
   async function acknowledged(row:SyncRow,snapshot:unknown){meta.revision=row.revision;meta.hash=await hash(snapshot);meta.lastSynced=row.updated_at||new Date().toISOString();const current=readLocal();meta.dirty=!equal(current,snapshot);saveMeta();lastObserved=current;if(meta.dirty){emit('syncing');later();}else emit('synced');}
