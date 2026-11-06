@@ -3,6 +3,7 @@
    app-focus is declared earlier: its important focus ring keeps precedence. */
 :root{
  --ui-control-gap:var(--ui-space-2);
+ --ui-action-gap:var(--ui-space-3);
  --ui-control-padding:var(--ui-space-1);
  --ui-control-compact-padding:2px;
  --ui-control-border-width:1px;
@@ -79,7 +80,7 @@
  .account-settings-tabs.ui-option-bar button::after{content:none}
  .account-settings-tabs.ui-option-bar button{flex:1 1 auto}
  :is(.ui-toolbar,.plan-actions,.progressive-actions,.settings-actions,.tax-actions,.entry-toolbar,.chart-toolbar,.summary-toolbar,.top-account-actions,.notification-footer){
-  align-items:center!important;gap:var(--ui-control-gap)!important;min-width:0;
+  align-items:center!important;gap:var(--ui-action-gap)!important;min-width:0;
  }
  .ui-toolbar{display:flex;flex-wrap:wrap}
  .ui-option-bar.month-picker-year{width:100%;flex-wrap:nowrap}

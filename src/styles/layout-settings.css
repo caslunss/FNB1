@@ -485,9 +485,8 @@ body:not(.auth-page) #app.layout-k{display:grid;grid-template-columns:minmax(0,1
 /* Shared action row; forms and purchase cards follow at the full popup width. */
 #accountOverlay[data-panel=offers]{width:min(840px,calc(100vw - 24px));max-width:840px}
 .offers-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--ui-space-5) var(--ui-space-3);align-items:start}
-.offers-panel>.offers-search-section,.offers-panel>.shopping-section,.offers-panel .te-action-editor{display:contents}
-.offers-panel .offers-search-section .te-editor-pill{grid-column:1;grid-row:1;justify-self:end}
-.offers-panel .shopping-section .te-editor-pill{grid-column:2;grid-row:1;justify-self:start}
+.offers-panel .offers-search-section .te-editor-pill{justify-self:start}
+.offers-panel .shopping-section .te-editor-pill{justify-self:start}
 .offers-panel .te-action-editor>details{grid-column:1/-1;min-width:0;margin:0}
 .offers-panel #offerResults,.offers-panel .shopping-section>.card{grid-column:1/-1;min-width:0;margin:0}
 .offers-panel .shopping-section>.card{padding:var(--ui-space-6)}

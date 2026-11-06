@@ -1,7 +1,7 @@
 {
-  "count": 604,
+  "count": 605,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "f434ad436ccc461fdd916696c753409b2c87cdc5561755688359157dd4be87f0",
+  "sha256": "ab0ac8608d559e755ec0de1431262cb71f842cfb51119560aa25186cc53fe102",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -144,7 +144,7 @@
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar",
       "conditions": "@media (max-width:1024px)",
       "property": "height",
-      "value": "54px",
+      "value": "var(--ui-bar-height,54px)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -153,7 +153,7 @@
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar",
       "conditions": "@media (max-width:1024px)",
       "property": "min-height",
-      "value": "54px",
+      "value": "var(--ui-bar-min-height,54px)",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -180,7 +180,7 @@
       "selector": "body:not(.auth-page) .navigation-actions[data-compact=true] #tabs.tabbar",
       "conditions": "@media (max-width:1024px)",
       "property": "width",
-      "value": "calc(100% - 32px)",
+      "value": "max-content",
       "reason": "Navegação: manter a geometria, a composição de vidro e os estados mobile/desktop existentes."
     },
     {
@@ -203,7 +203,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "flex",
@@ -212,7 +212,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "min-width",
@@ -221,7 +221,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "width",
@@ -230,7 +230,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "height",
@@ -239,7 +239,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 17,
+      "line": 18,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "min-height",
@@ -248,7 +248,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 18,
+      "line": 19,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "transform",
@@ -257,7 +257,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 18,
+      "line": 19,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "scale",
@@ -266,7 +266,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 18,
+      "line": 19,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar button",
       "conditions": "@media (max-width:1024px)",
       "property": "translate",
@@ -275,7 +275,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 21,
+      "line": 22,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "display",
@@ -284,7 +284,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 21,
+      "line": 22,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "position",
@@ -293,7 +293,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 21,
+      "line": 22,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "inset",
@@ -302,7 +302,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 21,
+      "line": 22,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "align-items",
@@ -311,7 +311,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 21,
+      "line": 22,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "justify-content",
@@ -320,7 +320,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 22,
+      "line": 23,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "width",
@@ -329,7 +329,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 22,
+      "line": 23,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "height",
@@ -338,7 +338,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 22,
+      "line": 23,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "padding",
@@ -347,7 +347,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 22,
+      "line": 23,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button .lg-button__label",
       "conditions": "@media (max-width:1024px)",
       "property": "transform",
@@ -356,7 +356,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 25,
+      "line": 26,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button svg",
       "conditions": "@media (max-width:1024px)",
       "property": "width",
@@ -365,7 +365,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 25,
+      "line": 26,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button svg",
       "conditions": "@media (max-width:1024px)",
       "property": "height",
@@ -374,16 +374,16 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 37,
+      "line": 38,
       "selector": "html[data-dock-style=pinned] .workspace-main.wrap",
       "conditions": "",
       "property": "padding-bottom",
-      "value": "calc(100px + env(safe-area-inset-bottom))",
+      "value": "calc(100px + var(--dock-safe-bottom,env(safe-area-inset-bottom,0px)))",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 54,
+      "line": 55,
       "selector": "html[data-dock-style=pinned] body:not(.auth-page) .navigation-actions[hidden],\nhtml[data-dock-style=pinned] body:not(.auth-page):has(dialog[open],#scrim:not([hidden])) .navigation-actions,\nhtml[data-dock-style=pinned] body.mobile-keyboard-open .navigation-actions",
       "conditions": "",
       "property": "display",
@@ -392,25 +392,25 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 56,
+      "line": 57,
       "selector": "html[data-dock-style=pinned] .workspace-main.wrap",
       "conditions": "@media (max-width:699px)",
       "property": "padding-bottom",
-      "value": "calc(var(--mobile-tab-height,70px) + 98px + env(safe-area-inset-bottom))",
+      "value": "calc(var(--mobile-tab-height,70px) + 98px + var(--dock-safe-bottom))",
       "reason": "Responsividade: manter a disposição existente no breakpoint correspondente."
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 60,
+      "line": 61,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "@media (min-width:700px) and (max-width:1024px)",
       "property": "padding-bottom",
-      "value": "calc(100px + env(safe-area-inset-bottom))",
+      "value": "calc(100px + var(--dock-safe-bottom,env(safe-area-inset-bottom,0px)))",
       "reason": "Responsividade: manter a disposição existente no breakpoint correspondente."
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 65,
+      "line": 66,
       "selector": "body:not(.auth-page) .navigation-actions #tabs.tabbar,\n body:not(.auth-page) .navigation-actions #tabs button,\n body:not(.auth-page) .navigation-actions #tabs button svg",
       "conditions": "@media (max-width:1024px) and (prefers-reduced-motion:reduce)",
       "property": "transition",
@@ -419,7 +419,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 66,
+      "line": 67,
       "selector": "body:not(.auth-page) .navigation-actions #tabs button svg",
       "conditions": "@media (max-width:1024px) and (prefers-reduced-motion:reduce)",
       "property": "transform",
@@ -428,7 +428,7 @@
     },
     {
       "file": "src/styles/bottom-navigation.css",
-      "line": 84,
+      "line": 85,
       "selector": "body:not(.auth-page) .navigation-actions[hidden],\n body:not(.auth-page):has(dialog[open]) .navigation-actions,\n body:not(.auth-page):has(#scrim:not([hidden])) .navigation-actions",
       "conditions": "@media (max-width:1024px)",
       "property": "display",
@@ -2093,7 +2093,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 508,
+      "line": 507,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details>form.card",
       "conditions": "",
       "property": "border-radius",
@@ -2102,7 +2102,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 509,
+      "line": 508,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details>form.card",
       "conditions": "",
       "property": "background",
@@ -2111,7 +2111,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 600,
+      "line": 599,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-image",
@@ -2120,7 +2120,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 601,
+      "line": 600,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-position",
@@ -2129,7 +2129,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 602,
+      "line": 601,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-size",
@@ -2138,7 +2138,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 602,
+      "line": 601,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-repeat",
@@ -2147,7 +2147,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 608,
+      "line": 607,
       "selector": "body .te-text-field.lg-input__field>select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-position",
@@ -2156,7 +2156,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 669,
+      "line": 668,
       "selector": ".account-overlay[data-panel=settings] .settings-panel",
       "conditions": "",
       "property": "padding",
@@ -2165,7 +2165,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 689,
+      "line": 688,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -2174,7 +2174,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 689,
+      "line": 688,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -2183,7 +2183,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 689,
+      "line": 688,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -2192,7 +2192,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 689,
+      "line": 688,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -2201,7 +2201,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 689,
+      "line": 688,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "border-radius",
@@ -4487,7 +4487,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 25,
+      "line": 26,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4496,7 +4496,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 26,
+      "line": 27,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "border",
@@ -4505,7 +4505,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 27,
+      "line": 28,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "border-radius",
@@ -4514,7 +4514,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 28,
+      "line": 29,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "box-shadow",
@@ -4523,7 +4523,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 29,
+      "line": 30,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "backdrop-filter",
@@ -4532,7 +4532,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 30,
+      "line": 31,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "-webkit-backdrop-filter",
@@ -4541,7 +4541,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 34,
+      "line": 35,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "display",
@@ -4550,7 +4550,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 34,
+      "line": 35,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "flex-wrap",
@@ -4559,7 +4559,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 34,
+      "line": 35,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "align-items",
@@ -4568,7 +4568,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 35,
+      "line": 36,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "gap",
@@ -4577,7 +4577,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 35,
+      "line": 36,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "padding",
@@ -4586,7 +4586,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 36,
+      "line": 37,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "height",
@@ -4595,7 +4595,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 36,
+      "line": 37,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "min-height",
@@ -4604,7 +4604,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 41,
+      "line": 42,
       "selector": ".ui-option-bar::before,.ui-option-bar::after",
       "conditions": "@layer app-controls",
       "property": "content",
@@ -4613,7 +4613,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 44,
+      "line": 45,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "min-height",
@@ -4622,7 +4622,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 45,
+      "line": 46,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "height",
@@ -4631,7 +4631,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 46,
+      "line": 47,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "gap",
@@ -4640,7 +4640,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 46,
+      "line": 47,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "padding",
@@ -4649,7 +4649,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 47,
+      "line": 48,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "font",
@@ -4658,7 +4658,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 48,
+      "line": 49,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "color",
@@ -4667,7 +4667,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 48,
+      "line": 49,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4676,7 +4676,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 49,
+      "line": 50,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "border",
@@ -4685,7 +4685,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 49,
+      "line": 50,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "border-radius",
@@ -4694,7 +4694,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 50,
+      "line": 51,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "box-shadow",
@@ -4703,7 +4703,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 51,
+      "line": 52,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "backdrop-filter",
@@ -4712,7 +4712,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 52,
+      "line": 53,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "-webkit-backdrop-filter",
@@ -4721,7 +4721,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 55,
+      "line": 56,
       "selector": ".ui-button::before,.ui-button::after",
       "conditions": "@layer app-controls",
       "property": "content",
@@ -4730,7 +4730,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 57,
+      "line": 58,
       "selector": ":is(.ui-option,.ui-option-bar .ui-button)",
       "conditions": "@layer app-controls",
       "property": "flex",
@@ -4739,7 +4739,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 57,
+      "line": 58,
       "selector": ":is(.ui-option,.ui-option-bar .ui-button)",
       "conditions": "@layer app-controls",
       "property": "touch-action",
@@ -4748,7 +4748,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 70,
+      "line": 71,
       "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
       "conditions": "@layer app-controls",
       "property": "flex",
@@ -4757,19 +4757,10 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 71,
+      "line": 72,
       "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
       "conditions": "@layer app-controls",
       "property": "width",
-      "value": "var(--ui-touch-target)",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/option-controls.css",
-      "line": 71,
-      "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
-      "conditions": "@layer app-controls",
-      "property": "height",
       "value": "var(--ui-touch-target)",
       "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
     },
@@ -4778,13 +4769,22 @@
       "line": 72,
       "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
       "conditions": "@layer app-controls",
+      "property": "height",
+      "value": "var(--ui-touch-target)",
+      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
+    },
+    {
+      "file": "src/styles/option-controls.css",
+      "line": 73,
+      "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
+      "conditions": "@layer app-controls",
       "property": "min-width",
       "value": "var(--ui-touch-target)",
       "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 82,
+      "line": 83,
       "selector": ":is(.ui-toolbar,.plan-actions,.progressive-actions,.settings-actions,.tax-actions,.entry-toolbar,.chart-toolbar,.summary-toolbar,.top-account-actions,.notification-footer)",
       "conditions": "@layer app-controls",
       "property": "align-items",
@@ -4793,16 +4793,16 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 82,
+      "line": 83,
       "selector": ":is(.ui-toolbar,.plan-actions,.progressive-actions,.settings-actions,.tax-actions,.entry-toolbar,.chart-toolbar,.summary-toolbar,.top-account-actions,.notification-footer)",
       "conditions": "@layer app-controls",
       "property": "gap",
-      "value": "var(--ui-control-gap)",
+      "value": "var(--ui-action-gap)",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 91,
+      "line": 92,
       "selector": ":is(.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4811,7 +4811,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 91,
+      "line": 92,
       "selector": ":is(.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "border-radius",
@@ -4820,7 +4820,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 101,
+      "line": 102,
       "selector": ".navigation-actions .ui-option-bar .ui-button",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "flex",
@@ -4829,7 +4829,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 101,
+      "line": 102,
       "selector": ".navigation-actions .ui-option-bar .ui-button",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "width",
@@ -4838,7 +4838,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 102,
+      "line": 103,
       "selector": ".navigation-actions[data-compact=true] .ui-option-bar",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "min-height",
@@ -4847,7 +4847,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 128,
+      "line": 129,
       "selector": ":is(.finance-calendar-choice,.cal-day)[aria-pressed=true]",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4856,7 +4856,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 128,
+      "line": 129,
       "selector": ":is(.finance-calendar-choice,.cal-day)[aria-pressed=true]",
       "conditions": "@layer app-controls",
       "property": "color",
@@ -4933,6 +4933,15 @@
       "conditions": "@container overview-grid (min-width:680px)",
       "property": "grid-column",
       "value": "span 6",
+      "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
+    },
+    {
+      "file": "src/styles/overview-layout.css",
+      "line": 20,
+      "selector": "#app.layout-r[data-summary-view=overview]>.card[data-card-key]:last-child:nth-child(odd)",
+      "conditions": "@container overview-grid (min-width:680px)",
+      "property": "grid-column",
+      "value": "1/-1",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {

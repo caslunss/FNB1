@@ -17,6 +17,7 @@
 #app.layout-r[data-summary-view=overview] .category-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));align-items:start}
 @container overview-grid (min-width:680px){
  #app.layout-r[data-summary-view=overview]>.card[data-card-key]{grid-column:span 6!important}
+ #app.layout-r[data-summary-view=overview]>.card[data-card-key]:last-child:nth-child(odd){grid-column:1/-1!important}
  #app.layout-r[data-summary-view=overview]>.summary-behavior{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:520px){

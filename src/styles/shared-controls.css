@@ -45,7 +45,7 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 .loading-skeleton-chart{height:120px;width:100%}
 @keyframes skeleton-breathe{from{opacity:var(--motion-subtle-opacity)}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.loading-skeleton>span{animation:none}}
-/* Five primary destinations; secondary choices share the existing glass segments. */
+/* Four primary destinations; secondary choices share the existing glass segments. */
 .area-toolbar,.area-content,.summary-behavior{grid-column:1/-1;min-width:0;max-width:100%}
 .area-toolbar{display:flex;justify-content:center;margin:0 0 var(--ui-space-6)}
 .area-switch{max-width:100%}
@@ -60,7 +60,7 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 }
 /* Shared card geometry: spending habits and every planning item use this surface. */
 :root{--content-card-gap:24px;--content-card-padding:clamp(18px,2vw,28px)}
-#app :is(.summary-behavior,.planning-grid){grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);align-items:start}
+#app :is(.summary-behavior,.planning-grid){grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);align-items:stretch}
 #app :is(.summary-behavior,.planning-grid) .finance-layout-card{
  box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:0;
  margin:0!important;padding:var(--content-card-padding)!important;
@@ -134,3 +134,11 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
  #app.layout-i .entry-summary>div:last-child{padding-bottom:0;border-bottom:0}
  #app.layout-i .entry-toolbar>.te-action-menu{margin-left:0}
 }
+
+/* Section grids own their rhythm; nested legacy margins must not double it. */
+.area-content>.debt-stats{margin:0;gap:var(--content-card-gap);align-items:stretch}
+.area-content>.debt-stats>.info-block{height:100%;box-sizing:border-box}
+.area-content>.section-heading{margin:0;gap:var(--ui-action-gap);flex-wrap:wrap}
+.area-content>.debt-blocks{gap:var(--content-card-gap)}
+.area-content :is(.row,.credit-card-actions,.plan-actions){row-gap:var(--ui-action-gap)}
+#app .planning-grid>.finance-layout-card{align-self:stretch}

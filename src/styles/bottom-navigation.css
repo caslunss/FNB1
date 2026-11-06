@@ -7,11 +7,12 @@
  }
  body:not(.auth-page) .navigation-actions #tabs.tabbar{
   position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;align-items:center!important;
-  width:100%!important;max-width:none!important;min-width:0;height:54px!important;min-height:54px!important;margin:0 auto!important;box-sizing:border-box;transition:opacity var(--motion-calm) var(--motion-ease)!important;
-  transform-origin:50% 100%;
+  width:100%!important;max-width:none!important;min-width:0;height:var(--ui-bar-height,54px)!important;min-height:var(--ui-bar-min-height,54px)!important;margin:0 auto!important;box-sizing:border-box;transition:opacity var(--motion-calm) var(--motion-ease)!important;
+  transform-origin:50% 100%;overflow:hidden;
  }
  body:not(.auth-page) .navigation-actions[data-compact=true] #tabs.tabbar{
-  width:calc(100% - 32px)!important;height:50px!important;min-height:50px!important;opacity:.92;
+  width:max-content!important;height:50px!important;min-height:50px!important;opacity:.92;
+  --dock-button-flex:0 0 var(--ui-touch-target);--dock-button-width:var(--ui-touch-target);
  }
  body:not(.auth-page) .navigation-actions #tabs.tabbar button{
   position:relative;display:grid;place-items:center;flex:var(--dock-button-flex,1 1 0)!important;min-width:var(--ui-touch-target)!important;width:var(--dock-button-width,auto)!important;height:44px!important;min-height:var(--ui-touch-target)!important;margin:0;box-sizing:border-box;outline:none;
@@ -33,18 +34,18 @@
 .dock-style-setting label{position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .dock-style-setting input[type=radio]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;z-index:2}
 .dock-style-setting label:has(input:focus-visible){--ui-option-focus-shadow:0 0 0 2px var(--focus-color),0 0 0 4px var(--focus-halo);--ui-control-shadow:var(--ui-option-focus-shadow)}
-html[data-dock-style=pinned]{scroll-padding-bottom:calc(100px + env(safe-area-inset-bottom))}
-html[data-dock-style=pinned] .workspace-main.wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))!important}
+html[data-dock-style=pinned]{--dock-safe-bottom:env(safe-area-inset-bottom,0px);scroll-padding-bottom:calc(100px + var(--dock-safe-bottom))}
+html[data-dock-style=pinned] .workspace-main.wrap{padding-bottom:calc(100px + var(--dock-safe-bottom,env(safe-area-inset-bottom,0px)))!important}
 html[data-dock-style=pinned] body:not(.auth-page) .navigation-actions{
  --dock-inset:auto 0 0;--dock-width:100%;--dock-max-width:none;--dock-margin:0;
  --dock-button-flex:0 0 var(--ui-touch-target);--dock-button-width:var(--ui-touch-target);
  position:fixed;inset:auto 0 0;display:block;width:100%;max-width:none;margin:0;padding:0;box-sizing:border-box;z-index:70;
 }
 html[data-dock-style=pinned] body:not(.auth-page) .navigation-actions #tabs.tabbar{
- --ui-bar-radius:0px;--ui-bar-height:calc(54px + env(safe-area-inset-bottom));--ui-bar-min-height:var(--ui-bar-height);
- --ui-bar-padding:4px max(12px,env(safe-area-inset-right)) calc(4px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+ --ui-bar-radius:0px;--ui-bar-height:calc(var(--ui-touch-target) + 2 * var(--ui-space-1) + 2 * var(--ui-control-border-width) + var(--dock-safe-bottom));--ui-bar-min-height:var(--ui-bar-height);
+ --ui-bar-padding:4px max(12px,env(safe-area-inset-right)) calc(var(--ui-space-1) + var(--dock-safe-bottom)) max(12px,env(safe-area-inset-left));
  position:relative;inset:auto;display:flex;flex-direction:row;align-items:center;justify-content:center;
- width:100%;max-width:none;margin:0;box-sizing:border-box;opacity:1;
+ width:100%;max-width:none;margin:0;box-sizing:border-box;opacity:1;overflow:hidden;
 }
 html[data-dock-style=pinned] body:not(.auth-page) .navigation-actions #tabs.tabbar button{
  flex:0 0 var(--ui-touch-target);width:var(--ui-touch-target);min-width:var(--ui-touch-target);height:var(--ui-touch-target);min-height:var(--ui-touch-target);
@@ -53,11 +54,11 @@ html[data-dock-style=pinned] body:not(.auth-page) .navigation-actions[hidden],
 html[data-dock-style=pinned] body:not(.auth-page):has(dialog[open],#scrim:not([hidden])) .navigation-actions,
 html[data-dock-style=pinned] body.mobile-keyboard-open .navigation-actions{display:none!important}
 @media(max-width:699px){
- html[data-dock-style=pinned] .workspace-main.wrap{padding-bottom:calc(var(--mobile-tab-height,70px) + 98px + env(safe-area-inset-bottom))!important}
+ html[data-dock-style=pinned] .workspace-main.wrap{padding-bottom:calc(var(--mobile-tab-height,70px) + 98px + var(--dock-safe-bottom))!important}
 }
 @media(min-width:700px) and (max-width:1024px){
  html[data-layout-ready] .workspace-frame{backdrop-filter:none;-webkit-backdrop-filter:none}
- html[data-layout-ready] .workspace-main.wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))!important}
+ html[data-layout-ready] .workspace-main.wrap{padding-bottom:calc(100px + var(--dock-safe-bottom,env(safe-area-inset-bottom,0px)))!important}
 }
 @media(max-width:1024px) and (prefers-reduced-motion:reduce){
  body:not(.auth-page) .navigation-actions #tabs.tabbar,
@@ -84,3 +85,7 @@ html[data-dock-style=pinned] body.mobile-keyboard-open .navigation-actions{displ
   display:none!important;
  }
 }
+
+/* Mini uses its four touch targets as its width, including on desktop. */
+html[data-dock-style=mini] .navigation-actions{--dock-button-flex:0 0 var(--ui-touch-target);--dock-button-width:var(--ui-touch-target)}
+html[data-dock-style=mini] .navigation-actions #tabs{overflow:hidden;--ui-bar-padding:var(--ui-control-compact-padding);--ui-bar-height:50px;--ui-bar-min-height:50px}

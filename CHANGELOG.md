@@ -4,6 +4,10 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## [0.1.0-alpha.1] - 2026-11-05
 
+### Corrigido — 06/11/2026
+
+- Dock Mini passa a usar largura intrínseca dos quatro controles (206 × 50 px), preservando alvos de 44 px. Dock Fixada calcula altura e padding pela mesma área segura e não admite rolagem interna vertical. Barras de ações passam a usar 12 px entre controles, com seletores em 8 px. Grades de cards eliminam margens duplicadas, alinham cards de Planejamento e aproveitam a última linha ímpar do Resumo. Regras de popup que desfaziam containers em Planejamento foram removidas. Vidro, cores e durações de movimento preservados.
+
 ### Removido — 06/11/2026
 
 - Por solicitação do proprietário, removida a página de Investimentos, seu acesso, componentes, cotações BRAPI, indicadores de mercado, referência pública e endpoints `/api/investments`, `/api/market-economy` e `/api/market-rates`. O diagnóstico de serviços deixa de expor o campo `configuration.investments`. Links internos inválidos retornam ao Resumo. A categoria financeira, lançamentos e metas salvos são preservados. O módulo de Cartões perde a nomenclatura legada que o associava à página removida.
