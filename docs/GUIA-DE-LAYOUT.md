@@ -606,3 +606,5 @@ A marca passa a ser o guaxinim enviado pelo usuário, com fundo transparente. Lo
 ## Ajuste aprovado em 06/11/2026
 
 No mobile até 699 px, somente a marca sobe para alinhar seu centro à barra de perfil/notificações; sua posição horizontal e o título são preservados. No desktop acima de 1024 px, a marca mede 52 px. Gráficos usam as oito cores categóricas do tema, derivadas do destaque ativo e tons suaves; indicadores semânticos de alerta permanecem.
+
+A pesquisa global usa SearchField adaptado da BoardUI: superfície em pílula com tokens do tema, ícone Remix, limpeza contextual e loading ligado ao debounce real. Filtros e resultados mantêm sua estrutura. Escape limpa texto antes de fechar; Ctrl/Cmd+K abre a busca.

@@ -714,3 +714,7 @@ body:not(.auth-page) .finance-select-trigger.lg-button{
 }
 @media(prefers-reduced-transparency:reduce){.settings-navigation-header{background:var(--form-surface);backdrop-filter:none;-webkit-backdrop-filter:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.settings-navigation-header{background:var(--form-surface)}}
+
+/* BoardUI search: the wrapper owns the surface; native field rules stay outside. */
+.search-pill-input .board-search-input{background:transparent;border:0;box-shadow:none;border-radius:0;padding:0;min-width:0}
+.search-pill-input .board-search-clear[aria-hidden=true]{opacity:0;pointer-events:none}

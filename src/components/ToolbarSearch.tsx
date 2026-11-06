@@ -1,3 +1,4 @@
+import {SearchField} from './base/search-field/search-field';
 import {errorDetails} from '../services/errors.ts';
 import {finance} from '../services/finance-runtime.ts';
 import React,{useEffect,useRef,useState} from 'react';
@@ -10,17 +11,18 @@ function SearchIcon(){return <svg className="i" viewBox="0 0 24 24" fill="none" 
 export default function ToolbarSearch(){
   const dialog=useRef<HTMLDialogElement>(null!),trigger=useRef<HTMLButtonElement>(null!),input=useRef<HTMLInputElement>(null!);
   const [active,setActive]=useState(false),[query,setQuery]=useState(''),[filters,setFilters]=useState(EMPTY),[filtersOpen,setFiltersOpen]=useState(false),[result,setResult]=useState<{rows:import('../services/search').SearchRecord[];total:number}>({rows:[],total:0}),[error,setError]=useState('');
+  const [isSearching,setIsSearching]=useState(false);
   const filtered=Object.values(filters).some(Boolean),hasSearch=!!query.trim()||filtered;
   function open(){setQuery('');setFilters(EMPTY);setFiltersOpen(false);setError('');setResult({rows:[],total:0});setActive(true);dialog.current.showModal();input.current?.focus();}
   function search(){try{const values:import('../services/search').SearchFilters={...filters,query,min:filters.min as unknown as number,max:filters.max as unknown as number};for(const k of ['min','max'] as const){if((values[k] as unknown)==='')delete values[k];else values[k]=Math.round(Number(values[k])*100);}if(values.min!>values.max!||values.from&&values.to&&values.from>values.to)throw Error('Revise os intervalos.');setResult(hasSearch?(finance.searchRecords?.(values)||{rows:[],total:0}):{rows:[],total:0});setError('');}catch(err){setError(errorDetails(err).message);setResult({rows:[],total:0});}}
-  useEffect(()=>{if(!active)return;const timer=setTimeout(search,140);return()=>clearTimeout(timer)},[active,query,filters]);
+  useEffect(()=>{if(!active)return;setIsSearching(hasSearch);const timer=setTimeout(()=>{try{search()}finally{setIsSearching(false)}},140);return()=>clearTimeout(timer)},[active,query,filters]);
   useEffect(()=>{const onKey=(e:KeyboardEvent)=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&!document.querySelector('#scrim:not([hidden]),dialog[open]')){e.preventDefault();open();}};window.addEventListener('keydown',onKey);return()=>window.removeEventListener('keydown',onKey)},[]);
   useEffect(()=>{const show=()=>open();addEventListener('plan-mobile-search',show);return()=>removeEventListener('plan-mobile-search',show)},[]);
   function change(e:React.ChangeEvent<HTMLInputElement|HTMLSelectElement>){setFilters(previous=>({...previous,[e.target.name]:e.target.value}));}
   return <><FinanceOptionBar as="div" className="task-search"><GlassButton ref={trigger} className="ib" type="button" aria-label="Pesquisar" onClick={open}><SearchIcon/></GlassButton></FinanceOptionBar>{createPortal(<dialog ref={dialog} className="search-pill-dialog" aria-label="Pesquisar" onClose={()=>{setActive(false);trigger.current?.focus()}} onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}>
     <div className="search-pill-center">
       <form className="search-pill-row" onSubmit={e=>{e.preventDefault();search()}}>
-        <GlassTextField className="search-pill-input"><button className="search-submit-icon" type="submit" aria-label="Buscar"><SearchIcon/></button><input ref={input} name="query" type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Pesquisar" aria-label="Pesquisar registros" autoComplete="off"/></GlassTextField>
+        <SearchField className="search-pill-input" inputRef={input} value={query} onChange={setQuery} placeholder="Pesquisar" aria-label="Pesquisar registros" isLoading={isSearching} onSubmit={()=>{search();setIsSearching(false)}} onKeyDown={event=>{if(event.key==='Escape'&&query){event.preventDefault();event.stopPropagation();setQuery('')}}}/>
         <GlassButton className="search-filter-toggle" type="button" aria-label="Filtros" aria-expanded={filtersOpen} aria-controls="searchFilterPanel" onClick={()=>setFiltersOpen(!filtersOpen)}><svg className="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>{filtered&&<span className="search-filter-dot"/>}</GlassButton>
         <GlassButton className="search-close-toggle ib" type="button" aria-label="Fechar pesquisa" onClick={()=>dialog.current.close()}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></GlassButton>
       </form>
