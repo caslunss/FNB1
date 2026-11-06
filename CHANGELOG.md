@@ -35,5 +35,5 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 - Testes E2E de origem legada tiveram os seletores de Configurações atualizados; a comparação pixel a pixel continua dependente de referência local aprovada. Capturas concluídas não equivalem a essa comparação.
 - Um teste de seleção apresentou falha de medição intermitente na baseline paralela; passou isoladamente e depois das edições, sem alteração de timing.
 - F01 (quota bancária) e F02 (paginação social) foram integradas localmente nesta rodada. O stash original 08cc1fd foi preservado; provedores e dados reais não foram consultados.
-- A limpeza de código da Task B e os demais fixes da auditoria não foram executados nesta rodada. A falha de resiliência do login quando seu módulo não carrega permanece reportada.
+- Task B: revisão segura concluída sem exclusão de código por busca estática; README alinhado à versão e aos testes locais isolados. Outros fixes continuam separados. A falha de resiliência do login quando seu módulo não carrega permanece reportada.
 - Nenhuma publicação, tag ou deploy foi realizado pelo agente.

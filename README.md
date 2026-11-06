@@ -1,6 +1,6 @@
 Versão do documento: 0.1.0-alpha.1
 
-# TEFinance — Alpha 1.0 para Vercel
+# TEFinance — Alpha 0.1.0-alpha.1 para Vercel
 
 Projeto React/Vite organizado para publicar frontend e APIs na Vercel. Comece por [PUBLICAR-VERCEL.md](PUBLICAR-VERCEL.md).
 
@@ -27,7 +27,7 @@ npm ci
 npm run dev
 ```
 
-Vite atende somente a interface. Para testar as APIs locais use a Vercel CLI (`vercel dev`) com seu projeto e variáveis configurados.
+Vite atende somente a interface. Para verificar os controladores das APIs sem serviços reais, use `npm test`, que inclui transportes simulados. Execute os testes de navegador somente contra um servidor local em `127.0.0.1`, com integrações externas bloqueadas ou simuladas. Não vincule serviços de produção durante auditorias e limpeza.
 
 ```sh
 npm test
