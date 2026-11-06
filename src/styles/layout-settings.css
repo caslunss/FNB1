@@ -710,3 +710,20 @@ body:not(.auth-page) .finance-select-trigger.lg-button{
 
 #app .tp .hb>i{background:var(--chart-accent);border-radius:var(--ui-radius-pill)}
 #app .finance-layout-card:not(.category-chart-preserved)>.habit-bars .progress-gauge:not(.has-attention) stop:last-child{stop-color:color-mix(in srgb,var(--chart-accent) 35%,var(--card))}
+
+/* A fading material extends below the controls instead of painting a hard band. */
+.account-progressive-header{isolation:isolate}
+:is(.settings-navigation-header,.profile-menu-header).account-progressive-header,
+#accountOverlay .account-overlay-header.account-progressive-header{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0}
+.account-progressive-header::before{content:'';position:absolute;inset:0 0 calc(-1 * var(--ui-space-6));z-index:-1;pointer-events:none;background:var(--lg-navigation-fill);backdrop-filter:blur(var(--lg-blur));-webkit-backdrop-filter:blur(var(--lg-blur));mask-image:linear-gradient(to bottom,#000 0%,#000 45%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 45%,transparent 100%)}
+.board-search-surface:focus-within{border-color:var(--lb2);box-shadow:0 0 0 2px color-mix(in srgb,var(--lb2) 18%,transparent)}
+@media(prefers-reduced-transparency:reduce){
+ :is(.settings-navigation-header,.profile-menu-header).account-progressive-header,
+ #accountOverlay .account-overlay-header.account-progressive-header{background:var(--form-surface)}
+ .account-progressive-header::before{display:none}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ :is(.settings-navigation-header,.profile-menu-header).account-progressive-header,
+ #accountOverlay .account-overlay-header.account-progressive-header{background:var(--form-surface)}
+ .account-progressive-header::before{display:none}
+}

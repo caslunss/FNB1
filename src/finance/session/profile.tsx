@@ -1,3 +1,4 @@
+import {readProfileAppearance} from '../../services/profile-appearance';
 import { viewList } from '../../services/presentation.ts';
 import { vCarbon as rendervCarbon } from '../views/analysis.tsx';
 import { vYou as rendervYou } from '../views/account.tsx';
@@ -92,17 +93,18 @@ export function createProfile(workspace: ProfileContext) {
       )
         photo = url.href;
     } catch {}
+    const appearance=readProfileAppearance(window.planAuth.storage);
     return {
-      name: user
+      name: appearance.name || (user
         ? String(
             meta.full_name ||
               meta.name ||
               workspace.PROFILE.name ||
               'Sua conta',
           ).slice(0, 120)
-        : window.planAuth.guestName(),
+        : window.planAuth.guestName()),
       email: user?.email || '',
-      photo,
+      photo: appearance.photo || photo,
       google: !!user,
     };
   }

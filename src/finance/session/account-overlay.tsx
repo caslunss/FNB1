@@ -41,7 +41,7 @@ export function createAccountOverlay(workspace: AccountOverlayContext) {
     workspace.renderView(
       workspace.$('#accountOverlayContent'),
       <>
-        {workspace.accountPanel!=='settings'&&<button
+        {workspace.accountPanel==='calendar'&&<button
           type="button"
           className="mobile-sheet-grabber"
           data-mobile-expand=""
@@ -50,7 +50,7 @@ export function createAccountOverlay(workspace: AccountOverlayContext) {
         >
           <span></span>
         </button>}
-        {workspace.accountPanel!=='settings'&&<header className="account-overlay-header">
+        {workspace.accountPanel==='calendar'&&<header className="account-overlay-header account-progressive-header">
           <h2 id="accountOverlayTitle">{title}</h2>
           <button
             className="btn g account-overlay-close"

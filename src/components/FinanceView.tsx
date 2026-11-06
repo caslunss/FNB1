@@ -244,6 +244,7 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
         key={key}
         name={node.getAttribute('data-name') || ''}
         photo={node.getAttribute('data-photo')}
+        email={node.getAttribute('data-email')||''}
         verified={node.getAttribute('data-verified') === 'true'}
         tester={node.getAttribute('data-tester') === 'true'}
         supporter={node.getAttribute('data-supporter') === 'true'}

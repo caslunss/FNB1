@@ -1,7 +1,7 @@
 {
-  "count": 605,
+  "count": 601,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "ab0ac8608d559e755ec0de1431262cb71f842cfb51119560aa25186cc53fe102",
+  "sha256": "f0316e54915e3910ab1f085f21b3c0c7e35db02930c9015c04befcf47112e6b0",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -752,8 +752,8 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 26,
-      "selector": ".te-text-field :is(input,textarea,select,.finance-select-trigger):is(:focus,:focus-visible,:active),\n .month-selector button:is(:focus,:focus-visible,:active)",
+      "line": 27,
+      "selector": ".board-search-input:is(:focus,:focus-visible,:active),\n .te-text-field :is(input,textarea,select,.finance-select-trigger):is(:focus,:focus-visible,:active),\n .month-selector button:is(:focus,:focus-visible,:active)",
       "conditions": "@layer app-focus",
       "property": "outline",
       "value": "none",
@@ -761,8 +761,8 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 26,
-      "selector": ".te-text-field :is(input,textarea,select,.finance-select-trigger):is(:focus,:focus-visible,:active),\n .month-selector button:is(:focus,:focus-visible,:active)",
+      "line": 27,
+      "selector": ".board-search-input:is(:focus,:focus-visible,:active),\n .te-text-field :is(input,textarea,select,.finance-select-trigger):is(:focus,:focus-visible,:active),\n .month-selector button:is(:focus,:focus-visible,:active)",
       "conditions": "@layer app-focus",
       "property": "box-shadow",
       "value": "none",
@@ -770,7 +770,7 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 29,
+      "line": 30,
       "selector": ".lg-slider:focus-within :is(.lg-slider__thumb,.lg-slider__block)",
       "conditions": "@layer app-focus",
       "property": "outline",
@@ -779,7 +779,7 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 29,
+      "line": 30,
       "selector": ".lg-slider:focus-within :is(.lg-slider__thumb,.lg-slider__block)",
       "conditions": "@layer app-focus",
       "property": "box-shadow",
@@ -788,7 +788,7 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 35,
+      "line": 36,
       "selector": ":where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]):focus-visible,\n  :is(.te-text-field,.month-selector):focus-within,\n  .lg-slider:focus-within :is(.lg-slider__thumb,.lg-slider__block)",
       "conditions": "@layer app-focus > @media (forced-colors:active)",
       "property": "outline",
@@ -797,7 +797,7 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 35,
+      "line": 36,
       "selector": ":where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]):focus-visible,\n  :is(.te-text-field,.month-selector):focus-within,\n  .lg-slider:focus-within :is(.lg-slider__thumb,.lg-slider__block)",
       "conditions": "@layer app-focus > @media (forced-colors:active)",
       "property": "outline-offset",
@@ -806,7 +806,7 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 35,
+      "line": 36,
       "selector": ":where(a[href],button,input,textarea,select,summary,[tabindex],[contenteditable=true],[role=button],[role=tab],[role=switch],[role=checkbox],[role=slider],[role=combobox],[role=menuitem]):focus-visible,\n  :is(.te-text-field,.month-selector):focus-within,\n  .lg-slider:focus-within :is(.lg-slider__thumb,.lg-slider__block)",
       "conditions": "@layer app-focus > @media (forced-colors:active)",
       "property": "box-shadow",
@@ -815,7 +815,7 @@
     },
     {
       "file": "src/styles/focus.css",
-      "line": 38,
+      "line": 39,
       "selector": ".te-text-field :is(input,textarea,select,.finance-select-trigger):is(:focus,:focus-visible),\n  .month-selector button:is(:focus,:focus-visible)",
       "conditions": "@layer app-focus > @media (forced-colors:active)",
       "property": "outline",
@@ -4977,7 +4977,7 @@
       "selector": "#accountOverlay[data-panel=profile]",
       "conditions": "",
       "property": "width",
-      "value": "min(440px,calc(100vw - 32px))",
+      "value": "min(400px,calc(100vw - 32px))",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
@@ -4986,7 +4986,7 @@
       "selector": "#accountOverlay[data-panel=profile]",
       "conditions": "",
       "property": "max-width",
-      "value": "440px",
+      "value": "400px",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
@@ -5027,34 +5027,7 @@
     },
     {
       "file": "src/styles/profile-card.css",
-      "line": 8,
-      "selector": "#accountOverlay[data-panel=profile] .account-overlay-header",
-      "conditions": "",
-      "property": "position",
-      "value": "absolute",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/profile-card.css",
-      "line": 8,
-      "selector": "#accountOverlay[data-panel=profile] .account-overlay-header",
-      "conditions": "",
-      "property": "inset",
-      "value": "12px 12px auto auto",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/profile-card.css",
-      "line": 8,
-      "selector": "#accountOverlay[data-panel=profile] .account-overlay-header",
-      "conditions": "",
-      "property": "padding",
-      "value": "0",
-      "reason": "Sobreposição: preservar a superfície, o recorte e o posicionamento sobre controles e gráficos."
-    },
-    {
-      "file": "src/styles/profile-card.css",
-      "line": 14,
+      "line": 11,
       "selector": "#accountOverlay[data-panel=profile] .profile-hover-card",
       "conditions": "",
       "property": "margin",
@@ -5063,16 +5036,16 @@
     },
     {
       "file": "src/styles/profile-card.css",
-      "line": 14,
+      "line": 11,
       "selector": "#accountOverlay[data-panel=profile] .profile-hover-card",
       "conditions": "",
       "property": "padding",
-      "value": "var(--ui-space-6)",
+      "value": "0",
       "reason": "Composição da página: compatibilidade de cascata da superfície/layout vigente; preservada pela comparação visual."
     },
     {
       "file": "src/styles/profile-card.css",
-      "line": 15,
+      "line": 12,
       "selector": "#accountOverlay[data-panel=profile] .profile-hover-card",
       "conditions": "",
       "property": "box-shadow",
@@ -5081,16 +5054,7 @@
     },
     {
       "file": "src/styles/profile-card.css",
-      "line": 51,
-      "selector": "#accountOverlay[data-panel=profile] .profile-hover-card",
-      "conditions": "@media (max-width:450px)",
-      "property": "padding",
-      "value": "var(--ui-space-5)",
-      "reason": "Responsividade: manter a disposição existente no breakpoint correspondente."
-    },
-    {
-      "file": "src/styles/profile-card.css",
-      "line": 53,
+      "line": 55,
       "selector": ".account-panel-body .subscriptions-card",
       "conditions": "",
       "property": "padding",

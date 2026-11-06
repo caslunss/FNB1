@@ -8,6 +8,7 @@ type ProfileEventsContext = Pick<
 >;
 
 export function initializeProfileEvents(workspace: ProfileEventsContext) {
+  workspace.scope.listen(window,'plan-profile-appearance-change',()=>workspace.draw());
   // @workspace-step 212 ExpressionStatement
   workspace.scope.listen(document, 'submit', (e) => {
     if ((e.target as HTMLFormElement).id !== 'carbonForm') return;

@@ -24,7 +24,7 @@ export function SearchField({label,hint,placeholder,isLoading=false,clearLabel='
   return <AriaSearchField {...props} value={value} onChange={change} onClear={onClear} aria-label={props['aria-label']??(!label?placeholder:undefined)} className={`group flex w-full min-w-0 flex-col items-start gap-1 ${className}`}>
     {({isEmpty,isDisabled,isInvalid})=><>
       {label&&<Label className="text-sm font-medium text-[var(--layout-form-text)]">{label}{props.isRequired&&<span aria-hidden="true"> *</span>}</Label>}
-      <div className={`flex w-full min-w-0 items-center gap-2 rounded-full border bg-[var(--form-field)] px-3 text-[var(--layout-form-text)] shadow-sm focus-within:border-[var(--tint)] focus-within:ring-2 focus-within:ring-[var(--chart-wash)] ${isInvalid?'border-[var(--redT)]':'border-[var(--form-border)]'} ${isDisabled?'opacity-50':''}`}>
+      <div className={`board-search-surface flex w-full min-w-0 items-center gap-2 rounded-full border bg-[var(--form-field)] px-3 text-[var(--layout-form-text)] shadow-sm ${isInvalid?'border-[var(--redT)]':'border-[var(--form-border)]'} ${isDisabled?'opacity-50':''}`}>
         <span aria-hidden="true" className="relative size-5 shrink-0 text-[var(--lb2)]">
           <RiSearchLine className={`absolute inset-0 size-5 transition-[opacity,scale] duration-[var(--motion-fast)] ease-[var(--motion-ease)] motion-reduce:transition-none ${isLoading?'scale-75 opacity-0':'opacity-100'}`}/>
           {isLoading&&<RiLoader4Line className="absolute inset-0 size-5 motion-safe:animate-spin" style={{animationDuration:'var(--motion-calm)'}}/>}

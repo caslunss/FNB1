@@ -1,0 +1,8 @@
+const assert=require('node:assert/strict');
+(async()=>{const p=await import('../src/services/profile-appearance.ts');let raw=null,fail=false,writes=0;const storage={getItem:()=>raw,setItem:(_key,value)=>{if(fail)throw Error('quota');writes++;raw=value}};
+ assert.deepEqual(p.readProfileAppearance(storage),{});p.saveProfileAppearance(storage,'  Nome novo  ','data:image/png;base64,YQ==');assert.equal(writes,1);assert.deepEqual(p.readProfileAppearance(storage),{name:'Nome novo',photo:'data:image/png;base64,YQ=='});const saved=raw;
+ for(const photo of ['https://evil.test/a.png','javascript:alert(1)','data:image/svg+xml;base64,YQ=='])assert.throws(()=>p.saveProfileAppearance(storage,'Nome',photo));
+ for(const name of ['', 'a'.repeat(61),'A\nB'])assert.throws(()=>p.saveProfileAppearance(storage,name,''));assert.equal(raw,saved);fail=true;assert.throws(()=>p.saveProfileAppearance(storage,'Outro',''));assert.equal(raw,saved);fail=false;
+ raw='broken';assert.deepEqual(p.readProfileAppearance(storage),{});raw=JSON.stringify({photo:'https://evil.test/a',name:'Nome'});assert.deepEqual(p.readProfileAppearance(storage),{name:'Nome'});raw='x'.repeat(400000);assert.deepEqual(p.readProfileAppearance(storage),{});
+ for(const type of ['image/png','image/jpeg','image/webp'])p.validateProfileImage({size:1024,type});for(const file of [{size:0,type:'image/png'},{size:3*1024*1024,type:'image/jpeg'},{size:15,type:'image/svg+xml'}])assert.throws(()=>p.validateProfileImage(file));
+ console.log('PASS profile appearance: local storage, name/image validation, no external photo URL or SVG, failed-write preservation, corrupt data and upload limits');})().catch(e=>{console.error(e);process.exitCode=1});

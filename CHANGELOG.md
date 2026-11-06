@@ -6,6 +6,13 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ### Alterado — 06/11/2026
 
+- Perfil reorganizado como popup compacto com identidade, notas, assinaturas/apoio, Configurações e Sair. Editor permite somente nome de exibição e foto locais por conta/dispositivo; não altera o @usuário nem sua regra mensal. Imagens PNG/JPEG/WebP de até 2 MB são recortadas e reduzidas localmente, sem upload para serviços externos.
+- Cabeçalhos de Configurações, Calendário e Perfil usam material com máscara de fade, eliminando a faixa sólida; fallback opaco para transparência reduzida ou falta de suporte ao blur.
+- Busca passa a usar um único foco discreto na superfície externa, removendo a faixa azul gerada pela sombra global no input. Badges Gastos, Metas e Planejamento retirados do login.
+
+
+### Alterado — 06/11/2026
+
 - Por pedido do proprietário, títulos principais alinhados abaixo da logo do guaxinim pela borda esquerda; no mobile, logo mantém a faixa dos controles superiores. Distribuição dos gastos passa a usar segmentos radiais de raios decorativos diferentes, gradientes das cores categóricas do tema e centro com total real em reais. Ângulos, valores, legenda e percentuais continuam derivados dos lançamentos; percentuais de crescimento ilustrativos não são copiados da referência.
 
 
