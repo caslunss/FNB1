@@ -190,7 +190,6 @@ export function initializePrimitives(workspace: PrimitivesContext) {
   workspace.TITLES = {
     f: 'Análises',
     c: 'Calendário',
-    v: 'Investimentos',
     r: 'Resumo',
     i: 'Entradas',
     d: 'Compromissos',
@@ -211,9 +210,6 @@ export function initializePrimitives(workspace: PrimitivesContext) {
   // @workspace-end 21
   // @workspace-step 22 FirstStatement
   workspace.ICON = {
-    v: workspace.P(
-      <path d="M4 20h16M7 16v-4m5 4V9m5 7V5M5 8l5-3 4 1 5-4"></path>,
-    ),
     share: workspace.P(
       <path d="M8 8H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-3M12 15V2m0 0L8 6m4-4 4 4"></path>,
     ),

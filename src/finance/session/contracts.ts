@@ -736,5 +736,4 @@ export interface WorkspaceRuntime {
     cents: number;
   }[];
   incomingDebt: () => void;
-  vCredit: () => React.JSX.Element;
 }

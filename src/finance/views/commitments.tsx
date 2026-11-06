@@ -151,7 +151,7 @@ export function vD(context: WorkspaceViewContext) {
 // end-view:vD
 export function vCards(context: WorkspaceViewContext) {
   const {} = context;
-  return <div data-credit-investments=""></div>;
+  return <div data-credit-cards=""></div>;
 }
 // end-view:vCards
 export function vSplit(context: WorkspaceViewContext) {

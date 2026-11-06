@@ -52,7 +52,6 @@ As cores e limites estão em `src/services/layout-preferences.ts`. Os valores pa
 | Dívidas | Blocos de saldo, parcelas e previsão; gráfico e lista. Sem duplicar despesas |
 | Cartões | Dentro de Compromissos. Limites, faturas, vencimento, fechamento e pagamentos |
 | Planejamento | Compras com pesquisa de ofertas e compra planejada; Metas reúne produtos desejados, reservas mensais e relatório de impacto à vista/no crédito |
-| Investimentos | Informações de ativos e economia. Dados ausentes não devem virar zero artificial |
 | Análises | Impostos, Relatórios e Carbono. Carbono mantém visibilidade opcional no Layout |
 | Calendário | Popup pelo atalho superior. Seleção discreta em vidro; datas de gastos, entradas e cartões. Um único botão + abre Entrada e Gasto para o dia selecionado |
 | Dividir conta | Dentro de Compromissos. Lista, convites, compartilhamento e divisão com amigos |
@@ -624,3 +623,7 @@ O destaque padrão é #0000FF nos dois temas; texto e gráficos no escuro podem 
 ## Modo escuro — 06/11/2026
 
 Referência visual: imagem Apple Stocks enviada pelo proprietário; link indicado https://developer.apple.com/design/human-interface-guidelines/dark-mode (não consultado nesta rodada: rede retornou 403). Aplicação de princípios gerais de hierarquia de superfícies e contraste, sem alegar certificação Apple. Base padrão #000000, superfície #1c1c1e, elevação cinza e texto principal #f5f5f7. Seleção escura usa cinza com texto claro; azul #0000FF continua como destaque com derivados legíveis. O modo claro, dados, paletas alternativas e valores de vidro/movimento permanecem. Gráficos de categorias/investimentos conservam suas cores anteriores por escopo próprio.
+
+## Remoção de Investimentos — 06/11/2026
+
+A página de investimentos e suas APIs de mercado foram retiradas por pedido do proprietário. A navegação principal contém Resumo, Compromissos, Planejamento e Análises. A categoria financeira Investimentos, seus dados e as metas do Resumo permanecem; não confundir remoção de consultas de mercado com exclusão dos lançamentos. Cartões permanece em Compromissos como módulo independente. Referências em auditorias históricas e testes protegidos documentam o estado anterior e não representam recursos ativos.

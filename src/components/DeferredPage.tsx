@@ -4,7 +4,6 @@ import {FinanceGlassButton as Button, FinanceGlassCard as Card} from './LiquidCo
 
 const loaders = {
   productGoals: () => import('./ProductGoals.tsx'),
-  investments: () => import('./InvestmentArea.tsx'),
   taxes: () => import('./Taxes.tsx'),
   bank: () => import('./TaxBankImport.tsx'),
 };

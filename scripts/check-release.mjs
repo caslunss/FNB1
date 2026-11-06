@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const required=['dist/index.html','dist/login.html','vercel.json','server/functions/connect-token.mjs','server/functions/shopping.mjs','server/functions/investments.mjs','server/functions/service-status.mjs','api/connect-token.js','api/taxes.js','public/assets/auth-config.json'];
+const required=['dist/index.html','dist/login.html','vercel.json','server/functions/connect-token.mjs','server/functions/shopping.mjs','server/functions/service-status.mjs','api/connect-token.js','api/taxes.js','public/assets/auth-config.json'];
 let failed=false;for(const file of required){const ok=fs.existsSync(file);console.log(`${ok?'OK':'FALTA'} ${file}`);if(!ok)failed=true;}
 const config=JSON.parse(fs.readFileSync('public/assets/auth-config.json','utf8'));
 if(!config.supabaseUrl?.startsWith('https://')||!config.supabasePublishableKey){console.error('Configuração pública de autenticação incompleta.');failed=true;}

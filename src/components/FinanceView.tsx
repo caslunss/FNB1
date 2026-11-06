@@ -8,7 +8,7 @@ import DeferredPage from './DeferredPage.tsx';
 import SwipeLedgerRow from './SwipeLedgerRow.tsx';
 import GoalEditor from './GoalEditor.tsx';
 import FileUpload from './FileUpload.tsx';
-import CreditInvestments from './CreditInvestments.tsx';
+import CreditCards from './CreditCards.tsx';
 import ProgressGauge from './ProgressGauge.tsx';
 import NotificationPreferences from './NotificationPreferences.tsx';
 import ProgressiveFields from './ProgressiveFields.tsx';
@@ -390,8 +390,7 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
     return <FileUpload {...fileProps} key={uploadKey} />;
   }
   if (node.hasAttribute('data-taxes-hub')) return <DeferredPage key={key} page="taxes" />;
-  if (node.hasAttribute('data-investments-hub')) return <DeferredPage key={key} page="investments" />;
-  if (node.hasAttribute('data-credit-investments')) return <CreditInvestments key={key} />;
+  if (node.hasAttribute('data-credit-cards')) return <CreditCards key={key} />;
   if (node.hasAttribute('data-notification-preferences')) return <NotificationPreferences key={key} />;
   if (node.hasAttribute('data-account-data-controls')) return <AccountDataControls key={key} />;
   if (node.hasAttribute('data-layout-settings')) return <LayoutSettings key={key} />;

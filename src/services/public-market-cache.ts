@@ -30,19 +30,3 @@ export function createPublicReadCache({ttl = 60_000, maxEntries = 24, now = Date
     });
   };
 }
-const read = createPublicReadCache();
-export function readMarketData<T=unknown>(path:string, options?:{force?:boolean;signal?:AbortSignal}):Promise<T> {
-  if (!/^\/api\/(?:investments\?|market-economy$)/.test(path)) throw Error('Consulta fora do catálogo público.');
-  return read<T>(path, async () => {
-    const response = await fetch(path, {signal: AbortSignal.timeout(15_000)});
-    let body;
-    try {body = await response.json();} catch {throw Error('Publique as funções de servidor para ativar a consulta.');}
-    if (!response.ok) {
-      const error = Object.assign(Error(body.error || 'Consulta indisponível.'),{status:response.status,retryAfter:60});
-      error.status = response.status;
-      error.retryAfter = Math.max(1, Number(body.retryAfter) || Number(response.headers.get('Retry-After')) || 60);
-      throw error;
-    }
-    return body;
-  }, options);
-}

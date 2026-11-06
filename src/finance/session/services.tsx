@@ -65,7 +65,7 @@ export function initializeServices(workspace: ServicesContext) {
     }),
     navigate(key) {
       if (
-        !['r', 'd', 'o', 'v', 'e', 'f'].includes(key) ||
+        !['r', 'd', 'o', 'e', 'f'].includes(key) ||
         (key === 'e' && !getLayout().sections.carbon)
       )
         return;

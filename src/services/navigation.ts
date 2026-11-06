@@ -3,7 +3,6 @@ export const MAIN_AREAS = Object.freeze([
   {key:'r',label:'Resumo'},
   {key:'d',label:'Compromissos'},
   {key:'o',label:'Planejamento'},
-  {key:'v',label:'Investimentos'},
   {key:'f',label:'Análises'},
 ]);
 export const AREA_VIEWS:Readonly<Record<string,string[][]>> = Object.freeze({

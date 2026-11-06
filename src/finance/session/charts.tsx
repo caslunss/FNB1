@@ -7,7 +7,6 @@ import {
 } from '../calculations.ts';
 import { vR as rendervR, vI as rendervI } from '../views/summary.tsx';
 import { vD as rendervD } from '../views/commitments.tsx';
-import { vCredit as rendervCredit } from '../views/investments.tsx';
 import type { WorkspaceRuntime } from './contracts';
 
 type ChartsContext = Pick<
@@ -1013,9 +1012,6 @@ export function createCharts(workspace: ChartsContext) {
     );
   }
 
-  function vCredit() {
-    return rendervCredit(workspace.viewContext);
-  }
   return {
     tiles,
     investmentCategoryTile,
@@ -1037,7 +1033,6 @@ export function createCharts(workspace: ChartsContext) {
     periodChart,
     dailyBars,
     contextActivity,
-    vCredit,
   } satisfies Pick<
     WorkspaceRuntime,
     | 'tiles'
@@ -1060,8 +1055,7 @@ export function createCharts(workspace: ChartsContext) {
     | 'periodChart'
     | 'dailyBars'
     | 'contextActivity'
-    | 'vCredit'
-  >;
+    >;
 }
 
 export function initializeCharts(workspace: ChartsContext) {

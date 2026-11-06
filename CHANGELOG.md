@@ -4,6 +4,11 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## [0.1.0-alpha.1] - 2026-11-05
 
+### Removido — 06/11/2026
+
+- Por solicitação do proprietário, removida a página de Investimentos, seu acesso, componentes, cotações BRAPI, indicadores de mercado, referência pública e endpoints `/api/investments`, `/api/market-economy` e `/api/market-rates`. O diagnóstico de serviços deixa de expor o campo `configuration.investments`. Links internos inválidos retornam ao Resumo. A categoria financeira, lançamentos e metas salvos são preservados. O módulo de Cartões perde a nomenclatura legada que o associava à página removida.
+
+
 ### Adicionado
 
 - Sistema de versão com fonte única em src/version.ts, canal alpha, data de lançamento e rótulo em português.

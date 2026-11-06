@@ -3,7 +3,6 @@
 :root{--c1:#FF9500;--c3:#34C759;--c4:#FF3B30;--c5:#AF52DE;--c6:#30B0C7;--c7:#FF2D55;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--c1:#FF9F0A;--c3:#30D158;--c4:#FF453A;--c5:#BF5AF2;--c6:#40C8E0;--c7:#FF375F}}
 :root[data-theme="dark"]{--c1:#FF9F0A;--c3:#30D158;--c4:#FF453A;--c5:#BF5AF2;--c6:#40C8E0;--c7:#FF375F}
-@media(prefers-contrast:more){}
 *{box-sizing:border-box}
 /* Tipografia: fonte do sistema (SF Pro) e estilos de texto da HIG no tamanho padrão (Large) */
 body{margin:0;color:var(--lb);font:400 1.0625rem/1.294 -apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",system-ui,"Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased}
@@ -248,6 +247,4 @@ h2,h3,.report-line>span,.split-person>span,.plan-card .row>div,.plan-card strong
 
 .account-login{text-decoration:none}
 
-/* Compact public SGS indicators; one unit per chart. */
-.economy-card{min-width:0;align-self:start}.economy-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:var(--ui-space-5) 0}.economy-metrics button{min-width:0;display:flex;flex-direction:column;gap:6px;padding:var(--ui-space-4) var(--ui-space-2)!important;border-radius:24px!important;height:auto!important;text-align:center}.economy-metrics strong{font-size:clamp(18px,2vw,25px);font-variant-numeric:tabular-nums}.economy-metrics small{font-size:11px;line-height:1.5;white-space:normal}.economy-metrics [aria-pressed=true]{box-shadow:inset 0 0 0 1px var(--accent,#8bacc8)}.economy-chart-title{display:flex;justify-content:space-between;align-items:center;gap:var(--ui-space-3);flex-wrap:wrap}.economy-chart-title h3{margin:0}.economy-chart-title span,.economy-chart-title small{font-size:11px;font-weight:400;opacity:.7}.economy-chart{display:block;width:100%;height:auto;overflow:visible;margin:18px 0;pointer-events:none}.economy-chart text{font-size:10px}.economy-history dl{margin:var(--ui-space-3) 0}.economy-history dl>div{display:flex;justify-content:space-between;gap:var(--ui-space-3);padding:var(--ui-space-2) 0}.economy-history dd{margin:0;font-variant-numeric:tabular-nums}.credit-editor .progressive-fields{width:100%}@media(max-width:400px){.economy-metrics{gap:6px}.economy-metrics button{padding:var(--ui-space-3) 5px!important}.economy-metrics strong{font-size:18px}}
-.economy-metrics .lg-button__label{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;width:100%;white-space:normal}.economy-metrics .lg-button__label>span,.economy-metrics strong{white-space:nowrap}.economy-chart text{fill:var(--lb2)}.economy-chart{color:var(--tintT,#8bacc8)}
+/* Compact public SGS indicators; one unit per chart. */.credit-editor .progressive-fields{width:100%}

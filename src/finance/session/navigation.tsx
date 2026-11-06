@@ -53,7 +53,6 @@ type NavigationContext = Pick<
   | 'suspendedAccountPanel'
   | 'syncNavigation'
   | 'transactionDepth'
-  | 'vCredit'
   | 'viewContext'
 >;
 
@@ -118,6 +117,9 @@ export function createNavigation(workspace: NavigationContext) {
       if (!views.some(([key]) => key === workspace.areaViews[area]))
         workspace.areaViews[area] = views[0][0];
     }
+    // Saved links to removed screens fall back without changing financial data.
+    if (!['r', 'i', 'd', 'o', 'f', 'u', 'x', 'c'].includes(workspace.S.tab))
+      workspace.S.tab = 'r';
     const requestedPanel =
       workspace.S.tab === 'u'
         ? 'profile'
@@ -219,7 +221,6 @@ export function createNavigation(workspace: NavigationContext) {
             r: workspace.summaryView,
             i: workspace.summaryView,
             d: workspace.commitmentsView,
-            v: workspace.vCredit,
             o: workspace.planningView,
             f: workspace.analysisView,
           } as Record<string, () => React.ReactNode>

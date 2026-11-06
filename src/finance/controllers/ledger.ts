@@ -194,7 +194,7 @@ export function saveExpense(
       record.creditPaidCents = existing!.creditPaidCents!;
     if (record.p === 'Cartão de crédito' && !record.creditCardId)
       throw Error(
-        'Selecione um cartão cadastrado. Cadastre banco e limite em Crédito e investimentos.',
+        'Selecione um cartão cadastrado. Cadastre banco e limite em Compromissos → Cartões.',
       );
     if (!record.creditCardId) {
       delete record.creditCardId;
