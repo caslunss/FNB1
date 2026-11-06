@@ -616,3 +616,7 @@ Os controles existentes de arquivo usam RiFileCloudLine (24 px, cor secundária 
 Login com apresentação da marca e card de acesso em duas colunas no desktop e empilhados no mobile. Logo em evidência, textos explicativos e tokens existentes. Entrar/criar conta por e-mail é somente prévia, identificada como Em breve; campos não persistem nem enviam credenciais. Google e visitante mantêm seus contratos. Telas pequenas permitem rolagem integral, sem esconder a parte inferior do formulário.
 
 No login, por solicitação do proprietário, não exibir “Seu espaço financeiro”, “TEFinance” nem “Mais clareza para o seu dinheiro”. A saudação do card passa a título principal sem alterar sua tipografia. Logo e acessos existentes permanecem.
+
+## Azul e gráficos — 06/11/2026
+
+O destaque padrão é #0000FF nos dois temas; texto e gráficos no escuro podem usar derivados legíveis. Gráficos de movimentação, períodos, dívidas, divisões e evolução tributária seguem a referência de barras arredondadas e linhas com área suave. Categorias e investimentos conservam cores e formatos anteriores por tokens de escopo preservado. Paletas alternativas e dados salvos permanecem. Não interpolar novos valores nem alterar escalas financeiras para simular curvas.

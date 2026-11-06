@@ -718,3 +718,19 @@ body:not(.auth-page) .finance-select-trigger.lg-button{
 /* BoardUI search: the wrapper owns the surface; native field rules stay outside. */
 .search-pill-input .board-search-input{background:transparent;border:0;box-shadow:none;border-radius:0;padding:0;min-width:0}
 .search-pill-input .board-search-clear[aria-hidden=true]{opacity:0;pointer-events:none}
+
+/* Reference chart styling is explicitly scoped away from categories and investments. */
+:is(.category-gauge-card,.category-chart-preserved,.dn,.tax-category,.investment-area,.investment-goal-card,.goal-chart,.goal-legend,.overview:has(.goal-chart)){--tint:var(--preserved-accent);--tintT:var(--preserved-accent-text);--chart-accent:var(--preserved-chart-accent);--chart-previous:var(--preserved-chart-previous);--chart-wash:var(--preserved-chart-wash);--chart-muted:var(--preserved-chart-muted);--btn:var(--preserved-btn);--sel:var(--preserved-selection);--lg-accent:var(--preserved-accent-text);--layout-card-accent:var(--preserved-chart-accent);--layout-glow:var(--preserved-layout-glow);--focus-color:var(--preserved-accent-text);--focus-halo:color-mix(in srgb,var(--preserved-accent-text) 24%,transparent)}
+#app .reference-chart line:not([stroke-dasharray]){stroke:var(--chart-grid);opacity:.6}
+#app .reference-line>path:not(.reference-area){stroke-linecap:round;stroke-linejoin:round;stroke-width:2.5}
+#app .reference-line circle{stroke:var(--card);stroke-width:1.5}
+#app .reference-period .period-track>i{background:var(--chart-previous);border-radius:6px 6px 2px 2px}
+#app .reference-period .period-column.selected .period-track>i{background:var(--chart-accent)}
+#app .split-monthly-card .split-month-track i{background:var(--chart-previous);border-radius:6px 6px 2px 2px}
+#app .split-monthly-card .split-month-column.selected i{background:var(--chart-accent)}
+#app .split-month-payments .progress-arc-value{stroke:var(--chart-accent)}
+#app .tax-months>div>i{background:var(--chart-accent);border-radius:5px 5px 2px 2px;min-width:8px}
+#app .tax-months>div>i[data-missing=true]{background:var(--chart-previous)}
+
+#app .tp .hb>i{background:var(--chart-accent);border-radius:var(--ui-radius-pill)}
+#app .finance-layout-card:not(.category-chart-preserved)>.habit-bars .progress-gauge:not(.has-attention) stop:last-child{stop-color:color-mix(in srgb,var(--chart-accent) 35%,var(--card))}

@@ -97,7 +97,7 @@ export function vR(context: WorkspaceViewContext) {
         )}
       </section>
       <div className="lower-insights">
-        <section className="card">
+        <section className="card category-chart-preserved">
           <h2>{'Distribuição dos gastos'}</h2>
           {donut(it)}
         </section>
@@ -106,7 +106,7 @@ export function vR(context: WorkspaceViewContext) {
           {topList(it)}
         </section>
       </div>
-      <section className="stage categories-min">
+      <section className="stage categories-min category-chart-preserved">
         <div className="row">
           <h2>{'Categorias'}</h2>
           {mbtn('l', 0, 'Limites por categoria')}

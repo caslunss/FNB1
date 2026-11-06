@@ -168,7 +168,7 @@ export function createBehavior(workspace: BehaviorContext) {
             <p className="mut">{'Sem gastos registrados.'}</p>
           )}
         </section>
-        <section className="card finance-layout-card">
+        <section className="card finance-layout-card category-chart-preserved">
           <h2>{'Por categoria'}</h2>
           {workspace.habitBars(
             a.categories.map((x) => ({

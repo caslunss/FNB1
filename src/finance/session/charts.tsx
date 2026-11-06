@@ -456,7 +456,7 @@ export function createCharts(workspace: ChartsContext) {
         .join(' ');
     return (
       <svg
-        className="debt-chart"
+        className="debt-chart reference-chart reference-line"
         viewBox={'0 0 ' + String(W) + ' ' + String(H)}
         role="img"
         aria-label={
@@ -467,6 +467,8 @@ export function createCharts(workspace: ChartsContext) {
           '.'
         }
       >
+        <defs><linearGradient id="debt-reference-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--chart-accent)" stopOpacity=".24"/><stop offset="100%" stopColor="var(--chart-accent)" stopOpacity="0"/></linearGradient></defs>
+        <path className="reference-area" d={path + ' L ' + X(rows.length - 1).toFixed(1) + ' ' + Y(0).toFixed(1) + ' L ' + X(0).toFixed(1) + ' ' + Y(0).toFixed(1) + ' Z'} fill="url(#debt-reference-fill)"/>
         {viewList(
           [0, 0.5, 1].map((f) => (
             <>
@@ -493,7 +495,7 @@ export function createCharts(workspace: ChartsContext) {
         <path
           d={path}
           fill="none"
-          stroke="var(--tintT)"
+          stroke="var(--chart-accent)"
           strokeWidth="2.5"
           strokeLinejoin="round"
         ></path>
@@ -504,7 +506,7 @@ export function createCharts(workspace: ChartsContext) {
                 cx={X(i)}
                 cy={Y(x.v)}
                 r={i === 0 || i === rows.length - 1 ? 4 : 2}
-                fill="var(--tintT)"
+                fill="var(--chart-accent)"
               ></circle>
               {i % Math.max(1, Math.ceil(rows.length / 7)) === 0 ||
               i === rows.length - 1 ? (
@@ -779,7 +781,7 @@ export function createCharts(workspace: ChartsContext) {
       max = Math.max(1, ...values);
     return (
       <div
-        className="period-chart"
+        className="period-chart reference-period"
         role="group"
         aria-label="Entradas por período"
       >
@@ -861,7 +863,7 @@ export function createCharts(workspace: ChartsContext) {
               y={baseline - ph}
               width={bw}
               height={ph}
-              rx="2"
+              rx="3"
               fill="var(--chart-previous)"
             ></rect>
             <rect
@@ -869,8 +871,8 @@ export function createCharts(workspace: ChartsContext) {
               y={baseline - hh}
               width={bw}
               height={hh}
-              rx="2"
-              fill="var(--tint)"
+              rx="3"
+              fill="var(--chart-accent)"
             ></rect>
             {i % Math.ceil(days / 12) === 0 ? (
               <text
@@ -891,7 +893,7 @@ export function createCharts(workspace: ChartsContext) {
     );
     return (
       <svg
-        className="daily-chart"
+        className="daily-chart reference-chart reference-bars"
         viewBox={'0 0 ' + String(w) + ' ' + String(h)}
         role="img"
         aria-label={
