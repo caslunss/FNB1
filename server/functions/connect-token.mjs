@@ -1,8 +1,16 @@
 import {taxToday} from '../../src/services/taxes/domain.ts';
 import {normalizeBankTransactions} from '../../server/taxes/bank.js';
 import config from '../../public/assets/auth-config.json' with {type:'json'};
+import {takeQuota} from '../shared/quota.mjs';
+export const BANK_BUDGETS=Object.freeze({
+ connect:Object.freeze({limit:3,seconds:300}),
+ verify:Object.freeze({limit:30,seconds:60}),
+ accounts:Object.freeze({limit:20,seconds:60}),
+ transactions:Object.freeze({limit:60,seconds:60}),
+});
 let cached,pending;
-export async function handle(req,env=process.env,net=fetch){
+// Domain handler accepts its policy as a dependency; the HTTP export always binds it.
+export async function handle(req,env=process.env,net=fetch,quota){
  const reply=(status,data)=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
  if(req.method!=='POST')return reply(405,{error:'Método não permitido.'});
  try{
@@ -16,6 +24,13 @@ export async function handle(req,env=process.env,net=fetch){
   if(!input||typeof input!=='object'||Array.isArray(input))return reply(400,{error:'Solicitação inválida.'});
   const clientId=env.PLUGGY_CLIENT_ID||env.CLIENT_ID,clientSecret=env.PLUGGY_CLIENT_SECRET||env.CLIENT_SECRET;
   if(!clientId||!clientSecret)return reply(503,{error:'Conexão bancária ainda não ativada. Tente novamente mais tarde.'});
+  const action=input.action||'connect';
+  if(typeof action!=='string'||!Object.hasOwn(BANK_BUDGETS,action))return reply(400,{error:'Ação inválida.'});
+  if(action!=='connect'&&!/^[\w-]{1,100}$/.test(input.itemId||''))return reply(400,{error:'Conexão inválida.'});
+  if(quota){
+   const budget=await quota({subject:user.id,operation:'bank-'+action,...BANK_BUDGETS[action]},env,net);
+   if(budget.status!==200)return Response.json({error:budget.error},{status:budget.status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...(budget.retryAfter?{'Retry-After':String(budget.retryAfter)}:{})}});
+  }
   async function api(path,body,key){const r=await net('https://api.pluggy.ai'+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...(key?{'X-API-KEY':key}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('pluggy');return r.json();}
   if(!cached||cached.clientId!==clientId||cached.secret!==clientSecret||cached.until<Date.now()){
    pending??=api('/auth',{clientId,clientSecret}).then(data=>{if(!data.apiKey)throw Error('pluggy');return cached={clientId,secret:clientSecret,key:data.apiKey,until:Date.now()+105*60000};}).finally(()=>{pending=null});await pending;
@@ -43,4 +58,4 @@ export async function handle(req,env=process.env,net=fetch){
   return reply(200,{accessToken:data.accessToken,includeSandbox:env.PLUGGY_SANDBOX==='true'});
  }catch{return reply(502,{error:'Não foi possível acessar o serviço bancário. Tente novamente.'});}
 }
-export default req=>handle(req);
+export default req=>handle(req,process.env,fetch,takeQuota);
