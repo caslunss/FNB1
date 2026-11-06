@@ -2,6 +2,7 @@ import {taxToday} from '../../src/services/taxes/domain.ts';
 import {normalizeBankTransactions} from '../../server/taxes/bank.js';
 import config from '../../public/assets/auth-config.json' with {type:'json'};
 import {takeQuota} from '../shared/quota.mjs';
+import {readLimitedBody,BodySizeError} from '../shared/request-body.mjs';
 export const BANK_BUDGETS=Object.freeze({
  connect:Object.freeze({limit:3,seconds:300}),
  verify:Object.freeze({limit:30,seconds:60}),
@@ -19,7 +20,8 @@ export async function handle(req,env=process.env,net=fetch,quota){
   const auth=await net(config.supabaseUrl+'/auth/v1/user',{headers:{apikey:config.supabasePublishableKey,Authorization:authorization},signal:AbortSignal.timeout(10000)});
   if(!auth.ok)return reply(401,{error:'Sua sessão expirou. Entre novamente.'});
   const user=await auth.json();if(!user.id||user.is_anonymous)return reply(401,{error:'Entre com Google para conectar seu banco.'});
-  const raw=await req.text();if(raw.length>2048)return reply(413,{error:'Solicitação muito grande.'});
+  // Keep the legacy UTF-16 character limit; bound transport before decoding.
+  const raw=await readLimitedBody(req,2048*4+4);if(raw.length>2048)return reply(413,{error:'Solicitação muito grande.'});
   let input;try{input=raw?JSON.parse(raw):{};}catch{return reply(400,{error:'Solicitação inválida.'});}
   if(!input||typeof input!=='object'||Array.isArray(input))return reply(400,{error:'Solicitação inválida.'});
   const clientId=env.PLUGGY_CLIENT_ID||env.CLIENT_ID,clientSecret=env.PLUGGY_CLIENT_SECRET||env.CLIENT_SECRET;
@@ -56,6 +58,6 @@ export async function handle(req,env=process.env,net=fetch,quota){
   const data=await api('/connect_token',{options:{clientUserId:user.id,avoidDuplicates:true}},cached.key);
   if(typeof data.accessToken!=='string')throw Error('pluggy');
   return reply(200,{accessToken:data.accessToken,includeSandbox:env.PLUGGY_SANDBOX==='true'});
- }catch{return reply(502,{error:'Não foi possível acessar o serviço bancário. Tente novamente.'});}
+ }catch(error){if(error instanceof BodySizeError)return reply(413,{error:'Solicitação muito grande.'});return reply(502,{error:'Não foi possível acessar o serviço bancário. Tente novamente.'});}
 }
 export default req=>handle(req,process.env,fetch,takeQuota);

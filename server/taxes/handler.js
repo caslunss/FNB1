@@ -1,6 +1,7 @@
 import {TAX_SERVER_TIMEOUT_MS} from '../../src/services/taxes/limits.ts';
 import {normalizeInput,fingerprint,validDay,taxToday} from '../../src/services/taxes/domain.ts';
 import {calculate,TaxError} from './ibpt.js';
+import {readLimitedBody,BodySizeError} from '../shared/request-body.mjs';
 const allowed=['https://tefinance.netlify.app','https://plan-desktop-lucas.silverelk9.chatgpt.site','http://terminal.local:4173'];
 export async function handleTax(req,env,net=fetch){
  const transport=net,deadline=AbortSignal.timeout(TAX_SERVER_TIMEOUT_MS);
@@ -18,7 +19,8 @@ export async function handleTax(req,env,net=fetch){
   const auth=req.headers.get('authorization')||'';if(!/^Bearer [\w.-]+$/.test(auth))throw new TaxError('Entre para sincronizar os impostos.',401);
   if(!env.SUPABASE_URL||!env.SUPABASE_PUBLIC_KEY||!env.SUPABASE_SERVER_KEY)throw new TaxError('Servidor tributário ainda não configurado.',503);
   const ur=await net(env.SUPABASE_URL+'/auth/v1/user',{headers:{apikey:env.SUPABASE_PUBLIC_KEY,Authorization:auth},signal:AbortSignal.timeout(8000)});if(!ur.ok)throw new TaxError('Sua sessão expirou. Entre novamente.',401);const user=await ur.json();if(!user.id||user.is_anonymous)throw new TaxError('Entre com uma conta para sincronizar.',401);
-  const text=await req.text();if(new TextEncoder().encode(text).length>60000)throw new TaxError('Documento muito grande.',413);let data;try{data=JSON.parse(text)}catch{throw new TaxError('Solicitação inválida.')}
+  // Three bytes allow the optional UTF-8 BOM already stripped by Request.text().
+  const text=await readLimitedBody(req,60003);if(new TextEncoder().encode(text).length>60000)throw new TaxError('Documento muito grande.',413);let data;try{data=JSON.parse(text)}catch{throw new TaxError('Solicitação inválida.')}
   if(!data||typeof data!=='object'||Array.isArray(data))throw new TaxError('Solicitação inválida.');
   async function db(table,query='',options={},admin=true){const key=admin?env.SUPABASE_SERVER_KEY:env.SUPABASE_PUBLIC_KEY;const response=await net(env.SUPABASE_URL+'/rest/v1/'+table+(query?'?'+query:''),{...options,headers:{apikey:key,...(!admin?{Authorization:auth}:key.split('.').length===3?{Authorization:'Bearer '+key}:{}),'Content-Type':'application/json',...options.headers},signal:AbortSignal.timeout(10000)});if(!response.ok)throw new TaxError(response.status===409?'Os dados mudaram. Atualize antes de salvar.':'Não foi possível salvar a análise.',response.status===409?409:502);return response.status===204?null:response.json();}
   const owner='user_id=eq.'+encodeURIComponent(user.id);
@@ -55,5 +57,5 @@ export async function handleTax(req,env,net=fetch){
   const revision=existing?Number(existing.revision)+1:1;
   if(existing){const result=await db('app_tax_records',selector+'&revision=eq.'+existing.revision,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify({record,revision,updated_at:record.updatedAt})});if(!result.length)throw new TaxError('A análise mudou. Atualize.',409);}else await db('app_tax_records','',{method:'POST',body:JSON.stringify({user_id:user.id,item_id:expense.id,record,revision})});
   return reply(200,{record:{...record,revision}});
- }catch(e){const known=e instanceof TaxError;return reply(known?e.status:400,{error:known?e.message:e.message?.includes('Valor')||e.message?.includes('itens')||e.message?.includes('tribut')?e.message:'Confira as informações da compra e tente novamente.'},known&&e.retryAfter?{'Retry-After':e.retryAfter}:{});}
+ }catch(e){if(e instanceof BodySizeError)return reply(413,{error:'Documento muito grande.'});const known=e instanceof TaxError;return reply(known?e.status:400,{error:known?e.message:e.message?.includes('Valor')||e.message?.includes('itens')||e.message?.includes('tribut')?e.message:'Confira as informações da compra e tente novamente.'},known&&e.retryAfter?{'Retry-After':e.retryAfter}:{});}
 }

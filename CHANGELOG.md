@@ -30,6 +30,8 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 - Login: falha na importação do módulo Google agora é tratada; o acesso de visitante fica disponível independentemente desse módulo, e Tentar novamente recarrega o grafo de módulos após falha.
 
+- F04: leitura incremental limitada dos corpos de banco, compras, tributos e exclusão de conta, com cancelamento antecipado. Limites lógicos, Unicode/BOM e mensagens/status existentes preservados.
+
 ### Limitações conhecidas
 
 - A regra mensal de nome de usuário é LOCAL ONLY, por dispositivo/conta; não é imposta no servidor nem garante exclusividade entre aparelhos.
