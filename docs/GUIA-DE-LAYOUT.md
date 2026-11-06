@@ -633,3 +633,9 @@ A página de investimentos e suas APIs de mercado foram retiradas por pedido do 
 Barras de ações usam `--ui-action-gap` (12 px); barras de opções mantêm `--ui-control-gap` (8 px). Não reduzir os alvos de toque de 44 px para compactar a dock. Mini ocupa a largura intrínseca dos quatro controles, 206 × 50 px, centralizada; no desktop conserva a posição superior existente. Padrão mantém expansão/compactação por rolagem, agora com a mesma largura intrínseca ao compactar. Fixada conserva a largura total inferior, soma safe area à altura útil de 54 px e ao padding inferior, sem criar rolagem interna. Continuar ocultando docks inferiores em formulários, modais e teclado.
 
 As grades controlam os intervalos com `--content-card-gap`: retirar margens que duplicam o intervalo dentro de Compromissos. Cards de Planejamento conservam sua própria caixa, sem `display: contents`, e alinham a altura por linha. Um último card ímpar do Resumo ocupa a linha disponível. Cores, vidro, ícones e valores de movimento permanecem.
+
+## Cabeçalhos e distribuição — 06/11/2026
+
+O título de cada área fica abaixo do guaxinim e alinhado à borda esquerda da logo, respeitando o recuo seguro existente da página. No mobile a logo continua na faixa superior ao lado de perfil/calendário/notificações, com o texto na linha seguinte. No desktop ambos formam uma coluna à esquerda. Tipografia e comportamento de recolhimento por scroll permanecem.
+
+Distribuição dos gastos segue a referência de anel radial: os ângulos representam a participação real de cada categoria; diferenças de raio são decorativas, sem codificar outro valor financeiro. Usar gradientes dos tokens --c0…--c4, halo central e valor real do mês, com moeda identificada e legenda acessível. Nunca adicionar percentuais de crescimento fictícios da imagem. Suportar categoria única (anel completo), segmentos pequenos e estado sem gastos, mantendo a categoria histórica Investimentos.

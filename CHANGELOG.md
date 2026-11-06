@@ -4,6 +4,11 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## [0.1.0-alpha.1] - 2026-11-05
 
+### Alterado — 06/11/2026
+
+- Por pedido do proprietário, títulos principais alinhados abaixo da logo do guaxinim pela borda esquerda; no mobile, logo mantém a faixa dos controles superiores. Distribuição dos gastos passa a usar segmentos radiais de raios decorativos diferentes, gradientes das cores categóricas do tema e centro com total real em reais. Ângulos, valores, legenda e percentuais continuam derivados dos lançamentos; percentuais de crescimento ilustrativos não são copiados da referência.
+
+
 ### Corrigido — 06/11/2026
 
 - Dock Mini passa a usar largura intrínseca dos quatro controles (206 × 50 px), preservando alvos de 44 px. Dock Fixada calcula altura e padding pela mesma área segura e não admite rolagem interna vertical. Barras de ações passam a usar 12 px entre controles, com seletores em 8 px. Grades de cards eliminam margens duplicadas, alinham cards de Planejamento e aproveitam a última linha ímpar do Resumo. Regras de popup que desfaziam containers em Planejamento foram removidas. Vidro, cores e durações de movimento preservados.

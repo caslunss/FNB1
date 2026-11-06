@@ -272,86 +272,12 @@ export function createCharts(workspace: ChartsContext) {
           {'Sem gastos neste mês.'}
         </p>
       );
-    const rows = workspace.CATS.map((c, i) => ({
-        c,
-        i,
-        g: workspace.sum(it.filter((x) => x.c === c)),
-      })).filter((r) => r.g > 0),
-      R = 52,
-      C = 2 * Math.PI * R;
-    let off = 0;
-    const seg = viewList(
-      rows.map((r) => {
-        const len = (r.g / T) * C,
-          e = (
-            <circle
-              cx="70"
-              cy="70"
-              r={R}
-              fill="none"
-              strokeWidth="22"
-              strokeDasharray={
-                String(Math.max(0, len - 2).toFixed(2)) +
-                ' ' +
-                String(C.toFixed(2))
-              }
-              strokeDashoffset={(-off).toFixed(2)}
-              transform="rotate(-90 70 70)"
-              style={{ stroke: 'var(--c' + String(r.i) + ')' }}
-            ></circle>
-          );
-        off += len;
-        return e;
-      }),
-    );
-    return (
-      <div className="dn">
-        <svg
-          viewBox="0 0 140 140"
-          role="img"
-          aria-label={
-            'Distribuição dos gastos de ' +
-            String(workspace.M[workspace.S.m]) +
-            ' por categoria'
-          }
-        >
-          {seg}
-          <text
-            x="70"
-            y="66"
-            textAnchor="middle"
-            fontSize="11"
-            style={{ fill: 'var(--lb2)' }}
-          >
-            {'Total'}
-          </text>
-          <text
-            x="70"
-            y="86"
-            textAnchor="middle"
-            fontSize="14"
-            fontWeight="700"
-            style={{ fill: 'var(--lb)' }}
-          >
-            {Math.abs(T) >= 10000 ? workspace.mf(T) : workspace.brl(T)}
-          </text>
-        </svg>
-        <div className="dl">
-          {viewList(
-            rows.map((r) => (
-              <div className="item">
-                <span
-                  className="dot"
-                  style={{ background: 'var(--c' + String(r.i) + ')' }}
-                ></span>
-                <span>{r.c}</span>
-                <b>{workspace.categoryPercent(r.g, T)}</b>
-              </div>
-            )),
-          )}
-        </div>
-      </div>
-    );
+    const rows = workspace.CATS.map((category,index)=>({
+      category,index,value:workspace.sum(it.filter(x=>x.c===category)),
+    })).filter(row=>row.value>0).map(row=>({...row,percentage:workspace.categoryPercent(row.value,T)}));
+    return <div data-spending-distribution="" data-total={T} data-total-label={workspace.brl(T)} data-month={workspace.M[workspace.S.m]}>
+      {rows.map(row=><span key={row.index} data-category={row.category} data-index={row.index} data-value={row.value} data-percentage={row.percentage}/>)}
+    </div>;
   }
 
   function topList(it: Expense[]) {

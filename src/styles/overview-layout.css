@@ -24,3 +24,16 @@
  #app.layout-r[data-summary-view=overview] .category-list{grid-template-columns:repeat(2,minmax(0,1fr))}
  #app.layout-r[data-summary-view=overview] .chart-caption{margin-left:0;flex-basis:100%}
 }
+
+/* Raised radial segments follow category tokens; angles retain actual spending shares. */
+.dn.spending-distribution{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:var(--ui-space-4)}
+.spending-distribution>svg{display:block;width:min(100%,320px);height:auto;flex:none;overflow:visible}
+.spending-distribution>.dl{width:100%;min-width:0}
+.spending-distribution .distribution-halo{fill:var(--soft)}
+.spending-distribution .distribution-center{fill:var(--card)}
+.spending-distribution .distribution-total{fill:var(--lb);font-weight:700;font-variant-numeric:tabular-nums}
+.spending-distribution .distribution-caption{fill:var(--lb2);font-size:11px}
+.spending-distribution .distribution-share{fill:var(--card);font-size:14px;font-weight:700}
+.spending-distribution .item{min-width:0;gap:var(--ui-space-2)}
+.spending-distribution .item>span:nth-child(2){min-width:0;overflow-wrap:anywhere}
+.spending-distribution .item>b{flex:none;font-variant-numeric:tabular-nums}

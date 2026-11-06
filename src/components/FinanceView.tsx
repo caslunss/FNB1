@@ -1,3 +1,4 @@
+import SpendingDistribution from './SpendingDistribution';
 import {calendarKeys} from './calendar-keyboard';
 import { presentationTree, type PresentationNode, type ElementNode } from '../services/presentation-tree';
 import type { Root } from 'react-dom/client';
@@ -383,6 +384,9 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
     );
   if (tag === 'button' && node.hasAttribute('data-theme-toggle')) return <ThemeSwitch key={key} />;
   if (node.hasAttribute('data-share-debt')) return <ShareDebt key={key} />;
+  if (node.hasAttribute('data-spending-distribution')) return <SpendingDistribution key={key}
+    rows={node.children.map(row=>({category:row.getAttribute('data-category')||'',index:Number(row.getAttribute('data-index')),value:Number(row.getAttribute('data-value')),percentage:row.getAttribute('data-percentage')||''}))}
+    total={Number(node.getAttribute('data-total'))} totalLabel={node.getAttribute('data-total-label')||''} month={node.getAttribute('data-month')||''}/>;
   if (node.hasAttribute('data-product-goals')) return <DeferredPage key={key} page="productGoals" />;
   if (node.hasAttribute('data-goal-editor')) return <GoalEditor key={key} />;
   if (tag === 'input' && node.type === 'file') {
