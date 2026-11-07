@@ -1,5 +1,10 @@
 # Regras de manutenção do TEFinance
 
+## Primeiro acesso e revisão de alinhamento — 07/11/2026
+
+O proprietário pediu adequar o primeiro acesso ao design existente, verificar botões/UI da aplicação e autorizou explicitamente o deploy ao concluir. Nesta tarefa, corrigir inconsistências confirmadas, atualizar verificações proporcionais aos controles padronizados e publicar em main/Vercel. Preservar funções financeiras, versão atual, cores e padrões existentes; não executar limpeza, migrations ou alterar configurações/segredos.
+
+
 ## Importação de perfis — autorização específica em 07/11/2026
 
 O proprietário autorizou expressamente aplicar database/friend-profiles.sql no projeto da aplicação para concluir a importação por @usuário. A autorização cobre a função privada em namespace dedicado e o wrapper público security invoker, permissões mínimas, testes negativos de autenticação e verificação de advisors. Nenhuma tabela, política ou registro de usuário deve ser alterado por essa etapa. Publicar o endpoint que usa essa função junto dos ajustes autorizados.

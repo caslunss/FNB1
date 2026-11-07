@@ -218,9 +218,20 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 /* Header menus stay above the content stacking context; dialogs/popovers retain the top layer. */
 body:not(.auth-page) .nav-shell{z-index:100}
 body:not(.auth-page) .workspace-main.wrap{position:relative;z-index:0}
+/* First access follows the account overlay, field and glass-card system. */
 .initial-setup{width:min(640px,calc(100vw - 24px))}
+.initial-setup-header{position:sticky;top:0;z-index:2;align-items:center}
+.initial-setup-header .foot{margin:var(--ui-space-2) 0 0}
+.initial-setup-body .initial-setup-card{margin:0}
 .initial-setup-form{display:grid;gap:var(--ui-space-4);min-width:0}
-.initial-setup-photo{width:72px;height:72px;border-radius:50%;object-fit:cover}
+.initial-setup-form :is(h3,p){margin:0}
+.initial-setup-form h3{font-size:16px;line-height:1.4}
+.initial-setup-form .layout-progress-setting{gap:var(--ui-space-4);min-width:0}
+.initial-setup-form .layout-progress-setting>span{min-width:0;overflow-wrap:anywhere}
+.initial-setup-form .layout-progress-setting .lg-switch{flex:none}
+.initial-setup-actions{display:grid;gap:var(--ui-action-gap);margin-top:var(--ui-space-2);padding-top:var(--ui-space-4);border-top:1px solid var(--sep)}
+.initial-setup-navigation{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--ui-action-gap);align-items:stretch}
+.initial-setup-actions .ui-button{width:100%;min-width:0;min-height:var(--ui-touch-target)}
 @media(max-width:760px){#app .friends-people{grid-template-columns:minmax(0,1fr)}#app .friends-people>.card,#app .friend-registration,#app .friends-balances{grid-column:1;grid-row:auto}}
 /* Both desktop toolbars occupy the same header row, independent of title height. */
 @media(min-width:1025px){
@@ -228,4 +239,9 @@ body:not(.auth-page) .workspace-main.wrap{position:relative;z-index:0}
  .nav-shell .navigation-actions{align-self:start;margin-block:0;grid-column:2;grid-row:1}
  .nav-shell .top-account-actions{align-self:start;grid-column:3;grid-row:1}
  .nav-shell .navigation-actions #tabs{margin-block:0}
+}
+/* Four summary choices fit inside the card on narrow screens. */
+@media(max-width:520px){
+ .chart-toolbar [role=tablist],.tax-filters{width:100%;--ui-control-font-size:12px;--ui-control-gap:2px;--ui-option-flex:1 1 0;--ui-button-px:var(--ui-space-1)}
+ .chart-toolbar [role=tablist] .ui-button,.tax-filters .ui-button{min-width:0}
 }

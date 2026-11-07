@@ -2,6 +2,10 @@ Versão do documento: 0.1.0-alpha.6
 
 # TEFinance — guia de layout
 
+## Primeiro acesso
+
+Reutilizar account-overlay-header, card Liquid Glass, campos e interruptor compartilhados. Cabeçalho fica no fluxo/sticky com padding igual ao corpo, sem pseudo-elemento solto. Foto usa o editor de perfil existente, sem seletor de arquivo nativo visível. Voltar e Continuar/Concluir dividem duas colunas iguais; Preencher depois ocupa a linha seguinte. Salário/data e demais campos mantêm grade responsiva, com uma coluna abaixo de 700 px. Não alterar regras financeiras ao revisar aparência. Escape no calendário aninhado fecha apenas o seletor de data. Seletores de Resumo e filtros tributários distribuem as opções igualmente em telas até 520 px, sem cortar rótulos.
+
 ## Cadastro de amigos e camadas
 
 Amigos exibe três cards: Cadastro de amigo e Adicionar amigos na primeira linha, Valores a receber em toda a linha seguinte. Uma única grade controla ordem e espaçamento; no celular: cadastro, adicionar, valores. Atribuir valor fica dentro de Valores a receber. Avatar e barra exibem quanto cada pessoa representa do saldo aberto total, com percentual textual e progress acessível; zero total mostra barras vazias. Menu do cabeçalho usa contexto acima do conteúdo; popovers e diálogos mantêm a camada superior nativa.

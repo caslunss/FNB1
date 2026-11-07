@@ -4,6 +4,10 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Corrigido — primeiro acesso e alinhamento
+- Cadastro inicial usa cabeçalho, card, foto e interruptor do sistema visual existente. Ações ficam alinhadas em uma grade estável; campos de salário e data usam a mesma linha no desktop e se empilham no celular. Preservadas as regras de cadastro e a opção de preencher depois.
+- Seletores de Resumo e filtros de Impostos cabem em telas estreitas, sem cortar opções. Esc no calendário fecha somente o seletor de data, preservando o popup de origem.
+
 ### Simplificado — Novidades
 - Resumo de cada versão limitado aos principais destaques em frases curtas, preservando o histórico e as datas.
 
