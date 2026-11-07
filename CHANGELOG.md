@@ -4,6 +4,9 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Removido — edição de blocos
+- Removido o botão de reorganizar blocos do Resumo, por solicitação do proprietário.
+
 ### Alterado — Previsão no Resumo
 - Previsão movida para o seletor do Resumo, junto de Visão geral e Lançamentos; removida de Planejamento. Banner e atalhos atualizados, mantendo compatibilidade com links antigos e as preferências salvas.
 

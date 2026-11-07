@@ -250,28 +250,21 @@ export function createNavigation(workspace: NavigationContext) {
     const context = workspace.$('#contextContent');
     if (context) workspace.renderView(context, workspace.contextActivity());
     document.body.dataset.page = workspace.S.tab;
-    workspace.$('#settingsTop').hidden =
-      !['u', 'r'].includes(workspace.S.tab) ||
-      (workspace.S.tab === 'r' && ['behavior','forecast'].includes(workspace.summaryMode));
+    workspace.$('#settingsTop').hidden = workspace.S.tab !== 'u';
     workspace
       .$('#settingsTop')
       .setAttribute(
         'aria-label',
-        workspace.S.tab === 'r' ? 'Reorganizar cards' : 'Configurações',
+        'Configurações',
       );
-    workspace.$('#settingsTop').title =
-      workspace.S.tab === 'r' ? 'Reorganizar cards' : 'Configurações';
+    workspace.$('#settingsTop').title = 'Configurações';
     workspace.renderView(
       workspace.$('#settingsTop'),
       workspace.S.tab === 'u' ? (
         <button className="ib" type="button" aria-label="Configurações">
           {workspace.ICON.x}
         </button>
-      ) : (
-        <span data-glass-actions="summary" aria-label="Reorganizar cards">
-          {workspace.ICON.more}
-        </span>
-      ),
+      ) : null,
     );
     const identity = workspace.profileIdentity();
     const symbol = document.querySelector<HTMLElement>('.app-symbol')!;
