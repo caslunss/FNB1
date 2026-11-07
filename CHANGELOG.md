@@ -4,6 +4,9 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Corrigido — modo escuro neutro
+- Fundos, cards e camadas de vidro da paleta Essencial usam cinzas neutros no modo escuro, removendo o excesso de azul das superfícies. Destaques azuis, contraste de texto, categorias e modo claro preservados.
+
 ### Corrigido — cards por aba
 - Cards de distribuição, maiores gastos, categorias e dívidas ficam somente em Gastos. Acompanhamento de investimentos da meta fica em Metas; Entradas e Hábitos não exibem cards de outras opções. Mapeamento de pertencimento documentado e validado na navegação.
 

@@ -6,7 +6,7 @@ export interface ThemePreferences extends ThemePalette {opacity:number;blur:numb
 export interface LayoutPreferences {version:number;palette:string;intensity:number;dockStyle:DockStyle;circularProgress:boolean;indicators:Record<string,boolean>;sections:Record<string,boolean>;light:ThemePreferences;dark:ThemePreferences&{dim:number}}
 const KEY='plan12layout_v1';
 export const PALETTES=Object.freeze([
- {id:'aged-white',name:'Azul essencial',season:'Essencial',light:{accent:'#0000FF',background:'#eef2f8',surface:'#f8faff'},dark:{accent:'#0000FF',background:'#111822',surface:'#1c2633'}},
+ {id:'aged-white',name:'Azul essencial',season:'Essencial',light:{accent:'#0000FF',background:'#eef2f8',surface:'#f8faff'},dark:{accent:'#0000FF',background:'#171719',surface:'#252528'}},
  {id:'autumn-sand',name:'Areia',season:'Outono',light:{accent:'#856d57',background:'#e8e0d6',surface:'#f6eee4'},dark:{accent:'#c9af93',background:'#1b1816',surface:'#302924'}},
  {id:'autumn-peach',name:'Damasco',season:'Outono',light:{accent:'#966d62',background:'#ecdfd7',surface:'#f9eee7'},dark:{accent:'#d6aea1',background:'#1d1918',surface:'#322926'}},
  {id:'autumn-rose',name:'Rosa chá',season:'Outono',light:{accent:'#8d6e79',background:'#e9dfe2',surface:'#f7edf0'},dark:{accent:'#cbb0bb',background:'#1c181c',surface:'#302830'}},
@@ -16,7 +16,7 @@ export const PALETTES=Object.freeze([
 ]);
 export const DEFAULT_LAYOUT:LayoutPreferences=Object.freeze({version:1,palette:'aged-white',intensity:3,dockStyle:'default',circularProgress:true,indicators:Object.freeze({}),sections:Object.freeze({credit:true,calendar:true}),
   light:Object.freeze({accent:'#0000FF',background:'#eef2f8',surface:'#f8faff',opacity:66,blur:6}),
-  dark:Object.freeze({accent:'#0000FF',background:'#111822',surface:'#1c2633',opacity:64,blur:16,dim:70}),
+  dark:Object.freeze({accent:'#0000FF',background:'#171719',surface:'#252528',opacity:64,blur:16,dim:70}),
 });
 const copy=<T>(x:T):T=>JSON.parse(JSON.stringify(x));
 const bounded=(x:number|undefined,lo:number,hi:number,fallback:number)=>Number.isFinite(x)?Math.max(lo,Math.min(hi,Math.round(x!))):fallback;

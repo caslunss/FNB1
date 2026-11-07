@@ -2,6 +2,8 @@ Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
+O modo escuro de Azul essencial usa fundo #171719 e superfície #252528, neutros, sem tingir grandes áreas de azul. O azul fica nos destaques. Camadas iniciais de vidro usam cinzas equivalentes até a aplicação dos tokens.
+
 ## Cards por aba
 
 - Visão geral → Entradas: gráfico e comparação de entradas.

@@ -11,11 +11,11 @@
 }
 :root[data-theme="dark"]{
   --lg-fg:var(--lb);--lg-fg-muted:var(--lb2);--lg-accent:var(--tintT);--lg-green:var(--tint);
-  --lg-fill:rgb(38 52 59 / .65);--lg-fill-pressed:rgb(57 76 86 / .88);
-  --lg-panel-fill:rgb(32 42 47 / .88);--lg-edge:rgb(223 235 237 / .17);
-  --lg-glow:rgb(207 227 230 / .1);--lg-shadow:0 5px 20px rgb(0 0 0 / .25),0 1px 3px rgb(0 0 0 / .15);
-  --lg-navigation-fill:rgb(28 39 44 / .78);--lg-menu-fill:rgb(32 42 47 / .97);
-  --lg-segment-selection:rgb(179 206 216 / .15);--lg-rim-opacity:.44;
+  --lg-fill:rgb(38 38 40 / .65);--lg-fill-pressed:rgb(57 57 60 / .88);
+  --lg-panel-fill:rgb(37 37 40 / .9);--lg-edge:rgb(235 235 240 / .17);
+  --lg-glow:rgb(230 230 235 / .1);--lg-shadow:0 5px 20px rgb(0 0 0 / .25),0 1px 3px rgb(0 0 0 / .15);
+  --lg-navigation-fill:rgb(28 28 30 / .78);--lg-menu-fill:rgb(37 37 40 / .98);
+  --lg-segment-selection:rgb(205 205 215 / .15);--lg-rim-opacity:.44;
 }
 #app .te-glass-surface{--lg-glass-fill:var(--lg-panel-fill);background:var(--content-panel-fill,transparent)!important;isolation:isolate;box-shadow:var(--lg-shadow)!important}
 #app.layout-r>.te-glass-surface{width:100%;margin:0!important}

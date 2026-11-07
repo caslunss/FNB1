@@ -7,6 +7,7 @@ export const RELEASE_NOTES:readonly ReleaseNote[]=[
   'Interface mais simples, fonte SF Pro e cards organizados para celular e desktop.',
   'Removidos Dicas para você e o botão de reorganizar blocos.',
   'Impostos informa a causa da indisponibilidade da consulta automática.',
+  'Modo escuro com fundos e cards em cinza neutro, mantendo azul nos destaques.',
   'Cards separados por aba: Entradas, Gastos, Metas e Hábitos mostram apenas seus conteúdos.',
   'Histórico de últimos meses mais compacto e alinhado aos demais cards de Hábitos.',
   'Hábitos de gastos em uma opção própria, ao lado de Entradas, Gastos e Metas.',
