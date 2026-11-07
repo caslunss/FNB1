@@ -2,6 +2,10 @@ Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
+A paleta Essencial chama-se Azul essencial e mantém a chave aged-white por compatibilidade. Fundos frios, cards com opacidade mínima de 88% no claro e 90% no escuro e menus com 98% separam sobreposições sem alterar os controles de blur e movimento.
+
+Configurações → Novidades da versão mostra a versão atual e o histórico de resumos por lançamento, com data e lista curta de mudanças. Reutilizar cards, cabeçalho e PageTransition das demais subtelas. Novas versões exigem atualizar src/release-notes.ts.
+
 O Resumo não exibe Dicas para você. Metas de produtos abre com título e ação, sem descrição introdutória. Impostos distingue consulta em verificação, IBPT não configurado e erro do servidor.
 
 Cards de Previsão e metas usam duas colunas a partir de 900 px e uma coluna abaixo disso, alinhados pelo topo e separados por --content-card-gap. Editores e cabeçalhos de seção ocupam a largura disponível, sem alturas artificiais.

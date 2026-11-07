@@ -4,6 +4,12 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Alterado — paleta e sobreposições
+- Essencial passa a exibir Azul essencial, preservando a chave salva da paleta. Fundos frios nos temas claro/escuro, cards com preenchimento mais definido e menus mais opacos melhoram a separação de superfícies.
+
+### Adicionado — novidades da versão
+- Configurações oferece o histórico de novidades, com versão atual, data e resumo das mudanças. Toda mudança de versão exige uma entrada correspondente, validada automaticamente.
+
 ### Alterado — conteúdo e diagnóstico tributário
 - Removidos o card Dicas para você e a descrição introdutória de Metas de produtos.
 - Impostos distingue verificação pendente, configuração IBPT ausente e erro real do servidor, sem ocultar falhas de sessão ou de configuração.

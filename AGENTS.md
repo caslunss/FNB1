@@ -1,5 +1,9 @@
 # Regras de manutenção do TEFinance
 
+## Exceção desta tarefa — autorizada pelo proprietário em 07/11/2026
+
+O proprietário autorizou explicitamente publicar Novidades da versão em Configurações, renomear a paleta para Azul essencial e melhorar as sobreposições; depois autorizou a exceção para atualizar os testes de tema. Para esta entrega, é permitido ajustar `tests/dark-surfaces-regression.cjs` e `tests/layout-regression.cjs` às novas cores e opacidades, mantendo as verificações de contraste, adicionar a regressão de novidades da versão, enviar os commits desta tarefa para `main` no GitHub e concluir o deploy automático da Vercel. Esta exceção prevalece sobre as proibições de publicação e edição de testes abaixo somente neste escopo. Não autoriza force-push, tags, migrations, alterações de dados ou exposição de credenciais.
+
 Antes de modificar a interface, leia `docs/GUIA-DE-LAYOUT.md`. Esse é o contrato visual deste projeto, solicitado pelo usuário. Atualize o guia quando uma mudança de padrão for explicitamente aprovada.
 
 - Preserve a paleta escolhida, o Liquid Glass existente e as funções financeiras.
@@ -16,6 +20,7 @@ Antes de modificar a interface, leia `docs/GUIA-DE-LAYOUT.md`. Esse é o contrat
 - Single source of truth: src/version.ts. package.json "version" and the root version fields of the lockfile must match it; CHANGELOG.md top entry must match it.
 - Every task that changes behavior must add an entry to CHANGELOG.md (pt-BR, Keep a Changelog style). Never create git tags, never push.
 - Only the owner decides to bump the version.
+- Every version change must add dated, user-facing changes to src/release-notes.ts for Configurações → Novidades da versão. Keep prior entries and ensure the current version/date match src/version.ts.
 
 ## Current project facts (updated)
 

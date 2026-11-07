@@ -15,7 +15,7 @@ const assert=require('node:assert/strict');
  for(const palette of p.PALETTES)for(const theme of ['light','dark'])for(const opacity of [40,66,95]){
   const layout=clone(p.DEFAULT_LAYOUT);layout.palette=palette.id;layout[theme].opacity=opacity;
   const {background,surface}=palette[theme];
-  const t=p.layoutTokens(layout,theme),panelOpacity=Math.max(.4,Math.min(.98,opacity/100+(theme==='dark'?.12:-.04))),backdrop=p.mix(background,surface,panelOpacity);
+  const t=p.layoutTokens(layout,theme),panelOpacity=Math.max(theme==='dark'?.9:.88,Math.min(.98,opacity/100+(theme==='dark'?.12:-.04))),backdrop=p.mix(background,surface,panelOpacity);
   assert.ok(p.contrast(t['--lb'],background)>=4.5);
   assert.ok(p.contrast(t['--layout-card-text'],backdrop)>=4.5);
   assert.ok(p.contrast(t['--layout-form-text'],surface)>=4.5);
