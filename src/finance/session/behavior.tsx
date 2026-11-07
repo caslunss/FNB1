@@ -186,9 +186,9 @@ export function createBehavior(workspace: BehaviorContext) {
             })),
           )}
         </section>
-        <section className="card finance-layout-card">
+        <section className="card finance-layout-card habits-months-card">
           <h2>{'Últimos meses'}</h2>
-          {workspace.habitBars(a.months.map((x) => ({ ...x, label: x.month })))}
+          {a.months.some(month=>month.cents>0)?<ul className="habit-month-list">{a.months.map(month=><li key={month.month}><time dateTime={month.month}>{month.month.slice(5)}/{month.month.slice(0,4)}</time><strong>{workspace.brl(month.cents/100)}</strong></li>)}</ul>:<p className="foot">Sem gastos registrados.</p>}
         </section>
 
       </>

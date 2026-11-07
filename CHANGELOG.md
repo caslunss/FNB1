@@ -4,6 +4,12 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Corrigido — cards por aba
+- Cards de distribuição, maiores gastos, categorias e dívidas ficam somente em Gastos. Acompanhamento de investimentos da meta fica em Metas; Entradas e Hábitos não exibem cards de outras opções. Mapeamento de pertencimento documentado e validado na navegação.
+
+### Corrigido — histórico mensal em Hábitos
+- Últimos meses deixa de ocupar uma linha inteira sozinho e se alinha a Dias da semana na grade. Indicadores circulares substituídos por uma lista compacta de mês e total, com os mesmos dados financeiros.
+
 ### Alterado — Hábitos no seletor do Resumo
 - Cards de hábitos de gastos movidos para a opção Hábitos, junto de Entradas, Gastos e Metas. As demais opções deixam de exibir esses cards no rodapé.
 

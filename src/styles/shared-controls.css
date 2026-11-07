@@ -73,7 +73,6 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 .habits-summary-card .overview-total,.planning-value{display:block;font-size:clamp(28px,3vw,36px);line-height:1.15;overflow-wrap:anywhere;margin:var(--ui-space-4) 0;font-variant-numeric:tabular-nums}
 .summary-behavior .habit-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:var(--ui-space-4)}
 .summary-behavior .habit-bars>*,.finance-layout-card .row>*{min-width:0}
-.summary-behavior .finance-layout-card:last-child{grid-column:1/-1}
 .planning-grid .planning-results{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);min-width:0}
 .planning-grid .planning-results:empty{display:none}
 .planning-query-status,.planning-grid .purchase-review{grid-column:1/-1}
@@ -176,3 +175,10 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
  .product-goals>section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);align-items:start}
  .product-goals>section>:is(h2,p){grid-column:1/-1;margin:0}
 }
+
+/* Monthly history is a compact list, paired with the weekday card. */
+.habit-month-list{list-style:none;margin:0;padding:0;display:grid;gap:var(--ui-space-2)}
+.habit-month-list>li{display:flex;align-items:center;justify-content:space-between;gap:var(--ui-space-3);padding-block:var(--ui-space-2);border-bottom:1px solid var(--sep);font-variant-numeric:tabular-nums}
+.habit-month-list>li:last-child{border-bottom:0}
+.habit-month-list time{color:var(--lb2)}
+.habit-month-list strong{overflow-wrap:anywhere;text-align:right}

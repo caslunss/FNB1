@@ -2,6 +2,20 @@ Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
+## Cards por aba
+
+- Visão geral → Entradas: gráfico e comparação de entradas.
+- Visão geral → Gastos: gráfico, distribuição, maiores gastos, categorias e dívidas do mês.
+- Visão geral → Metas: projeção, edição da meta e seu acompanhamento de investimentos.
+- Visão geral → Hábitos: total de gastos, categorias, dias da semana e lista compacta de últimos meses.
+- Lançamentos: lista, filtros e evolução dos lançamentos. Previsão: saldo, controles e projeção diária.
+- Compromissos: Dívidas, Cartões, Dividir conta e Recorrências exibem somente seus respectivos conteúdos.
+- Planejamento: Compras e Metas de produtos são independentes. Análises: Impostos e Relatórios são independentes.
+
+Não renderizar cards de outros segmentos na aba ativa. A troca preserva os dados financeiros e utiliza o controlador existente.
+
+Em Hábitos, Últimos meses ocupa uma célula da grade, ao lado de Dias da semana no desktop. Seu conteúdo é uma lista compacta de mês e total; não usar círculos grandes nem expansão automática da última célula. No celular, manter a mesma coluna dos demais cards.
+
 Hábitos de gastos possui a opção Hábitos no seletor Entradas/Gastos/Metas da Visão geral. Seus cards aparecem somente nessa opção, com os mesmos dados e sem duplicação no rodapé das demais visualizações.
 
 ## Contrato de cards agrupados e alinhados

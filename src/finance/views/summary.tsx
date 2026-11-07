@@ -100,7 +100,7 @@ export function vR(context: WorkspaceViewContext) {
           </>
         )}
       </section>
-      <div className="lower-insights">
+      {chartMetric === 'g'&&<><div className="lower-insights">
         <section className="card category-chart-preserved">
           <h2>{'Distribuição'}</h2>
           {donut(it)}
@@ -117,13 +117,14 @@ export function vR(context: WorkspaceViewContext) {
         </div>
         <div className="category-list">{tiles(m, it)}</div>
       </section>
-      {investmentCategoryTile(
+      </>}
+      {isGoal&&investmentCategoryTile(
         m,
         it.filter((x) => x.c === 'Investimentos'),
         sum(it.filter((x) => x.c === 'Investimentos')),
         lim(m, 'Investimentos'),
       )}
-      <section className="card debt-min">
+      {chartMetric === 'g'&&<section className="card debt-min">
         <div className="row">
           <h2>{'Dívidas do mês'}</h2>
           <span className="debt-total">{brl(debt(m))}</span>
@@ -139,7 +140,7 @@ export function vR(context: WorkspaceViewContext) {
             </button>
           )),
         ) || <p className="foot">{'Sem parcelas.'}</p>}
-      </section>
+      </section>}
     </>
   );
 }

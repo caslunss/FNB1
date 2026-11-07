@@ -1,5 +1,13 @@
 # Regras de manutenção do TEFinance
 
+## Exceção da revisão de visibilidade — 07/11/2026
+
+O proprietário pediu revisar os cards de cada aba e autorizou expressamente o deploy. Nesta tarefa, estão autorizados corrigir o isolamento de cards por aba, incorporar o ajuste pendente de Últimos meses, atualizar documentação e testes que validam esses contratos, publicar os commits em main e concluir o deploy automático da Vercel. A autorização não inclui force-push, tags, migrations, alterações de dados nem exposição de credenciais.
+
+## Regra de pertencimento de cards
+
+Renderizar somente os cards da aba ativa, em vez de manter seções alheias visíveis. No Resumo: Entradas mostra entradas e comparação; Gastos mostra gastos, distribuição, maiores gastos, categorias e dívidas do mês; Metas mostra projeção, editor e acompanhamento de investimentos da meta; Hábitos mostra seus quatro cards. Lançamentos e Previsão têm telas próprias. Preservar filtros e dados ao trocar de aba. Validar presença e ausência dos cards nas próximas mudanças.
+
 ## Exceção para as duas revisões — autorizada em 07/11/2026
 
 O proprietário autorizou explicitamente nesta conversa “autorizo tudo e faça os 2”, aprovando publicar juntas as duas entregas locais: restaurar o espaçamento uniforme e o agrupamento/alinhamento dos cards, revertendo o gap zero; e mover os cards de hábitos para uma opção Hábitos ao lado de Entradas, Gastos e Metas. Para essas alterações, sua documentação e novidades, está autorizado enviar os commits para `main` no GitHub e concluir o deploy automático da Vercel. Esta exceção substitui os limites de publicação anteriores somente nesse escopo. Não autoriza force-push, tags, migrations, alterações de dados ou exposição de credenciais.

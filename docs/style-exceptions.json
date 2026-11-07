@@ -1,7 +1,7 @@
 {
   "count": 601,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "59fbdb2809283dc8f51a1f2ebc96d933716685b51fd99cac61925121c7a6b236",
+  "sha256": "0a2a3609ac4969ab046ccc4b72fd1341653c773c31800ffb1165893cbb87f98a",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -5180,7 +5180,7 @@
     },
     {
       "file": "src/styles/shared-controls.css",
-      "line": 107,
+      "line": 106,
       "selector": "#app.layout-r>.summary-behavior",
       "conditions": "",
       "property": "padding",
@@ -5189,7 +5189,7 @@
     },
     {
       "file": "src/styles/shared-controls.css",
-      "line": 108,
+      "line": 107,
       "selector": "#app.layout-r>.summary-behavior",
       "conditions": "",
       "property": "background",
@@ -5198,7 +5198,7 @@
     },
     {
       "file": "src/styles/shared-controls.css",
-      "line": 132,
+      "line": 131,
       "selector": "#app.layout-i .entry-summary",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
