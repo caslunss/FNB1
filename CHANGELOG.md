@@ -4,6 +4,9 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Adicionado — modo OLED
+- Subopção do modo escuro com fundo preto puro, cards cinzas opacos, bordas e sombras para separar as camadas. Preferência local preservada ao trocar de tema ou paleta; restaurar o layout escuro desativa OLED.
+
 ### Corrigido — modo escuro neutro
 - Fundos, cards e camadas de vidro da paleta Essencial usam cinzas neutros no modo escuro, removendo o excesso de azul das superfícies. Destaques azuis, contraste de texto, categorias e modo claro preservados.
 

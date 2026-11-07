@@ -3,7 +3,7 @@ export type Theme='light'|'dark';
 export type DockStyle='pinned'|'default'|'mini';
 export interface ThemePalette {accent:string;background:string;surface:string}
 export interface ThemePreferences extends ThemePalette {opacity:number;blur:number;dim?:number}
-export interface LayoutPreferences {version:number;palette:string;intensity:number;dockStyle:DockStyle;circularProgress:boolean;indicators:Record<string,boolean>;sections:Record<string,boolean>;light:ThemePreferences;dark:ThemePreferences&{dim:number}}
+export interface LayoutPreferences {version:number;palette:string;intensity:number;dockStyle:DockStyle;circularProgress:boolean;indicators:Record<string,boolean>;sections:Record<string,boolean>;light:ThemePreferences;dark:ThemePreferences&{dim:number;oled:boolean}}
 const KEY='plan12layout_v1';
 export const PALETTES=Object.freeze([
  {id:'aged-white',name:'Azul essencial',season:'Essencial',light:{accent:'#0000FF',background:'#eef2f8',surface:'#f8faff'},dark:{accent:'#0000FF',background:'#171719',surface:'#252528'}},
@@ -16,7 +16,7 @@ export const PALETTES=Object.freeze([
 ]);
 export const DEFAULT_LAYOUT:LayoutPreferences=Object.freeze({version:1,palette:'aged-white',intensity:3,dockStyle:'default',circularProgress:true,indicators:Object.freeze({}),sections:Object.freeze({credit:true,calendar:true}),
   light:Object.freeze({accent:'#0000FF',background:'#eef2f8',surface:'#f8faff',opacity:66,blur:6}),
-  dark:Object.freeze({accent:'#0000FF',background:'#171719',surface:'#252528',opacity:64,blur:16,dim:70}),
+  dark:Object.freeze({accent:'#0000FF',background:'#171719',surface:'#252528',opacity:64,blur:16,dim:70,oled:false}),
 });
 const copy=<T>(x:T):T=>JSON.parse(JSON.stringify(x));
 const bounded=(x:number|undefined,lo:number,hi:number,fallback:number)=>Number.isFinite(x)?Math.max(lo,Math.min(hi,Math.round(x!))):fallback;
@@ -38,6 +38,7 @@ export function normalizeLayout(input?:Partial<LayoutPreferences>|null):LayoutPr
     next[theme].opacity=bounded(source.opacity,40,95,next[theme].opacity);
     next[theme].blur=bounded(source.blur,0,28,next[theme].blur);
   }
+  next.dark.oled=input.dark?.oled===true;
   next.dark.dim=bounded(input.dark?.dim,0,100,next.dark.dim);
   return next;
 }
@@ -55,10 +56,11 @@ export function readableColor(color:string,background:string){
 const rgba=(color:string,alpha:number)=>`rgb(${rgb(color).join(' ')} / ${alpha})`;
 const bestText=(background:string)=>readableColor(contrast('#f5f5f7',background)>contrast('#1d1d1f',background)?'#f5f5f7':'#1d1d1f',background);
 export function layoutTokens(layout:LayoutPreferences,theme:string){
-  const normalized=normalizeLayout(layout),dark=theme==='dark',p=normalized[dark?'dark':'light'],opacity=p.opacity/100;
+  const normalized=normalizeLayout(layout),dark=theme==='dark',oled=dark&&normalized.dark.oled;
+  const base=normalized[dark?'dark':'light'],p=oled?{...base,background:'#000000',surface:'#202022'}:base,opacity=p.opacity/100;
   // Categories and investments retain their established accent independently of the new default.
   const protectedAccent=normalized.palette==='aged-white'?(dark?'#bac3c5':'#557789'):p.accent;
-  const panelOpacity=Math.max(dark?.9:.88,Math.min(.98,opacity+(dark?.12:-.04))),backdrop=mix(p.background,p.surface,panelOpacity);
+  const panelOpacity=oled?1:Math.max(dark?.9:.88,Math.min(.98,opacity+(dark?.12:-.04))),backdrop=mix(p.background,p.surface,panelOpacity);
   const protectedBackground=normalized.palette==='aged-white'?(dark?'#17191a':'#e7e5de'):p.background;
   const protectedSurface=normalized.palette==='aged-white'?(dark?'#272a2b':'#f7f4ec'):p.surface;
   const protectedBackdrop=mix(protectedBackground,protectedSurface,Math.max(.4,Math.min(.98,opacity+(dark?.12:-.04))));
@@ -80,9 +82,9 @@ export function layoutTokens(layout:LayoutPreferences,theme:string){
     '--ui-control-selected':dark?mix(p.surface,'#ffffff',.12):'#fff','--ui-control-selected-text':dark?text:'#1d1d1f','--ui-control-selected-muted':dark?muted:'#56565b',
     '--lg-fg':controlText,'--lg-fg-muted':muted,'--lg-accent':accent,'--lg-fill':rgba(fill,opacity),'--lg-fill-pressed':rgba(fill,dark?Math.min(.98,opacity+.05):.92),
     '--lg-panel-fill':rgba(p.surface,panelOpacity),'--lg-navigation-fill':rgba(fill,dark?opacity:Math.max(.4,opacity-.18)),
-    '--lg-menu-fill':rgba(mix(p.surface,text,.02),.98),'--lg-edge':dark?`rgb(255 255 255 / ${(.09-dim*.05).toFixed(3)})`:'rgb(0 0 0 / .06)',
+    '--lg-menu-fill':rgba(mix(p.surface,text,oled?.06:.02),oled?1:.98),'--lg-edge':oled?'rgb(255 255 255 / .12)':dark?`rgb(255 255 255 / ${(.09-dim*.05).toFixed(3)})`:'rgb(0 0 0 / .06)',
     '--lg-glow':dark?`rgb(255 255 255 / ${(.16-dim*.13).toFixed(3)})`:'rgb(255 255 255 / .55)','--lg-rim-opacity':dark?String(.5-dim*.4):'1',
-    '--lg-shadow':dark?'0 8px 28px rgb(0 0 0 / .38),0 1px 3px rgb(0 0 0 / .3)':'0 8px 28px rgb(0 0 0 / .08),0 1px 3px rgb(0 0 0 / .07)',
+    '--lg-shadow':oled?'0 12px 32px rgb(0 0 0 / .8),inset 0 1px 0 rgb(255 255 255 / .08)':dark?'0 8px 28px rgb(0 0 0 / .38),0 1px 3px rgb(0 0 0 / .3)':'0 8px 28px rgb(0 0 0 / .08),0 1px 3px rgb(0 0 0 / .07)',
     '--lg-blur':p.blur+'px','--lg-panel-blur':p.blur+'px','--lg-track':dark?'rgb(120 120 128 / .44)':'rgb(120 120 128 / .26)',
     '--lg-segment-selection':dark?'rgb(255 255 255 / .14)':'rgb(0 0 0 / .08)',
   };
@@ -94,6 +96,7 @@ export const subscribeLayout=(listener:()=>void)=>{listeners.add(listener);retur
 function apply(){if(typeof document==='undefined')return;const theme=document.documentElement.dataset.theme==='dark'?'dark':'light';
   for(const [key,value]of Object.entries(layoutTokens(current,theme)))document.documentElement.style.setProperty(key,value);
   document.documentElement.dataset.layoutReady='true';
+  document.documentElement.dataset.oled=String(theme==='dark'&&current.dark.oled);
   document.documentElement.dataset.dockStyle=current.dockStyle;
 }
 function fixedGlass(next:LayoutPreferences){
@@ -133,3 +136,5 @@ export function setCircularProgress(enabled:boolean){if(typeof enabled!=='boolea
 export function setIndicatorVisible(key:string,enabled:boolean){if(typeof key!=='string'||!key||key.length>180||typeof enabled!=='boolean')throw Error('Indicador inválido.');saveLayout({...copy(current),indicators:{...current.indicators,[key]:enabled}});}
 
 export function setSectionEnabled(section:string,enabled:boolean){if(!['credit','calendar'].includes(section)||typeof enabled!=='boolean')throw Error('Aba inválida.');saveLayout({...copy(current),sections:{...current.sections,[section]:enabled}});if(typeof window.dispatchEvent==='function')window.dispatchEvent(new Event('plan-sections-change'));}
+
+export function setOledMode(enabled:boolean){if(typeof enabled!=='boolean')throw Error('Preferência inválida.');saveLayout({...copy(current),dark:{...current.dark,oled:enabled}});}

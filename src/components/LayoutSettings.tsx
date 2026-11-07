@@ -1,7 +1,7 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import DockStyleSelector from './DockStyleSelector';
 import {FinanceGlassSwitch as GlassSwitch,FinanceGlassButton as GlassButton,ThemeSwitch} from './LiquidControls.tsx';
-import {getLayout,subscribeLayout,resetLayout,selectPalette,setCircularProgress,setSectionEnabled,PALETTES} from '../services/layout-preferences.ts';
+import {getLayout,subscribeLayout,resetLayout,setOledMode,selectPalette,setCircularProgress,setSectionEnabled,PALETTES} from '../services/layout-preferences.ts';
 
 export default function LayoutSettings(){
   const layout=useSyncExternalStore(subscribeLayout,getLayout);
@@ -11,6 +11,7 @@ export default function LayoutSettings(){
   return <section className="layout-tab-content" aria-label="Layout" id="layoutEditor">
     <div className="layout-editor-content">
       <ThemeSwitch/>
+      {theme==='dark'&&<div className="layout-progress-setting layout-oled-setting"><span>Modo OLED</span><GlassSwitch checked={layout.dark.oled} aria-label="Modo OLED" onChange={enabled=>{try{setOledMode(enabled);setMessage('Modo OLED '+(enabled?'ativado.':'desativado.'))}catch{setMessage('Não foi possível salvar.')}}}/></div>}
       <DockStyleSelector onMessage={setMessage}/>
       <section className="layout-sections"><h3>Visibilidade</h3>{[['credit','Cartões em Compromissos']].map(([key,label])=><div className="layout-progress-setting" key={key}><span>{label}</span><GlassSwitch checked={layout.sections[key]} aria-label={'Mostrar '+label} onChange={next=>{try{setSectionEnabled(key,next);setMessage('Aba atualizada.')}catch{setMessage('Não foi possível salvar.')}}}/></div>)}</section>
       <div className="layout-progress-setting"><span>Indicadores circulares</span><GlassSwitch checked={layout.circularProgress} aria-label="Indicadores circulares" onChange={next=>{try{setCircularProgress(next);setMessage('Layout salvo.')}catch{setMessage('Não foi possível salvar.')}}}/></div>

@@ -182,3 +182,5 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 .habit-month-list>li:last-child{border-bottom:0}
 .habit-month-list time{color:var(--lb2)}
 .habit-month-list strong{overflow-wrap:anywhere;text-align:right}
+
+.layout-oled-setting{margin-left:var(--ui-space-4);padding-left:var(--ui-space-4);border-left:1px solid var(--sep)}
