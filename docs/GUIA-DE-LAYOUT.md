@@ -2,6 +2,8 @@ Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
+Acima de 760 px, o card de acesso do login tem deslocamento visual de 24 px para a direita. No celular, permanece centralizado. Não usar transform para esse ajuste, preservando o controle de animação pelo Motion.
+
 Modo OLED aparece como subopção de Modo escuro em Layout e preferências. Ativado: fundo #000000, cards #202022 opacos, borda sutil e sombra para profundidade. A preferência dark.oled é local, desativada por padrão e inativa no modo claro, sem alterar as cores salvas das paletas.
 
 O modo escuro de Azul essencial usa fundo #171719 e superfície #252528, neutros, sem tingir grandes áreas de azul. O azul fica nos destaques. Camadas iniciais de vidro usam cinzas equivalentes até a aplicação dos tokens.

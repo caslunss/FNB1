@@ -128,3 +128,7 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
 /* Dark entry uses neutral layers; brand color remains an accent. */
 :root[data-theme=dark] .auth-page .login-still-background{background:var(--bg)}
 :root[data-theme=dark] .auth-page .login-background-shade{background:transparent}
+
+@media(min-width:761px){
+ .auth-page .login-fullscreen .login-redesign .login-auth-card{position:relative;inset-inline-start:var(--ui-space-6)}
+}

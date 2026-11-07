@@ -4,6 +4,9 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Ajustado — posição do login
+- Card de acesso deslocado 24 px para a direita acima de 760 px, preservando a centralização no celular e as animações existentes.
+
 ### Adicionado — modo OLED
 - Subopção do modo escuro com fundo preto puro, cards cinzas opacos, bordas e sombras para separar as camadas. Preferência local preservada ao trocar de tema ou paleta; restaurar o layout escuro desativa OLED.
 
