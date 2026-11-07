@@ -7,6 +7,7 @@ export const RELEASE_NOTES:readonly ReleaseNote[]=[
   'Interface mais simples, fonte SF Pro e cards organizados para celular e desktop.',
   'Removidos Dicas para você e o botão de reorganizar blocos.',
   'Impostos informa a causa da indisponibilidade da consulta automática.',
+  'Cards sem espaços externos entre si, com alinhamento e grade consistentes.',
   'Paleta Azul essencial com superfícies e sobreposições mais legíveis.',
   'Novidades de cada versão disponíveis nas Configurações.',
  ]},

@@ -4,6 +4,9 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Alterado — contrato global de cards
+- Removidos os espaços externos entre cards, com token único de gap zero, margens zeradas e grade compartilhada nas páginas e painéis. Espaçamento interno, foco e áreas de toque preservados; regra permanente registrada para futuras alterações.
+
 ### Alterado — paleta e sobreposições
 - Essencial passa a exibir Azul essencial, preservando a chave salva da paleta. Fundos frios nos temas claro/escuro, cards com preenchimento mais definido e menus mais opacos melhoram a separação de superfícies.
 

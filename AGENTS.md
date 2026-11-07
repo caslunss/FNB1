@@ -1,5 +1,14 @@
 # Regras de manutenção do TEFinance
 
+## Exceção para publicação do contrato de cards — 07/11/2026
+
+Após revisar a entrega local de organização dos cards, o proprietário autorizou explicitamente uma nova exceção nesta conversa. Para esta tarefa, é permitido enviar para `main` no GitHub e concluir o deploy automático da Vercel das alterações que removem espaços externos entre cards, centralizam o layout em `src/styles/card-layout.css` e registram a regra permanente, o changelog e as novidades. Esta autorização prevalece sobre a proibição de publicação abaixo somente neste escopo; não autoriza force-push, tags, alterações de dados, migrations ou exposição de credenciais.
+
+## Regra permanente de organização dos cards — 07/11/2026
+
+Por pedido explícito do proprietário, todos os grupos de cards devem usar `--content-card-gap: 0px`, sem margens externas ou espaçamentos cumulativos entre cards. A grade controla alinhamento e responsividade, sem deslocar cards com alturas, offsets ou margens artificiais. Preservar padding interno, legibilidade, foco e alvos de toque. Aplicar o contrato de `src/styles/card-layout.css` a novos grupos e verificar celular/desktop, temas e estados expandidos. Essa regra não autoriza alterar valores financeiros.
+
+
 ## Exceção desta tarefa — autorizada pelo proprietário em 07/11/2026
 
 O proprietário autorizou explicitamente publicar Novidades da versão em Configurações, renomear a paleta para Azul essencial e melhorar as sobreposições; depois autorizou a exceção para atualizar os testes de tema. Para esta entrega, é permitido ajustar `tests/dark-surfaces-regression.cjs` e `tests/layout-regression.cjs` às novas cores e opacidades, mantendo as verificações de contraste, adicionar a regressão de novidades da versão, enviar os commits desta tarefa para `main` no GitHub e concluir o deploy automático da Vercel. Esta exceção prevalece sobre as proibições de publicação e edição de testes abaixo somente neste escopo. Não autoriza force-push, tags, migrations, alterações de dados ou exposição de credenciais.

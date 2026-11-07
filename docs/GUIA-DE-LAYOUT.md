@@ -2,6 +2,11 @@ Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
+## Contrato de cards sem espaçamento externo
+
+Todos os grupos de cards usam --content-card-gap: 0px, sem margens externas. O container controla a grade e o alinhamento. Preservar padding interno, campos e áreas de toque; não usar alturas artificiais ou offsets para posicionar cards. `src/styles/card-layout.css` centraliza essa regra em páginas e painéis de Conta/Configurações. Validar telas pequenas, desktop e conteúdo expandido em futuras mudanças.
+
+
 A paleta Essencial chama-se Azul essencial e mantém a chave aged-white por compatibilidade. Fundos frios, cards com opacidade mínima de 88% no claro e 90% no escuro e menus com 98% separam sobreposições sem alterar os controles de blur e movimento.
 
 Configurações → Novidades da versão mostra a versão atual e o histórico de resumos por lançamento, com data e lista curta de mudanças. Reutilizar cards, cabeçalho e PageTransition das demais subtelas. Novas versões exigem atualizar src/release-notes.ts.
