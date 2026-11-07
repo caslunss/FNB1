@@ -1,5 +1,9 @@
 # Regras de manutenção do TEFinance
 
+## Importação de perfis — autorização específica em 07/11/2026
+
+O proprietário autorizou expressamente aplicar database/friend-profiles.sql no projeto da aplicação para concluir a importação por @usuário. A autorização cobre a função privada em namespace dedicado e o wrapper público security invoker, permissões mínimas, testes negativos de autenticação e verificação de advisors. Nenhuma tabela, política ou registro de usuário deve ser alterado por essa etapa. Publicar o endpoint que usa essa função junto dos ajustes autorizados.
+
 ## Limpeza integral de pessoas — autorização específica em 07/11/2026
 
 O proprietário confirmou explicitamente excluir todas as contas de login e os dados vinculados para começar do zero. Esta ação autoriza inventário e exclusão transacional de contas, sessões e dados dependentes apenas no projeto referenciado pela configuração pública da aplicação (qjxwghjamqrqxnrjpglx), com verificação posterior por contagens. Não divulgar registros pessoais, alterar esquemas, apagar o projeto ou transportar segredos. Essa autorização destrutiva é exclusiva desta solicitação e não autoriza limpezas futuras.
