@@ -1,10 +1,10 @@
-Versão do documento: 0.1.0-alpha.5
+Versão do documento: 0.1.0-alpha.6
 
 # Versionamento
 
 ## Esquema e autoridade
 
-O projeto usa SemVer com canal de pré-lançamento. A versão atual aprovada é `0.1.0-alpha.5`, lançada em `2026-11-07`. A primeira alpha aprovada é `0.1.0-alpha.1`, com data de lançamento `2026-11-05`. Somente o proprietário decide quando aumentar a versão. Auditorias, correções ou agentes não devem incrementá-la por conta própria.
+O projeto usa SemVer com canal de pré-lançamento. A versão atual aprovada é `0.1.0-alpha.6`, lançada em `2026-11-07`. A primeira alpha aprovada é `0.1.0-alpha.1`, com data de lançamento `2026-11-05`. Somente o proprietário decide quando aumentar a versão. Auditorias, correções ou agentes não devem incrementá-la por conta própria.
 
 `src/version.ts` é a fonte de verdade: APP_VERSION, APP_CHANNEL, APP_RELEASE_DATE e APP_VERSION_LABEL. As cópias abaixo devem permanecer sincronizadas e são conferidas por teste:
 

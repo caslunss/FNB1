@@ -163,7 +163,7 @@ export interface WorkspaceRuntime {
   LIM: Record<string, number>[];
   GOAL: FinancialGoal;
   DEBTS: Debt[];
-  PROFILE: { name: string };
+  PROFILE: { name: string; onboardingComplete?:boolean; friendLedger?:import('../../services/friends-ledger').FriendsLedger };
   SPLITS: Split[];
   CLOSED_REPORTS: Record<string, ClosedReport>;
   monthCount: number;
@@ -196,7 +196,7 @@ export interface WorkspaceRuntime {
     debts: Debt[];
     limits: Record<string, number>[];
     goal: FinancialGoal;
-    profile: { name: string };
+    profile: { name: string; onboardingComplete?:boolean; friendLedger?:import('../../services/friends-ledger').FriendsLedger };
     splits: Split[];
     reports: Record<string, ClosedReport>;
     monthCount: number;
@@ -231,7 +231,7 @@ export interface WorkspaceRuntime {
     cart: never[];
     offers: never[];
     creditCards: never[];
-    profile: { name: string };
+    profile: { name: string; onboardingComplete?:boolean; friendLedger?:import('../../services/friends-ledger').FriendsLedger };
     monthCount: number;
   };
   resetFinancialData: () => Promise<

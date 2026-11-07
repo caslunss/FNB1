@@ -4,6 +4,20 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+## [0.1.0-alpha.6] - 2026-11-07
+
+### Adicionado
+- Amigos ganha uma área própria no dock com pedidos por @usuário, contatos fictícios, valores a receber por pessoa, atribuição de dívidas e marcação de pagamento no controle privado. Dividir conta e Cobrar passam a ficar em Amigos; dados financeiros originais são preservados.
+- Primeiro acesso de contas autenticadas apresenta Perfil, Salário e Cartões em popup, com possibilidade de preencher depois. Nome de usuário usa a reserva e validação existentes; foto continua local. Salário opcional gera 12 recebimentos após confirmação; conclusão fica no workspace da conta para não repetir o cadastro.
+
+### Corrigido
+- Alinhamento das barras de navegação e conta no topo do desktop. Navegação ampliada para cinco áreas, com preservação dos destinos antigos.
+
+
+### Melhorado — cobrança entre amigos
+- Link compactado no próprio domínio, preservando a leitura dos links antigos e a referência que impede duplicação.
+- Mensagem identifica quem cobra e detalha descrição, valor solicitado, saldo restante quando a dívida é cadastrada e detalhes opcionais. Quem recebe vê o nome de quem cobra antes de revisar; não há pagamento nem gravação automática.
+
 ### Ajustado — posição do login
 - Card de acesso deslocado 24 px para a direita acima de 760 px, preservando a centralização no celular e as animações existentes.
 

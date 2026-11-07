@@ -37,6 +37,7 @@ export function createIncomingDebt(workspace: IncomingDebtContext) {
         <>
           <h2 id="incomingDebtTitle">{'Dívida compartilhada'}</h2>
           <p>{workspace.esc(debt.name)}</p>
+          {debt.collector&&<p>Quem cobra: {workspace.esc(debt.collector)}</p>}
           <strong>{workspace.brl(debt.cents / 100)}</strong>
           <p className="foot">
             {

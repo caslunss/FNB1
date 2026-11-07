@@ -86,7 +86,7 @@ export function createNavigationEvents(workspace: NavigationEventsContext) {
                 : undefined
             }
           >
-            {k === 'f'
+            {k === 'a' ? workspace.P(<><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 5"/></>) : k === 'f'
               ? workspace.P(<path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"></path>)
               : workspace.ICON[k]}
           </button>

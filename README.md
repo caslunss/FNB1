@@ -1,6 +1,6 @@
-Versão do documento: 0.1.0-alpha.5
+Versão do documento: 0.1.0-alpha.6
 
-# TEFinance — Alpha 0.1.0-alpha.5 para Vercel
+# TEFinance — Alpha 0.1.0-alpha.6 para Vercel
 
 Projeto React/Vite organizado para publicar frontend e APIs na Vercel. Comece por [PUBLICAR-VERCEL.md](PUBLICAR-VERCEL.md).
 

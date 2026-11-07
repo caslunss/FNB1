@@ -1,6 +1,7 @@
 import { requestFinancePublish } from '../../services/finance-runtime';
 import React from 'react';
 import { viewList } from '../../services/presentation.ts';
+import {friendsView as renderfriendsView} from '../views/friends';
 import { commitmentsView as rendercommitmentsView } from '../views/commitments.tsx';
 import { planningView as renderplanningView } from '../views/planning.tsx';
 import { analysisView as renderanalysisView } from '../views/analysis.tsx';
@@ -106,8 +107,8 @@ export function createNavigation(workspace: NavigationContext) {
       workspace.S.tab = 'd';
     }
     if (workspace.S.tab === 's') {
-      workspace.areaViews.commitments = 'friends';
-      workspace.S.tab = 'd';
+      workspace.areaViews.friends = 'split';
+      workspace.S.tab = 'a';
     }
     if (workspace.S.tab === 'e') {
       workspace.areaViews.analysis = 'taxes';
@@ -119,7 +120,7 @@ export function createNavigation(workspace: NavigationContext) {
         workspace.areaViews[area] = views[0][0];
     }
     // Saved links to removed screens fall back without changing financial data.
-    if (!['r', 'i', 'd', 'o', 'f', 'u', 'x', 'c'].includes(workspace.S.tab))
+    if (!['r', 'i', 'd', 'o', 'f', 'a', 'u', 'x', 'c'].includes(workspace.S.tab))
       workspace.S.tab = 'r';
     const requestedPanel =
       workspace.S.tab === 'u'
@@ -139,7 +140,9 @@ export function createNavigation(workspace: NavigationContext) {
       ':' +
       (workspace.S.tab === 'i'
         ? 'entries'
-        : workspace.S.tab === 'd'
+        : workspace.S.tab === 'a'
+          ? workspace.areaViews.friends
+          : workspace.S.tab === 'd'
           ? workspace.areaViews.commitments
           : workspace.S.tab === 'o'
             ? workspace.areaViews.planning
@@ -208,7 +211,9 @@ export function createNavigation(workspace: NavigationContext) {
     workspace.$('#app').dataset.summaryView =
       workspace.S.tab === 'i'
         ? 'entries'
-        : workspace.S.tab === 'd'
+        : workspace.S.tab === 'a'
+          ? workspace.areaViews.friends
+          : workspace.S.tab === 'd'
           ? workspace.areaViews.commitments
           : workspace.S.tab === 'o'
             ? workspace.areaViews.planning
@@ -220,6 +225,7 @@ export function createNavigation(workspace: NavigationContext) {
       workspace.prepareSummary(
         (
           {
+            a:()=>renderfriendsView(workspace.viewContext),
             r: workspace.summaryView,
             i: workspace.summaryView,
             d: workspace.commitmentsView,
@@ -337,6 +343,7 @@ export function initializeNavigation(workspace: NavigationContext) {
   // @workspace-end 150
   // @workspace-step 151 FirstStatement
   workspace.areaViews = {
+    friends: 'people',
     commitments: 'debts',
     planning: 'purchases',
     analysis: 'taxes',

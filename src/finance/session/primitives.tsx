@@ -188,6 +188,7 @@ export function initializePrimitives(workspace: PrimitivesContext) {
   // @workspace-end 19
   // @workspace-step 20 FirstStatement
   workspace.TITLES = {
+    a: 'Amigos',
     f: 'Análises',
     c: 'Calendário',
     r: 'Resumo',

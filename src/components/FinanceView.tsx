@@ -15,6 +15,7 @@ import ProgressGauge from './ProgressGauge.tsx';
 import NotificationPreferences from './NotificationPreferences.tsx';
 import ProgressiveFields from './ProgressiveFields.tsx';
 import ShareDebt from './ShareDebt.tsx';
+import FriendsLedger from './FriendsLedger';
 import AccountDataControls from './AccountDataControls.tsx';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -383,6 +384,7 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
       />
     );
   if (tag === 'button' && node.hasAttribute('data-theme-toggle')) return <ThemeSwitch key={key} />;
+  if (node.hasAttribute('data-friends-ledger')) return <FriendsLedger key={key}/>;
   if (node.hasAttribute('data-share-debt')) return <ShareDebt key={key} />;
   if (node.hasAttribute('data-spending-distribution')) return <SpendingDistribution key={key}
     rows={node.children.map(row=>({category:row.getAttribute('data-category')||'',index:Number(row.getAttribute('data-index')),value:Number(row.getAttribute('data-value')),percentage:row.getAttribute('data-percentage')||''}))}

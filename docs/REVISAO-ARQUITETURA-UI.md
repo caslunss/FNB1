@@ -1,4 +1,4 @@
-Versão do documento: 0.1.0-alpha.5
+Versão do documento: 0.1.0-alpha.6
 
 # Revisão de arquitetura, interface e dados
 

@@ -1,6 +1,13 @@
 export interface ReleaseNote {version:string;date:string;changes:readonly string[]}
 // Newest first. Every version change must include a dated, user-facing summary.
 export const RELEASE_NOTES:readonly ReleaseNote[]=[
+ {version:'0.1.0-alpha.6',date:'2026-11-07',changes:[
+  'Nova aba Amigos no dock, com pedidos por @usuário e contatos fictícios.',
+  'Dívidas por amigo e controle privado de quanto cada pessoa te deve.',
+  'Dividir conta e Cobrar reunidos na área de Amigos.',
+  'Cadastro inicial de perfil, salário e cartões após o primeiro login.',
+  'Barras superiores alinhadas e link de cobrança mais curto, com nome e valores detalhados.',
+ ]},
  {version:'0.1.0-alpha.5',date:'2026-11-07',changes:[
   'Previsão de saldo no Resumo, ao lado de Visão geral e Lançamentos.',
   'Alertas de saldo e revisão de cobranças recorrentes.',

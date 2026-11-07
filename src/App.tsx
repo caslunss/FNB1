@@ -1,3 +1,4 @@
+import FirstLoginSetup from './components/FirstLoginSetup';
 import StartupScreen from './components/StartupScreen';
 import { useEffect, useState } from 'react';
 import {WorkspaceLayout} from './components/WorkspaceLayout.tsx';
@@ -26,5 +27,5 @@ export default function App(){
     });
     return()=>{active=false;lease.release()};
   },[]);
-  return <><div className="startup-content" inert={state!=='ready'||undefined} aria-busy={state==='loading'}><WorkspaceLayout/></div><StartupScreen state={state} message={state==='error'?'Não foi possível concluir a verificação. Seus dados foram mantidos.':'Verificando acesso e preparando seus dados…'}/></>;
+  return <><div className="startup-content" inert={state!=='ready'||undefined} aria-busy={state==='loading'}><WorkspaceLayout/></div>{state==='ready'&&<FirstLoginSetup/>}<StartupScreen state={state} message={state==='error'?'Não foi possível concluir a verificação. Seus dados foram mantidos.':'Verificando acesso e preparando seus dados…'}/></>;
 }

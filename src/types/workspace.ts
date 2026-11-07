@@ -98,7 +98,7 @@ export interface WorkspaceSnapshot {
   debts: Debt[];
   limits: Record<string, number>[];
   goal: FinancialGoal;
-  profile: { name: string };
+  profile: { name: string; onboardingComplete?:boolean; friendLedger?:import('../services/friends-ledger').FriendsLedger };
   splits: Split[];
   reports: Record<string, ClosedReport>;
   monthCount: number;

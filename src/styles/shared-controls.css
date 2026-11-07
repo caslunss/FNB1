@@ -184,3 +184,23 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 .habit-month-list strong{overflow-wrap:anywhere;text-align:right}
 
 .layout-oled-setting{margin-left:var(--ui-space-4);padding-left:var(--ui-space-4);border-left:1px solid var(--sep)}
+
+.friends-people{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap)}
+.friends-people>.card:only-of-type{grid-column:1/-1}
+.friends-ledger{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);min-width:0;grid-column:1/-1}
+.friends-ledger>.card{margin:0;min-width:0}
+.friends-balances{grid-column:1/-1}
+.friend-balance{padding-block:var(--ui-space-4);border-top:1px solid var(--sep)}
+.friend-receivable{display:flex;align-items:center;gap:var(--ui-space-3);flex-wrap:wrap;padding-block:var(--ui-space-3)}
+.friend-receivable>span{flex:1;min-width:0}.friend-receivable small{display:block;color:var(--lb2)}
+.initial-setup{width:min(640px,calc(100vw - 24px))}
+.initial-setup-form{display:grid;gap:var(--ui-space-4);min-width:0}
+.initial-setup-photo{width:72px;height:72px;border-radius:50%;object-fit:cover}
+@media(max-width:760px){.friends-people,.friends-ledger{grid-template-columns:minmax(0,1fr)}}
+/* Both desktop toolbars occupy the same header row, independent of title height. */
+@media(min-width:1025px){
+ body:not(.auth-page) .nav-shell{align-items:start;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+ .nav-shell .navigation-actions{align-self:start;margin-block:0;grid-column:2;grid-row:1}
+ .nav-shell .top-account-actions{align-self:start;grid-column:3;grid-row:1}
+ .nav-shell .navigation-actions #tabs{margin-block:0}
+}

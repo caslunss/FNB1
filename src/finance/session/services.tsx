@@ -1,3 +1,5 @@
+import {validateFriendsLedger,emptyFriendsLedger} from '../../services/friends-ledger';
+import {reserveUsernameChange} from '../../services/username-policy';
 import {readForecastSource} from './forecast-source';
 import { isSafeInteger } from '../../services/type-guards.ts';
 import type { ShoppingPlan } from '../../types/workspace';
@@ -15,6 +17,13 @@ import type { WorkspaceRuntime } from './contracts';
 type ServicesContext = Pick<
   WorkspaceRuntime,
   | 'scope'
+  | 'PROFILE'
+  | 'acceptedFriends'
+  | 'friendCode'
+  | 'usernames'
+  | 'socialUser'
+  | 'refreshUsernames'
+  | 'saveIncome'
   | 'DEBTS'
   | 'CARDS'
   | 'CART'
@@ -54,6 +63,18 @@ type ServicesContext = Pick<
 >;
 
 export function initializeServices(workspace: ServicesContext) {
+  finance.friends={getState:()=>({people:[...workspace.acceptedFriends().map(friend=>{const id=workspace.friendCode(friend);return{id,name:'@'+(workspace.usernames[id]||'amigo'),local:false}}),...(workspace.PROFILE.friendLedger?.localFriends||[]).map(friend=>({...friend,local:true}))],ledger:workspace.PROFILE.friendLedger||emptyFriendsLedger(),debts:finance.debtSources()}),saveLedger(value){const next=validateFriendsLedger(value);const allowed=new Set([...workspace.acceptedFriends().map(workspace.friendCode),...next.localFriends.map(friend=>friend.id)]);const previous=workspace.PROFILE.friendLedger||emptyFriendsLedger();for(const row of next.receivables)if(!allowed.has(row.friendId)&&!previous.receivables.some(old=>old.id===row.id&&old.friendId===row.friendId))throw Error('Selecione um amigo adicionado.');workspace.atomic(()=>{workspace.PROFILE.friendLedger=next;workspace.saveWorkspace()});dispatchEvent(new Event('plan-friends-ledger-change'))}};
+  workspace.scope.listen(window,'plan-friends-ledger-change',()=>workspace.draw());
+  finance.setup={getState:()=>({complete:workspace.PROFILE.onboardingComplete===true,name:workspace.PROFILE.name,username:workspace.usernames[workspace.socialUser()||'']||'',hasSalary:workspace.S.receipts.some(row=>row.incomeKind==='salary'),hasCards:workspace.CARDS.length>0,today:workspace.todayISO()}),async saveUsername(value){
+   const username=value.trim().replace(/^@/,'').toLowerCase(),user=workspace.socialUser(),client=window.planAuth.client;
+   if(!user||!client)throw Error('Entre com uma conta para escolher seu usuário.');if(!/^[a-z0-9_]{3,40}$/.test(username))throw Error('Use 3–40 letras, números ou _.');
+   await workspace.refreshUsernames();if(workspace.scope.disposed||workspace.socialUser()!==user)throw Error('Sua sessão mudou. Entre novamente.');if(workspace.usernames[user]===username)return;const rollback=reserveUsernameChange();
+   try{const result=await client.from('app_usernames').update({username}).eq('user_id',user).select('username').single();if(result.error)throw Error(result.error.code==='23505'?'Este usuário já está em uso.':'Não foi possível salvar seu usuário.');if(workspace.scope.disposed||workspace.socialUser()!==user)throw Error('Sua sessão mudou. Entre novamente.');workspace.usernames[user]=result.data.username}catch(error){rollback();throw error}
+  },finish(input){if(workspace.PROFILE.onboardingComplete)return;if(!input.name.trim()||input.name.length>60)throw Error('Informe seu nome.');workspace.atomic(()=>{
+   if(input.salaryCents!==undefined){if(workspace.S.receipts.some(row=>row.incomeKind==='salary'))throw Error('Salário já cadastrado. Edite em Lançamentos.');if(!Number.isSafeInteger(input.salaryCents)||input.salaryCents<1||!input.salaryDate)throw Error('Revise o salário e a data.');workspace.saveIncome({d:'Salário',v:input.salaryCents/100,date:input.salaryDate,incomeKind:'salary'},undefined,12)}
+   if(input.card){if(workspace.CARDS.length>=100)throw Error('Limite de cartões atingido.');workspace.CARDS.push(normalizeCreditCard({...input.card,id:workspace.newId()}))}
+   workspace.PROFILE.name=input.name.trim();workspace.PROFILE.onboardingComplete=true;workspace.saveWorkspace();
+  });dispatchEvent(new Event('plan-profile-appearance-change'));workspace.draw()}};
   finance.forecast={getState:()=>readForecastSource(workspace)};
   workspace.scope.listen(window,'plan-forecast-settings-change',()=>workspace.draw());
   workspace.scope.listen(window,'plan-recurrence-decisions-change',()=>workspace.draw());
@@ -71,7 +92,7 @@ export function initializeServices(workspace: ServicesContext) {
     }),
     navigate(key) {
       if (
-        !['r', 'd', 'o', 'e', 'f'].includes(key)
+        !['r', 'd', 'o', 'e', 'f','a'].includes(key)
       )
         return;
       workspace.S.tab = key;

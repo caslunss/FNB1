@@ -3,7 +3,7 @@ import type {SupabaseClient,User} from '@supabase/supabase-js';
 import {exitSurface} from './session-motion.ts';
 import {createClient} from '@supabase/supabase-js';
 'use strict';
-try{if(location.hash?.startsWith('#debt=')&&location.hash.length<4000)sessionStorage.setItem('plan12-pending-debt',location.hash);}catch{}
+try{if(/^#(?:debt|d)=/.test(location.hash||'')&&location.hash.length<4000)sessionStorage.setItem('plan12-pending-debt',location.hash);}catch{}
 export const auth:AuthService = (() => {
   let client:SupabaseClient|undefined,config:AuthConfig|undefined,user:User|null=null,locked=false,signingOut=false;
   const guestName=()=>sessionStorage.getItem("plan12-guest-name")||"";

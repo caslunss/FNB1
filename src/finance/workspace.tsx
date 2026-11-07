@@ -9,7 +9,7 @@ export async function startWorkspace({
   renderView: typeof import('../components/FinanceView').renderView;
 }) {
   try {
-    if (location.hash?.startsWith('#debt=') && location.hash.length < 4000)
+    if (/^#(?:debt|d)=/.test(location.hash||'') && location.hash.length < 4000)
       sessionStorage.setItem('plan12-pending-debt', location.hash);
   } catch {}
   try {

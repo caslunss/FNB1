@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+(async()=>{const {emptyFriendsLedger,validateFriendsLedger,friendBalance}=await import('../src/services/friends-ledger.ts');
+ const id='local-8e59451b-5273-4e59-a0d8-aa043ec12dec',other='b494ae23-cafc-4814-8a85-e892b317c3ef';
+ const ledger={...emptyFriendsLedger(),localFriends:[{id,name:' João '}],receivables:[{id:'8e59451b-5273-4e59-a0d8-aa043ec12dec',friendId:id,description:'Almoço',cents:10001,paid:false},{id:'b494ae23-cafc-4814-8a85-e892b317c3ef',friendId:other,description:'Compra',cents:20002,paid:false}]};
+ const original=JSON.stringify(ledger),clean=validateFriendsLedger(ledger);assert.equal(clean.localFriends[0].name,'João');assert.equal(friendBalance(clean),30003);assert.equal(friendBalance(clean,id),10001);assert.equal(JSON.stringify(ledger),original);
+ const paid={...clean,receivables:clean.receivables.map(row=>row.friendId===id?{...row,paid:true}:row)};assert.equal(friendBalance(paid),20002);assert.equal(friendBalance(paid,id),0);assert.deepEqual(validateFriendsLedger(JSON.parse(JSON.stringify(clean))),clean);
+ for(const cents of [0,-1,1.1,NaN,100000001])assert.throws(()=>validateFriendsLedger({...ledger,receivables:[{...ledger.receivables[0],cents}]}));
+ assert.throws(()=>validateFriendsLedger({...ledger,localFriends:[]}));assert.throws(()=>validateFriendsLedger({...ledger,localFriends:[ledger.localFriends[0],ledger.localFriends[0]]}));assert.throws(()=>validateFriendsLedger({...ledger,receivables:[ledger.receivables[0],ledger.receivables[0]]}));
+ assert.equal(friendBalance(emptyFriendsLedger()),0);console.log('PASS private friend ledger: fictitious/registered refs, cents, paid balances, invalid/duplicate data, reload serialization and immutable inputs');
+})().catch(error=>{console.error(error);process.exitCode=1});

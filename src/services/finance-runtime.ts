@@ -1,7 +1,7 @@
 import type {FinanceServices} from '../types/finance-runtime';
 // One command registry. Only the controller installs implementations; components import it.
 export const finance = {} as FinanceServices;
-type SnapshotKey='taxes'|'credit'|'productGoals'|'goal'|'mobile'|'forecast';
+type SnapshotKey='taxes'|'credit'|'productGoals'|'goal'|'mobile'|'forecast'|'friends';
 type State<K extends SnapshotKey>=ReturnType<FinanceServices[K]['getState']>;
 const snapshots=new Map<SnapshotKey,{json:string;value:unknown;revision:number;reader:unknown}>();
 let revision=0;

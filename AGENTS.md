@@ -1,5 +1,10 @@
 # Regras de manutenção do TEFinance
 
+## Exceção da alpha.6 — autorizada em 07/11/2026
+
+O proprietário autorizou expressamente criar Amigos no dock, mover Dividir conta, adicionar contatos fictícios e dívidas por amigo, solicitar dados no primeiro login, alinhar as barras superiores, avançar para a próxima alpha e fazer deploy junto das mudanças pendentes de cobrança. Nesta tarefa estão autorizadas as alterações de interface, contratos e dados do JSON privado do workspace, atualização de testes aos novos contratos, package/lockfile somente nos campos de versão, documentação e publicação em main com deploy Vercel. Não executar migrations nem alterar tabelas/políticas remotas. Não expor credenciais, fazer force-push ou tags.
+
+
 ## Exceção da revisão de visibilidade — 07/11/2026
 
 O proprietário pediu revisar os cards de cada aba e autorizou expressamente o deploy. Nesta tarefa, estão autorizados corrigir o isolamento de cards por aba, incorporar o ajuste pendente de Últimos meses, atualizar documentação e testes que validam esses contratos, publicar os commits em main e concluir o deploy automático da Vercel. A autorização não inclui force-push, tags, migrations, alterações de dados nem exposição de credenciais.
@@ -36,7 +41,7 @@ Antes de modificar a interface, leia `docs/GUIA-DE-LAYOUT.md`. Esse é o contrat
 
 ## Versioning (permanent)
 
-- Scheme: SemVer with pre-release channel. Current: 0.1.0-alpha.5.
+- Scheme: SemVer with pre-release channel. Current: 0.1.0-alpha.6.
 - Single source of truth: src/version.ts. package.json "version" and the root version fields of the lockfile must match it; CHANGELOG.md top entry must match it.
 - Every task that changes behavior must add an entry to CHANGELOG.md (pt-BR, Keep a Changelog style). Never create git tags, never push.
 - Only the owner decides to bump the version.

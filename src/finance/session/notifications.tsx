@@ -163,12 +163,8 @@ export function createNotifications(workspace: NotificationsContext) {
       );
     return (
       <>
-        <details className="floating-action-editor">
-          <summary className="btn">
-            {workspace.ICON.plus}
-            <span>{'Adicionar amigo'}</span>
-          </summary>
-          <form data-social="friend" className="card compact-form">
+        <section className="card finance-layout-card"><h2>Adicionar por @usuário</h2>
+          <form data-social="friend" className="compact-form">
             <label>
               {'Usuário do amigo'}
               <input
@@ -182,7 +178,7 @@ export function createNotifications(workspace: NotificationsContext) {
               {'Enviar pedido'}
             </button>
           </form>
-        </details>
+        </section>
         <section className="card">
           <h2>{'Seus amigos'}</h2>
           {workspace.social.error ? (
@@ -356,7 +352,7 @@ export function createNotifications(workspace: NotificationsContext) {
           ?.focus({ preventScroll: true });
       } else if (
         redraw &&
-        (['s', 'u', 'i', 'k'].includes(workspace.S.tab) ||
+        (['s', 'u', 'i', 'k','a'].includes(workspace.S.tab) ||
           (workspace.S.tab === 'd' &&
             workspace.areaViews.commitments === 'friends')) &&
         !document.activeElement?.closest('form')

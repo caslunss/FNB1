@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const source=require('./controller-source.cjs');
 (async()=>{
  const {MAIN_AREAS,availableViews,resolveAreaView}=await import('../src/services/navigation.ts');
- assert.deepEqual(MAIN_AREAS.map(x=>x.label),['Resumo','Compromissos','Planejamento','Análises']);
+ assert.deepEqual(MAIN_AREAS.map(x=>x.label),['Resumo','Compromissos','Planejamento','Análises','Amigos']);
  assert.equal(resolveAreaView('commitments:cards',{credit:false}),null);
  assert.equal(resolveAreaView('analysis:carbon',{carbon:false}).view,'taxes');
  assert.equal(resolveAreaView('analysis:unknown'),null);
@@ -11,14 +11,14 @@ const source=require('./controller-source.cjs');
   ['v',{credit:false,carbon:true,calendar:true},'r',null],
   ['k',{credit:false,carbon:true,calendar:true},'d','debts'],
   ['k',{credit:true,carbon:true,calendar:true},'d','cards'],
-  ['s',{credit:true,carbon:true,calendar:true},'d','friends'],
+  ['s',{credit:true,carbon:true,calendar:true},'a','split'],
   ['e',{credit:true,carbon:false,calendar:true},'f','taxes'],
   ['e',{credit:true,carbon:true,calendar:true},'f','taxes'],
   ['c',{credit:true,carbon:true,calendar:false},'r',null],
  ]){
   const ctx={S:{tab},areaViews:{commitments:'debts',planning:'purchases',analysis:'taxes'},availableViews,getLayout:()=>({sections})};
   vm.runInNewContext('(function(){'+guard+'})()',{...ctx,scope:{disposed:false},requestFinancePublish(){}});assert.equal(ctx.S.tab,expected);
-  if(view)assert.equal(ctx.areaViews[expected==='d'?'commitments':'analysis'],view);
+  if(view)assert.equal(ctx.areaViews[expected==='a'?'friends':expected==='d'?'commitments':'analysis'],view);
  }
  const refresh=source.slice(source.indexOf('async function refreshSocial('),source.indexOf('\n',source.indexOf('async function refreshSocial(')));
  let panels=0,draws=0;const client={from:()=>({select:()=>({order:()=>({limit:async()=>({data:[],error:null})})})})};
@@ -27,5 +27,5 @@ const source=require('./controller-source.cjs');
  c.accountPanel=null;c.S.tab='d';await c.refreshSocial();assert.equal(draws,1);
  c.document.activeElement={closest:()=>true};await c.refreshSocial();assert.equal(draws,1);
  assert.equal(c.social.busy,false);
- console.log('PASS navegação: quatro áreas, atalhos legados, seções opcionais e amigos sem interromper formulário/polling.');
+ console.log('PASS navegação: cinco áreas, atalhos legados, seções opcionais e amigos sem interromper formulário/polling.');
 })().catch(e=>{console.error(e);process.exitCode=1});

@@ -1,6 +1,13 @@
-Versão do documento: 0.1.0-alpha.5
+Versão do documento: 0.1.0-alpha.6
 
 # TEFinance — guia de layout
+
+## Alpha.6 — Amigos e primeiro acesso
+
+Dock: Resumo, Compromissos, Planejamento, Análises e Amigos. Amigos reúne contatos/pedidos por @usuário, controle privado de valores a receber, Dividir conta e Cobrar. Contatos fictícios têm identificação explícita e não enviam convites. Atribuir ou quitar um valor nesse controle não cria lançamentos ou pagamentos bancários. O cadastro inicial usa popup progressivo de três etapas após o primeiro login autenticado, respeita os dados existentes e admite preencher depois. A conclusão faz parte do workspace privado; nome/foto de exibição continuam no armazenamento de aparência existente.
+
+
+Cobrança entre amigos: formulário inclui Quem está cobrando, descrição e valor. Opções avançadas permitem selecionar uma dívida e informar detalhes. A mensagem mostra saldo cadastrado quando disponível e o valor desta cobrança. Link compacto no domínio atual; nome/descrição/valor permanecem no fragmento, sem encurtador externo. Links legados continuam aceitos. Recebedor sempre revisa antes de adicionar; a identificação do remetente é informada, não certificada pelo link.
 
 Acima de 760 px, o card de acesso do login tem deslocamento visual de 24 px para a direita. No celular, permanece centralizado. Não usar transform para esse ajuste, preservando o controle de animação pelo Motion.
 
@@ -15,7 +22,7 @@ O modo escuro de Azul essencial usa fundo #171719 e superfície #252528, neutros
 - Visão geral → Metas: projeção, edição da meta e seu acompanhamento de investimentos.
 - Visão geral → Hábitos: total de gastos, categorias, dias da semana e lista compacta de últimos meses.
 - Lançamentos: lista, filtros e evolução dos lançamentos. Previsão: saldo, controles e projeção diária.
-- Compromissos: Dívidas, Cartões, Dividir conta e Recorrências exibem somente seus respectivos conteúdos.
+- Compromissos: Dívidas, Cartões e Recorrências exibem somente seus respectivos conteúdos.
 - Planejamento: Compras e Metas de produtos são independentes. Análises: Impostos e Relatórios são independentes.
 
 Não renderizar cards de outros segmentos na aba ativa. A troca preserva os dados financeiros e utiliza o controlador existente.
