@@ -1,4 +1,4 @@
-import {readProfileAppearance} from '../../services/profile-appearance';
+import {readProfileAppearance,validProfilePhoto} from '../../services/profile-appearance';
 import { viewList } from '../../services/presentation.ts';
 import { vYou as rendervYou } from '../views/account.tsx';
 import { subscriptionSummary } from '../../services/subscriptions.ts';
@@ -94,7 +94,7 @@ export function createProfile(workspace: ProfileContext) {
     } catch {}
     const appearance=readProfileAppearance(window.planAuth.storage);
     return {
-      name: appearance.name || (user
+      name: appearance.name || workspace.PROFILE.name || (user
         ? String(
             meta.full_name ||
               meta.name ||
@@ -103,7 +103,7 @@ export function createProfile(workspace: ProfileContext) {
           ).slice(0, 120)
         : window.planAuth.guestName()),
       email: user?.email || '',
-      photo: appearance.photo || photo,
+      photo: appearance.photo || (validProfilePhoto(workspace.PROFILE.friendPhoto)?workspace.PROFILE.friendPhoto:'') || photo,
       google: !!user,
     };
   }

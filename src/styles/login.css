@@ -81,7 +81,7 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
 
 /* Owner-approved login redesign. Provider and guest IDs/contracts stay intact. */
 .auth-page .login-shell.login-fullscreen:has(.login-redesign){padding:80px clamp(16px,5vw,72px);align-content:center}
-.auth-page .login-fullscreen .login-access.login-redesign{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);align-items:center;gap:clamp(32px,6vw,88px);width:min(100%,1080px);padding:0;}
+.auth-page .login-fullscreen .login-access.login-redesign{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);align-items:center;gap:clamp(24px,3vw,40px);width:min(100%,760px);padding:0;}
 .auth-page .login-fullscreen .login-redesign .login-access-heading{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;min-width:0;margin:0;gap:24px}
 .login-redesign .login-logo-slot{width:224px;min-height:0;justify-items:start}
 .login-redesign .login-logo-slot img{display:block;width:224px;max-width:100%;height:auto}
@@ -130,5 +130,5 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
 :root[data-theme=dark] .auth-page .login-background-shade{background:transparent}
 
 @media(min-width:761px){
- .auth-page .login-fullscreen .login-redesign .login-auth-card{position:relative;inset-inline-start:var(--ui-space-6)}
+ .auth-page .login-fullscreen .login-redesign .login-auth-card{position:relative;inset-inline-start:0}
 }

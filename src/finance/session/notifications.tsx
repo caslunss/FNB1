@@ -152,7 +152,7 @@ export function createNotifications(workspace: NotificationsContext) {
     if (!workspace.socialUser())
       return (
         <section className="card">
-          <h2>{'Amigos'}</h2>
+          <h2>{'Adicionar amigos'}</h2>
           <button className="btn" type="button" disabled={true}>
             {'Adicionar amigo'}
           </button>
@@ -163,7 +163,7 @@ export function createNotifications(workspace: NotificationsContext) {
       );
     return (
       <>
-        <section className="card finance-layout-card"><h2>Adicionar por @usuário</h2>
+        <section className="card finance-layout-card"><h2>Adicionar amigos</h2>
           <form data-social="friend" className="compact-form">
             <label>
               {'Usuário do amigo'}
@@ -178,9 +178,7 @@ export function createNotifications(workspace: NotificationsContext) {
               {'Enviar pedido'}
             </button>
           </form>
-        </section>
-        <section className="card">
-          <h2>{'Seus amigos'}</h2>
+          <h3>{'Seus amigos'}</h3>
           {workspace.social.error ? (
             <p role="alert" className="bad">
               {workspace.esc(workspace.social.error)}

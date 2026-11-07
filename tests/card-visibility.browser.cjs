@@ -13,7 +13,7 @@ const base=process.env.QA_BASE_URL||'http://127.0.0.1:5207';
    assert.equal(await page.locator('#app .goal-summary').count(),goal?1:0,label+': goal editor');
    for(const heading of ['Hábitos de gastos','Por categoria','Dias da semana','Últimos meses'])assert.equal(await page.locator('#app').getByRole('heading',{name:heading,exact:true}).count(),habits?1:0,label+': '+heading);
   }
-  const routes=[['summary:entries','.unified-ledger'],['summary:forecast','[data-forecast-screen]'],['commitments:debts','.debt-stats'],['commitments:cards','.credit-cards'],['friends:people','.friends-ledger'],['friends:split','heading:Divisão de gastos'],['friends:charges','heading:Cobrar amigo'],['commitments:recurrences','[data-recurrences-screen]'],['planning:purchases','.planning-editor-card'],['planning:goals','.product-goals'],['analysis:taxes','.tax-page'],['analysis:reports','.export-reports']];
+  const routes=[['summary:entries','.unified-ledger'],['summary:forecast','[data-forecast-screen]'],['commitments:debts','.debt-stats'],['commitments:cards','.credit-cards'],['friends:people','.friend-registration'],['friends:split','heading:Divisão de gastos'],['friends:charges','heading:Cobrar amigo'],['commitments:recurrences','[data-recurrences-screen]'],['planning:purchases','.planning-editor-card'],['planning:goals','.product-goals'],['analysis:taxes','.tax-page'],['analysis:reports','.export-reports']];
   let previous=null;
   for(const [route,selector]of routes){
    await page.evaluate(value=>dispatchEvent(new CustomEvent('plan-segment-request',{detail:{kind:'data-area-view',value}})),route);

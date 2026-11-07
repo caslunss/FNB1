@@ -2,14 +2,20 @@ Versão do documento: 0.1.0-alpha.6
 
 # TEFinance — guia de layout
 
+## Cadastro de amigos e camadas
+
+Amigos exibe três cards: Cadastro de amigo e Adicionar amigos na primeira linha, Valores a receber em toda a linha seguinte. Uma única grade controla ordem e espaçamento; no celular: cadastro, adicionar, valores. Atribuir valor fica dentro de Valores a receber. Avatar e barra exibem quanto cada pessoa representa do saldo aberto total, com percentual textual e progress acessível; zero total mostra barras vazias. Menu do cabeçalho usa contexto acima do conteúdo; popovers e diálogos mantêm a camada superior nativa.
+
+Cadastro aceita nome/foto privados, preservando contatos antigos. @usuário é opcional e importa nome/foto somente após confirmação de amizade. O endpoint verifica sessão e amizade com JWT/RLS antes de ler os campos visuais via projeção exclusiva de nome/foto do workspace e fallback de identidade Google no servidor; nunca retorna email ou dados financeiros. Nome/foto escolhidos no perfil são compartilhados com amigos aceitos no JSON privado do workspace. O endpoint lê apenas nome e foto, sem carregar o registro financeiro. Usa a configuração secreta já existente, sem nova tabela e sem colocar imagens no JWT.
+
 ## Alpha.6 — Amigos e primeiro acesso
 
-Dock: Resumo, Compromissos, Planejamento, Análises e Amigos. Amigos reúne contatos/pedidos por @usuário, controle privado de valores a receber, Dividir conta e Cobrar. Contatos fictícios têm identificação explícita e não enviam convites. Atribuir ou quitar um valor nesse controle não cria lançamentos ou pagamentos bancários. O cadastro inicial usa popup progressivo de três etapas após o primeiro login autenticado, respeita os dados existentes e admite preencher depois. A conclusão faz parte do workspace privado; nome/foto de exibição continuam no armazenamento de aparência existente.
+Dock: Resumo, Compromissos, Planejamento, Análises e Amigos. Amigos reúne contatos/pedidos por @usuário, controle privado de valores a receber, Dividir conta e Cobrar. Contatos manuais não enviam convites. Atribuir ou quitar um valor nesse controle não cria lançamentos ou pagamentos bancários. O cadastro inicial usa popup progressivo de três etapas após o primeiro login autenticado, respeita os dados existentes e admite preencher depois. A conclusão faz parte do workspace privado; nome/foto de exibição são mantidos localmente e compartilhados com amigos aceitos quando salvos na conta.
 
 
 Cobrança entre amigos: formulário inclui Quem está cobrando, descrição e valor. Opções avançadas permitem selecionar uma dívida e informar detalhes. A mensagem mostra saldo cadastrado quando disponível e o valor desta cobrança. Link compacto no domínio atual; nome/descrição/valor permanecem no fragmento, sem encurtador externo. Links legados continuam aceitos. Recebedor sempre revisa antes de adicionar; a identificação do remetente é informada, não certificada pelo link.
 
-Acima de 760 px, o card de acesso do login tem deslocamento visual de 24 px para a direita. No celular, permanece centralizado. Não usar transform para esse ajuste, preservando o controle de animação pelo Motion.
+Acima de 760 px, logo e card do login usam composição de até 760 px e intervalo de 24–40 px, sem deslocamento lateral do card. No celular, permanecem empilhados e centralizados. Não usar transform para esse ajuste, preservando o controle de animação pelo Motion.
 
 Modo OLED aparece como subopção de Modo escuro em Layout e preferências. Ativado: fundo #000000, cards #202022 opacos, borda sutil e sombra para profundidade. A preferência dark.oled é local, desativada por padrão e inativa no modo claro, sem alterar as cores salvas das paletas.
 
@@ -37,7 +43,7 @@ A regra de gap zero foi revertida por solicitação do proprietário. Cards inte
 
 A paleta Essencial chama-se Azul essencial e mantém a chave aged-white por compatibilidade. Fundos frios, cards com opacidade mínima de 88% no claro e 90% no escuro e menus com 98% separam sobreposições sem alterar os controles de blur e movimento.
 
-Configurações → Novidades da versão mostra a versão atual e o histórico de resumos por lançamento, com data e lista curta de mudanças. Reutilizar cards, cabeçalho e PageTransition das demais subtelas. Novas versões exigem atualizar src/release-notes.ts.
+Configurações → Novidades da versão mostra a versão atual e o histórico, com data e até três destaques curtos por lançamento. Detalhes técnicos permanecem no changelog. Reutilizar cards, cabeçalho e PageTransition das demais subtelas. Novas versões exigem atualizar src/release-notes.ts.
 
 O Resumo não exibe Dicas para você. Metas de produtos abre com título e ação, sem descrição introdutória. Impostos distingue consulta em verificação, IBPT não configurado e erro do servidor.
 

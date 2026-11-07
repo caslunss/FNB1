@@ -1,3 +1,4 @@
+import {validProfilePhoto} from '../../services/profile-appearance';
 import {validateFriendsLedger} from '../../services/friends-ledger';
 import {RETIRED_STORAGE_KEYS} from '../../services/retired-feature-compatibility.ts';
 import {FORECAST_KEY} from '../../services/forecast-settings';
@@ -408,6 +409,7 @@ export function createPersistence(workspace: PersistenceContext) {
     }
     if (object(raw.profile) && typeof raw.profile.name === 'string')
       state.profile.name = raw.profile.name.slice(0, 60);
+    if(object(raw.profile)&&validProfilePhoto(raw.profile.friendPhoto))state.profile.friendPhoto=raw.profile.friendPhoto;
     if(object(raw.profile)&&raw.profile.onboardingComplete===true)state.profile.onboardingComplete=true;
     if(object(raw.profile)&&raw.profile.friendLedger){try{state.profile.friendLedger=validateFriendsLedger(raw.profile.friendLedger)}catch(error){workspace.rejected('profile',raw.profile.friendLedger,errorDetails(error).message)}}
     state.splits = list(raw.splits, 'splits').flatMap((x) => {

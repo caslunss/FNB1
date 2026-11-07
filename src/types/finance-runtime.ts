@@ -96,7 +96,7 @@ export interface MobileState {
   sections: Record<string, boolean>;
 }
 export interface FinanceServices {
- friends:{getState():{people:{id:string;name:string;local:boolean}[];ledger:import('../services/friends-ledger').FriendsLedger;debts:{id:string;name:string;cents:number}[]};saveLedger(ledger:import('../services/friends-ledger').FriendsLedger):void};
+ friends:{saveIdentity(name:string,photo:string):void;getState():{people:{id:string;name:string;local:boolean;photo?:string;username?:string;accountId?:string}[];ledger:import('../services/friends-ledger').FriendsLedger;debts:{id:string;name:string;cents:number}[]};saveLedger(ledger:import('../services/friends-ledger').FriendsLedger):void};
  setup:{getState():{complete:boolean;name:string;username:string;hasSalary:boolean;hasCards:boolean;today:string};saveUsername(username:string):Promise<void>;finish(input:{name:string;salaryCents?:number;salaryDate?:string;card?:Partial<CreditCard>}):void};
   forecast:{getState():import('../services/forecast-settings').ForecastSource};
   taxes: {

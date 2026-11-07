@@ -4,6 +4,17 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Simplificado — Novidades
+- Resumo de cada versão limitado aos principais destaques em frases curtas, preservando o histórico e as datas.
+
+### Ajustado — login
+- Card de acesso aproximado da logo em uma composição mais compacta no desktop, sem deslocamento lateral; celular mantém empilhamento.
+
+### Melhorado — cadastro de amigos
+- Cadastro com nome e foto substitui Amigo fictício; vínculo opcional por @usuário importa a identidade somente de amigos aceitos. Contatos e saldos existentes são preservados. Nome/foto escolhidos no perfil são compartilhados com amigos aceitos, sem acesso a email ou informações financeiras.
+- Valores a receber mostra avatar e participação proporcional de cada pessoa no saldo aberto. Atribuição de valores fica dentro desse card.
+- Cadastro, Adicionar amigos e Valores a receber usam uma grade única, com ordem estável e empilhamento no celular; menus do cabeçalho ficam acima do conteúdo.
+
 ## [0.1.0-alpha.6] - 2026-11-07
 
 ### Adicionado

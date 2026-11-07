@@ -1,5 +1,14 @@
 # Regras de manutenção do TEFinance
 
+## Limpeza integral de pessoas — autorização específica em 07/11/2026
+
+O proprietário confirmou explicitamente excluir todas as contas de login e os dados vinculados para começar do zero. Esta ação autoriza inventário e exclusão transacional de contas, sessões e dados dependentes apenas no projeto referenciado pela configuração pública da aplicação (qjxwghjamqrqxnrjpglx), com verificação posterior por contagens. Não divulgar registros pessoais, alterar esquemas, apagar o projeto ou transportar segredos. Essa autorização destrutiva é exclusiva desta solicitação e não autoriza limpezas futuras.
+
+## Revisão do cadastro de amigos — 07/11/2026
+
+O proprietário pediu substituir o contato fictício por cadastro com nome/foto e vínculo por @usuário, incluir barras por pessoa e corrigir ordem, alinhamento e sobreposição dos cards/menus. A revisão autoriza contratos compatíveis do JSON privado, interface, publicação da identidade escolhida para amigos aceitos via JSON privado, endpoint de leitura do perfil com prova de amizade, documentação e testes proporcionais. Preservar os demais dados existentes, versão atual e isolamento financeiro. Sem migrations, alterações de tabelas/políticas ou acesso a dados reais nos testes. A autorização de deploy da entrega de Amigos permanece válida para esta correção, incluindo aproximar o card do login da logo e resumir Novidades a até três destaques por versão conforme solicitado.
+
+
 ## Exceção da alpha.6 — autorizada em 07/11/2026
 
 O proprietário autorizou expressamente criar Amigos no dock, mover Dividir conta, adicionar contatos fictícios e dívidas por amigo, solicitar dados no primeiro login, alinhar as barras superiores, avançar para a próxima alpha e fazer deploy junto das mudanças pendentes de cobrança. Nesta tarefa estão autorizadas as alterações de interface, contratos e dados do JSON privado do workspace, atualização de testes aos novos contratos, package/lockfile somente nos campos de versão, documentação e publicação em main com deploy Vercel. Não executar migrations nem alterar tabelas/políticas remotas. Não expor credenciais, fazer force-push ou tags.
