@@ -26,7 +26,7 @@ function readExecutableSource(file){
  return stripTypeScriptTypes(source,{mode:'strip',disableExperimentalWarning:true}).replace(/(\w) +\./g,'$1.').replace(/\b(let|const|var) (\w+) +(?==)/g,'$1 $2');
 }
 const guards=require('../src/services/type-guards.ts'),errors=require('../src/services/errors.ts'),presentation=require('../src/services/presentation.ts');
-function createContext(values={}){const defaults={_jsx:jsx,_jsxs:jsxs,_Fragment:Fragment,_reactJsxRuntime:{jsx,jsxs,Fragment},requestFinancePublish(){},...guards,...errors,...presentation,
+function createContext(values={}){const defaults={...require('../src/services/forecast-settings.ts'),...require('../src/services/recurrence-decisions.ts'),...require('../src/services/retired-feature-compatibility.ts'),...require('../src/services/profile-appearance.ts'),_jsx:jsx,_jsxs:jsxs,_Fragment:Fragment,_reactJsxRuntime:{jsx,jsxs,Fragment},requestFinancePublish(){},...guards,...errors,...presentation,
  // Lexical financial tests do not own a DOM session. Browser and lifecycle tests
  // exercise the real SessionScope, including disposal and asynchronous startup.
  scope:{objectURL:blob=>URL.createObjectURL(blob),revokeURL:url=>URL.revokeObjectURL(url),disposed:false,signal:new AbortController().signal,own(){},listen(target,...args){target?.addEventListener?.(...args)},timeout(...args){return values.setTimeout?.(...args)},cancelTimeout(id){values.clearTimeout?.(id)},interval(...args){return values.setInterval?.(...args)},microtask(fn){values.queueMicrotask?.(fn)}}};for(const [key,value]of Object.entries(defaults))if(!(key in values))values[key]=value;return vm.createContext(values)}

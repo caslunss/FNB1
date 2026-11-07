@@ -4,6 +4,10 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Corrigido — testes e organização dos cards
+- Reconstrução das fixtures alinhada aos módulos atuais, com dependências reais de perfil, previsão e compatibilidade. Testes de navegação, cartões e login atualizados aos contratos vigentes; recursos retirados passam a verificar ausência de módulos e chamadas, preservando a categoria financeira.
+- Cards de Previsão e metas alinhados em duas colunas no desktop e uma no celular, sem alturas forçadas, com espaços uniformes e títulos de seção separados.
+
 ## [0.1.0-alpha.5] - 2026-11-07
 
 ### Corrigido — interface de Previsão

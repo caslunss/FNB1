@@ -1,2 +1,7 @@
-const assert=require('node:assert/strict');
-(async()=>{const {default:handler}=await import('../server/functions/market-rates.mjs');const previous=global.fetch;let calls=0;global.fetch=async url=>{calls++;assert.equal(url,'https://api.bcb.gov.br/dados/serie/bcdata.sgs.4389/dados/ultimos/1?formato=json');return Response.json([{data:'28/10/2026',valor:'13.65'}]);};try{assert.equal((await handler(new Request('https://app.test',{method:'POST'}))).status,405);const r=await handler(new Request('https://app.test'));assert.equal(r.status,200);const data=await r.json();assert.equal(data.annual,13.65);assert.equal(data.date,'28/10/2026');await handler(new Request('https://app.test'));assert.equal(calls,1);console.log('PASS CDI: fonte fixa oficial, taxa anual, referência, cache e método permitido.');}finally{global.fetch=previous}})().catch(e=>{console.error(e);process.exitCode=1});
+// Regression contract for the intentionally retired feature; no live providers.
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const removed=['server/functions/market-rates.mjs', 'api/market-rates.js'];
+for(const file of removed)assert.equal(fs.existsSync(file),false,'Retired module restored: '+file);
+function scan(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())scan(p);else if(/\.(?:ts|tsx|js|mjs)$/.test(p))assert(!fs.readFileSync(p,'utf8').includes('/api/market-rates'),'Live caller of removed endpoint: '+p)}}
+scan('src');scan('server');
+console.log('PASS retired feature: modules absent and no live endpoint callers');

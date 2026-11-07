@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{
- const names=['connect-token','shopping','investments','market-economy','market-rates','service-status','taxes'];
+ const names=['connect-token','shopping','service-status','taxes'];
  for(const name of names){
   const {default:entry}=await import('../api/'+name+'.js');
   assert.equal(typeof entry.fetch,'function',name);
@@ -18,5 +18,5 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
  for(const file of walk('src'))if(/\.(jsx?|tsx?)$/.test(file))assert(!fs.readFileSync(file,'utf8').includes('/.netlify/functions/'),file);
  assert(fs.readFileSync('src/services/taxes/client.ts','utf8').includes("fetch('/api/taxes'"));
  assert(fs.readFileSync('src/components/ShareDebt.tsx','utf8').includes("window.location.origin+'/'"),'Compartilhamento fica no domínio atual');
- console.log('PASS Vercel: sete entradas Web Request/Response, métodos, autenticação, origens exatas de produção/preview/domínio próprio, isolamento CORS, endpoints locais e compartilhamento no domínio atual.');
+ console.log('PASS Vercel: quatro entradas Web Request/Response, métodos, autenticação, origens exatas de produção/preview/domínio próprio, isolamento CORS, endpoints locais e compartilhamento no domínio atual.');
 })().catch(error=>{console.error(error);process.exitCode=1});

@@ -163,3 +163,16 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 .forecast-daily :is(th,td){text-align:right}
 .forecast-daily :is(th,td):first-child{text-align:left}
 .forecast-issues{margin:0;padding-left:var(--ui-space-5)}
+
+/* Consistent card rhythm: aligned rows, one surface per section, no forced height. */
+.product-goals>.finance-layout-card{margin:0;min-width:0}
+.product-goals>section{min-width:0}
+.product-goals>section>h2{margin:0 0 var(--ui-space-4)}
+.forecast-page{align-items:start}
+@media(min-width:900px){
+ .forecast-page{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .product-goals{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+ .product-goals>.finance-layout-card:first-child,.product-goals>.product-goal-editor,.product-goals>section{grid-column:1/-1}
+ .product-goals>section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);align-items:start}
+ .product-goals>section>:is(h2,p){grid-column:1/-1;margin:0}
+}

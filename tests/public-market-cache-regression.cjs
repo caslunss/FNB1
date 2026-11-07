@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 (async()=>{
- const {createPublicReadCache,readMarketData}=await import('../src/services/public-market-cache.ts');
+ const {createPublicReadCache}=await import('../src/services/public-market-cache.ts');
  let time=0,calls=0;const read=createPublicReadCache({ttl:100,maxEntries:2,now:()=>time});
  const load=async()=>({revision:++calls});
  assert.equal((await read('quotes',load)).revision,1);
@@ -21,7 +21,7 @@ const assert=require('node:assert/strict');
  console.log('PASS cache: failures can retry and old entries are evicted');
  const stopped=new AbortController();stopped.abort();let started=false;
  await assert.rejects(read('cancelled',()=>{started=true},{signal:stopped.signal}),{name:'AbortError'});assert.equal(started,false);
- assert.throws(()=>readMarketData('/api/taxes'),/catálogo público/);
- assert.throws(()=>readMarketData('https://example.com/api/investments?kind=quotes'),/catálogo público/);
- console.log('PASS cache: already-cancelled work never starts; private/external endpoints rejected');
+ const exports=await import('../src/services/public-market-cache.ts');
+ assert.deepEqual(Object.keys(exports),['createPublicReadCache'],'The retired endpoint client must not be reintroduced');
+ console.log('PASS cache: already-cancelled work never starts; retired endpoint client remains absent');
 })().catch(error=>{console.error(error);process.exitCode=1});

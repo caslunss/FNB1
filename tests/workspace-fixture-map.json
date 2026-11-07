@@ -324,7 +324,6 @@
 {"order":325,"domain":"synchronization","kind":"phase"},
 {"order":326,"domain":"synchronization","kind":"phase"},
 {"order":327,"domain":"incoming-debt","kind":"function","name":"incomingDebt"},
-{"order":328,"domain":"charts","kind":"function","name":"vCredit"},
 {"order":329,"domain":"services","kind":"phase"},
 {"order":330,"domain":"services","kind":"phase"},
 {"order":331,"domain":"services","kind":"phase"},

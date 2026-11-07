@@ -1,8 +1,7 @@
-const assert=require('node:assert/strict');
-(async()=>{
- const {normalizeObservations,monthlyObservations,accumulatedInflation}=await import('../src/services/economy.ts');
- const rows=normalizeObservations([{data:'01/01/2026',valor:'0'},{data:'31/01/2026',valor:'-0.2'},{data:'31/02/2026',valor:'1'},{data:'01/13/2026',valor:'1'},{data:'01/01/2027',valor:'5'},{data:'15/01/2026',valor:'NaN'},{data:'14/01/2026',valor:''}],'2026-10-30');assert.equal(rows.length,2);assert.equal(monthlyObservations(rows)[0].value,-.2);
- const year=Array.from({length:12},(_,i)=>({date:`2025-${String(i+1).padStart(2,'0')}-01`,value:1}));assert(Math.abs(accumulatedInflation(year)-(1.01**12-1)*100)<1e-9);assert.equal(accumulatedInflation(year.slice(1)),null);assert.equal(accumulatedInflation([...year.slice(0,11),{date:'2026-01-01',value:1}]),null);
- const {default:handler}=await import('../server/functions/market-economy.mjs');const original=global.fetch;let calls=0;global.fetch=async url=>{calls++;const parsed=new URL(url);assert.equal(parsed.hostname,'api.bcb.gov.br');assert(parsed.searchParams.get('dataInicial'));assert(parsed.searchParams.get('dataFinal'));assert(/bcdata.sgs.(432|4389|433)\/dados/.test(parsed.pathname));const d=new Date(),stamp=`01/${String(d.getUTCMonth()+1).padStart(2,'0')}/${d.getUTCFullYear()}`;return Response.json([{data:stamp,valor:'1.5'},{data:'01/01/2099',valor:'999'}]);};try{assert.equal((await handler(new Request('https://test',{method:'POST'}))).status,405);const result=await handler(new Request('https://test'));assert.equal(result.status,200);const data=await result.json();assert.equal(data.series.length,3);assert(data.series.every(x=>x.latest.value===1.5));await handler(new Request('https://test'));assert.equal(calls,3);}finally{global.fetch=original}
- console.log('PASS economia: três séries oficiais, consultas limitadas por data, cache, datas futuras e inválidas, inflação negativa/zero, meses e composição de 12 meses.');
-})().catch(e=>{console.error(e);process.exitCode=1});
+// Regression contract for the intentionally retired feature; no live providers.
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const removed=['src/services/economy.ts', 'server/functions/market-economy.mjs', 'api/market-economy.js'];
+for(const file of removed)assert.equal(fs.existsSync(file),false,'Retired module restored: '+file);
+function scan(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())scan(p);else if(/\.(?:ts|tsx|js|mjs)$/.test(p))assert(!fs.readFileSync(p,'utf8').includes('/api/market-economy'),'Live caller of removed endpoint: '+p)}}
+scan('src');scan('server');
+console.log('PASS retired feature: modules absent and no live endpoint callers');
