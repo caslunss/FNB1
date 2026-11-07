@@ -94,7 +94,7 @@ export function createProfile(workspace: ProfileContext) {
     } catch {}
     const appearance=readProfileAppearance(window.planAuth.storage);
     return {
-      name: appearance.name || workspace.PROFILE.name || (user
+      name: appearance.name || (user&&workspace.PROFILE.onboardingComplete?workspace.PROFILE.name:'') || (user
         ? String(
             meta.full_name ||
               meta.name ||
