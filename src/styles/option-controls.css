@@ -21,10 +21,6 @@
  --ui-control-shadow:var(--lg-shadow);
 }
 @layer app-controls{
- .forecast-controls{display:flex;flex-wrap:wrap;gap:var(--ui-space-4);margin-block:var(--ui-space-5)}
- .forecast-control-group{display:grid;gap:var(--ui-space-2);min-width:0;max-width:100%}
- .forecast-control-group .ui-option-bar{width:100%}
- .forecast-control-group .ui-option-bar .ui-button{--ui-option-flex:1 1 0;min-width:0;--ui-button-px:var(--ui-space-3);white-space:nowrap}
  :is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu){
   box-sizing:border-box;min-width:0;max-width:100%;
   background:var(--ui-bar-fill)!important;

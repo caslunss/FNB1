@@ -4,6 +4,15 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+## [0.1.0-alpha.5] - 2026-11-07
+
+### Corrigido — interface de Previsão
+- Tela ajustada ao Resumo com campos espaçados, seletores compartilhados com navegação por teclado e rótulos sem quebra, resumo de saldo e detalhamento diário expansível com rolagem própria.
+- Atualização dos resultados usa SmoothState e os presets de Motion existentes; alvos de toque, foco, temas e movimento reduzido preservados.
+
+### Alterado — versão
+- Atualizada para 0.1.0-alpha.5 por solicitação do proprietário, com fonte única, pacotes e documentação sincronizados.
+
 ### Removido — edição de blocos
 - Removido o botão de reorganizar blocos do Resumo, por solicitação do proprietário.
 

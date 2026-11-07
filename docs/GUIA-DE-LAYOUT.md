@@ -1,10 +1,12 @@
-Versão do documento: 0.1.0-alpha.1
+Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
 O Resumo não exibe o botão de editar ou reorganizar blocos, conforme pedido do proprietário em 07/11/2026.
 
 Previsão integra o seletor do Resumo, após Visão geral e Lançamentos. Planejamento mantém Compras e Metas; atalhos antigos `planning:forecast` abrem a nova posição no Resumo.
+
+Previsão usa cards e campos universais, FinanceSegmentedControl para período/cálculo e SmoothState somente na troca dos resultados. Detalhes diários ficam em disclosure compartilhado, com rolagem local e cabeçalho fixo. A transição da aba permanece sob o controlador global, sem uma segunda animação de página.
 
 ## Interface minimalista — 07/11/2026
 

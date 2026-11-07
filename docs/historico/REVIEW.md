@@ -1,4 +1,4 @@
-Versão do documento: 0.1.0-alpha.1
+Versão do documento: 0.1.0-alpha.5
 
 # Perfil, opções de configuração, Amigos — 29/10/2026
 

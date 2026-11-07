@@ -1,4 +1,4 @@
-Versão do documento: 0.1.0-alpha.1
+Versão do documento: 0.1.0-alpha.5
 
 > Atualização em 06/11/2026: a página de Investimentos e os dois endpoints de mercado citados abaixo foram removidos. O cache genérico é conservado como utilitário; a descrição de sua antiga integração é histórica.
 

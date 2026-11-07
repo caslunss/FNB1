@@ -1,4 +1,4 @@
-Versão do documento: 0.1.0-alpha.1
+Versão do documento: 0.1.0-alpha.5
 
 # Correções de Análise e seleções — 05/11/2026
 

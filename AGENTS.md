@@ -12,7 +12,7 @@ Antes de modificar a interface, leia `docs/GUIA-DE-LAYOUT.md`. Esse é o contrat
 
 ## Versioning (permanent)
 
-- Scheme: SemVer with pre-release channel. Current: 0.1.0-alpha.1 (first alpha).
+- Scheme: SemVer with pre-release channel. Current: 0.1.0-alpha.5.
 - Single source of truth: src/version.ts. package.json "version" and the root version fields of the lockfile must match it; CHANGELOG.md top entry must match it.
 - Every task that changes behavior must add an entry to CHANGELOG.md (pt-BR, Keep a Changelog style). Never create git tags, never push.
 - Only the owner decides to bump the version.

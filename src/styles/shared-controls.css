@@ -142,3 +142,24 @@ body:not(.auth-page) .date-picker-open.lg-button{top:0;bottom:0;margin-block:aut
 .area-content>.debt-blocks{gap:var(--content-card-gap)}
 .area-content :is(.row,.credit-card-actions,.plan-actions){row-gap:var(--ui-action-gap)}
 #app .planning-grid>.finance-layout-card{align-self:stretch}
+
+/* Forecast uses the same card, field, disclosure and motion contracts in Summary. */
+.forecast-page{display:grid;gap:var(--content-card-gap);min-width:0;grid-column:1/-1}
+.forecast-page .finance-layout-card{display:grid;gap:var(--ui-space-5);min-width:0;margin:0}
+.forecast-page :is(header,form,.forecast-result,.smooth-state){min-width:0}
+.forecast-page :is(h2,h3,p){margin:0}
+.forecast-page header{display:grid;gap:var(--ui-space-2)}
+.forecast-form{display:grid;gap:var(--ui-space-3)}
+.forecast-controls{display:flex;flex-wrap:wrap;gap:var(--ui-space-4)}
+.forecast-control-group{display:grid;gap:var(--ui-space-2);flex:1 1 260px;min-width:0;max-width:100%}
+.forecast-control-group .ui-option-bar{width:100%}
+.forecast-control-group .ui-button{--ui-option-flex:1 1 0;--ui-button-px:var(--ui-space-2);min-width:0}
+.forecast-control-group .lg-button__label{white-space:nowrap}
+.forecast-projection .overview-total{margin:0}
+.forecast-daily{min-width:0}
+.forecast-daily .plan-table-wrap{max-width:100%;max-height:360px;overflow:auto;overscroll-behavior:contain}
+.forecast-daily table{width:100%;font-variant-numeric:tabular-nums}
+.forecast-daily thead{position:sticky;top:0;background:var(--card);z-index:1}
+.forecast-daily :is(th,td){text-align:right}
+.forecast-daily :is(th,td):first-child{text-align:left}
+.forecast-issues{margin:0;padding-left:var(--ui-space-5)}
