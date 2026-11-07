@@ -4,6 +4,10 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Alterado — conteúdo e diagnóstico tributário
+- Removidos o card Dicas para você e a descrição introdutória de Metas de produtos.
+- Impostos distingue verificação pendente, configuração IBPT ausente e erro real do servidor, sem ocultar falhas de sessão ou de configuração.
+
 ### Corrigido — testes e organização dos cards
 - Reconstrução das fixtures alinhada aos módulos atuais, com dependências reais de perfil, previsão e compatibilidade. Testes de navegação, cartões e login atualizados aos contratos vigentes; recursos retirados passam a verificar ausência de módulos e chamadas, preservando a categoria financeira.
 - Cards de Previsão e metas alinhados em duas colunas no desktop e uma no celular, sem alturas forçadas, com espaços uniformes e títulos de seção separados.

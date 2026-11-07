@@ -2,6 +2,8 @@ Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
+O Resumo não exibe Dicas para você. Metas de produtos abre com título e ação, sem descrição introdutória. Impostos distingue consulta em verificação, IBPT não configurado e erro do servidor.
+
 Cards de Previsão e metas usam duas colunas a partir de 900 px e uma coluna abaixo disso, alinhados pelo topo e separados por --content-card-gap. Editores e cabeçalhos de seção ocupam a largura disponível, sem alturas artificiais.
 
 O Resumo não exibe o botão de editar ou reorganizar blocos, conforme pedido do proprietário em 07/11/2026.

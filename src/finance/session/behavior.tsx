@@ -141,10 +141,7 @@ export function createBehavior(workspace: BehaviorContext) {
   }
 
   function behaviorView() {
-    const a = workspace.behaviorAggregate(),
-      key = JSON.stringify(a),
-      advice =
-        workspace.behaviorAdvice?.key === key ? workspace.behaviorAdvice : null;
+    const a = workspace.behaviorAggregate();
     return (
       <>
         <section className="card finance-layout-card habits-summary-card">
@@ -193,39 +190,7 @@ export function createBehavior(workspace: BehaviorContext) {
           <h2>{'Últimos meses'}</h2>
           {workspace.habitBars(a.months.map((x) => ({ ...x, label: x.month })))}
         </section>
-        <section className="card finance-layout-card">
-          <h2>{'Dicas para você'}</h2>
-          <p className="foot">
-            {
-              'A análise envia ao Gemini totais por categoria, dia e mês, sem descrições ou dados de perfil. Não inclui gastos futuros.'
-            }
-          </p>
-          <button
-            className="btn"
-            data-behavior-analyze=""
-            disabled={!a.count || workspace.behaviorLoading}
-          >
-            {workspace.behaviorLoading ? 'Analisando…' : 'Analisar'}
-          </button>
-          <p role="status" id="behaviorStatus">
-            {workspace.behaviorError?.key === key
-              ? workspace.esc(workspace.behaviorError.message)
-              : ''}
-          </p>
-          {advice ? (
-            <>
-              <p className="foot">
-                {'Análise de '}
-                {workspace.esc(new Date(advice.at).toLocaleString('pt-BR'))}
-              </p>
-              <div className="behavior-advice">
-                {workspace.esc(advice.text)}
-              </div>
-            </>
-          ) : (
-            ''
-          )}
-        </section>
+
       </>
     );
   }
