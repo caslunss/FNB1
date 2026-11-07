@@ -1,13 +1,16 @@
 # Regras de manutenção do TEFinance
 
+## Exceção para as duas revisões — autorizada em 07/11/2026
+
+O proprietário autorizou explicitamente nesta conversa “autorizo tudo e faça os 2”, aprovando publicar juntas as duas entregas locais: restaurar o espaçamento uniforme e o agrupamento/alinhamento dos cards, revertendo o gap zero; e mover os cards de hábitos para uma opção Hábitos ao lado de Entradas, Gastos e Metas. Para essas alterações, sua documentação e novidades, está autorizado enviar os commits para `main` no GitHub e concluir o deploy automático da Vercel. Esta exceção substitui os limites de publicação anteriores somente nesse escopo. Não autoriza force-push, tags, migrations, alterações de dados ou exposição de credenciais.
+
 ## Exceção para publicação do contrato de cards — 07/11/2026
 
 Após revisar a entrega local de organização dos cards, o proprietário autorizou explicitamente uma nova exceção nesta conversa. Para esta tarefa, é permitido enviar para `main` no GitHub e concluir o deploy automático da Vercel das alterações que removem espaços externos entre cards, centralizam o layout em `src/styles/card-layout.css` e registram a regra permanente, o changelog e as novidades. Esta autorização prevalece sobre a proibição de publicação abaixo somente neste escopo; não autoriza force-push, tags, alterações de dados, migrations ou exposição de credenciais.
 
-## Regra permanente de organização dos cards — 07/11/2026
+## Regra permanente de organização dos cards — revista em 07/11/2026
 
-Por pedido explícito do proprietário, todos os grupos de cards devem usar `--content-card-gap: 0px`, sem margens externas ou espaçamentos cumulativos entre cards. A grade controla alinhamento e responsividade, sem deslocar cards com alturas, offsets ou margens artificiais. Preservar padding interno, legibilidade, foco e alvos de toque. Aplicar o contrato de `src/styles/card-layout.css` a novos grupos e verificar celular/desktop, temas e estados expandidos. Essa regra não autoriza alterar valores financeiros.
-
+O proprietário reverteu o gap zero: cards devem formar grupos em grades responsivas, com alinhamento nas linhas e espaçamento uniforme de 24 px no desktop e 16 px no celular, pelo token --content-card-gap. O container controla o espaçamento, sem margens duplicadas, offsets ou posicionamento avulso. Cards na mesma linha devem preencher sua célula; no celular ficam empilhados em uma coluna. Preservar padding, foco e áreas de toque. A revisão solicitada corrige a entrega de cards já autorizada para publicação e substitui sua regra anterior de gap zero.
 
 ## Exceção desta tarefa — autorizada pelo proprietário em 07/11/2026
 

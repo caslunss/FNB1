@@ -4,6 +4,12 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Alterado — Hábitos no seletor do Resumo
+- Cards de hábitos de gastos movidos para a opção Hábitos, junto de Entradas, Gastos e Metas. As demais opções deixam de exibir esses cards no rodapé.
+
+### Corrigido — agrupamento dos cards
+- Revertido o espaçamento zero. Restaurados intervalos uniformes de 24 px no desktop e 16 px no celular, com cards agrupados em grades e preenchendo as células para evitar aparência de blocos soltos.
+
 ### Alterado — contrato global de cards
 - Removidos os espaços externos entre cards, com token único de gap zero, margens zeradas e grade compartilhada nas páginas e painéis. Espaçamento interno, foco e áreas de toque preservados; regra permanente registrada para futuras alterações.
 

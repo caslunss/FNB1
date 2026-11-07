@@ -1,11 +1,9 @@
-/* Card layout contract: containers own placement; cards have no outer spacing.
-   Internal padding, field spacing and touch targets remain independent. */
-:root{--content-card-gap:0px}
-:is(#app,.account-panel-body) :is(.card,.finance-layout-card,.info-block){margin:0;min-width:0;box-sizing:border-box}
-:is(#app,.account-panel-body):has(>.card),
-:is(#app,.account-panel-body) :is(.area-content,.summary-behavior,.planning-grid,.planning-results,.lower-insights,.product-goals,.forecast-page,.debt-stats,.debt-blocks,.credit-cards,.tax-kpis,.tax-charts,.settings-sections),
-:is(#app,.account-panel-body) :where(div,section):has(>.card){gap:var(--content-card-gap);row-gap:var(--content-card-gap);column-gap:var(--content-card-gap)}
-#app :is(.summary-behavior,.area-content,.product-goals,.planning-results)>.card{align-self:stretch}
-#app .shopping-section>.card{margin-bottom:0}
-#app .product-goals>section{gap:var(--content-card-gap)}
-#app .product-goals>section>h2{margin-block:0;padding-block:var(--ui-space-3)}
+/* Groups own the grid. Cards stay aligned with one consistent gutter. */
+:is(#app,.account-panel-body) :is(.card,.finance-layout-card,.info-block){min-width:0;box-sizing:border-box}
+:is(#app,.account-panel-body) :is(.planning-grid,.planning-results,.product-goals,.forecast-page,.debt-stats,.debt-blocks,.tax-kpis,.tax-charts){gap:var(--content-card-gap);align-items:stretch}
+#app :is(.planning-grid,.product-goals,.planning-results,.debt-blocks)>.card{margin:0;align-self:stretch}
+#app .forecast-page{align-items:stretch}
+#app .forecast-result,#app .forecast-result>div{display:grid;min-width:0}
+#app .forecast-result .forecast-projection{align-content:start}
+#app .product-goals>section{gap:var(--content-card-gap);align-items:stretch}
+#app .product-goals>section>.card{margin:0;align-self:stretch}

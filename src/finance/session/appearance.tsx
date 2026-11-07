@@ -112,7 +112,7 @@ export function initializeAppearance(workspace: AppearanceContext) {
       workspace.summaryMode = value;
       workspace.S.tab = value === 'entries' ? 'i' : 'r';
       workspace.arrangeCards = false;
-    } else if (kind === 'data-chart' && ['i', 'g', 'meta'].includes(value))
+    } else if (kind === 'data-chart' && ['i', 'g', 'meta', 'habits'].includes(value))
       workspace.chartMetric = value;
     else return;
     workspace.draw();

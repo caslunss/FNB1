@@ -9,6 +9,7 @@ export function vR(context: WorkspaceViewContext) {
     S,
     brl,
     chartMetric,
+    behaviorView,
     dailyBars,
     dateLong,
     debt,
@@ -35,11 +36,7 @@ export function vR(context: WorkspaceViewContext) {
     value = isGoal ? goalProjection(m) : chartMetric === 'i' ? inc(m) : spent(m);
   const activeDebts = DEBTS.map((x, id) => ({ ...x, id })).filter((x) => dm(x, m) > 0);
   const goalForm = S.goal ? <div data-goal-editor=""></div> : '';
-  return (
-    <>
-      <section className="overview" aria-label="Gráficos financeiros">
-        <div className="chart-toolbar">
-          <div className="segments" aria-label="Dados do gráfico">
+  const chartModes = (<div className="segments" aria-label="Dados do gráfico">
             <button data-chart="i" aria-pressed={chartMetric === 'i'}>
               {'Entradas'}
             </button>
@@ -49,7 +46,14 @@ export function vR(context: WorkspaceViewContext) {
             <button data-chart="meta" aria-pressed={isGoal}>
               {'Metas'}
             </button>
-          </div>
+            <button data-chart="habits" aria-pressed={chartMetric === 'habits'}>Hábitos</button>
+          </div>);
+  if (chartMetric === 'habits') return <><div className="chart-toolbar">{chartModes}</div><section className="summary-behavior" aria-label="Comportamento financeiro">{behaviorView()}</section></>;
+  return (
+    <>
+      <section className="overview" aria-label="Gráficos financeiros">
+        <div className="chart-toolbar">
+          {chartModes}
           <span className="chart-caption">
             {isGoal ? 'Projeção acumulada' : 'Movimentação diária'}
             {' · '}
@@ -275,18 +279,13 @@ export function vI(context: WorkspaceViewContext) {
 }
 // end-view:vI
 export function summaryView(context: WorkspaceViewContext) {
-  const { S, behaviorView, summaryMode, vI, vR } = context;
+  const { S, summaryMode, vI, vR } = context;
   const mode = S.tab === 'i' ? 'entries' : summaryMode === 'entries' ? 'overview' : summaryMode;
   if (mode === 'forecast') return <div className="product-goals-host" data-forecast-screen=""/>;
   return mode === 'entries' ? (
     vI()
   ) : (
-    <>
-      {vR()}
-      <section className="summary-behavior" aria-label="Comportamento financeiro">
-        {behaviorView()}
-      </section>
-    </>
+    vR()
   );
 }
 // end-view:summaryView

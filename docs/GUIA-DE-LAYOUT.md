@@ -2,10 +2,11 @@ Versão do documento: 0.1.0-alpha.5
 
 # TEFinance — guia de layout
 
-## Contrato de cards sem espaçamento externo
+Hábitos de gastos possui a opção Hábitos no seletor Entradas/Gastos/Metas da Visão geral. Seus cards aparecem somente nessa opção, com os mesmos dados e sem duplicação no rodapé das demais visualizações.
 
-Todos os grupos de cards usam --content-card-gap: 0px, sem margens externas. O container controla a grade e o alinhamento. Preservar padding interno, campos e áreas de toque; não usar alturas artificiais ou offsets para posicionar cards. `src/styles/card-layout.css` centraliza essa regra em páginas e painéis de Conta/Configurações. Validar telas pequenas, desktop e conteúdo expandido em futuras mudanças.
+## Contrato de cards agrupados e alinhados
 
+A regra de gap zero foi revertida por solicitação do proprietário. Cards integram grades responsivas com um único espaçamento: 24 px no desktop e 16 px no celular, controlados por --content-card-gap. Cards de uma linha preenchem sua célula e alinham as bordas; não usar margens duplicadas, offsets ou posições avulsas. Preservar conteúdo e espaçamento interno. O contrato está em src/styles/card-layout.css.
 
 A paleta Essencial chama-se Azul essencial e mantém a chave aged-white por compatibilidade. Fundos frios, cards com opacidade mínima de 88% no claro e 90% no escuro e menus com 98% separam sobreposições sem alterar os controles de blur e movimento.
 

@@ -59,7 +59,7 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
  .area-content,.summary-behavior{gap:var(--ui-space-4)}
 }
 /* Shared card geometry: spending habits and every planning item use this surface. */
-:root{--content-card-gap:0px;--content-card-padding:clamp(18px,2vw,28px)}
+:root{--content-card-gap:24px;--content-card-padding:clamp(18px,2vw,28px)}
 #app :is(.summary-behavior,.planning-grid){grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-card-gap);align-items:stretch}
 #app :is(.summary-behavior,.planning-grid) .finance-layout-card{
  box-sizing:border-box;min-width:0;width:100%;max-width:100%;min-height:0;
@@ -92,7 +92,7 @@ body:not(.auth-page) .date-picker-grid .lg-button{width:100%;min-width:0;min-hei
 .planning-goal-card .goal-planner{margin:0}
 .planning-goal-card .goal-planner fieldset{grid-template-columns:minmax(0,1fr)}
 @media(max-width:767px){
- :root{--content-card-gap:0px}
+ :root{--content-card-gap:16px}
  #app :is(.summary-behavior,.planning-grid),.planning-grid .planning-results{grid-template-columns:minmax(0,1fr)}
  .planning-grid .progressive-advanced{grid-template-columns:minmax(0,1fr)}
 }
