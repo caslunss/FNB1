@@ -10,7 +10,6 @@ const routes = [
   ['friends','data-area-view','commitments:friends'], ['purchases','data-area-view','planning:purchases'],
   ['goals','data-area-view','planning:goals'], ['investments','navigate','v'],
   ['taxes','data-area-view','analysis:taxes'], ['reports','data-area-view','analysis:reports'],
-  ['carbon','data-area-view','analysis:carbon'],
 ];
 async function audit(page, key) {
   const result = await page.evaluate(() => {

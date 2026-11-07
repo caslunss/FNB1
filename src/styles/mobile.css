@@ -25,7 +25,7 @@
  #summaryModes{flex:1 0 100%!important;width:100%!important;min-width:0!important}
  #summaryModes [role=tab]{min-height:var(--ui-touch-target)!important;font-size:.875rem!important;min-width:0!important}
  .summary-toolbar .ib{min-width:var(--ui-touch-target)!important;min-height:var(--ui-touch-target)!important}
- #app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:var(--ui-space-4)!important}
+ #app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-r[data-summary-view=behavior]{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:var(--ui-space-4)!important}
  #app>*{grid-column:1!important;width:100%!important;min-width:0!important;margin-inline:0!important;box-sizing:border-box}
  #app .overview{min-height:0!important}.overview-total{font-size:2rem!important;line-height:1.15!important;overflow-wrap:anywhere}
  #app h2{font-size:1.0625rem}.foot,.comparison{font-size:.8125rem}

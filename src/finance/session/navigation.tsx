@@ -109,7 +109,7 @@ export function createNavigation(workspace: NavigationContext) {
       workspace.S.tab = 'd';
     }
     if (workspace.S.tab === 'e') {
-      workspace.areaViews.analysis = 'carbon';
+      workspace.areaViews.analysis = 'taxes';
       workspace.S.tab = 'f';
     }
     for (const area of Object.keys(workspace.areaViews)) {
@@ -202,6 +202,7 @@ export function createNavigation(workspace: NavigationContext) {
       workspace.$('#summaryModes'),
       ['r', 'i'].includes(workspace.S.tab) ? workspace.summarySwitch() : '',
     );
+    workspace.renderView(workspace.$('#forecastBanner'),workspace.S.tab==='r'?<div data-forecast-banner=""/>:null);
     workspace.$('#app').className = 'layout-' + workspace.S.tab;
     workspace.$('#app').dataset.summaryView =
       workspace.S.tab === 'i'

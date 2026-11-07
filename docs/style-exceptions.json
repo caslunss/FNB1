@@ -1,7 +1,7 @@
 {
   "count": 601,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "f0316e54915e3910ab1f085f21b3c0c7e35db02930c9015c04befcf47112e6b0",
+  "sha256": "ae195c06a507f2e1870a541537c89ee08829ea98c2715e2934b14dce0404e51e",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -1166,7 +1166,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 188,
+      "line": 187,
       "selector": ".settings-option::before",
       "conditions": "",
       "property": "background-image",
@@ -1175,7 +1175,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 189,
+      "line": 188,
       "selector": ".settings-option>.te-surface-rim",
       "conditions": "",
       "property": "opacity",
@@ -1184,7 +1184,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 191,
+      "line": 190,
       "selector": ".te-action-menu .lg-menu-anchor>button",
       "conditions": "",
       "property": "border-radius",
@@ -1193,7 +1193,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 196,
+      "line": 195,
       "selector": ".month-action .lg-menu-anchor>button",
       "conditions": "",
       "property": "border-radius",
@@ -1202,7 +1202,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 211,
+      "line": 210,
       "selector": ".palette-choice.lg-button",
       "conditions": "",
       "property": "border-radius",
@@ -1211,7 +1211,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 219,
+      "line": 218,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details",
       "conditions": "",
       "property": "border",
@@ -1220,7 +1220,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 219,
+      "line": 218,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details",
       "conditions": "",
       "property": "box-shadow",
@@ -1229,7 +1229,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 225,
+      "line": 224,
       "selector": ".shared-message textarea",
       "conditions": "",
       "property": "min-height",
@@ -1238,7 +1238,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 232,
+      "line": 231,
       "selector": ".search-pill-input.te-text-field",
       "conditions": "",
       "property": "background",
@@ -1247,7 +1247,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 233,
+      "line": 232,
       "selector": ".search-pill-input>input",
       "conditions": "",
       "property": "min-height",
@@ -1256,7 +1256,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 234,
+      "line": 233,
       "selector": ".search-filter-toggle.lg-button",
       "conditions": "",
       "property": "border-radius",
@@ -1265,7 +1265,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 240,
+      "line": 239,
       "selector": "#app .settings-option",
       "conditions": "",
       "property": "padding",
@@ -1274,7 +1274,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 240,
+      "line": 239,
       "selector": "#app .settings-option",
       "conditions": "",
       "property": "border-radius",
@@ -1283,7 +1283,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 241,
+      "line": 240,
       "selector": "#app .settings-option.is-open",
       "conditions": "",
       "property": "padding",
@@ -1292,7 +1292,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 241,
+      "line": 240,
       "selector": "#app .settings-option.is-open",
       "conditions": "",
       "property": "border-radius",
@@ -1301,7 +1301,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 254,
+      "line": 253,
       "selector": ".progressive-advanced[hidden]",
       "conditions": "",
       "property": "display",
@@ -1310,7 +1310,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 257,
+      "line": 256,
       "selector": "#scrim .sheet",
       "conditions": "",
       "property": "border-radius",
@@ -1319,7 +1319,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 260,
+      "line": 259,
       "selector": "#app .te-compact-form.card",
       "conditions": "@media (max-width:520px)",
       "property": "padding",
@@ -1328,7 +1328,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 264,
+      "line": 263,
       "selector": ".account-panel-body .settings-option",
       "conditions": "",
       "property": "padding",
@@ -1337,7 +1337,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 264,
+      "line": 263,
       "selector": ".account-panel-body .settings-option",
       "conditions": "",
       "property": "border-radius",
@@ -1346,7 +1346,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 264,
+      "line": 263,
       "selector": ".account-panel-body .settings-option.is-open",
       "conditions": "",
       "property": "padding",
@@ -1355,7 +1355,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 264,
+      "line": 263,
       "selector": ".account-panel-body .settings-option.is-open",
       "conditions": "",
       "property": "border-radius",
@@ -1364,7 +1364,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-chart",
       "conditions": "",
       "property": "border",
@@ -1373,7 +1373,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-chart",
       "conditions": "",
       "property": "background",
@@ -1382,7 +1382,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-chart",
       "conditions": "",
       "property": "box-shadow",
@@ -1391,7 +1391,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "border",
@@ -1400,7 +1400,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "box-shadow",
@@ -1409,7 +1409,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "background",
@@ -1418,7 +1418,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-column,#app .period-column.selected,#app .period-column:hover",
       "conditions": "",
       "property": "border-radius",
@@ -1427,7 +1427,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-track",
       "conditions": "",
       "property": "border",
@@ -1436,7 +1436,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-track",
       "conditions": "",
       "property": "box-shadow",
@@ -1445,7 +1445,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 274,
+      "line": 273,
       "selector": "#app .period-track",
       "conditions": "",
       "property": "background",
@@ -1454,7 +1454,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 286,
+      "line": 285,
       "selector": ".account-toolbar .calendar-button",
       "conditions": "",
       "property": "position",
@@ -1463,7 +1463,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 286,
+      "line": 285,
       "selector": ".account-toolbar .calendar-button",
       "conditions": "",
       "property": "inset",
@@ -1472,7 +1472,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 287,
+      "line": 286,
       "selector": ".calendar-button[hidden]",
       "conditions": "",
       "property": "display",
@@ -1481,7 +1481,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 288,
+      "line": 287,
       "selector": "#app .credit-heading>.credit-add",
       "conditions": "",
       "property": "padding",
@@ -1490,7 +1490,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 289,
+      "line": 288,
       "selector": ".credit-invoice",
       "conditions": "",
       "property": "margin",
@@ -1499,7 +1499,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 290,
+      "line": 289,
       "selector": ".layout-c>.card",
       "conditions": "",
       "property": "margin",
@@ -1508,7 +1508,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 293,
+      "line": 292,
       "selector": ".cal-nav>.lg-button",
       "conditions": "",
       "property": "padding",
@@ -1517,7 +1517,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 302,
+      "line": 301,
       "selector": "body:not(.auth-page) .navbar",
       "conditions": "",
       "property": "display",
@@ -1526,7 +1526,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "position",
@@ -1535,7 +1535,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "width",
@@ -1544,7 +1544,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "height",
@@ -1553,7 +1553,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "opacity",
@@ -1562,7 +1562,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "overflow",
@@ -1571,7 +1571,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "padding",
@@ -1580,7 +1580,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "margin",
@@ -1589,7 +1589,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".upload-input",
       "conditions": "",
       "property": "border",
@@ -1598,7 +1598,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".entry-toolbar-floating",
       "conditions": "",
       "property": "gap",
@@ -1607,7 +1607,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 304,
+      "line": 303,
       "selector": ".entry-toolbar-floating",
       "conditions": "",
       "property": "row-gap",
@@ -1616,7 +1616,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 305,
+      "line": 304,
       "selector": ".entry-toolbar-floating>.btn",
       "conditions": "@media (max-width:600px)",
       "property": "flex",
@@ -1625,7 +1625,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 305,
+      "line": 304,
       "selector": "body:not(.auth-page) .entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "justify-content",
@@ -1634,7 +1634,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 305,
+      "line": 304,
       "selector": "body:not(.auth-page) .entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "gap",
@@ -1643,7 +1643,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 305,
+      "line": 304,
       "selector": "#app .ledger-detail[disabled]",
       "conditions": "",
       "property": "opacity",
@@ -1652,7 +1652,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 306,
+      "line": 305,
       "selector": "body:not(.auth-page) .navbar[hidden]",
       "conditions": "",
       "property": "display",
@@ -1661,7 +1661,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 307,
+      "line": 306,
       "selector": "body:not(.auth-page) .cal-day.selected",
       "conditions": "",
       "property": "background",
@@ -1670,7 +1670,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 307,
+      "line": 306,
       "selector": "body:not(.auth-page) .cal-day.selected",
       "conditions": "",
       "property": "color",
@@ -1679,7 +1679,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 307,
+      "line": 306,
       "selector": "body:not(.auth-page) .cal-day.selected",
       "conditions": "",
       "property": "box-shadow",
@@ -1688,7 +1688,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 323,
+      "line": 322,
       "selector": "html[data-layout-ready] .workspace-frame",
       "conditions": "",
       "property": "grid-template-columns",
@@ -1697,7 +1697,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 325,
+      "line": 324,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "",
       "property": "position",
@@ -1706,7 +1706,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 325,
+      "line": 324,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "",
       "property": "inset",
@@ -1715,7 +1715,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 325,
+      "line": 324,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "",
       "property": "margin",
@@ -1724,7 +1724,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 327,
+      "line": 326,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "position",
@@ -1733,7 +1733,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 327,
+      "line": 326,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "inset",
@@ -1742,7 +1742,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 327,
+      "line": 326,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "display",
@@ -1751,7 +1751,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 327,
+      "line": 326,
       "selector": "body:not(.auth-page) #tabs.tabbar",
       "conditions": "",
       "property": "flex-direction",
@@ -1760,7 +1760,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 330,
+      "line": 329,
       "selector": "body:not(.auth-page)",
       "conditions": "@media (max-width:999px)",
       "property": "padding",
@@ -1769,7 +1769,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 330,
+      "line": 329,
       "selector": "html[data-layout-ready] .workspace-frame",
       "conditions": "@media (max-width:999px)",
       "property": "display",
@@ -1778,7 +1778,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 330,
+      "line": 329,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "@media (max-width:999px)",
       "property": "margin",
@@ -1787,7 +1787,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 330,
+      "line": 329,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "@media (max-width:999px)",
       "property": "padding",
@@ -1796,7 +1796,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 331,
+      "line": 330,
       "selector": "body:not(.auth-page) .nav-shell",
       "conditions": "@media (max-width:520px)",
       "property": "margin",
@@ -1805,7 +1805,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 331,
+      "line": 330,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "@media (max-width:520px)",
       "property": "padding",
@@ -1814,7 +1814,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 337,
+      "line": 336,
       "selector": ".navigation-actions #tabs.tabbar",
       "conditions": "@media (max-width:699px)",
       "property": "order",
@@ -1823,7 +1823,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 347,
+      "line": 346,
       "selector": "body:not(.auth-page) .top-account-actions .task-search",
       "conditions": "",
       "property": "position",
@@ -1832,7 +1832,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 347,
+      "line": 346,
       "selector": "body:not(.auth-page) .top-account-actions .task-search",
       "conditions": "",
       "property": "inset",
@@ -1841,7 +1841,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 347,
+      "line": 346,
       "selector": "body:not(.auth-page) .top-account-actions .task-search",
       "conditions": "",
       "property": "margin",
@@ -1850,7 +1850,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 348,
+      "line": 347,
       "selector": "body:not(.auth-page) .top-account-actions .task-search>button",
       "conditions": "",
       "property": "margin",
@@ -1859,7 +1859,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 353,
+      "line": 352,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "",
       "property": "padding-inline",
@@ -1868,7 +1868,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 358,
+      "line": 357,
       "selector": "#app.layout-r>[data-card-key]",
       "conditions": "",
       "property": "margin",
@@ -1877,7 +1877,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 361,
+      "line": 360,
       "selector": "#app .overview .daily-chart",
       "conditions": "",
       "property": "height",
@@ -1886,7 +1886,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 374,
+      "line": 373,
       "selector": "#app .overview .daily-chart",
       "conditions": "@media (max-width:699px)",
       "property": "height",
@@ -1895,7 +1895,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 380,
+      "line": 379,
       "selector": "#app.layout-r[data-summary-view=behavior]>.card",
       "conditions": "",
       "property": "margin",
@@ -1904,7 +1904,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 384,
+      "line": 383,
       "selector": "#app.layout-i>.entry-summary,#app.layout-i>.entry-toolbar",
       "conditions": "",
       "property": "margin",
@@ -1913,7 +1913,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 385,
+      "line": 384,
       "selector": "#app.layout-i>.unified-ledger",
       "conditions": "",
       "property": "margin",
@@ -1922,7 +1922,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 386,
+      "line": 385,
       "selector": "#app.layout-i>.card:not(.unified-ledger)",
       "conditions": "",
       "property": "margin",
@@ -1931,7 +1931,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 394,
+      "line": 393,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "position",
@@ -1940,7 +1940,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 394,
+      "line": 393,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "transform",
@@ -1949,7 +1949,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 394,
+      "line": 393,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "translate",
@@ -1958,7 +1958,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 394,
+      "line": 393,
       "selector": "body:not(.auth-page) .account-toolbar>button",
       "conditions": "",
       "property": "scale",
@@ -1967,8 +1967,8 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 397,
-      "selector": "#app.layout-r[data-summary-view=behavior]>.card,#app.layout-i>*,#app.layout-d>*,#app.layout-s>*,#app.layout-e>*",
+      "line": 396,
+      "selector": "#app.layout-r[data-summary-view=behavior]>.card,#app.layout-i>*,#app.layout-d>*,#app.layout-s>*",
       "conditions": "@media (max-width:699px)",
       "property": "grid-column",
       "value": "1",
@@ -1976,7 +1976,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 401,
+      "line": 400,
       "selector": "body:not(.auth-page) .nav-shell>#lt",
       "conditions": "",
       "property": "margin",
@@ -1985,7 +1985,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 403,
+      "line": 402,
       "selector": "html[data-layout-ready] .workspace-main.wrap",
       "conditions": "",
       "property": "padding-top",
@@ -1994,7 +1994,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 404,
+      "line": 403,
       "selector": "#app.layout-i>.entry-toolbar",
       "conditions": "",
       "property": "justify-content",
@@ -2003,7 +2003,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 404,
+      "line": 403,
       "selector": "#app.layout-i>.entry-toolbar",
       "conditions": "",
       "property": "gap",
@@ -2012,7 +2012,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 405,
+      "line": 404,
       "selector": ".calendar-panel>.card",
       "conditions": "",
       "property": "margin",
@@ -2021,7 +2021,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 405,
+      "line": 404,
       "selector": ".friends-panel>.card",
       "conditions": "",
       "property": "margin",
@@ -2030,7 +2030,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 411,
+      "line": 410,
       "selector": "#summaryToolbar[hidden]",
       "conditions": "",
       "property": "display",
@@ -2039,7 +2039,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 413,
+      "line": 412,
       "selector": "body:not(.auth-page) #summaryToolbar .summary-switch",
       "conditions": "",
       "property": "margin",
@@ -2048,7 +2048,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 413,
+      "line": 412,
       "selector": "body:not(.auth-page) #summaryToolbar .summary-switch",
       "conditions": "",
       "property": "max-width",
@@ -2057,7 +2057,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 415,
+      "line": 414,
       "selector": "body:not(.auth-page) #app.layout-i>.entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "justify-content",
@@ -2066,7 +2066,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 415,
+      "line": 414,
       "selector": "body:not(.auth-page) #app.layout-i>.entry-toolbar.entry-toolbar-floating",
       "conditions": "",
       "property": "gap",
@@ -2075,7 +2075,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 420,
+      "line": 419,
       "selector": "body:not(.auth-page) #summaryToolbar .summary-switch[data-lg-copy]",
       "conditions": "",
       "property": "max-width",
@@ -2084,7 +2084,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 437,
+      "line": 436,
       "selector": ".te-editor-toggle.te-editor-pill.lg-button",
       "conditions": "",
       "property": "width",
@@ -2093,7 +2093,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 507,
+      "line": 506,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details>form.card",
       "conditions": "",
       "property": "border-radius",
@@ -2102,7 +2102,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 508,
+      "line": 507,
       "selector": ":is(#app,.account-panel-body) .te-action-editor>details>form.card",
       "conditions": "",
       "property": "background",
@@ -2111,7 +2111,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 599,
+      "line": 598,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-image",
@@ -2120,7 +2120,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 600,
+      "line": 599,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-position",
@@ -2129,7 +2129,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 601,
+      "line": 600,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-size",
@@ -2138,7 +2138,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 601,
+      "line": 600,
       "selector": "body select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-repeat",
@@ -2147,7 +2147,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 607,
+      "line": 606,
       "selector": "body .te-text-field.lg-input__field>select:not([multiple]):not([size])",
       "conditions": "",
       "property": "background-position",
@@ -2156,7 +2156,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 668,
+      "line": 667,
       "selector": ".account-overlay[data-panel=settings] .settings-panel",
       "conditions": "",
       "property": "padding",
@@ -2165,7 +2165,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 688,
+      "line": 687,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "inset",
@@ -2174,7 +2174,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 688,
+      "line": 687,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "width",
@@ -2183,7 +2183,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 688,
+      "line": 687,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "max-height",
@@ -2192,7 +2192,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 688,
+      "line": 687,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "margin",
@@ -2201,7 +2201,7 @@
     },
     {
       "file": "src/styles/layout-settings.css",
-      "line": 688,
+      "line": 687,
       "selector": ".account-overlay[data-panel=settings]",
       "conditions": "@media (max-width:699px)",
       "property": "border-radius",
@@ -3363,7 +3363,7 @@
     {
       "file": "src/styles/mobile.css",
       "line": 28,
-      "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]",
+      "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-r[data-summary-view=behavior]",
       "conditions": "@media (max-width:699px)",
       "property": "display",
       "value": "grid",
@@ -3372,7 +3372,7 @@
     {
       "file": "src/styles/mobile.css",
       "line": 28,
-      "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]",
+      "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-r[data-summary-view=behavior]",
       "conditions": "@media (max-width:699px)",
       "property": "grid-template-columns",
       "value": "minmax(0,1fr)",
@@ -3381,7 +3381,7 @@
     {
       "file": "src/styles/mobile.css",
       "line": 28,
-      "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-e,#app.layout-r[data-summary-view=behavior]",
+      "selector": "#app.layout-r:has(>[data-card-key]),#app.layout-i,#app.layout-d,#app.layout-r[data-summary-view=behavior]",
       "conditions": "@media (max-width:699px)",
       "property": "gap",
       "value": "var(--ui-space-4)",

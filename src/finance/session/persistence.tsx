@@ -1,3 +1,6 @@
+import {RETIRED_STORAGE_KEYS} from '../../services/retired-feature-compatibility.ts';
+import {FORECAST_KEY} from '../../services/forecast-settings';
+import {RECURRENCE_KEY} from '../../services/recurrence-decisions';
 import { requestFinancePublish } from '../../services/finance-runtime';
 import { isObject, includesValue } from '../../services/type-guards';
 import { isSafeInteger, isInteger } from '../../services/type-guards.ts';
@@ -863,7 +866,9 @@ export function createPersistence(workspace: PersistenceContext) {
       ...workspace.LEGACY_KEYS,
       workspace.BACKUP_KEY,
       'plan12categories_before_v2',
-      'plan12carbon_v1',
+      ...RETIRED_STORAGE_KEYS,
+      FORECAST_KEY,
+      RECURRENCE_KEY,
       'plan12notifications',
       DISMISSED_NOTIFICATIONS_KEY,
       'plan12cloudcopies_v1',

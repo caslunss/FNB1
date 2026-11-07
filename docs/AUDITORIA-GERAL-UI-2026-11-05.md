@@ -15,7 +15,7 @@ A publicação integra também o commit remoto `dd69081`, que trouxe loading HTM
 **Evidência:**
 
 - Testes do projeto, TypeScript, CSS, build, release e orçamento de bundles aprovados.
-- 36 estados capturados no build candidato: 320/1440 px × claro/escuro × Impostos, Relatórios, Carbono, perfil/assinaturas, calendário, notificações, Layout, login e login visitante. A contagem é de capturas, não de auditoria manual exaustiva de todos os pixels.
+- 36 estados capturados no build candidato: 320/1440 px × claro/escuro × Impostos, Relatórios, recurso aposentado, perfil/assinaturas, calendário, notificações, Layout, login e login visitante. A contagem é de capturas, não de auditoria manual exaustiva de todos os pixels.
 - Depois da integração remota: login em oito combinações; startup/dívida/persistência; 76 estados de controles compartilhados, incluindo foco, seleção e compactação/expansão da barra mobile, aprovados.
 - Probes adicionais na versão integrada confirmaram padding das notificações, aparência do Apple desativado e falha de carregamento da logo.
 - Chromium local. Não houve certificação em iPhone físico, WebKit nesta sessão, leitor de tela real, todas as paletas customizadas ou todas as resoluções intermediárias. Contraste sobre fundos variáveis precisa de medição específica.
@@ -89,9 +89,9 @@ O botão tem `disabled`, mas CSS com `opacity:1` e imagem do botão oficial mant
 
 **Arquivo:** `src/components/LayoutSettings.tsx:15`.
 
-A seção se chama “Abas” e o switch diz “Mostrar aba Calendário”, mas o calendário é um atalho no topo e abre popup. Cartões/Carbono também ocupam níveis diferentes da navegação.
+A seção se chama “Abas” e o switch diz “Mostrar aba Calendário”, mas o calendário é um atalho no topo e abre popup. Cartões/recurso aposentado também ocupam níveis diferentes da navegação.
 
-**Correção:** seção “Visibilidade” e rótulos por efeito real: “Mostrar calendário no topo”, “Mostrar Cartões em Compromissos”, “Mostrar Carbono em Análises”. Não alterar as chaves persistidas para corrigir apenas texto.
+**Correção:** seção “Visibilidade” e rótulos por efeito real: “Mostrar calendário no topo”, “Mostrar Cartões em Compromissos”, “Mostrar recurso aposentado em Análises”. Não alterar as chaves persistidas para corrigir apenas texto.
 
 ### U5 — P2 — Ações semelhantes ainda podem abrir caminhos com quantidade diferente de cliques
 

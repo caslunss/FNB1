@@ -1,6 +1,5 @@
 import {readProfileAppearance} from '../../services/profile-appearance';
 import { viewList } from '../../services/presentation.ts';
-import { vCarbon as rendervCarbon } from '../views/analysis.tsx';
 import { vYou as rendervYou } from '../views/account.tsx';
 import { subscriptionSummary } from '../../services/subscriptions.ts';
 import { responsibleProgress } from '../../services/responsible-progress.ts';
@@ -351,17 +350,6 @@ export function createProfile(workspace: ProfileContext) {
     );
   }
 
-  function carbonRecords() {
-    return workspace.load<Record<string, { grams: number; source: string }>>(
-      'plan12carbon_v1',
-      {},
-      (x) => x && typeof x === 'object' && !Array.isArray(x),
-    );
-  }
-
-  function vCarbon() {
-    return rendervCarbon(workspace.viewContext);
-  }
   return {
     isBetaTester,
     supportProjectCard,
@@ -374,8 +362,6 @@ export function createProfile(workspace: ProfileContext) {
     streamingPill,
     vYou,
     cloudSettingsView,
-    carbonRecords,
-    vCarbon,
   } satisfies Pick<
     WorkspaceRuntime,
     | 'isBetaTester'
@@ -389,8 +375,6 @@ export function createProfile(workspace: ProfileContext) {
     | 'streamingPill'
     | 'vYou'
     | 'cloudSettingsView'
-    | 'carbonRecords'
-    | 'vCarbon'
   >;
 }
 

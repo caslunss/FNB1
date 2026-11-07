@@ -4,7 +4,7 @@ const source=require('./controller-source.cjs');
  const {MAIN_AREAS,availableViews,resolveAreaView}=await import('../src/services/navigation.ts');
  assert.deepEqual(MAIN_AREAS.map(x=>x.label),['Resumo','Compromissos','Planejamento','Investimentos','Análises']);
  assert.equal(resolveAreaView('commitments:cards',{credit:false}),null);
- assert.equal(resolveAreaView('analysis:carbon',{carbon:false}),null);
+ assert.equal(resolveAreaView('analysis:carbon',{carbon:false}).view,'taxes');
  assert.equal(resolveAreaView('analysis:unknown'),null);
  const guard=source.slice(source.indexOf('function draw(){')+'function draw(){'.length,source.indexOf('\n if(transactionDepth)'));
  for(const [tab,sections,expected,view] of [
@@ -13,7 +13,7 @@ const source=require('./controller-source.cjs');
   ['k',{credit:true,carbon:true,calendar:true},'d','cards'],
   ['s',{credit:true,carbon:true,calendar:true},'d','friends'],
   ['e',{credit:true,carbon:false,calendar:true},'f','taxes'],
-  ['e',{credit:true,carbon:true,calendar:true},'f','carbon'],
+  ['e',{credit:true,carbon:true,calendar:true},'f','taxes'],
   ['c',{credit:true,carbon:true,calendar:false},'r',null],
  ]){
   const ctx={S:{tab},areaViews:{commitments:'debts',planning:'purchases',analysis:'taxes'},availableViews,getLayout:()=>({sections})};

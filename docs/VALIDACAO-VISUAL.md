@@ -20,7 +20,7 @@ As imagens também são comparadas por pixels e inspecionadas quando houver dife
 
 | Grupo | Estados |
 | --- | --- |
-| Áreas principais | Visão geral, Lançamentos, Dívidas, Cartões, Dividir conta, Compras, Metas de produtos, Investimentos, Impostos, Relatórios e Carbono |
+| Áreas principais | Visão geral, Lançamentos, Dívidas, Cartões, Dividir conta, Compras, Metas de produtos, Investimentos, Impostos e Relatórios |
 | Investimentos | Cotações e variações de Histórico, Dividendos, Balanços, FIIs, Câmbio, IPCA e Selic |
 | Inclusão | Entrada, gasto, dívida e limite, cada um fechado/expandido; seletor customizado; calendário de data |
 | Perfil e configuração | Perfil, assinaturas expandidas, Conta, Notificações, Layout e Conexões |

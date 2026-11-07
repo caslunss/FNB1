@@ -3,6 +3,8 @@ import React, {Component, Suspense, lazy, memo} from 'react';
 import {FinanceGlassButton as Button, FinanceGlassCard as Card} from './LiquidControls.tsx';
 
 const loaders = {
+  recurrences: () => import('./Recurrences.tsx'),
+  forecast: () => import('./BalanceForecast.tsx'),
   productGoals: () => import('./ProductGoals.tsx'),
   taxes: () => import('./Taxes.tsx'),
   bank: () => import('./TaxBankImport.tsx'),

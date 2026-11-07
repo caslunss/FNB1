@@ -2,6 +2,20 @@
 
 Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer. Registra apenas alterações verificáveis na história local e nesta rodada de trabalho.
 
+## Não lançado
+
+### Alterado — navegação
+- Mantidas quatro áreas na dock: Resumo, Compromissos, Planejamento e Análises. Previsão fica em Planejamento, Recorrências em Compromissos; Assinaturas do Perfil conserva seu resumo e passa a oferecer acesso ao gerenciamento local. Estilos Fixada/Padrão/Mini e calendário superior permanecem.
+
+### Adicionado — recorrências
+- Detecção local e revisável de cobranças semanais, quinzenais, mensais e anuais, com pelo menos três ocorrências; decisões de confirmar, ignorar ou marcar como cancelada preservam os lançamentos e alimentam somente a previsão estimada. Inclui sinais de variação de preço, cobranças semelhantes e possível duplicidade, sem inferir uso dos serviços.
+
+### Adicionado
+- Previsão local de saldo em centavos, horizontes de 30/60/90 dias, estimativa variável explícita, margem de segurança, banner e switch Alerta de saldo; sem IA, novas APIs ou sincronização remota. Datas de dívidas não informadas ficam pendentes de revisão.
+
+### Removido
+- Carbono: painel manual, controles de visibilidade, cálculo/apresentação e navegação; dados locais antigos e preferências são aceitos somente para compatibilidade, sem exclusão automática.
+
 ## [0.1.0-alpha.1] - 2026-11-05
 
 ### Alterado — 06/11/2026

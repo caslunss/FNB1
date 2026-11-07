@@ -196,7 +196,6 @@ export function initializePrimitives(workspace: PrimitivesContext) {
     s: 'Dividir conta',
     k: 'Cartões',
     o: 'Planejamento',
-    e: 'Carbono',
     x: 'Configurações',
     u: 'Você',
   };
@@ -213,7 +212,6 @@ export function initializePrimitives(workspace: PrimitivesContext) {
     share: workspace.P(
       <path d="M8 8H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-3M12 15V2m0 0L8 6m4-4 4 4"></path>,
     ),
-    e: workspace.P(<path d="M20 3C9 3 3 8 5 15s14 7 15-12ZM5 20 16 9"></path>),
     x: workspace.P(
       <g transform="translate(1.5 1)">
         <path d="m9 3-.6 2.3-2 .9-2.2-.7-1.5 2.6L4.3 10v2l-1.6 1.9 1.5 2.6 2.2-.7 2 .9L9 19h3l.6-2.3 2-.9 2.2.7 1.5-2.6-1.6-1.9v-2l1.6-1.9-1.5-2.6-2.2.7-2-.9L12 3Z"></path>

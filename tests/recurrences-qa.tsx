@@ -1,0 +1,14 @@
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import Recurrences from '../src/components/Recurrences';
+import BalanceForecast from '../src/components/BalanceForecast';
+import {finance} from '../src/services/finance-runtime';
+import {auth} from '../src/services/auth';
+import {initializeLayout} from '../src/services/layout-preferences';
+import '../src/styles/app-entry.css';
+const transactions=JSON.parse(sessionStorage.getItem('recurrence-qa-fixture')||'[]') as import('../src/services/balance-forecast').ForecastTransaction[];
+window.planAuth=auth;
+finance.forecast={getState:()=>({today:'2026-11-06',transactions})};
+await initializeLayout();
+const root=document.getElementById('qa');if(!root)throw Error('QA root missing');
+createRoot(root).render(<div className="workspace-frame"><main className="workspace-main wrap"><div id="app" className="layout-d"><Recurrences/><BalanceForecast/></div></main></div>);

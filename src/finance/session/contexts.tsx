@@ -26,7 +26,6 @@ type ContextsContext = Pick<
   | 'behaviorView'
   | 'brl'
   | 'canonicalCategory'
-  | 'carbonRecords'
   | 'chartMetric'
   | 'dailyBars'
   | 'dateLabel'
@@ -95,7 +94,6 @@ type ContextsContext = Pick<
   | 'toCents'
   | 'todayISO'
   | 'topList'
-  | 'vCarbon'
   | 'vCards'
   | 'vCart'
   | 'vD'
@@ -151,9 +149,6 @@ export function initializeContexts(workspace: ContextsContext) {
     },
     get brl() {
       return workspace.brl;
-    },
-    get carbonRecords() {
-      return workspace.carbonRecords;
     },
     get chartMetric() {
       return workspace.chartMetric;
@@ -295,9 +290,6 @@ export function initializeContexts(workspace: ContextsContext) {
     },
     get topList() {
       return workspace.topList;
-    },
-    get vCarbon() {
-      return workspace.vCarbon;
     },
     get vCards() {
       return workspace.vCards;

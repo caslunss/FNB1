@@ -539,8 +539,6 @@ export interface WorkspaceRuntime {
   streamingPill: () => React.JSX.Element;
   vYou: () => React.JSX.Element;
   cloudSettingsView: () => React.JSX.Element | '';
-  carbonRecords: () => Record<string, { grams: number; source: string }>;
-  vCarbon: () => React.JSX.Element;
   accountSettingsView: () => React.JSX.Element;
   reportsView: () => React.JSX.Element;
   vSettings: () => React.JSX.Element;
@@ -616,6 +614,7 @@ export interface WorkspaceRuntime {
   shareMarkup: (x: SharedExpense) => React.JSX.Element;
   refreshSocial: (redraw?: boolean) => Promise<void>;
   notificationRows: () => (
+    | import('../../services/balance-alert').BalanceAlertRow
     | {
         id: string;
         date: string;

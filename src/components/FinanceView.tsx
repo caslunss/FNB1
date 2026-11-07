@@ -1,3 +1,4 @@
+import ForecastBanner from './ForecastBanner';
 import SpendingDistribution from './SpendingDistribution';
 import {calendarKeys} from './calendar-keyboard';
 import { presentationTree, type PresentationNode, type ElementNode } from '../services/presentation-tree';
@@ -106,7 +107,7 @@ function progressiveParts(node: ElementNode) {
     node.classList.contains('grid') &&
     node.parentElement?.classList.contains('sheet');
   const form =
-    node.localName === 'form' && (node.classList.contains('compact-form') || node.id === 'carbonForm');
+    node.localName === 'form' && node.classList.contains('compact-form');
   if (!sheet && !form) return null;
   const parts: { basic: ElementNode[]; advanced: ElementNode[]; actions: ElementNode[] } = {
       basic: [],
@@ -120,8 +121,6 @@ function progressiveParts(node: ElementNode) {
       ? ['name', 'priceCents', 'targetCents', 'url']
       : node.id === 'receiptForm'
         ? ['receiptItems', 'receiptName', 'receiptTotal', 'receiptCategory']
-        : node.id === 'carbonForm'
-          ? ['purchase', 'kg']
           : ['friend', 'description', 'amount', 'code', 'name', 'query', 'price', 'people'];
   for (const child of node.children) {
     if (child.hasAttribute('data-product-preview') || child.querySelector('[data-import-product]')) {
@@ -388,6 +387,9 @@ function element(node: PresentationNode | null | undefined, key: React.Key): Rea
   if (node.hasAttribute('data-spending-distribution')) return <SpendingDistribution key={key}
     rows={node.children.map(row=>({category:row.getAttribute('data-category')||'',index:Number(row.getAttribute('data-index')),value:Number(row.getAttribute('data-value')),percentage:row.getAttribute('data-percentage')||''}))}
     total={Number(node.getAttribute('data-total'))} totalLabel={node.getAttribute('data-total-label')||''} month={node.getAttribute('data-month')||''}/>;
+  if (node.hasAttribute('data-recurrences-screen')) return <DeferredPage key={key} page="recurrences"/>;
+  if (node.hasAttribute('data-forecast-screen')) return <DeferredPage key={key} page="forecast"/>;
+  if (node.hasAttribute('data-forecast-banner')) return <ForecastBanner key={key}/>;
   if (node.hasAttribute('data-product-goals')) return <DeferredPage key={key} page="productGoals" />;
   if (node.hasAttribute('data-goal-editor')) return <GoalEditor key={key} />;
   if (tag === 'input' && node.type === 'file') {

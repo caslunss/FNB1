@@ -1,3 +1,4 @@
+import {retiredLayoutSections} from './retired-feature-compatibility.ts';
 export type Theme='light'|'dark';
 export type DockStyle='pinned'|'default'|'mini';
 export interface ThemePalette {accent:string;background:string;surface:string}
@@ -13,7 +14,7 @@ export const PALETTES=Object.freeze([
  {id:'winter-lavender',name:'Lavanda',season:'Inverno',light:{accent:'#77718d',background:'#e3e1eb',surface:'#f1eff8'},dark:{accent:'#bfb8d5',background:'#19181f',surface:'#2c2936'}},
  {id:'winter-sage',name:'Sálvia',season:'Inverno',light:{accent:'#5c7c76',background:'#e0e7e2',surface:'#eff5ef'},dark:{accent:'#acc8bf',background:'#151c1a',surface:'#25312c'}},
 ]);
-export const DEFAULT_LAYOUT:LayoutPreferences=Object.freeze({version:1,palette:'aged-white',intensity:3,dockStyle:'default',circularProgress:true,indicators:Object.freeze({}),sections:Object.freeze({credit:true,carbon:true,calendar:true}),
+export const DEFAULT_LAYOUT:LayoutPreferences=Object.freeze({version:1,palette:'aged-white',intensity:3,dockStyle:'default',circularProgress:true,indicators:Object.freeze({}),sections:Object.freeze({credit:true,calendar:true}),
   light:Object.freeze({accent:'#0000FF',background:'#e7e5de',surface:'#f7f4ec',opacity:66,blur:6}),
   dark:Object.freeze({accent:'#0000FF',background:'#000000',surface:'#1c1c1e',opacity:64,blur:16,dim:70}),
 });
@@ -29,7 +30,7 @@ export function normalizeLayout(input?:Partial<LayoutPreferences>|null):LayoutPr
   next.dockStyle=normalizeDockStyle(input.dockStyle,'dockSize' in input?input.dockSize:undefined);
   const palette=PALETTES.find(x=>x.id===input.palette)||PALETTES[0];next.palette=palette.id;
   next.intensity=bounded(input.intensity,1,10,next.intensity);
-  next.sections={credit:typeof input.sections?.credit==='boolean'?input.sections.credit:true,carbon:typeof input.sections?.carbon==='boolean'?input.sections.carbon:true,calendar:typeof input.sections?.calendar==='boolean'?input.sections.calendar:true};
+  next.sections={...retiredLayoutSections(input.sections),credit:typeof input.sections?.credit==='boolean'?input.sections.credit:true,calendar:typeof input.sections?.calendar==='boolean'?input.sections.calendar:true};
   next.circularProgress=typeof input.circularProgress==='boolean'?input.circularProgress:true;
   if(input.indicators&&typeof input.indicators==='object'&&!Array.isArray(input.indicators))next.indicators=Object.fromEntries(Object.entries(input.indicators).filter(([key,value])=>key.length<=180&&typeof value==='boolean').slice(-256));
   for(const theme of ['light','dark'] as const){const source:Partial<ThemePreferences>=input[theme]||{};
@@ -131,4 +132,4 @@ export function setDockStyle(style:DockStyle){if(!['pinned','default','mini'].in
 export function setCircularProgress(enabled:boolean){if(typeof enabled!=='boolean')throw Error('Preferência inválida.');saveLayout({...copy(current),circularProgress:enabled});}
 export function setIndicatorVisible(key:string,enabled:boolean){if(typeof key!=='string'||!key||key.length>180||typeof enabled!=='boolean')throw Error('Indicador inválido.');saveLayout({...copy(current),indicators:{...current.indicators,[key]:enabled}});}
 
-export function setSectionEnabled(section:string,enabled:boolean){if(!['credit','carbon','calendar'].includes(section)||typeof enabled!=='boolean')throw Error('Aba inválida.');saveLayout({...copy(current),sections:{...current.sections,[section]:enabled}});if(typeof window.dispatchEvent==='function')window.dispatchEvent(new Event('plan-sections-change'));}
+export function setSectionEnabled(section:string,enabled:boolean){if(!['credit','calendar'].includes(section)||typeof enabled!=='boolean')throw Error('Aba inválida.');saveLayout({...copy(current),sections:{...current.sections,[section]:enabled}});if(typeof window.dispatchEvent==='function')window.dispatchEvent(new Event('plan-sections-change'));}

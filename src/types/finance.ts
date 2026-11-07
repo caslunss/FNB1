@@ -11,7 +11,7 @@ export interface NotificationRow {
   id: string;
   text: string;
   tab: string;
-  kind: 'expenses' | 'shares' | 'friends' | 'reports';
+  kind: 'expenses' | 'shares' | 'friends' | 'reports' | 'balance';
   date?: string;
   title?: string;
   subtitle?: string;

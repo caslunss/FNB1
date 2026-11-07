@@ -110,14 +110,14 @@ async function fixture(context) {
       assert.equal(await page.locator('.tax-editor[open]').count(),1,'Escape closes menu without closing editor');
       await page.getByRole('button',{name:'Fechar análise tributária',exact:true}).click();await closed(page,'Dialog closed');
       await page.getByRole('button',{name:'Importar banco',exact:true}).click();
-      for(const tab of ['reports','carbon']){
+      for(const tab of ['reports']){
         await navigate(page,tab);await closed(page,tab+' initial');
         const control=page.locator('.analysis-content [role=combobox]').first();await openSelect(page,control);await page.keyboard.press('Escape');await closed(page,tab+' closed');
         const margins=await page.locator('.analysis-content>.card').evaluateAll(nodes=>nodes.map(node=>getComputedStyle(node).margin));assert(margins.every(margin=>margin==='0px'),tab+': no legacy card margins');
         assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,tab+': no page overflow');
       }
       assert.equal(await page.evaluate(()=>JSON.stringify(window.planTaxes.getState().expenses)),original,'UI interactions must not change expenses');
-      console.log('PASS',fallback?'portal fallback':'native popover',width,theme,'analysis, bank, editor, reports and carbon');
+      console.log('PASS',fallback?'portal fallback':'native popover',width,theme,'analysis, bank, editor, reports');
     }
     await context.close();
   }assert.deepEqual(errors,[]);console.log('PASS analysis alignment and select lifecycle: native/fallback, 5 widths, 2 themes, keyboard/touch/forms');}finally{await browser.close()}

@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict');
 const{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const base=process.env.QA_BASE_URL||'http://127.0.0.1:5200';
-const screens=['commitments:debts','commitments:cards','commitments:friends','planning:purchases','planning:goals','analysis:taxes','analysis:reports','analysis:carbon'];
+const screens=['commitments:debts','commitments:cards','commitments:friends','planning:purchases','planning:goals','analysis:taxes','analysis:reports'];
 async function ready(page){await page.waitForFunction(()=>window.planMobile&&window.planTaxes&&document.documentElement.dataset.layoutReady);}
 async function closeSettings(page){await page.keyboard.press('Escape');await page.waitForSelector('.settings-main-menu');await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('dialog[open]'));}
 async function mode(page,label){await page.evaluate(()=>window.planMobile.open('settings'));await page.getByRole('button',{name:'Layout e preferências',exact:true}).click();await page.getByRole('radio',{name:label,exact:true}).click();await closeSettings(page);await page.waitForFunction(()=>!document.querySelector('.navigation-actions').hidden);}

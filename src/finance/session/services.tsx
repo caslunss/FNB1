@@ -1,3 +1,4 @@
+import {readForecastSource} from './forecast-source';
 import { isSafeInteger } from '../../services/type-guards.ts';
 import type { ShoppingPlan } from '../../types/workspace';
 import type { ProductGoal } from '../../types/finance-runtime';
@@ -13,6 +14,8 @@ import type { WorkspaceRuntime } from './contracts';
 
 type ServicesContext = Pick<
   WorkspaceRuntime,
+  | 'scope'
+  | 'DEBTS'
   | 'CARDS'
   | 'CART'
   | 'CATS'
@@ -51,6 +54,9 @@ type ServicesContext = Pick<
 >;
 
 export function initializeServices(workspace: ServicesContext) {
+  finance.forecast={getState:()=>readForecastSource(workspace)};
+  workspace.scope.listen(window,'plan-forecast-settings-change',()=>workspace.draw());
+  workspace.scope.listen(window,'plan-recurrence-decisions-change',()=>workspace.draw());
   // @workspace-step 329 ExpressionStatement
   finance.isMonthClosed = () => workspace.isMonthClosed(workspace.S.m);
   // @workspace-end 329
@@ -65,8 +71,7 @@ export function initializeServices(workspace: ServicesContext) {
     }),
     navigate(key) {
       if (
-        !['r', 'd', 'o', 'e', 'f'].includes(key) ||
-        (key === 'e' && !getLayout().sections.carbon)
+        !['r', 'd', 'o', 'e', 'f'].includes(key)
       )
         return;
       workspace.S.tab = key;

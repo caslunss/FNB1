@@ -96,6 +96,7 @@ export interface MobileState {
   sections: Record<string, boolean>;
 }
 export interface FinanceServices {
+  forecast:{getState():import('../services/forecast-settings').ForecastSource};
   taxes: {
     getState(): TaxState;
     addExpense(input: {

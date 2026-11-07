@@ -1,3 +1,7 @@
+import {balanceAlert} from '../../services/balance-alert';
+import {readRecurrenceDecisions} from '../../services/recurrence-decisions';
+import {forecastModel,readForecastSettings} from '../../services/forecast-settings';
+import {getFinanceSnapshot} from '../../services/finance-runtime';
 import { viewList } from '../../services/presentation.ts';
 import {readSocialPages} from '../../services/social-pagination';
 import type {
@@ -53,6 +57,7 @@ type NotificationsContext = Pick<
   | 'renderView'
   | 'saveWorkspace'
   | 'shoppingMoney'
+  | 'selectAreaView'
   | 'showError'
   | 'social'
   | 'socialUser'
@@ -363,7 +368,10 @@ export function createNotifications(workspace: NotificationsContext) {
   function notificationRows() {
     const prefs = readNotificationPreferences(workspace.localStorage),
       dismissed = readDismissedNotifications(workspace.localStorage);
+    const source=finance.forecast?getFinanceSnapshot('forecast'):null;
+    const forecastRows=source?balanceAlert(forecastModel(source,readForecastSettings(workspace.localStorage,source.today),readRecurrenceDecisions(workspace.localStorage)),source.today):[];
     return [
+      ...forecastRows,
       ...workspace.social.friends
         .filter(
           (f) =>
@@ -645,7 +653,9 @@ export function initializeNotifications(workspace: NotificationsContext) {
     if (go) {
       workspace.notificationsOpen = false;
       workspace.renderNotifications();
-      if (go.dataset.notificationTab! === 'reports') {
+      if (go.dataset.notificationTab === 'forecast') {
+        workspace.selectAreaView('planning:forecast');workspace.draw();
+      } else if (go.dataset.notificationTab! === 'reports') {
         workspace.renderNotifications();
         workspace.openAccountPanel('reports');
       } else {

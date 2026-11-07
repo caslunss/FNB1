@@ -38,7 +38,6 @@ export interface WorkspaceViewContext
   sum(items: readonly { v: number }[]): number;
   isBetaTester(user: User | null): boolean;
   profileIdentity(): { name: string; photo: string };
-  carbonRecords(): Record<string, { grams: number; source: string }>;
   mbtn(kind: string, id: string | number, label: string): ReactNode;
   monthLabelFromKey(key: string): string;
   monthComparison(metric: string, month: number): ReactNode;
@@ -68,7 +67,6 @@ export interface WorkspaceViewContext
   streamingPill(): ReactNode;
   supportProjectCard(): ReactNode;
   spent(month: number): number;
-  vCarbon(): ReactNode;
   vCards(): ReactNode;
   vCart(): ReactNode;
   vD(): ReactNode;

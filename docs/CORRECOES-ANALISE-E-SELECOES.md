@@ -2,7 +2,7 @@ Versão do documento: 0.1.0-alpha.1
 
 # Correções de Análise e seleções — 05/11/2026
 
-Escopo: layout de Impostos, Relatórios e Carbono e ciclo de abertura do `FinanceSelect` compartilhado. Cálculos, APIs, persistência financeira e categorias não foram modificados.
+Escopo: layout de Impostos e Relatórios e ciclo de abertura do `FinanceSelect` compartilhado. Cálculos, APIs, persistência financeira e categorias não foram modificados.
 
 ## Problemas, causas e correções
 
@@ -20,7 +20,7 @@ A geometria de Análise ficou centralizada em `src/styles/tax-layout.css`; regra
 ## Verificação e prevenção
 
 - `tests/analysis-selects.browser.cjs`: reproduz a condição inicial fechada, abertura de apenas uma lista, seleção por toque, teclado, Escape, clique fora, redimensionamento, validação obrigatória, envio de FormData, reset, controle desativado e ponte de valor dos formulários anteriores.
-- A mesma regressão percorre Impostos, importação bancária, editor em modal, Relatórios e Carbono, em 320, 390, 768, 1024 e 1440 px, claro/escuro, com Popover API e fallback em portal. Verifica espaçamento das abas, alturas/valores dos indicadores, limites/centro dos botões, margens dos cards e ausência de overflow da página. Confirma que interações de UI não alteram os gastos.
+- A mesma regressão percorre Impostos, importação bancária, editor em modal e Relatórios, em 320, 390, 768, 1024 e 1440 px, claro/escuro, com Popover API e fallback em portal. Verifica espaçamento das abas, alturas/valores dos indicadores, limites/centro dos botões, margens dos cards e ausência de overflow da página. Confirma que interações de UI não alteram os gastos.
 - Teste adicionado ao CI. A auditoria anterior de barras não verificava a invisibilidade inicial dos listboxes nem o clique de opção dentro de um `label`; esses casos agora têm regressão explícita.
 - Compilação TypeScript, testes do projeto, auditoria CSS, build e validação de release; regressões de formulários mobile e barras compartilhadas.
 - Comparação visual de desenvolvimento com build de produção nas três páginas de Análise, importação/editor tributário, seleção em lançamento e filtros de pesquisa.

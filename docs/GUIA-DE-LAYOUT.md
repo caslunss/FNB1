@@ -52,7 +52,7 @@ As cores e limites estão em `src/services/layout-preferences.ts`. Os valores pa
 | Dívidas | Blocos de saldo, parcelas e previsão; gráfico e lista. Sem duplicar despesas |
 | Cartões | Dentro de Compromissos. Limites, faturas, vencimento, fechamento e pagamentos |
 | Planejamento | Compras com pesquisa de ofertas e compra planejada; Metas reúne produtos desejados, reservas mensais e relatório de impacto à vista/no crédito |
-| Análises | Impostos, Relatórios e Carbono. Carbono mantém visibilidade opcional no Layout |
+| Análises | Impostos e Relatórios |
 | Calendário | Popup pelo atalho superior. Seleção discreta em vidro; datas de gastos, entradas e cartões. Um único botão + abre Entrada e Gasto para o dia selecionado |
 | Dividir conta | Dentro de Compromissos. Lista, convites, compartilhamento e divisão com amigos |
 | Perfil | Avatar abre diretamente o card em overlay; foto dinâmica, notas financeiras e badges. Configurações e Sair no rodapé; assinaturas e apoio em seção expansível |
@@ -60,7 +60,7 @@ As cores e limites estão em `src/services/layout-preferences.ts`. Os valores pa
 | Relatórios | Histórico mensal, importar CSV e exportar backup/CSV |
 | Configurações | Menu agrupado com Conta (somente autenticados), Layout e preferências, Notificações, Dados e conexões, Registro e segurança. Sincronização e gerenciamento de dados ficam em Dados e conexões |
 
-A navegação principal tem cinco áreas: Resumo, Compromissos, Planejamento, Investimentos e Análises. Cartões e Carbono respeitam as opções de visibilidade dentro de seus grupos. Perfil, calendário, notificações e pesquisa permanecem no conjunto superior; amigos e relatórios usam suas áreas financeiras. Não criar uma segunda rota para a mesma ação.
+A navegação principal tem quatro áreas: Resumo, Compromissos, Planejamento e Análises. Cartões respeitam as opções de visibilidade dentro de seus grupos. Perfil, calendário, notificações e pesquisa permanecem no conjunto superior; amigos e relatórios usam suas áreas financeiras. Não criar uma segunda rota para a mesma ação.
 
 O seletor global de mês pertence ao Resumo. Impostos reutiliza o mesmo MonthPicker, com período próprio e rótulo visível. Meses encerrados são somente leitura. Popups não devem deslocar permanentemente o conteúdo da página nem deixar duas janelas modais interativas ao mesmo tempo.
 
@@ -72,7 +72,7 @@ As subtelas usam PageTransition e os presets de Motion existentes, com foco no t
 
 Conta aparece somente para usuários autenticados não anônimos. Exibe Nome, E-mail de login e Método de login, derivados do estado existente. “Alterar nome de usuário” revela o formulário atual. O bloqueio de uma alteração por mês civil usa metadados locais isolados pela conta; isso não constitui garantia entre dispositivos ou validação no servidor. A tabela atual não registra data de alteração e não foi migrada nesta tarefa.
 
-Layout e preferências mantém tema, paletas, indicadores, visibilidade de Cartões/Carbono e a escolha de dock Fixada/Padrão/Mini. Calendário continua sempre acessível, e ajustes de vidro removidos não retornam. Notificações mantém os quatro switches existentes. Dados e conexões reúne sincronização, recuperação, reset/exclusão e Open Finance/Serasa/Boletos, sem duplicar exportações de Relatórios. Registro e segurança contém apenas a estrutura vazia aprovada.
+Layout e preferências mantém tema, paletas, indicadores, visibilidade de Cartões e a escolha de dock Fixada/Padrão/Mini. Calendário continua sempre acessível, e ajustes de vidro removidos não retornam. Notificações mantém os switches existentes e acrescenta Alerta de saldo no ciclo F2. Dados e conexões reúne sincronização, recuperação, reset/exclusão e Open Finance/Serasa/Boletos, sem duplicar exportações de Relatórios. Registro e segurança contém apenas a estrutura vazia aprovada.
 
 ## Estrutura e espaçamento
 
@@ -206,7 +206,7 @@ Esta variante é uma implementação web React responsiva inspirada no iOS. Não
 
 ### Mudanças Estruturais
 
-Abaixo de 700 px, a moldura vira uma coluna. A navegação passa para a base, com Resumo, Dívidas, Cartões, Ofertas, Investimentos e Impostos, somente ícones com nomes acessíveis. Cartões respeita a preferência existente de visibilidade. Carbono, Calendário, Amigos, Relatórios, Integrações e Configurações ficam em Atalhos, no topo. Perfil e Notificações mantêm acessos próprios. Ações não são inseridas como abas.
+Abaixo de 700 px, a moldura vira uma coluna. A navegação passa para a base, com Resumo, Dívidas, Cartões, Ofertas, Investimentos e Impostos, somente ícones com nomes acessíveis. Cartões respeita a preferência existente de visibilidade. recurso aposentado, Calendário, Amigos, Relatórios, Integrações e Configurações ficam em Atalhos, no topo. Perfil e Notificações mantêm acessos próprios. Ações não são inseridas como abas.
 
 Os cards são empilhados e a simulação de compra planejada vira uma lista de linhas rotuladas, preservando o HTML de tabela e os valores. Janelas de conta, cartões, ofertas e ferramentas são folhas inferiores. O controle superior permite expandir/recolher; somente Atalhos, que não contém formulário, admite arrastar para fechar. Editores mantêm cancelamento explícito para evitar perda acidental.
 
@@ -275,7 +275,7 @@ Arquivos: `src/services/motion-presets.ts`, `src/services/page-motion.ts`, `src/
 
 ## Impostos — implementação
 
-- Destino próprio no desktop e sexto destino no mobile; Carbono permanece em Atalhos.
+- Destino próprio no desktop e sexto destino no mobile; recurso aposentado permanece em Atalhos.
 - Cards: Tributos estimados, Carga média ponderada, Cobertura e Pendências. Ausência de estimativa é travessão, nunca zero inventado; percentuais positivos menores que 0,1% aparecem como `<0,1%`.
 - Histórico por compra e gráficos mensal/por categoria. Investimentos são excluídos da base de consumo; valores futuros não entram nos totais realizados.
 - Análises complementam gastos existentes. Um novo gasto só é criado por escolha explícita; salvar um documento não desconta o tributo novamente do saldo.
@@ -290,7 +290,7 @@ Arquivos: `src/services/motion-presets.ts`, `src/services/page-motion.ts`, `src/
 
 Usar `MotionProvider`, `PageTransition`, `IOSButton` e os presets descritos em `ANIMACOES-IOS.md`. Molas altamente amortecidas; somente opacity, x, y e scale nas novas transições. O vidro continua estático: não animar blur, recorte ou tamanho. Respeitar movimento reduzido e impedir interação com conteúdo de saída. Não adicionar transições concorrentes de transform ao mesmo botão.
 
-Até 1024 px, cinco destinos principais aparecem somente com ícones, com área mínima de toque de 44 px e nomes acessíveis preservados. Impostos e Carbono ficam dentro de Análises. Investimentos usa gráfico ascendente, não cartão de crédito.
+Até 1024 px, cinco destinos principais aparecem somente com ícones, com área mínima de toque de 44 px e nomes acessíveis preservados. Impostos e Relatórios ficam dentro de Análises. Investimentos usa gráfico ascendente, não cartão de crédito.
 
 ## Revisão responsiva de 03/11/2026
 
@@ -339,10 +339,10 @@ Pedido aprovado: navegação inferior dinâmica, alinhamento da compra planejada
 
 - Compromissos: Dívidas, Cartões (se habilitado) e Dividir conta.
 - Planejamento: Compras (pesquisa de ofertas e compra planejada) e Metas. Atalhos de editar meta levam ao mesmo editor nesta área.
-- Análises: Impostos, Relatórios e Carbono (se habilitado). Impostos continua lazy e controla seu próprio período.
+- Análises: Impostos e Relatórios. Impostos continua lazy e controla seu próprio período.
 - Resumo: somente Visão geral e Lançamentos; os indicadores e a análise de comportamento ficam abaixo dos cards na Visão geral. Não remover o consentimento de envio ao Gemini.
 - Perfil: Perfil, Configurações e Sair. Integrações passam para Configurações → Conexões. Calendário e pesquisa continuam acessíveis; no mobile, Calendário e Configurações permanecem em Atalhos.
-- Rotas antigas de cartão, amigos, ofertas, carbono e relatórios são encaminhadas ao grupo correspondente. Nenhuma chave de dados financeiros ou cálculo é migrado. Alterar a navegação não deve apagar filtros financeiros, compras, metas ou fechamentos.
+- Rotas antigas de cartão, amigos, ofertas e relatórios são encaminhadas ao grupo correspondente. Nenhuma chave de dados financeiros ou cálculo é migrado. Alterar a navegação não deve apagar filtros financeiros, compras, metas ou fechamentos.
 - A seleção interna fica em FinanceSegments, com foco e teclado da biblioteca. Nunca deixar uma janela modal invisível bloqueando a área recém-aberta.
 
 
@@ -595,7 +595,7 @@ A marca passa a ser o guaxinim enviado pelo usuário, com fundo transparente. Lo
 - `src/styles/login.css` é a folha específica do login. Não restaurar as três folhas antigas nem vídeos/imagens sem consumidores. A marca canônica é `raccoon-logo.webp`, com `raccoon-logo.png` como original/fallback no login.
 - Notificações passam `padding="0px"` pela API de Card; o espaçamento fica na linha interna. Evitar competir com padding inline por novas exceções CSS.
 - Calendários de dia, mês e agenda compartilham `calendarKeys`: setas e Home/End movem foco entre botões habilitados. As grades mantêm sete colunas para dias e três para meses. Ao abrir calendário sobre um lançamento, Escape fecha somente o diálogo superior, preservando o formulário.
-- Configurações usa o título Visibilidade e identifica o destino real das opções: Cartões em Compromissos, Carbono em Análises e Calendário no topo. As chaves salvas permanecem compatíveis.
+- Configurações usa o título Visibilidade e identifica o destino real das opções: Cartões em Compromissos, Calendário no topo. As chaves salvas permanecem compatíveis.
 - Menus de ações usam apenas o renderer React e o dispatcher compartilhado; não restaurar os hosts `#menu`/`#profileMenu` nem criar botões temporários para disparar comandos.
 - Comandos financeiros ficam em `src/finance/controllers`: lançamentos/recorrências, dívidas, metas/divisões e prévia CSV. Dependências são tipadas e injetadas; persistência e rollback permanecem no orquestrador. Contextos com estado substituível usam getters para evitar referências antigas após restauração.
 - `workspace.tsx` é a entrada de uma sessão; estado, persistência, formulários, renderers e integrações residem em `src/finance/session`. `assembly.ts` conserva a ordem de inicialização. Não restaurar uma closure central nem duplicar serviços para caminhos antigos. O resultado integral está em `MIGRACAO-INTEGRAL-CONTROLADOR-2026-11-05.md`.
@@ -645,3 +645,15 @@ Distribuição dos gastos segue a referência de anel radial: os ângulos repres
 Perfil passa a popup compacto (máximo 400 px), identidade com foto/nome/e-mail quando disponível e grupos recolhíveis para notas de gastos/economias e assinaturas/apoio. Configurações fica no ícone superior, sem duplicação; Sair conserva a ação existente. Editor expõe apenas nome de exibição e foto; são preferências locais em `plan12profile_v1`, isoladas pelo armazenamento de conta/visitante já existente, sem sincronização remota. Não confundir nome de exibição com @usuário: a regra mensal e os fluxos de Conta continuam intactos. Fotos PNG/JPEG/WebP de até 2 MB, até 20 megapixels, são recortadas em quadrado de 256 px e salvas como raster reduzido; não aceitar SVG ou URLs externas como personalização.
 
 Configurações, Calendário e Perfil compartilham `account-progressive-header`: o material atual usa uma máscara gradual que desvanece abaixo dos controles, sem borda/faixa sólida. Opacidade e blur dos tokens permanecem; transparência reduzida e ausência de suporte recebem fundo opaco legível. A busca aplica o foco na pílula `board-search-surface`, não no input interno, preservando uma indicação visível sem faixa azul. Os badges de tópicos foram removidos do login; autenticação e prévia por e-mail permanecem.
+
+## Previsão local — ciclo F2
+
+A tela usa saldo disponível informado para o dia local atual; valores de outro dia exigem atualização. A série opera em centavos, com horizontes 30/60/90, margem padrão R$ 100 editável e dois modos explícitos. Estimativa variável é mediana de 90 dias de gastos à vista não recorrentes, incluindo zeros; dias com registros não comprovam cobertura integral. Faturas substituem compras a crédito no fluxo de caixa, com abatimento dos pagamentos registrados. Dívidas sem dia de vencimento e possíveis duplicados geram revisão, nunca certeza de saldo. Alertas usam texto/ícone/status ou alert no risco máximo; o switch Alerta de saldo controla somente o sino, não oculta o banner de risco. Sem push ou IA. Preferências locais em plan12forecast_v1, isoladas pelo mecanismo atual.
+
+## Navegação e recorrências — ciclo F2, opção 1
+
+Dock e seus quatro itens, ícones e estilos permanecem. Compromissos acrescenta Recorrências após Dividir conta; Planejamento acrescenta Previsão após Metas. Os destinos anteriores continuam aceitos, e o acesso legado da área retirada direciona para Impostos. Calendário, Perfil, Busca e Notificações permanecem no topo. O resumo de Assinaturas no Perfil conserva apoio e registros; Gerenciar recorrências fecha o popup e abre a tela canônica.
+
+Novas telas reutilizam LiquidControls, cards, campos, calendário universal, barras de opções e Suspense existentes, sem novos valores de vidro ou movimento. Previsão usa tabela acessível com rolagem interna. Recorrências agrupa Detectadas, Possivelmente esquecidas e Ignoradas/Canceladas, com confiança em palavras e evidências revisáveis. A partir de seis ciclos sem revisão local, aumento de preço ou serviços/lançamentos parecidos, uma sugestão recebe destaque cauteloso; isso não indica uso do serviço. Confirmar permite revisar valor, periodicidade, âncora e fim opcional da projeção; não altera lançamentos. Marcar como cancelada exige confirmação sobre o alcance exclusivamente local.
+
+Decisões em plan12recurrenceDecisions_v1 usam IDs dos registros para tolerar descrições renomeadas. Janela padrão de 24 meses; anuais podem consultar até 36 meses para obter três ocorrências. Os dados locais novos são apagados somente ao zerar dados financeiros explicitamente; não entram no backup/sync existente. Séries materiais finitas ou encerradas não são estendidas automaticamente.

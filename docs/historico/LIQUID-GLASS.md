@@ -102,7 +102,7 @@ Compras reúne Ofertas e Carrinho. Configurações → Layout contém o único G
 
 ## Opções animadas e área social
 
-Identidade, Layout e Dados e relatórios são opções da engrenagem. Os painéis animam a expansão e mantêm o conteúdo fechado inerte. Assinaturas fica antes de Apoio no perfil; Amigos compartilha a barra com perfil e notificações e preserva o fluxo de divisão. Carbono usa estimativas manuais com fonte opcional, sem apresentar emissões desconhecidas como zero. Os registros de carbono são locais, separados do snapshot financeiro e da sincronização.
+Identidade, Layout e Dados e relatórios são opções da engrenagem. Os painéis animam a expansão e mantêm o conteúdo fechado inerte. Assinaturas fica antes de Apoio no perfil; Amigos compartilha a barra com perfil e notificações e preserva o fluxo de divisão.
 
 ### Paletas e controles de dados
 Layout agora oferece paletas coordenadas de outono/inverno, com Branco envelhecido como padrão. A seleção usa GlassButton com aria-pressed, amostras e marcação visível; não usa o seletor nativo quadrado de cores. Mantidos ThemeSwitch e GlassSlider. Cards/formulários do carrinho compartilham raios de 28px e controles em pílula. A confirmação de zerar/excluir usa dialog modal com foco nativo, campos rotulados e botões destructive.

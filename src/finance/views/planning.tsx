@@ -55,7 +55,7 @@ export function planningView(context: WorkspaceViewContext) {
     <>
       {areaNavigation('planning', 'Seções de planejamento')}
       <div className="area-content offers-panel planning-grid">
-        {areaViews.planning === 'goals' ? (
+        {areaViews.planning === 'forecast' ? <div data-forecast-screen=""/> : areaViews.planning === 'goals' ? (
           <div className="product-goals-host" data-product-goals=""></div>
         ) : (
           vOffers()

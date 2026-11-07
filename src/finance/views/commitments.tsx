@@ -179,7 +179,7 @@ export function commitmentsView(context: WorkspaceViewContext) {
     <>
       {areaNavigation('commitments', 'Seções de compromissos')}
       <div className="area-content">
-        {areaViews.commitments === 'cards' ? vCards() : areaViews.commitments === 'friends' ? vSplit() : vD()}
+        {areaViews.commitments === 'recurrences' ? <div data-recurrences-screen=""/> : areaViews.commitments === 'cards' ? vCards() : areaViews.commitments === 'friends' ? vSplit() : vD()}
       </div>
     </>
   );
