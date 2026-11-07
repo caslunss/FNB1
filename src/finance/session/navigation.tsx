@@ -60,7 +60,8 @@ export function createNavigation(workspace: NavigationContext) {
   function selectAreaView(value: string) {
     const next = resolveAreaView(value, getLayout().sections);
     if (!next) return false;
-    workspace.areaViews[next.area] = next.view;
+    if (next.area === 'summary') workspace.summaryMode = next.view;
+    else workspace.areaViews[next.area] = next.view;
     workspace.S.tab = next.tab;
     return true;
   }
@@ -202,7 +203,7 @@ export function createNavigation(workspace: NavigationContext) {
       workspace.$('#summaryModes'),
       ['r', 'i'].includes(workspace.S.tab) ? workspace.summarySwitch() : '',
     );
-    workspace.renderView(workspace.$('#forecastBanner'),workspace.S.tab==='r'?<div data-forecast-banner=""/>:null);
+    workspace.renderView(workspace.$('#forecastBanner'),workspace.S.tab==='r'&&workspace.summaryMode!=='forecast'?<div data-forecast-banner=""/>:null);
     workspace.$('#app').className = 'layout-' + workspace.S.tab;
     workspace.$('#app').dataset.summaryView =
       workspace.S.tab === 'i'
@@ -251,7 +252,7 @@ export function createNavigation(workspace: NavigationContext) {
     document.body.dataset.page = workspace.S.tab;
     workspace.$('#settingsTop').hidden =
       !['u', 'r'].includes(workspace.S.tab) ||
-      (workspace.S.tab === 'r' && workspace.summaryMode === 'behavior');
+      (workspace.S.tab === 'r' && ['behavior','forecast'].includes(workspace.summaryMode));
     workspace
       .$('#settingsTop')
       .setAttribute(

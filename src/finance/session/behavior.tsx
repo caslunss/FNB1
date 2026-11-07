@@ -1,3 +1,4 @@
+import { availableViews } from '../../services/navigation.ts';
 import { viewList } from '../../services/presentation.ts';
 import { errorDetails } from '../../services/errors.ts';
 import { summaryView as rendersummaryView } from '../views/summary.tsx';
@@ -230,14 +231,11 @@ export function createBehavior(workspace: BehaviorContext) {
   }
 
   function summarySwitch() {
-    const mode = workspace.S.tab === 'i' ? 'entries' : 'overview';
+    const mode = workspace.S.tab === 'i' ? 'entries' : workspace.summaryMode === 'forecast' ? 'forecast' : 'overview';
     return (
       <div className="segments summary-switch" aria-label="Visão do resumo">
         {viewList(
-          [
-            ['overview', 'Visão geral'],
-            ['entries', 'Lançamentos'],
-          ].map(([key, label]) => (
+          availableViews('summary').map(([key, label]) => (
             <button data-summary-mode={key} aria-pressed={mode === key}>
               {label}
             </button>

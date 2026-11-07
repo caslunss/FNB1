@@ -277,6 +277,7 @@ export function vI(context: WorkspaceViewContext) {
 export function summaryView(context: WorkspaceViewContext) {
   const { S, behaviorView, summaryMode, vI, vR } = context;
   const mode = S.tab === 'i' ? 'entries' : summaryMode === 'entries' ? 'overview' : summaryMode;
+  if (mode === 'forecast') return <div className="product-goals-host" data-forecast-screen=""/>;
   return mode === 'entries' ? (
     vI()
   ) : (

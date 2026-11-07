@@ -107,7 +107,7 @@ export function initializeAppearance(workspace: AppearanceContext) {
       workspace.entryFilter = value;
     else if (
       kind === 'data-summary-mode' &&
-      ['overview', 'behavior', 'entries'].includes(value)
+      ['overview', 'behavior', 'entries', 'forecast'].includes(value)
     ) {
       workspace.summaryMode = value;
       workspace.S.tab = value === 'entries' ? 'i' : 'r';

@@ -16,7 +16,7 @@ type SummaryContext = Pick<
 
 export function createSummary(workspace: SummaryContext) {
   function prepareSummary(markup: import('react').ReactNode) {
-    if (workspace.S.tab !== 'r' || workspace.summaryMode === 'behavior')
+    if (workspace.S.tab !== 'r' || ['behavior','forecast'].includes(workspace.summaryMode))
       return markup;
     return arrangeSummary(
       markup,

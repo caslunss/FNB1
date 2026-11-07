@@ -2,6 +2,8 @@ Versão do documento: 0.1.0-alpha.1
 
 # TEFinance — guia de layout
 
+Previsão integra o seletor do Resumo, após Visão geral e Lançamentos. Planejamento mantém Compras e Metas; atalhos antigos `planning:forecast` abrem a nova posição no Resumo.
+
 ## Interface minimalista — 07/11/2026
 
 Por solicitação do proprietário, usar `-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif` em toda a interface, incluindo login, controles, popups e mobile. A pilha usa SF Pro nos sistemas Apple e as alternativas disponíveis nos demais dispositivos; não baixar fontes externas.
@@ -51,7 +53,7 @@ As cores e limites estão em `src/services/layout-preferences.ts`. Os valores pa
 | Área | Conteúdo e comportamento |
 | --- | --- |
 | Login | Uma coluna centralizada em todos os tamanhos. Guaxinim transparente em WebP, com fallback explícito PNG e identificação textual se ambas as imagens falharem; traços invertidos no tema escuro. Google e visitante conforme a configuração existente; Apple indisponível fica oculto. Preservar labels, erros e avisos necessários |
-| Resumo | Visão geral e Lançamentos. Comportamento é uma seção da Visão geral; seletor de mês e organização de cards no mesmo grupo |
+| Resumo | Visão geral, Lançamentos e Previsão. Comportamento é uma seção da Visão geral; seletor de mês e organização de cards no mesmo grupo |
 | Visão geral | Gráfico principal, distribuição, maiores gastos, categorias e dívidas. Cards em colunas quando houver espaço |
 | Comportamento | Totais e indicadores por categoria, dia e mês. Mesma largura, tipografia e superfícies do Resumo |
 | Entradas | Ações no topo, filtros em pílula, lançamentos e período. Um único acesso principal para adicionar lançamento |
@@ -658,7 +660,7 @@ A tela usa saldo disponível informado para o dia local atual; valores de outro 
 
 ## Navegação e recorrências — ciclo F2, opção 1
 
-Dock e seus quatro itens, ícones e estilos permanecem. Compromissos acrescenta Recorrências após Dividir conta; Planejamento acrescenta Previsão após Metas. Os destinos anteriores continuam aceitos, e o acesso legado da área retirada direciona para Impostos. Calendário, Perfil, Busca e Notificações permanecem no topo. O resumo de Assinaturas no Perfil conserva apoio e registros; Gerenciar recorrências fecha o popup e abre a tela canônica.
+Dock e seus quatro itens, ícones e estilos permanecem. Compromissos acrescenta Recorrências após Dividir conta; Resumo acrescenta Previsão após Lançamentos; Planejamento mantém Compras e Metas. Os destinos anteriores continuam aceitos, e o acesso legado da área retirada direciona para Impostos. Calendário, Perfil, Busca e Notificações permanecem no topo. O resumo de Assinaturas no Perfil conserva apoio e registros; Gerenciar recorrências fecha o popup e abre a tela canônica.
 
 Novas telas reutilizam LiquidControls, cards, campos, calendário universal, barras de opções e Suspense existentes, sem novos valores de vidro ou movimento. Previsão usa tabela acessível com rolagem interna. Recorrências agrupa Detectadas, Possivelmente esquecidas e Ignoradas/Canceladas, com confiança em palavras e evidências revisáveis. A partir de seis ciclos sem revisão local, aumento de preço ou serviços/lançamentos parecidos, uma sugestão recebe destaque cauteloso; isso não indica uso do serviço. Confirmar permite revisar valor, periodicidade, âncora e fim opcional da projeção; não altera lançamentos. Marcar como cancelada exige confirmação sobre o alcance exclusivamente local.
 
