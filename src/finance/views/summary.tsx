@@ -98,7 +98,7 @@ export function vR(context: WorkspaceViewContext) {
       </section>
       <div className="lower-insights">
         <section className="card category-chart-preserved">
-          <h2>{'Distribuição dos gastos'}</h2>
+          <h2>{'Distribuição'}</h2>
           {donut(it)}
         </section>
         <section className="card">
@@ -249,7 +249,7 @@ export function vI(context: WorkspaceViewContext) {
           <p className="foot">
             {q || entryFilter !== 'all'
               ? 'Nenhum lançamento para este filtro.'
-              : 'Nenhum lançamento neste mês. Use Adicionar para começar.'}
+              : 'Nenhum lançamento neste mês.'}
           </p>
         )}
       </section>

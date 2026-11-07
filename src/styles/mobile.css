@@ -2,7 +2,7 @@
 .mobile-tab-label,.mobile-sheet-grabber{display:none}
 @media(max-width:699px){
  html{font:-apple-system-body;-webkit-text-size-adjust:100%;text-size-adjust:100%}
- body:not(.auth-page){padding:0!important;overflow-x:clip;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+ body:not(.auth-page){padding:0!important;overflow-x:clip;font-family:var(--ui-font)}
  body:has(dialog[open]){overflow:hidden}
  html[data-layout-ready] .workspace-frame{display:flex!important;flex-direction:column;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important}
  html[data-layout-ready] .workspace-main.wrap{width:100%!important;min-width:0;box-sizing:border-box;padding:var(--ui-space-2) max(var(--ui-space-4),env(safe-area-inset-right)) calc(var(--mobile-tab-height,70px) + 98px + env(safe-area-inset-bottom)) max(var(--ui-space-4),env(safe-area-inset-left))!important;margin:0!important}

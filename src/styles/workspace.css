@@ -5,7 +5,7 @@
 :root[data-theme="dark"]{--c1:#FF9F0A;--c3:#30D158;--c4:#FF453A;--c5:#BF5AF2;--c6:#40C8E0;--c7:#FF375F}
 *{box-sizing:border-box}
 /* Tipografia: fonte do sistema (SF Pro) e estilos de texto da HIG no tamanho padrão (Large) */
-body{margin:0;color:var(--lb);font:400 1.0625rem/1.294 -apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",system-ui,"Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;color:var(--lb);font:400 1.0625rem/1.294 var(--ui-font);-webkit-font-smoothing:antialiased}
 button,input,select{font:inherit;letter-spacing:inherit;color:var(--lb)}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 [hidden]{display:none!important}

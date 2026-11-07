@@ -5,5 +5,5 @@
  --ui-radius-card:28px;--ui-radius-pill:999px;
  --ui-action-py:10px;--ui-action-px:16px;
  --ui-touch-target:44px;--ui-field-height:48px;
- --ui-font:var(--lg-font,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);
+ --ui-font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",sans-serif;
 }

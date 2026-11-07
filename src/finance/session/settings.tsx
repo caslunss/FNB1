@@ -22,7 +22,7 @@ export function createSettings(workspace: SettingsContext) {
           <h2>{'Seus dados'}</h2>
           <p className="mut">
             {window.planAuth.user
-              ? 'Dados sincronizados por conta. Uma cópia neste dispositivo permite continuar sem conexão.'
+              ? 'Sincronizados por conta, com cópia local para uso offline.'
               : 'Dados temporários desta visita.'}
           </p>
           <div data-account-data-controls=""></div>
@@ -57,7 +57,7 @@ export function createSettings(workspace: SettingsContext) {
             )}
           </div>
           <p className="foot">
-            {'Backup completo. CSV com entradas e gastos de todos os meses.'}
+            {'Backup completo · CSV de todos os meses.'}
           </p>
         </section>
       </>

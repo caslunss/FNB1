@@ -89,7 +89,7 @@ export function vD(context: WorkspaceViewContext) {
         >
           {debtChart()}
         </div>
-        <p className="foot">{'Projeção das parcelas restantes. Atrasos entram no mês selecionado.'}</p>
+        <p className="foot">{'Parcelas restantes · atrasos no mês selecionado.'}</p>
       </section>
       <div className="row section-heading">
         <h2>{'Suas dívidas'}</h2>
@@ -141,7 +141,7 @@ export function vD(context: WorkspaceViewContext) {
         ) : (
           <div className="quiet-empty">
             <h3>{'Sem dívidas'}</h3>
-            <p>{'Adicione uma dívida para acompanhar as parcelas.'}</p>
+            <p>{'Nenhuma dívida.'}</p>
           </div>
         )}
       </div>

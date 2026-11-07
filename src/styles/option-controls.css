@@ -21,6 +21,10 @@
  --ui-control-shadow:var(--lg-shadow);
 }
 @layer app-controls{
+ .forecast-controls{display:flex;flex-wrap:wrap;gap:var(--ui-space-4);margin-block:var(--ui-space-5)}
+ .forecast-control-group{display:grid;gap:var(--ui-space-2);min-width:0;max-width:100%}
+ .forecast-control-group .ui-option-bar{width:100%}
+ .forecast-control-group .ui-option-bar .ui-button{--ui-option-flex:1 1 0;min-width:0;--ui-button-px:var(--ui-space-3);white-space:nowrap}
  :is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu){
   box-sizing:border-box;min-width:0;max-width:100%;
   background:var(--ui-bar-fill)!important;
@@ -55,7 +59,7 @@
  }
  .ui-button::before,.ui-button::after{content:none!important}
  :is(.ui-option,.ui-option-bar .ui-button){
-  flex:0 0 auto!important;touch-action:pan-x pan-y!important;--lg-glass-fill:transparent;
+  flex:var(--ui-option-flex,0 0 auto)!important;touch-action:pan-x pan-y!important;--lg-glass-fill:transparent;
   --ui-button-fill:transparent;--ui-button-shadow:var(--ui-option-focus-shadow,none);--ui-button-border:transparent;--ui-button-filter:none;
  }
  :is(.ui-button,.ui-option-bar button):is([aria-pressed=true],[aria-selected=true],[aria-current=page],:has(>input[type=radio]:checked)){

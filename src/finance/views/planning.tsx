@@ -22,7 +22,7 @@ export function vCart(context: WorkspaceViewContext) {
             <span className="tag">{'Confirmada'}</span>
             <h2>{esc(x.name)}</h2>
             <strong className="planning-value">{brl((x.purchase?.ownCents || 0) / 100)}</strong>
-            <p className="foot">{'Valores registrados na confirmação · ver em Lançamentos.'}</p>
+            <p className="foot">{'Registrada em Lançamentos.'}</p>
           </article>
         )),
       )}
@@ -37,7 +37,7 @@ export function vOffers(context: WorkspaceViewContext) {
       <section className="card finance-layout-card offers-search-section" aria-label="Pesquisar ofertas">
         <h2>{'Pesquisar produtos'}</h2>
         <p className="foot">
-          {'Resultados do Google Shopping no Brasil. Confira preço e disponibilidade na oferta.'}
+          {'Google Shopping · Brasil. Confira preço e disponibilidade.'}
         </p>
         {offersSearchView()}
       </section>

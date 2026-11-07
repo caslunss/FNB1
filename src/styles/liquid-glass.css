@@ -1,5 +1,6 @@
 /* Library tokens mapped to the app's existing winter palette. */
 :root,:root[data-theme="light"]{
+  --lg-font:var(--ui-font);
   --lg-fg:var(--lb);--lg-fg-muted:var(--lb2);--lg-accent:var(--tintT);--lg-green:var(--tint);
   --lg-fill:rgb(247 244 236 / .64);--lg-fill-pressed:rgb(247 244 236 / .9);
   --lg-panel-fill:rgb(247 244 236 / .84);--lg-edge:rgb(255 255 250 / .7);

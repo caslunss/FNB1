@@ -2,6 +2,12 @@ Versão do documento: 0.1.0-alpha.1
 
 # TEFinance — guia de layout
 
+## Interface minimalista — 07/11/2026
+
+Por solicitação do proprietário, usar `-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif` em toda a interface, incluindo login, controles, popups e mobile. A pilha usa SF Pro nos sistemas Apple e as alternativas disponíveis nos demais dispositivos; não baixar fontes externas.
+
+Rótulos e descrições curtos; evitar explicações repetidas. Preservar unidades, dados financeiros, avisos de estimativa, privacidade e consequências das ações. Em Previsão, separar Período e Cálculo em grupos identificados, com botões de 30/60/90 dias, Compromissos e + Variáveis. Manter alvos de toque, foco e seleção acessíveis; quebrar os grupos em telas pequenas.
+
 Versão Alpha 1.0 · atualizado em 05/11/2026.
 
 Este guia registra o padrão atual da interface. Deve ser consultado antes de cada alteração visual. Pedidos explícitos do usuário têm prioridade; mudanças aprovadas devem ser refletidas aqui. O guia não representa certificação de conformidade da Apple.

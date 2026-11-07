@@ -4,6 +4,10 @@ Este arquivo segue o estilo Keep a Changelog, em português, com versões SemVer
 
 ## Não lançado
 
+### Alterado — interface minimalista
+- Fonte unificada na pilha SF Pro solicitada, incluindo login, controles, painéis e telas pequenas, com alternativas nativas fora dos sistemas Apple.
+- Previsão com seletores de período e cálculo separados, botões curtos e estado selecionado preservado. Textos reduzidos no login, Resumo, Compromissos, Planejamento, Recorrências, Perfil, Configurações e Impostos; unidades, alertas e consequências financeiras preservados.
+
 ### Alterado — navegação
 - Mantidas quatro áreas na dock: Resumo, Compromissos, Planejamento e Análises. Previsão fica em Planejamento, Recorrências em Compromissos; Assinaturas do Perfil conserva seu resumo e passa a oferecer acesso ao gerenciamento local. Estilos Fixada/Padrão/Mini e calendário superior permanecem.
 

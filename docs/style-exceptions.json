@@ -1,7 +1,7 @@
 {
   "count": 601,
   "policy": "Exceções de prioridade explícitas do design vigente. Alterações exigem revisão da cascata e comparação visual; não há autorização para crescer este inventário silenciosamente.",
-  "sha256": "ae195c06a507f2e1870a541537c89ee08829ea98c2715e2934b14dce0404e51e",
+  "sha256": "fb5ce3ce6de1a115476dbfff832c79c277cd7ec9c25fd2ee6604bbf79e5a048e",
   "entries": [
     {
       "file": "src/styles/bottom-navigation.css",
@@ -2210,7 +2210,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 19,
+      "line": 20,
       "selector": "#app .te-glass-surface",
       "conditions": "",
       "property": "background",
@@ -2219,7 +2219,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 19,
+      "line": 20,
       "selector": "#app .te-glass-surface",
       "conditions": "",
       "property": "box-shadow",
@@ -2228,7 +2228,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 20,
+      "line": 21,
       "selector": "#app.layout-r>.te-glass-surface",
       "conditions": "",
       "property": "margin",
@@ -2237,7 +2237,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 22,
+      "line": 23,
       "selector": "#app .te-glass-surface.identity-card",
       "conditions": "",
       "property": "background",
@@ -2246,7 +2246,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 27,
+      "line": 28,
       "selector": "body:not(.auth-page) :is(.btn,.ib).te-glass-button",
       "conditions": "",
       "property": "background-color",
@@ -2255,7 +2255,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 27,
+      "line": 28,
       "selector": "body:not(.auth-page) :is(.btn,.ib).te-glass-button",
       "conditions": "",
       "property": "background-image",
@@ -2264,7 +2264,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 27,
+      "line": 28,
       "selector": "body:not(.auth-page) :is(.btn,.ib).te-glass-button",
       "conditions": "",
       "property": "box-shadow",
@@ -2273,7 +2273,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 28,
+      "line": 29,
       "selector": "body:not(.auth-page) :is(.btn,.ib).te-glass-button",
       "conditions": "",
       "property": "border",
@@ -2282,7 +2282,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 33,
+      "line": 34,
       "selector": "#tabs.tabbar .lg-button__label",
       "conditions": "",
       "property": "display",
@@ -2291,7 +2291,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 33,
+      "line": 34,
       "selector": "#tabs.tabbar .lg-button__label",
       "conditions": "",
       "property": "position",
@@ -2300,7 +2300,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 34,
+      "line": 35,
       "selector": "#tabs.tabbar .lg-button__label svg.i",
       "conditions": "",
       "property": "display",
@@ -2309,7 +2309,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 35,
+      "line": 36,
       "selector": ".te-glass-host",
       "conditions": "",
       "property": "box-shadow",
@@ -2318,7 +2318,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 38,
+      "line": 39,
       "selector": ".te-theme-control .lg-switch",
       "conditions": "",
       "property": "box-shadow",
@@ -2327,7 +2327,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 41,
+      "line": 42,
       "selector": ".sheet,#receiptDialog,.compact-form.card",
       "conditions": "",
       "property": "background",
@@ -2336,7 +2336,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 42,
+      "line": 43,
       "selector": ".lg-button[data-destructive]",
       "conditions": "",
       "property": "color",
@@ -2345,7 +2345,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 50,
+      "line": 51,
       "selector": ".lg-glass,.lg-glass::before",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "backdrop-filter",
@@ -2354,7 +2354,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 50,
+      "line": 51,
       "selector": ".lg-glass,.lg-glass::before",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "-webkit-backdrop-filter",
@@ -2363,7 +2363,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 52,
+      "line": 53,
       "selector": ".lg-glass",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "scale",
@@ -2372,7 +2372,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 52,
+      "line": 53,
       "selector": ".lg-glass",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "translate",
@@ -2381,7 +2381,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 52,
+      "line": 53,
       "selector": ".lg-glass",
       "conditions": "@media (prefers-reduced-motion:reduce)",
       "property": "transition",
@@ -2390,7 +2390,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 54,
+      "line": 55,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "",
       "property": "background",
@@ -2399,7 +2399,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 55,
+      "line": 56,
       "selector": ".te-glass-surface.lg-glass--host::before,.te-glass-surface.lg-glass--host::after",
       "conditions": "",
       "property": "content",
@@ -2408,7 +2408,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 57,
+      "line": 58,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "background",
@@ -2417,7 +2417,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 57,
+      "line": 58,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "backdrop-filter",
@@ -2426,7 +2426,7 @@
     },
     {
       "file": "src/styles/liquid-glass.css",
-      "line": 57,
+      "line": 58,
       "selector": ".te-glass-surface.lg-glass--host",
       "conditions": "@media (prefers-reduced-transparency:reduce)",
       "property": "-webkit-backdrop-filter",
@@ -4487,7 +4487,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 26,
+      "line": 30,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4496,7 +4496,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 27,
+      "line": 31,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "border",
@@ -4505,7 +4505,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 28,
+      "line": 32,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "border-radius",
@@ -4514,7 +4514,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 29,
+      "line": 33,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "box-shadow",
@@ -4523,7 +4523,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 30,
+      "line": 34,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "backdrop-filter",
@@ -4532,7 +4532,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 31,
+      "line": 35,
       "selector": ":is(.ui-option-bar,.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "-webkit-backdrop-filter",
@@ -4541,7 +4541,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 35,
+      "line": 39,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "display",
@@ -4550,7 +4550,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 35,
+      "line": 39,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "flex-wrap",
@@ -4559,7 +4559,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 35,
+      "line": 39,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "align-items",
@@ -4568,7 +4568,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 36,
+      "line": 40,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "gap",
@@ -4577,7 +4577,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 36,
+      "line": 40,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "padding",
@@ -4586,7 +4586,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 37,
+      "line": 41,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "height",
@@ -4595,7 +4595,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 37,
+      "line": 41,
       "selector": ".ui-option-bar",
       "conditions": "@layer app-controls",
       "property": "min-height",
@@ -4604,7 +4604,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 42,
+      "line": 46,
       "selector": ".ui-option-bar::before,.ui-option-bar::after",
       "conditions": "@layer app-controls",
       "property": "content",
@@ -4613,7 +4613,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 45,
+      "line": 49,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "min-height",
@@ -4622,7 +4622,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 46,
+      "line": 50,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "height",
@@ -4631,7 +4631,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 47,
+      "line": 51,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "gap",
@@ -4640,7 +4640,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 47,
+      "line": 51,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "padding",
@@ -4649,7 +4649,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 48,
+      "line": 52,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "font",
@@ -4658,7 +4658,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 49,
+      "line": 53,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "color",
@@ -4667,7 +4667,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 49,
+      "line": 53,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4676,7 +4676,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 50,
+      "line": 54,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "border",
@@ -4685,7 +4685,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 50,
+      "line": 54,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "border-radius",
@@ -4694,7 +4694,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 51,
+      "line": 55,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "box-shadow",
@@ -4703,7 +4703,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 52,
+      "line": 56,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "backdrop-filter",
@@ -4712,7 +4712,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 53,
+      "line": 57,
       "selector": ":is(.ui-button,.te-action-menu .lg-button,.te-action-menu .lg-menu__item)",
       "conditions": "@layer app-controls",
       "property": "-webkit-backdrop-filter",
@@ -4721,7 +4721,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 56,
+      "line": 60,
       "selector": ".ui-button::before,.ui-button::after",
       "conditions": "@layer app-controls",
       "property": "content",
@@ -4730,16 +4730,16 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 58,
+      "line": 62,
       "selector": ":is(.ui-option,.ui-option-bar .ui-button)",
       "conditions": "@layer app-controls",
       "property": "flex",
-      "value": "0 0 auto",
+      "value": "var(--ui-option-flex,0 0 auto)",
       "reason": "Controle universal: prevalência do sistema atual sobre regras básicas e estilos internos da biblioteca."
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 58,
+      "line": 62,
       "selector": ":is(.ui-option,.ui-option-bar .ui-button)",
       "conditions": "@layer app-controls",
       "property": "touch-action",
@@ -4748,7 +4748,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 71,
+      "line": 75,
       "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
       "conditions": "@layer app-controls",
       "property": "flex",
@@ -4757,7 +4757,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 72,
+      "line": 76,
       "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
       "conditions": "@layer app-controls",
       "property": "width",
@@ -4766,7 +4766,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 72,
+      "line": 76,
       "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
       "conditions": "@layer app-controls",
       "property": "height",
@@ -4775,7 +4775,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 73,
+      "line": 77,
       "selector": ":is(.ui-button.ui-icon,.ui-button.ib:not(.month-picker-labeled),.ui-button.date-picker-open,.ui-button.account-overlay-close,.ui-button.profile-card-close,.te-action-menu:not(.action-menu-labeled) .lg-menu-anchor>.lg-button)",
       "conditions": "@layer app-controls",
       "property": "min-width",
@@ -4784,7 +4784,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 83,
+      "line": 87,
       "selector": ":is(.ui-toolbar,.plan-actions,.progressive-actions,.settings-actions,.tax-actions,.entry-toolbar,.chart-toolbar,.summary-toolbar,.top-account-actions,.notification-footer)",
       "conditions": "@layer app-controls",
       "property": "align-items",
@@ -4793,7 +4793,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 83,
+      "line": 87,
       "selector": ":is(.ui-toolbar,.plan-actions,.progressive-actions,.settings-actions,.tax-actions,.entry-toolbar,.chart-toolbar,.summary-toolbar,.top-account-actions,.notification-footer)",
       "conditions": "@layer app-controls",
       "property": "gap",
@@ -4802,7 +4802,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 92,
+      "line": 96,
       "selector": ":is(.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4811,7 +4811,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 92,
+      "line": 96,
       "selector": ":is(.ui-option-menu,.te-action-menu .lg-menu)",
       "conditions": "@layer app-controls",
       "property": "border-radius",
@@ -4820,7 +4820,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 102,
+      "line": 106,
       "selector": ".navigation-actions .ui-option-bar .ui-button",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "flex",
@@ -4829,7 +4829,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 102,
+      "line": 106,
       "selector": ".navigation-actions .ui-option-bar .ui-button",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "width",
@@ -4838,7 +4838,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 103,
+      "line": 107,
       "selector": ".navigation-actions[data-compact=true] .ui-option-bar",
       "conditions": "@layer app-controls > @media (max-width:1024px)",
       "property": "min-height",
@@ -4847,7 +4847,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 129,
+      "line": 133,
       "selector": ":is(.finance-calendar-choice,.cal-day)[aria-pressed=true]",
       "conditions": "@layer app-controls",
       "property": "background",
@@ -4856,7 +4856,7 @@
     },
     {
       "file": "src/styles/option-controls.css",
-      "line": 129,
+      "line": 133,
       "selector": ":is(.finance-calendar-choice,.cal-day)[aria-pressed=true]",
       "conditions": "@layer app-controls",
       "property": "color",
